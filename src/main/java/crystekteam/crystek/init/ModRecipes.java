@@ -5,6 +5,8 @@ import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecipes
@@ -13,6 +15,7 @@ public class ModRecipes
     {
         registerSmeltingRecipes();
         registerSmasherRecipes();
+        registerCrystallizerRecipes();
     }
 
     static void registerSmasherRecipes()
@@ -27,5 +30,10 @@ public class ModRecipes
         //Dusts
         GameRegistry.addSmelting(ItemBank.ironDust, new ItemStack(Items.IRON_INGOT), 0.5F);
         GameRegistry.addSmelting(ItemBank.goldDust, new ItemStack(Items.GOLD_INGOT), 0.5F);
+    }
+
+    static void registerCrystallizerRecipes()
+    {
+        AdvancedEngineeringApi.registerCrystallizerRecipes(new ItemStack(Items.IRON_INGOT), new FluidStack(FluidRegistry.LAVA, 1000), new ItemStack(Blocks.SAND));
     }
 }
