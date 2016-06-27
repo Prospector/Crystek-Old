@@ -20,7 +20,6 @@ public class ContainerBase extends Container
     public int progress;
     public long power;
     public int burnTime;
-    public int fluidamount;
 
     public ContainerBase(TileBase tile, EntityPlayer player)
     {

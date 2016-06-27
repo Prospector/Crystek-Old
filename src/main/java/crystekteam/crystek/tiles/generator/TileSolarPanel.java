@@ -25,5 +25,6 @@ public class TileSolarPanel extends TileGenerator
             handleUpgrades(0, baseoutput);
             updateState();
         }
+        transferPowerTo(EnumFacing.DOWN);
     }
 }

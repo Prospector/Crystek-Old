@@ -1,13 +1,14 @@
 package crystekteam.crystek.util;
 
-import net.minecraft.tileentity.TileEntity;
+import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 public class Tank extends FluidTank
 {
-	public Tank(int capacity, TileEntity tile)
+	public TileBase tile;
+
+	public Tank(int capacity, TileBase tile)
 	{
 		super(capacity);
 		this.tile = tile;

@@ -2,7 +2,9 @@ package crystekteam.crystek.tesla;
 
 import net.darkhax.tesla.api.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
 /**
@@ -86,5 +88,61 @@ public class TeslaUtils
             return getContainer(stack).getOutputRate();
         }
         return 0;
+    }
+
+    /**
+     * Blocks
+     */
+    public static boolean isTelsaBlock(TileEntity tileEntity)
+    {
+        if(tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
+            return true;
+        return false;
+    }
+
+    public static BaseTeslaContainer getContainer(TileEntity tileEntity)
+    {
+        if(isTelsaBlock(tileEntity))
+        {
+            BaseTeslaContainer container = (BaseTeslaContainer) tileEntity.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
+            return container;
+        }
+        return null;
+    }
+
+    public static boolean isConsumer(TileEntity tileEntity)
+    {
+        if(tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, EnumFacing.DOWN))
+            return true;
+        return false;
+    }
+
+    public static long getMaxCapacity(TileEntity tile)
+    {
+        return getContainer(tile).getCapacity();
+    }
+
+    public static long getStoredPower(TileEntity tile)
+    {
+        return getContainer(tile).getStoredPower();
+    }
+
+    public static long getMissingPower(TileEntity tileEntity)
+    {
+        return getMaxCapacity(tileEntity) - getStoredPower(tileEntity);
+    }
+
+    public static boolean canAcceptPower(TileEntity tile, long amount)
+    {
+        if(getMissingPower(tile) >= amount)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static void addPower(TileEntity tileEntity, long amount)
+    {
+        getContainer(tileEntity).givePower(amount, false);
     }
 }

@@ -4,6 +4,7 @@ import crystekteam.crystek.tiles.prefab.TileGenerator;
 import crystekteam.crystek.config.ConfigAE;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
 
 /**
  * Created by Gigabit101 on 31/05/2016.
@@ -62,6 +63,10 @@ public class TileCoalGenerator extends TileGenerator
             }
         }
         lastTickBurning = isBurning;
+        for (final EnumFacing side : EnumFacing.values())
+        {
+            transferPowerTo(side);
+        }
     }
     public static int getItemBurnTime(ItemStack stack)
     {

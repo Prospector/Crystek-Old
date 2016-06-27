@@ -2,6 +2,7 @@ package crystekteam.crystek.tiles.machines;
 
 
 import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.VanillaPacketDispatcher;
 import crystekteam.crystek.api.recipe.RecipeCrystallizer;
 import crystekteam.crystek.tiles.prefab.TileMachine;
 import crystekteam.crystek.util.ItemUtils;

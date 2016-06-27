@@ -1,7 +1,9 @@
 package crystekteam.crystek.tiles.prefab;
 
 import crystekteam.crystek.items.tools.ItemCircuit;
+import crystekteam.crystek.tesla.TeslaUtils;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
@@ -32,6 +34,24 @@ public class TileGenerator extends TileBase
             return true;
 
         return super.hasCapability(capability, facing);
+    }
+
+    public void transferPowerTo(EnumFacing facing)
+    {
+        TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
+        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
+        {
+            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
+            {
+                TeslaUtils.addPower(tileEntity, this.container.getOutputRate());
+                this.container.takePower(this.container.getOutputRate(), false);
+            }
+            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
+            {
+                TeslaUtils.addPower(tileEntity, this.container.getStoredPower());
+                this.container.takePower(this.container.getStoredPower(), false);
+            }
+        }
     }
 
     @Override
