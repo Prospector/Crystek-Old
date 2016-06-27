@@ -1,6 +1,6 @@
 package crystekteam.crystek.api.recipe;
 
-import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.CrystekApi;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -56,7 +56,7 @@ public class RecipeGrinder
     {
         if(input != null)
         {
-            for (RecipeGrinder recipe : AdvancedEngineeringApi.smasherRecipes)
+            for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
             {
                 if (recipe.matches(input))
                 {

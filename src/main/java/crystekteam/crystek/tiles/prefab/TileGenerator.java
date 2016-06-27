@@ -6,6 +6,7 @@ import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 /**
  * Created by Gigabit101 on 22/06/2016.
@@ -23,6 +24,10 @@ public class TileGenerator extends TileBase
     {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return (T) this.container;
+        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return (T) tank;
+        }
 
         return super.getCapability(capability, facing);
     }
@@ -32,6 +37,11 @@ public class TileGenerator extends TileBase
     {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return true;
+
+        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return true;
+        }
 
         return super.hasCapability(capability, facing);
     }

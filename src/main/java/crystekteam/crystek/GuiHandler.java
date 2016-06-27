@@ -2,6 +2,7 @@ package crystekteam.crystek;
 
 import crystekteam.crystek.client.gui.*;
 import crystekteam.crystek.container.*;
+import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
 import crystekteam.crystek.tiles.machines.TileFurnace;
 import crystekteam.crystek.tiles.TileTeslaCell;
@@ -24,6 +25,7 @@ public class GuiHandler implements IGuiHandler
     public static int powerCube = 3;
     public static int solarPanel = 4;
     public static int crystallizer = 5;
+    public static int fluidGenerator = 6;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -51,6 +53,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == crystallizer)
         {
             return new ContainerCrystallizer((TileCrystallizer) world.getTileEntity(new BlockPos(x, y, z)), player);
+        }
+        if(ID == fluidGenerator)
+        {
+            return new ContainerFluidGenerator((TileFluidGenerator) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
         return null;
     }
@@ -81,6 +87,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == crystallizer)
         {
             return new GuiCrystallizer(player, (TileCrystallizer) world.getTileEntity(new BlockPos(x, y, z)));
+        }
+        if(ID == fluidGenerator)
+        {
+            return new GuiFluidGenerator(player, (TileFluidGenerator) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }

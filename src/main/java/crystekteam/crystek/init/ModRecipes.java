@@ -1,6 +1,6 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,12 +16,14 @@ public class ModRecipes
         registerSmeltingRecipes();
         registerSmasherRecipes();
         registerCrystallizerRecipes();
+        //TODO remove debug
+        CrystekApi.registerFuel(new FluidStack(FluidRegistry.LAVA, 1000), 1000, 50);
     }
 
     static void registerSmasherRecipes()
     {
-        AdvancedEngineeringApi.registerSmasherRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.COBBLESTONE));
-        AdvancedEngineeringApi.registerSmasherRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.GRAVEL));
+        CrystekApi.registerSmasherRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.COBBLESTONE));
+        CrystekApi.registerSmasherRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.GRAVEL));
         //AdvancedEngineeringApi.registerSmasherRecipe(new ItemStack(ModItems.crafting, 2, 2), "oreCopper");
     }
 
@@ -34,6 +36,6 @@ public class ModRecipes
 
     static void registerCrystallizerRecipes()
     {
-        AdvancedEngineeringApi.registerCrystallizerRecipes(new ItemStack(Items.IRON_INGOT), new FluidStack(FluidRegistry.LAVA, 1000), new ItemStack(Blocks.SAND));
+        CrystekApi.registerCrystallizerRecipes(new ItemStack(Items.IRON_INGOT), new FluidStack(FluidRegistry.LAVA, 1000), new ItemStack(Blocks.SAND));
     }
 }

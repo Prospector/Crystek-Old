@@ -1,0 +1,112 @@
+package crystekteam.crystek.tiles.generator;
+
+import crystekteam.crystek.api.CrystekApi;
+import crystekteam.crystek.api.FluidFuelHandler;
+import crystekteam.crystek.api.recipe.RecipeCrystallizer;
+import crystekteam.crystek.config.ConfigAE;
+import crystekteam.crystek.tesla.TeslaUtils;
+import crystekteam.crystek.tiles.prefab.TileGenerator;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fluids.FluidStack;
+
+/**
+ * Created by Gigabit101 on 31/05/2016.
+ */
+public class TileFluidGenerator extends TileGenerator
+{
+    public int fuelSlot = 0;
+    public int output;
+    public long baseoutput = ConfigAE.generatorTick;
+
+    public boolean isBurning;
+    public boolean lastTickBurning;
+
+    public TileFluidGenerator()
+    {
+        super(3, "fluidgen", 16, 10000, 50, 50, 8000);
+    }
+
+    @Override
+    public void update()
+    {
+//        if(tank.getFluid() != null)
+//        {
+//            if(getAmount() != 0 && getOutput() != 0)
+//            {
+//                long powerToGenerate = getAmount();
+//                long powerOutput = getOutput();
+//                if(TeslaUtils.getMissingPower(this) >= powerOutput)
+//                {
+//                    generatePower(powerOutput);
+//                }
+//            }
+//        }
+        if (worldObj.isRemote)
+        {
+            return;
+        }
+        if (getStoredPower() < getMaxCapacity())
+        {
+            if (burnTime > 0)
+            {
+                burnTime--;
+                generatePower(baseoutput);
+                isBurning = true;
+            }
+        }
+        else
+        {
+            isBurning = false;
+        }
+        if (burnTime == 0)
+        {
+            this.updateState();
+            burnTime = totalBurnTime = (int) getAmount() / 20;
+            if (burnTime > 0)
+            {
+                this.updateState();
+                tank.drain(1000, true);
+            }
+        }
+        lastTickBurning = isBurning;
+        for (final EnumFacing side : EnumFacing.values())
+        {
+            transferPowerTo(side);
+        }
+    }
+
+    public long getOutput()
+    {
+        if(tank.getFluid() != null)
+        {
+            FluidStack fluid = tank.getFluid();
+            for (FluidFuelHandler recipe : CrystekApi.fluidFuelHandlers)
+            {
+                if (recipe.fluidMatches(fluid))
+                {
+                    return recipe.getOutput();
+                }
+            }
+        }
+        return 0;
+    }
+
+    public long getAmount()
+    {
+        if(tank.getFluid() != null)
+        {
+            FluidStack fluid = tank.getFluid();
+            for (FluidFuelHandler recipe : CrystekApi.fluidFuelHandlers)
+            {
+                if (recipe.fluidMatches(fluid))
+                {
+                    return recipe.getAmount();
+                }
+            }
+        }
+        return 0;
+    }
+}

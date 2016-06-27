@@ -1,5 +1,6 @@
 package crystekteam.crystek.init;
 
+import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.blocks.BlockMachineFrame;
 import crystekteam.crystek.blocks.BlockTeslaCell;
@@ -11,6 +12,7 @@ import crystekteam.crystek.blocks.machines.BlockGrinder;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
+import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
 import crystekteam.crystek.tiles.machines.TileFurnace;
@@ -37,8 +39,7 @@ public class ModBlocks
     //Power gen
     public static Block coalGen;
     public static Block solarGen;
-    public static Block lavaGen;
-    public static Block fuelGen;
+    public static Block fluidGen;
 
     public static Block laser;
 
@@ -74,6 +75,10 @@ public class ModBlocks
         crystallizer = new BlockCrystallizer();
         registerBlock(crystallizer, "crystallizer");
         GameRegistry.registerTileEntity(TileCrystallizer.class, "crystallizer");
+
+        fluidGen = new BlockFluidGenerator();
+        registerBlock(fluidGen, "fluidgen");
+        GameRegistry.registerTileEntity(TileFluidGenerator.class, "fluidgen");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)
