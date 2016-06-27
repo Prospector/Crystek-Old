@@ -1,6 +1,6 @@
 package crystekteam.crystek.compat.jei;
 
-import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.client.gui.GuiPoweredFurnace;
 import crystekteam.crystek.compat.jei.grinder.GrinderRecipeCategory;
 import crystekteam.crystek.client.gui.GuiGrinder;
@@ -30,7 +30,7 @@ public class AdvancedEngineeringJeiPlugin extends BlankModPlugin
         registry.addRecipeClickArea(GuiPoweredFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING);
         registry.addRecipeClickArea(GuiGrinder.class, 78, 36, 24, 16, RecipeCategoryUids.GRINDER);
 
-        registry.addRecipes(AdvancedEngineeringApi.grinderRecipes);
+        registry.addRecipes(CrystekApi.smasherRecipes);
     }
 
     @Override

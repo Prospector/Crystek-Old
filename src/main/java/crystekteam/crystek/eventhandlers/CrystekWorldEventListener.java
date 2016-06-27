@@ -1,6 +1,6 @@
 package crystekteam.crystek.eventhandlers;
 
-import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.api.recipe.RecipeGrinder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -112,7 +112,7 @@ public class CrystekWorldEventListener implements IWorldEventListener
 
 	public boolean isValidRecipe(ItemStack input)
 	{
-		for (RecipeGrinder recipe : AdvancedEngineeringApi.grinderRecipes)
+		for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
 		{
 			if (recipe.getInput() instanceof ItemStack)
 			{
@@ -130,7 +130,7 @@ public class CrystekWorldEventListener implements IWorldEventListener
 
 	public ItemStack getOutputItem(ItemStack input)
 	{
-		for (RecipeGrinder recipe : AdvancedEngineeringApi.grinderRecipes)
+		for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
 		{
 			if (recipe.matches(input))
 			{

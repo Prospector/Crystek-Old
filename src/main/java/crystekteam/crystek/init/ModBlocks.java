@@ -1,5 +1,7 @@
 package crystekteam.crystek.init;
 
+import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
+import crystekteam.crystek.blocks.machines.BlockFluidizer;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.blocks.BlockMachineFrame;
 import crystekteam.crystek.blocks.BlockTeslaCell;
@@ -11,8 +13,10 @@ import crystekteam.crystek.blocks.machines.BlockGrinder;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
+import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
+import crystekteam.crystek.tiles.machines.TileFluidizer;
 import crystekteam.crystek.tiles.machines.TileFurnace;
 import crystekteam.crystek.tiles.machines.TileGrinder;
 import net.minecraft.block.Block;
@@ -32,13 +36,13 @@ public class ModBlocks
     public static Block poweredFurnace;
     public static Block grinder;
     public static Block crystallizer;
+    public static Block fluidizer;
     //Power Storage
     public static Block teslaCell;
     //Power gen
     public static Block coalGen;
     public static Block solarGen;
-    public static Block lavaGen;
-    public static Block fuelGen;
+    public static Block fluidGen;
 
     public static Block laser;
 
@@ -74,6 +78,14 @@ public class ModBlocks
         crystallizer = new BlockCrystallizer();
         registerBlock(crystallizer, "crystallizer");
         GameRegistry.registerTileEntity(TileCrystallizer.class, "crystallizer");
+
+        fluidGen = new BlockFluidGenerator();
+        registerBlock(fluidGen, "fluidgen");
+        GameRegistry.registerTileEntity(TileFluidGenerator.class, "fluidgen");
+
+        fluidizer = new BlockFluidizer();
+        registerBlock(fluidizer, "fluidizer");
+        GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

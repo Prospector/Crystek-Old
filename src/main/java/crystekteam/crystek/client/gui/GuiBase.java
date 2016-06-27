@@ -39,7 +39,7 @@ public class GuiBase extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
     {
         String name = I18n.translateToLocal("tile." + this.name + ".name");
-        this.fontRendererObj.drawString(name, this.xSize / 2 +6 - this.fontRendererObj.getStringWidth(name) / 2, 6, 16777215);
+        this.fontRendererObj.drawString(name, this.xSize / 2 + 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 16777215);
     }
 
     @Override

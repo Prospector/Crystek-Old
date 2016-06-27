@@ -1,6 +1,6 @@
 package crystekteam.crystek.tiles.machines;
 
-import crystekteam.crystek.api.AdvancedEngineeringApi;
+import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.api.recipe.RecipeGrinder;
 import crystekteam.crystek.tiles.prefab.TileMachine;
 import crystekteam.crystek.util.ItemUtils;
@@ -78,7 +78,7 @@ public class TileGrinder extends TileMachine
         if(getStackInSlot(ORE_SLOT) != null)
         {
             ItemStack input = getStackInSlot(this.ORE_SLOT);
-            for (RecipeGrinder recipe : AdvancedEngineeringApi.grinderRecipes)
+            for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
             {
                 if (recipe.matches(input) || recipe.getOutput().getItem() == Item.getItemFromBlock(getBlockType()))
                 {
