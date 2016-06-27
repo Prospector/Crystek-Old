@@ -12,7 +12,7 @@ public class TileTeslaCell extends TileTeslaStorage
 
     public TileTeslaCell()
     {
-        super(2, "teslacell", 1, 50000, 50, 50, 0, null);
+        super(2, "teslacell", 1, 50000, 50, 50, 0);
     }
 
     @Override

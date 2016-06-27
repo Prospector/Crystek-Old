@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     public int totalBurnTime;
     public boolean isActive;
 
-    public TileBase(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity, String tankname)
+    public TileBase(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity)
     {
         if(invSize != 0)
         {
@@ -52,7 +53,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         }
         if(tankCapacity != 0)
         {
-            this.tank = new Tank(tankname, tankCapacity, this);
+            this.tank = new Tank(tankCapacity, this);
         }
     }
 
@@ -184,14 +185,21 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
+        compound = super.writeToNBT(compound);
         if(inv != null)
          inv.writeToNBT(compound);
 
         if(tank != null)
-            tank.writeToNBT(compound);
+            writeTankToNBT(compound);
+//            tank.writeToNBT(compound);
 
         compound.setTag("TeslaContainer", this.container.serializeNBT());
         return super.writeToNBT(compound);
+    }
+
+    public void writeTankToNBT(NBTTagCompound tags)
+    {
+        tank.writeToNBT(tags);
     }
 
     @Override
@@ -202,9 +210,14 @@ public class TileBase extends TileEntity implements IInventory, ITickable
             inv.readFromNBT(compound);
 
         if(tank != null)
-            tank.readFromNBT(compound);
+            readTankFromNBT(compound);
+//            tank.readFromNBT(compound);
 
         this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
+    }
+
+    public void readTankFromNBT(NBTTagCompound tags) {
+        tank.readFromNBT(tags);
     }
 
     public long getPowerScaled (int scale)
@@ -260,10 +273,10 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         return tank.getFluidAmount();
     }
 
-    public void setFluidAmount(int amount)
-    {
-        tank.setFluidAmount(amount);
-    }
+//    public void setFluidAmount(int amount)
+//    {
+//        tank.setFluidAmount(amount);
+//    }
 
     public void setFluid(FluidStack fluidStack)
     {
@@ -284,6 +297,8 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     {
         return tank.getFluidType();
     }
+
+    public int getFluidMax() { return tank.getCapacity(); }
 
     public static <T> List<T> getConnectedCapabilities (Capability<T> capability, World world, BlockPos pos)
     {

@@ -29,17 +29,19 @@ public class BlockCrystallizer extends BlockBase
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!playerIn.isSneaking()) {
-            playerIn.openGui(Crystek.instance, GuiHandler.crystallizer, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        if(!playerIn.isSneaking())
+            fillBlockWithFluid(world, pos, playerIn, heldItem, side);
 
-        }
-        //DEBUG
         if(playerIn.isSneaking()) {
-            TileCrystallizer tile = (TileCrystallizer) worldIn.getTileEntity(pos);
-            tile.setFluid(new FluidStack(ModFluids.fluidTesla, 4000));
+            playerIn.openGui(Crystek.instance, GuiHandler.crystallizer, world, pos.getX(), pos.getY(), pos.getZ());
         }
+//        //DEBUG
+//        if(playerIn.isSneaking()) {
+//            TileCrystallizer tile = (TileCrystallizer) worldIn.getTileEntity(pos);
+//            tile.setFluid(new FluidStack(ModFluids.fluidTesla, 4000));
+//        }
         return true;
     }
 

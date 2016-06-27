@@ -10,9 +10,9 @@ import net.minecraftforge.common.capabilities.Capability;
  */
 public class TileGenerator extends TileBase
 {
-    public TileGenerator(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, String tankname)
+    public TileGenerator(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount)
     {
-        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount, tankname);
+        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount);
     }
 
     @Override

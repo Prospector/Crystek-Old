@@ -16,7 +16,7 @@ public class TileFurnace extends TileMachine
 
     public TileFurnace()
     {
-        super(2, "furnace", 64, 10000, 50, 50, 0, null);
+        super(2, "furnace", 64, 10000, 50, 50, 0);
         fuelScale = 100;
     }
 

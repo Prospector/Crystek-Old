@@ -13,7 +13,7 @@ public class TileSolarPanel extends TileGenerator
 
     public TileSolarPanel()
     {
-        super(3, "solar", ConfigAE.solarPanelMaxUpgrades, 10000, 100, 100, 0, null);
+        super(3, "solar", ConfigAE.solarPanelMaxUpgrades, 10000, 100, 100, 0);
     }
 
     @Override

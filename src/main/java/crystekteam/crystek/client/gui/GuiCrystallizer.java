@@ -18,7 +18,7 @@ public class GuiCrystallizer extends GuiBase
 
     public GuiCrystallizer(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerCrystallizer(tile, player), "", textureloc);
+        super(player, tile, new ContainerCrystallizer(tile, player), "crystek.crystallizer", textureloc);
         this.tileCrystallizer = (TileCrystallizer) tile;
     }
 

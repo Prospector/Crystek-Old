@@ -1,6 +1,8 @@
 package crystekteam.crystek.blocks;
 
 import crystekteam.crystek.CreativeTabCrystek;
+import crystekteam.crystek.tiles.prefab.TileBase;
+import crystekteam.crystek.tiles.prefab.TileMachine;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -9,6 +11,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -16,9 +19,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.capability.*;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.ItemFluidContainer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -268,5 +275,18 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
         EnumFacing facing = world.getBlockState(pos).getValue(FACING);
         IBlockState state = world.getBlockState(pos).withProperty(ACTIVE, active).withProperty(FACING, facing);
         world.setBlockState(pos, state, 3);
+    }
+
+    public boolean fillBlockWithFluid(World worldIn, BlockPos pos, EntityPlayer playerIn, ItemStack heldItem, EnumFacing side)
+    {
+        TileEntity tile = worldIn.getTileEntity(pos);
+        if(tile == null || !tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
+        {
+            return false;
+        }
+
+        IFluidHandler fluidHandler = tile.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side);
+        FluidUtil.interactWithFluidHandler(heldItem, fluidHandler, playerIn);
+        return heldItem != null && !(heldItem.getItem() instanceof ItemBlock);
     }
 }

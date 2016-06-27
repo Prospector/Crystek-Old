@@ -10,6 +10,6 @@ public class TileCrystallizer extends TileMachine
 {
     public TileCrystallizer()
     {
-        super(6, "crystallizer", 64, 10000, 500, 500, 4000, "crystallizer");
+        super(6, "crystallizer", 64, 10000, 500, 500, 4000);
     }
 }
