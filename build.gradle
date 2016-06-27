@@ -7,51 +7,38 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+
+            name = "Modmuss50"
+            url = "http://maven.modmuss50.me/"
+        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
+
     }
 }
+apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-/*
-// for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
-plugins {
-    id "net.minecraftforge.gradle.forge" version "2.0.2"
-}
-*/
-version = "1.9-2.3.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "BaublesHud"
+version = "1.9.4-1.0.0"
+group= "com.crytekteam.crytek"
+archivesBaseName = "Crytek"
 
 minecraft {
-    version = "1.9-12.16.0.1811-1.9"
+    version = "12.17.0.1909-1.9.4"
     runDir = "run"
-    mappings = "snapshot_20160312"
+    mappings = "snapshot_20160518"
 }
 
-def grabDep(name, url){
-    ant.get(src: url, dest: 'dep')
-    file("dep/" + url.substring(url.lastIndexOf("/"))).renameTo(file("dep/" + name + ".jar"))
+repositories {
+    maven {
+        url 'http://maven.epoxide.xyz'
+    }
 }
 
 dependencies {
-    def f = new File('dep/')
-    if(f.exists()){
-        f.delete()
-    }
-    f.mkdirs()
-    if(!f.exists()){
-        f.mkdir()
-    }
-    println("  Downloading dependencies!")
-    grabDep('Baubles', 'https://dl.dropboxusercontent.com/u/47135879/Baubles-1.9-1.2.0.0-deobf.jar')
-    
-
-
-    println("  Adding dependencies!")
-     compile files("dep/Baubles.jar")
-    println("  Finished adding dependencies!")
+    compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
 }
 
 processResources
