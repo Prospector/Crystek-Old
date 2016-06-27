@@ -9,7 +9,6 @@ import crystekteam.crystek.blocks.machines.BlockCrystallizer;
 import crystekteam.crystek.blocks.machines.BlockFurnace;
 import crystekteam.crystek.blocks.machines.BlockGrinder;
 import crystekteam.crystek.laser.TileLaser;
-import crystekteam.crystek.tiles.TileMachineFrame;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
@@ -46,8 +45,7 @@ public class ModBlocks
     public static void init()
     {
         machineframe = new BlockMachineFrame();
-        registerBlock(machineframe, "crafter");
-        GameRegistry.registerTileEntity(TileMachineFrame.class, "craftertile");
+        registerBlock(machineframe, "machineframe");
 
         coalGen = new BlockCoalGenerator();
         registerBlock(coalGen, "Coalgenerator");

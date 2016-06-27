@@ -4,7 +4,6 @@ import crystekteam.crystek.client.gui.*;
 import crystekteam.crystek.container.*;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
 import crystekteam.crystek.tiles.machines.TileFurnace;
-import crystekteam.crystek.tiles.TileMachineFrame;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
@@ -19,21 +18,16 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
  */
 public class GuiHandler implements IGuiHandler
 {
-    public static int machineFrame = 0;
-    public static int coalGenerator = 1;
-    public static int poweredFurnace = 2;
-    public static int oreSmasher = 3;
-    public static int powerCube = 4;
-    public static int solarPanel = 5;
-    public static int crystallizer = 6;
+    public static int coalGenerator = 0;
+    public static int poweredFurnace = 1;
+    public static int oreSmasher = 2;
+    public static int powerCube = 3;
+    public static int solarPanel = 4;
+    public static int crystallizer = 5;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(ID == machineFrame)
-        {
-            return new ContainerMachineFrame((TileMachineFrame) world.getTileEntity(new BlockPos(x, y, z)), player);
-        }
         if(ID == coalGenerator)
         {
             return new ContainerCoalGenerator((TileCoalGenerator) world.getTileEntity(new BlockPos(x, y, z)), player);
@@ -64,10 +58,6 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(ID == machineFrame)
-        {
-            return new GuiMachineFrame(player, (TileMachineFrame) world.getTileEntity(new BlockPos(x, y, z)));
-        }
         if(ID == coalGenerator)
         {
             return new GuiCoalGenerator(player, (TileCoalGenerator) world.getTileEntity(new BlockPos(x, y, z)));
