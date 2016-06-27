@@ -58,6 +58,11 @@ repositories {
 		name = "tterrag"
         url = "http://maven.tterrag.com/"
     }
+	
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
 }
 
 dependencies {
