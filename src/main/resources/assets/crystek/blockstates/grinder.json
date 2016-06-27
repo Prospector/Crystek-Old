@@ -4,16 +4,17 @@
       "transform":"forge:default-block",
       "model":"orientable",
       "textures":{
-         "particle":"crystek:blocks/basicmachine",
-         "top":"crystek:blocks/basicmachine",
-         "side":"crystek:blocks/basicmachine"
+         "particle":"crystek:blocks/machine/machine_top",
+         "top":"crystek:blocks/machine/machine_top",
+         "bottom":"crystek:blocks/machine/machine_bottom",
+         "side":"crystek:blocks/machine/machine_side"
       }
    },
    "variants":{
       "inventory":{
          "transform":"forge:default-block",
          "textures":{
-            "front":"crystek:blocks/basicmachine"
+            "front":"crystek:blocks/machine/grinder_front"
          }
       },
       "facing":{
@@ -33,22 +34,23 @@
       "active":{
          "true":{
             "textures":{
-               "front":"crystek:blocks/basicmachine"
+               "front":"crystek:blocks/machine/grinder_front_on"
             }
          },
          "false":{
             "textures":{
-               "front":"crystek:blocks/basicmachine"
+               "front":"crystek:blocks/machine/grinder_front"
             }
          }
       },
       "inventory": {
          "model": "orientable",
          "textures": {
-            "particle": "crystek:blocks/basicmachine",
-            "top": "crystek:blocks/basicmachine",
-            "side": "crystek:blocks/basicmachine",
-            "front": "crystek:blocks/basicmachine"
+            "particle": "crystek:blocks/machine/machine_top",
+            "top": "crystek:blocks/machine/machine_top",
+			"bottom":"crystek:blocks/machine/machine_bottom",
+            "side": "crystek:blocks/machine/machine_side",
+            "front": "crystek:blocks/machine/grinder_front"
          }
       }
    }

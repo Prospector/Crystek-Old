@@ -78,7 +78,7 @@ public class TileGrinder extends TileMachine
         if(getStackInSlot(ORE_SLOT) != null)
         {
             ItemStack input = getStackInSlot(this.ORE_SLOT);
-            for (RecipeGrinder recipe : AdvancedEngineeringApi.smasherRecipes)
+            for (RecipeGrinder recipe : AdvancedEngineeringApi.grinderRecipes)
             {
                 if (recipe.matches(input) || recipe.getOutput().getItem() == Item.getItemFromBlock(getBlockType()))
                 {

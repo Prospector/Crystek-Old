@@ -56,7 +56,7 @@ public class RecipeGrinder
     {
         if(input != null)
         {
-            for (RecipeGrinder recipe : AdvancedEngineeringApi.smasherRecipes)
+            for (RecipeGrinder recipe : AdvancedEngineeringApi.grinderRecipes)
             {
                 if (recipe.matches(input))
                 {

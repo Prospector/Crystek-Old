@@ -10,13 +10,13 @@ import java.util.List;
 
 public class AdvancedEngineeringApi
 {
-    public static List<RecipeGrinder> smasherRecipes = new ArrayList<RecipeGrinder>();
+    public static List<RecipeGrinder> grinderRecipes = new ArrayList<RecipeGrinder>();
     public static List<RecipeCrystallizer> crystallizerRecipes = new ArrayList<RecipeCrystallizer>();
 
     public static RecipeGrinder registerSmasherRecipe(ItemStack output, Object input)
     {
         RecipeGrinder recipe = new RecipeGrinder(output, input);
-        smasherRecipes.add(recipe);
+        grinderRecipes.add(recipe);
         return recipe;
     }
 

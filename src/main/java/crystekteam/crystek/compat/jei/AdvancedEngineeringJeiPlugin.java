@@ -30,7 +30,7 @@ public class AdvancedEngineeringJeiPlugin extends BlankModPlugin
         registry.addRecipeClickArea(GuiPoweredFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING);
         registry.addRecipeClickArea(GuiGrinder.class, 78, 36, 24, 16, RecipeCategoryUids.GRINDER);
 
-        registry.addRecipes(AdvancedEngineeringApi.smasherRecipes);
+        registry.addRecipes(AdvancedEngineeringApi.grinderRecipes);
     }
 
     @Override
