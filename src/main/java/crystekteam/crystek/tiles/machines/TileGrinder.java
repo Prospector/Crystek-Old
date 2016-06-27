@@ -3,9 +3,9 @@ package crystekteam.crystek.tiles.machines;
 import crystekteam.crystek.api.AdvancedEngineeringApi;
 import crystekteam.crystek.api.recipe.RecipeGrinder;
 import crystekteam.crystek.tiles.prefab.TileMachine;
+import crystekteam.crystek.util.ItemUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import reborncore.common.util.ItemUtils;
 
 /**
  * Created by Gigabit101 on 16/06/2016.

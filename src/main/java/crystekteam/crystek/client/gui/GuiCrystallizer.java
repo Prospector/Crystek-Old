@@ -28,6 +28,6 @@ public class GuiCrystallizer extends GuiBase
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         drawPowerBar(tileCrystallizer);
         drawProgressbar(tile, 72, 40);
-        RenderUtil.renderGuiTank(tileCrystallizer.tank, guiLeft + 39, guiTop + 11, zLevel, 14,64);
+        drawTank(tile);
     }
 }

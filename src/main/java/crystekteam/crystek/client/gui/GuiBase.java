@@ -3,6 +3,7 @@ package crystekteam.crystek.client.gui;
 import crystekteam.crystek.container.ContainerBase;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.prefab.TileBase;
+import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -96,5 +97,15 @@ public class GuiBase extends GuiContainer
             if (j > 0)
                 this.drawTexturedModalRect(k + x, l + y + 12 - j, 0, 62 - j, 14, j + 2);
         }
+    }
+
+    public void drawTank(TileBase tile, double x, double y, double zLevel, double width, double height)
+    {
+        RenderUtil.renderGuiTank(tile.tank, x, y, zLevel, width, height);
+    }
+
+    public void drawTank(TileBase tile)
+    {
+        RenderUtil.renderGuiTank(tile.tank, guiLeft + 39, guiTop + 11, zLevel, 14,64);
     }
 }
