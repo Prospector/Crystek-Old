@@ -82,10 +82,6 @@ public class ContainerBase extends Container
             {
                 IContainerListener.sendProgressBarUpdate(this, 2, tile.getScaledBurnTime(13));
             }
-            if (this.fluidamount != tile.getFluidAmount())
-            {
-                IContainerListener.sendProgressBarUpdate(this, 3, tile.getFluidAmount());
-            }
         }
     }
 
@@ -96,7 +92,6 @@ public class ContainerBase extends Container
         crafting.sendProgressBarUpdate(this, 0, (int) tile.getPowerScaled(47));
         crafting.sendProgressBarUpdate(this, 1, tile.getProgress());
         crafting.sendProgressBarUpdate(this, 2, tile.getScaledBurnTime(13));
-        crafting.sendProgressBarUpdate(this, 3, tile.getFluidAmount());
     }
 
     @SideOnly(Side.CLIENT)
@@ -114,10 +109,6 @@ public class ContainerBase extends Container
         else if (id == 2)
         {
             this.burnTime = value;
-        }
-        else if (id == 3)
-        {
-            this.fluidamount = value;
         }
     }
 
