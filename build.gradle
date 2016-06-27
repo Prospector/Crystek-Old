@@ -27,6 +27,9 @@ archivesBaseName = "Crytek"
 
 minecraft {
     version = "12.17.0.1909-1.9.4"
+    if(ENV.JOB_BASE_NAME == "Crytek-1.10"){
+	    version = "1.10-12.18.0.2000-1.10.0"
+	}
     runDir = "run"
     mappings = "snapshot_20160518"
 }
@@ -58,5 +61,60 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //This is used when the build is done on a slave node
+		if (project.hasProperty('mavenPass'))
+        {
+			println 'Uploading to remote Maven Repo'
+            repository(url: "http://mavenupload.modmuss50.me/") {
+                authentication(userName: "buildslave", password: project.getProperty('mavenPass'))
+            }
+        }
+        else
+        { 
+			//this is when the build is executed on the master node
+			println 'Uploading to local Maven Repo'
+           repository(url: "file:///var/www/maven/")
+        }
+            pom {
+                groupId = "CrystekTeam"
+                version = project.version
+                artifactId = project.archivesBaseName
+                project {
+                    name project.archivesBaseName
+                    packaging 'jar'
+                    description 'CrystekTeam'
+                    url 'https://github.com/CrystekTeam/Crystek'
+                    scm {
+                        url 'https://github.com/CrystekTeam/Crystek/'
+                        connection 'scm:git:git@github.com:CrystekTeam/Crystek.git'
+                        developerConnection 'scm:git:git@github.com:CrystekTeam/Crystek.git'
+                    }
+                    issueManagement {
+                        system 'github'
+                        url 'https://github.com/CrystekTeam/Crystek/issues'
+                    }
+                    licenses {
+                        license {
+                            name 'License'
+                            url 'https://github.com/CrystekTeam/Crystek/blob/master/LICENSE-Code'
+                            distribution 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'Gigabit101'
+                            name 'Gigabit101'
+                            roles { role 'developer' }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
