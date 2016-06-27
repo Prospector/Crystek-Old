@@ -21,9 +21,17 @@ buildscript {
 apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 version = "1.9.4-1.0.0"
 group= "com.crytekteam.crytek"
 archivesBaseName = "Crytek"
+
+def ENV = System.getenv()
+if (ENV.BUILD_NUMBER) {
+    version = version + "." + "${System.getenv().BUILD_NUMBER}"
+}
 
 minecraft {
     version = "12.17.0.1976-1.9.4"

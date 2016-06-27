@@ -28,7 +28,7 @@ public class GuiFluidizer extends GuiBase
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         drawPowerBar(tileCrystallizer);
-        drawProgressbar(tile, 85, 40);
-        drawTank(tile, guiLeft + 117, guiTop + 11, zLevel, 14,64);
+        drawProgressbar(tile, 56, 40);
+        drawTank(tile, guiLeft + 102, guiTop + 11, zLevel, 14,64);
     }
 }
