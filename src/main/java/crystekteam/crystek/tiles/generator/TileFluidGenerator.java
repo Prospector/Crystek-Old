@@ -17,10 +17,7 @@ import net.minecraftforge.fluids.FluidStack;
  */
 public class TileFluidGenerator extends TileGenerator
 {
-    public int fuelSlot = 0;
     public int output;
-    public long baseoutput = ConfigAE.generatorTick;
-
     public boolean isBurning;
     public boolean lastTickBurning;
 
@@ -32,18 +29,6 @@ public class TileFluidGenerator extends TileGenerator
     @Override
     public void update()
     {
-//        if(tank.getFluid() != null)
-//        {
-//            if(getAmount() != 0 && getOutput() != 0)
-//            {
-//                long powerToGenerate = getAmount();
-//                long powerOutput = getOutput();
-//                if(TeslaUtils.getMissingPower(this) >= powerOutput)
-//                {
-//                    generatePower(powerOutput);
-//                }
-//            }
-//        }
         if (worldObj.isRemote)
         {
             return;
@@ -53,7 +38,7 @@ public class TileFluidGenerator extends TileGenerator
             if (burnTime > 0)
             {
                 burnTime--;
-                generatePower(baseoutput);
+                generatePower(getOutput());
                 isBurning = true;
             }
         }
@@ -64,7 +49,7 @@ public class TileFluidGenerator extends TileGenerator
         if (burnTime == 0)
         {
             this.updateState();
-            burnTime = totalBurnTime = (int) getAmount() / 20;
+            burnTime = totalBurnTime = (int) getAmount();
             if (burnTime > 0)
             {
                 this.updateState();
