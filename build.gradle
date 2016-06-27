@@ -26,7 +26,7 @@ group= "com.crytekteam.crytek"
 archivesBaseName = "Crytek"
 
 minecraft {
-    version = "12.17.0.1909-1.9.4"
+    version = "12.17.0.1976-1.9.4"
     if(ENV.JOB_BASE_NAME == "Crytek-1.10"){
 	    version = "1.10-12.18.0.2000-1.10.0"
 	}
@@ -36,12 +36,26 @@ minecraft {
 
 repositories {
     maven {
-        url 'http://maven.epoxide.xyz'
+		name = "Dankhax"
+        url = "http://maven.epoxide.xyz"
+    }
+
+    maven {
+        name = "prog"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+
+    maven {
+		name = "tterrag"
+        url = "http://maven.tterrag.com/"
     }
 }
 
 dependencies {
+	deobfCompile "mezz.jei:jei_1.9.4:+"
+	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.4-14"
     compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
+	compile "mcp.mobius.waila:Waila:1.7.10-B3_1.9.4"
 }
 
 processResources
