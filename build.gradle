@@ -35,6 +35,7 @@ if (ENV.BUILD_NUMBER) {
 
 minecraft {
     version = "1.9.4-12.17.0.1976"
+	
     if(ENV.JOB_BASE_NAME == "Crytek-1.10"){
 	    version = "1.10-12.18.0.2000-1.10.0"
 	}
@@ -63,7 +64,7 @@ dependencies {
 	deobfCompile "mezz.jei:jei_1.9.4:+"
 	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.4-14"
     compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
-	compile "mcp.mobius.waila:Waila:1.7.10-B3_1.9.4"
+	compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
 }
 
 processResources
