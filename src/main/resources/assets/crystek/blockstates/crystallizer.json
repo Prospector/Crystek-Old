@@ -4,17 +4,17 @@
       "transform":"forge:default-block",
       "model":"orientable",
       "textures":{
-        "particle":"crystek:blocks/machine/machine_top",
-        "top":"crystek:blocks/machine/machine_top",
-		"bottom": "crystek:blocks/machine/machine_bottom",
-        "side": "crystek:blocks/machine/machine_side"
+         "particle":"crystek:blocks/machine/machine_top",
+         "top":"crystek:blocks/machine/machine_top",
+            "bottom": "crystek:blocks/machine/machine_bottom",
+            "side": "crystek:blocks/machine/machine_side"
       }
    },
    "variants":{
       "inventory":{
          "transform":"forge:default-block",
          "textures":{
-            "front":"crystek:blocks/machine/poweredfurnace_front"
+            "front":"crystek:blocks/machine/crystallizer_front"
          }
       },
       "facing":{
@@ -34,12 +34,12 @@
       "active":{
          "true":{
             "textures":{
-               "front":"crystek:blocks/machine/poweredfurnace_front_on"
+               "front":"crystek:blocks/machine/crystallizer_front_on"
             }
          },
          "false":{
             "textures":{
-               "front":"crystek:blocks/machine/poweredfurnace_front"
+               "front":"crystek:blocks/machine/crystallizer_front"
             }
          }
       },
@@ -50,7 +50,7 @@
             "top": "crystek:blocks/machine/machine_top",
             "bottom": "crystek:blocks/machine/machine_bottom",
             "side": "crystek:blocks/machine/machine_side",
-            "front": "crystek:blocks/machine/poweredfurnace_front"
+            "front": "crystek:blocks/machine/crystallizer_front"
          }
       }
    }

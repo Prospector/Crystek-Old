@@ -22,6 +22,7 @@ public class ModelHandler
         registerItemModel(ModItems.powerScanner, 0);
         registerItemModel(ModItems.laserLinkingDevice, 0);
         registerItemModel(ModBlocks.grinder, 0);
+        registerItemModel(ModBlocks.crystallizer, 0);
         registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.teslaCell, 0);
         registerItemModel(ModItems.battery, 0);
