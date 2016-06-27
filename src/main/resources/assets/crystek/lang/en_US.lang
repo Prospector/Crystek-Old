@@ -1,0 +1,57 @@
+itemGroup.crystek=Crystek
+
+//Items
+item.crystek.welder.name=Welder
+item.crystek.powerscanner.name=Teslometer
+item.crystek.battery.name=Battery
+item.crystek.drill.name=Drill
+
+
+//Dusts
+item.crystek.crafting.dustIron.name=Iron Dust
+item.crystek.crafting.dustGold.name=Gold Dust
+item.crystek.crafting.dustDiamond.name=Diamond Dust
+item.crystek.crafting.dustEmerald.name=Emerald Dust
+item.crystek.crafting.dustTesla.name=Tesla Dust
+item.crystek.crafting.dustObsidian.name=Obsidian Dust
+
+//Ingots
+item.crystek.crafting.ingotTeslaAlloy.name=Tesla-Iron Alloy Ingot
+item.crystek.crafting.ingotObsidian.name=Obsidian Ingot
+
+//Circuits
+item.crystek.circuit.circuitEfficiency.name=Fuel Efficiency Circuit
+item.crystek.circuit.circuitSpeed.name=Processing Speed Circuit
+item.crystek.circuit.circuitStorage.name=Tesla Storage Circuit
+
+//Grinding Blades
+item.crystek.grindingbladeIron.name=Iron Grinding Blade
+
+//Fluids
+fluid.fluidTesla=Fluid Tesla
+
+//Generators
+tile.crystek.coalgenerator.name=Generator
+tile.crystek.solarpanel.name=Solar Panel
+
+//Power Storage
+tile.crystek.teslacell.name=Tesla Cell
+
+//Machines
+tile.crystek.poweredfurnace.name=Powered Furnace
+tile.crystek.grinder.name=Grinder
+tile.crystek.crystallizer.name=Crystallizer
+tile.crystek.fluidizer.name=Fluidizer
+
+//Misc
+tile.crystek.machineframe.name=Machine Frame
+tile.crystek.laser.name=Laser
+
+//Descriptions
+desc.teslometer=Measures Tesla
+desc.circuit=Machine Upgrade
+desc.circuit.speed.1=Speeds up processing speed
+desc.circuit.storage.1=Increases the max tesla
+desc.circuit.storage.2=a machine can store
+desc.circuit.efficiency.1=Creates more power with
+desc.circuit.efficiency.2=the same amount of fuel

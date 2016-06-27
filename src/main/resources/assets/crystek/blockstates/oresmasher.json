@@ -1,0 +1,55 @@
+{
+   "forge_marker":1,
+   "defaults":{
+      "transform":"forge:default-block",
+      "model":"orientable",
+      "textures":{
+         "particle":"crystek:blocks/basicmachine",
+         "top":"crystek:blocks/basicmachine",
+         "side":"crystek:blocks/basicmachine"
+      }
+   },
+   "variants":{
+      "inventory":{
+         "transform":"forge:default-block",
+         "textures":{
+            "front":"crystek:blocks/basicmachine_front"
+         }
+      },
+      "facing":{
+         "north":{
+
+         },
+         "east":{
+            "y":90
+         },
+         "south":{
+            "y":180
+         },
+         "west":{
+            "y":270
+         }
+      },
+      "active":{
+         "true":{
+            "textures":{
+               "front":"crystek:blocks/basicmachine_front_on"
+            }
+         },
+         "false":{
+            "textures":{
+               "front":"crystek:blocks/basicmachine_front"
+            }
+         }
+      },
+      "inventory": {
+         "model": "orientable",
+         "textures": {
+            "particle": "crystek:blocks/basicmachine",
+            "top": "crystek:blocks/basicmachine",
+            "side": "crystek:blocks/basicmachine",
+            "front": "crystek:blocks/basicmachine_front"
+         }
+      }
+   }
+}

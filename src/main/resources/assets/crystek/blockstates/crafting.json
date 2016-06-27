@@ -1,0 +1,59 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "textures": {
+      "layer0": "blocks/dirt"
+    },
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "dustiron": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustIron"
+        }
+      },
+      "dustgold": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustGold"
+        }
+      },
+      "dustdiamond": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustDiamond"
+        }
+      },
+      "dustemerald": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustEmerald"
+        }
+      },
+      "dusttesla": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustTesla"
+        }
+      },
+      "dustobsidian": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustObsidian"
+        }
+      },
+      "ingotteslaalloy": {
+        "textures": {
+          "layer0": "crystek:items/ingot/ingotTeslaAlloy"
+        }
+      },
+      "ingotobsidian": {
+        "textures": {
+          "layer0": "crystek:items/ingot/ingotObsidian"
+        }
+      },
+      "crystaltesla": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystalTesla"
+        }
+      }
+    }
+  }
+}
