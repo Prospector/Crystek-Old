@@ -20,11 +20,11 @@ public class GrinderRecipeHandler implements IRecipeHandler<RecipeGrinder>
 		this.jeiHelpers = jeiHelpers;
 	}
 
-//	@Nonnull
-//	@Override public String getRecipeCategoryUid(@Nonnull RecipeGrinder recipe)
-//	{
-//		return RecipeCategoryUids.GRINDER;
-//	}
+	@Nonnull
+	@Override public String getRecipeCategoryUid(@Nonnull RecipeGrinder recipe)
+	{
+		return RecipeCategoryUids.GRINDER;
+	}
 
 	@Nonnull @Override public Class<RecipeGrinder> getRecipeClass()
 	{
