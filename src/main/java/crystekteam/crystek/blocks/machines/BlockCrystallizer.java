@@ -40,7 +40,7 @@ public class BlockCrystallizer extends BlockBase
             TileCrystallizer tile = (TileCrystallizer) worldIn.getTileEntity(pos);
             tile.setFluid(new FluidStack(ModFluids.fluidTesla, 4000));
         }
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+        return true;
     }
 
     @Override
