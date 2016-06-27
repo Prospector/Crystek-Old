@@ -15,7 +15,6 @@ public class ContainerFluidizer extends ContainerBase
         addPlayersHotbar();
         addPlayersInventory();
         this.addSlotToContainer(new Slot(tile.getInv(), 0, 56, 35));
-//        this.addSlotToContainer(new Slot(tile.getInv(), 1, 122, 35));
-        addUpgradeSlots(tile, 2);
+        addUpgradeSlots(tile, 1);
     }
 }
