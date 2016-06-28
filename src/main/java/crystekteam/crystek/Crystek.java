@@ -37,14 +37,14 @@ public class Crystek
         //Config stuff
         String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(ModInfo.MOD_ID, "Crystek");
         config = ConfigAE.initialize(new File(path));
-        //Register Blocks
-        ModBlocks.init();
         //Register Items
         ModItems.init();
-        //Register Recipes
-        ModRecipes.init();
+        //Register Blocks
+        ModBlocks.init();
         //Register fluids
         ModFluids.init();
+        //Register Recipes
+        ModRecipes.init();
         //Packets
         PacketHandler.setChannels(NetworkRegistry.INSTANCE.newChannel(ModInfo.MOD_ID + "_packets", new PacketHandler()));
         //Register Item/Block textures (Client side only)

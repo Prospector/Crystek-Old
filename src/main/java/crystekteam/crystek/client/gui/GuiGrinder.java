@@ -17,7 +17,7 @@ public class GuiGrinder extends GuiBase
 
     public GuiGrinder(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerGrinder(tile, player), "crystek.oresmasher", textureloc);
+        super(player, tile, new ContainerGrinder(tile, player), "crystek.grinder", textureloc);
         this.tile = (TileGrinder) tile;
     }
 
@@ -26,6 +26,6 @@ public class GuiGrinder extends GuiBase
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         drawPowerBar(tile);
-        drawProgressbar(tile, 72, 41);
+        drawProgressbar(tile, 72, 40);
     }
 }

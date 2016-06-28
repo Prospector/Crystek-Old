@@ -38,19 +38,4 @@ public class ItemTeslaTool extends ItemTool
     {
         return new BaseTeslaContainerProvider(new BaseTeslaContainer());
     }
-
-    @Override
-    public double getDurabilityForDisplay(ItemStack stack)
-    {
-        double charge = (TeslaUtils.getMaxCapacity(stack) - TeslaUtils.getStoredPower(stack));
-        if(TeslaUtils.getStoredPower(stack) == 0)
-            return TeslaUtils.getMaxCapacity(stack);
-        return charge;
-    }
-
-    @Override
-    public boolean showDurabilityBar(ItemStack stack)
-    {
-        return true;
-    }
 }

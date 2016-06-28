@@ -66,7 +66,7 @@ public class ItemCircuit extends ItemBase
 	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 	{
 		tooltip.add(TextFormatting.DARK_GRAY+I18n.translateToLocal("desc.circuit"));
-		tooltip.add(TextFormatting.GRAY+""+TextFormatting.ITALIC+I18n.translateToLocal("desc.circuit."+types[stack.getMetadata()].substring(7).toLowerCase())+".1");
-		tooltip.add(TextFormatting.GRAY+""+TextFormatting.ITALIC+I18n.translateToLocal("desc.circuit."+types[stack.getMetadata()].substring(7).toLowerCase())+".2");
+		tooltip.add(TextFormatting.GRAY+""+TextFormatting.ITALIC+I18n.translateToLocal("desc.circuit."+types[stack.getMetadata()].substring(7).toLowerCase()+".1"));
+		tooltip.add(TextFormatting.GRAY+""+TextFormatting.ITALIC+I18n.translateToLocal("desc.circuit."+types[stack.getMetadata()].substring(7).toLowerCase()+".2"));
 	}
 }

@@ -17,34 +17,36 @@ import java.util.List;
  */
 public class ItemTeslaBase extends ItemBase
 {
-    public ItemTeslaBase(long capacity, long input, long output)
-    {
-        setMaxStackSize(1);
-    }
+	public ItemTeslaBase(long capacity, long input, long output)
+	{
+		setMaxStackSize(1);
+		setMaxDamage(5000);
+	}
 
-    //TODO
-//    @Override
-//    public double getDurabilityForDisplay(ItemStack stack)
-//    {
-//        double charge = (TeslaUtils.getStoredPower(stack) / TeslaUtils.getMaxCapacity(stack));
-//        return charge;
-//    }
-//
-//    @Override
-//    public boolean showDurabilityBar(ItemStack stack)
-//    {
-//        return true;
-//    }
+	@Override public boolean isRepairable()
+	{
+		return false;
+	}
 
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-    {
-        tooltip.add(I18n.format(TextFormatting.AQUA + "" + TeslaUtils.getStoredPower(stack) + "/ " + TeslaUtils.getMaxCapacity(stack)));
-    }
+	@Override public double getDurabilityForDisplay(ItemStack stack)
+	{
+		double charge = TeslaUtils.getStoredPower(stack) / TeslaUtils.getMaxCapacity(stack);
+		return 1 - charge;
+	}
 
-    @Override
-    public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
-    {
-        return new BaseTeslaContainerProvider(new BaseTeslaContainer());
-    }
+	@Override public boolean showDurabilityBar(ItemStack stack)
+	{
+		return true;
+	}
+
+	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+	{
+		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
+				.getMaxCapacity(stack) + " Tesla"));
+	}
+
+	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
+	{
+		return new BaseTeslaContainerProvider(new BaseTeslaContainer());
+	}
 }

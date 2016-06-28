@@ -22,7 +22,7 @@ public class GuiHandler implements IGuiHandler
 {
     public static int coalGenerator = 0;
     public static int poweredFurnace = 1;
-    public static int oreSmasher = 2;
+    public static int grinder = 2;
     public static int powerCube = 3;
     public static int solarPanel = 4;
     public static int crystallizer = 5;
@@ -40,7 +40,7 @@ public class GuiHandler implements IGuiHandler
         {
             return new ContainerPoweredFurnace((TileFurnace) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == oreSmasher)
+        if(ID == grinder)
         {
             return new ContainerGrinder((TileGrinder) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
@@ -78,7 +78,7 @@ public class GuiHandler implements IGuiHandler
         {
             return new GuiPoweredFurnace(player, (TileFurnace) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == oreSmasher)
+        if(ID == grinder)
         {
             return new GuiGrinder(player, (TileGrinder) world.getTileEntity(new BlockPos(x, y, z)));
         }
