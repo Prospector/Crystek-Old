@@ -11,9 +11,9 @@ import net.minecraftforge.common.capabilities.Capability;
  */
 public class TileTeslaStorage extends TileBase
 {
-    public TileTeslaStorage(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount)
+    public TileTeslaStorage(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, int maxProgress)
     {
-        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount);
+        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount, maxProgress);
     }
 
     @Override

@@ -10,9 +10,9 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
  */
 public class TileMachine extends TileBase
 {
-    public TileMachine(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount)
+    public TileMachine(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, int maxProgress)
     {
-        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount);
+        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount, maxProgress);
     }
 
     @Override

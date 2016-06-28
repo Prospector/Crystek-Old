@@ -16,7 +16,7 @@ public class TileLaser extends TileTeslaStorage
 
     public TileLaser()
     {
-        super(0, "", 0, 1000, 1000, 1000, 0);
+        super(0, "", 0, 1000, 1000, 1000, 0, 0);
     }
 
     @Override
