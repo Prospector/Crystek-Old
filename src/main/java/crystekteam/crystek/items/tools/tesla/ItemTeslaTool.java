@@ -34,6 +34,22 @@ public class ItemTeslaTool extends ItemTool
         this.input = input;
     }
 
+    @Override public boolean isRepairable()
+    {
+        return false;
+    }
+
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack)
+    {
+        return (1-(double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
+    }
+
+    @Override public boolean showDurabilityBar(ItemStack stack)
+    {
+        return true;
+    }
+
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {

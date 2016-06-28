@@ -24,7 +24,6 @@ public class ItemTeslaBase extends ItemBase
 	public ItemTeslaBase(long maxCapacity, long input, long output)
 	{
 		setMaxStackSize(1);
-		setMaxDamage(5000);
 		this.maxCapacity = maxCapacity;
 		this.output = output;
 		this.input = input;
@@ -35,10 +34,10 @@ public class ItemTeslaBase extends ItemBase
 		return false;
 	}
 
-	@Override public double getDurabilityForDisplay(ItemStack stack)
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack)
 	{
-		double charge = TeslaUtils.getStoredPower(stack) / TeslaUtils.getMaxCapacity(stack);
-		return 1 - charge;
+		return (1-(double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
 	}
 
 	@Override public boolean showDurabilityBar(ItemStack stack)
@@ -48,8 +47,7 @@ public class ItemTeslaBase extends ItemBase
 
 	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 	{
-		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
-				.getMaxCapacity(stack) + " Tesla"));
+		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils.getMaxCapacity(stack) + " Tesla"));
 	}
 
 	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
