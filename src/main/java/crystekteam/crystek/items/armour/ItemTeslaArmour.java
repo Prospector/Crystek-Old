@@ -1,4 +1,4 @@
-package crystekteam.crystek.items.powered;
+package crystekteam.crystek.items.armour;
 
 import crystekteam.crystek.tesla.BaseTeslaContainerProvider;
 import crystekteam.crystek.tesla.TeslaUtils;
