@@ -39,8 +39,9 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     public int burnTime;
     public int totalBurnTime;
     public boolean isActive;
+    public int maxProgress;
 
-    public TileBase(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity)
+    public TileBase(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity, int maxProgress)
     {
         if(invSize != 0)
         {
@@ -272,6 +273,10 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     {
         return (int) (((float) burnTime / (float) totalBurnTime) * i);
     }
+
+    public int getMaxProgress() {return maxProgress;}
+
+    public void setMaxProgress(int amount) {maxProgress = amount;}
 
     //Tank
     public int getFluidAmount()

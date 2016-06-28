@@ -13,9 +13,9 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
  */
 public class TileGenerator extends TileBase
 {
-    public TileGenerator(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount)
+    public TileGenerator(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, int maxProgress)
     {
-        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount);
+        super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount, maxProgress);
     }
 
     @Override

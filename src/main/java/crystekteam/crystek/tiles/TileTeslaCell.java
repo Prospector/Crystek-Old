@@ -15,7 +15,7 @@ public class TileTeslaCell extends TileTeslaStorage
 
     public TileTeslaCell()
     {
-        super(6, "teslacell", 16, ConfigAE.teslacellBaseStorage, 50, 50, 0);
+        super(6, "teslacell", 16, ConfigAE.teslacellBaseStorage, 50, 50, 0, 0);
     }
 
     @Override

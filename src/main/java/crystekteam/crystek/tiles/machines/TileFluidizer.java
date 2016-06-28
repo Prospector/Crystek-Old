@@ -14,7 +14,7 @@ public class TileFluidizer extends TileMachine
 
     public TileFluidizer()
     {
-        super(4, "fluidizer", 64, 10000, 500, 500, 4000);
+        super(4, "fluidizer", 64, 10000, 500, 500, 4000, 100);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class TileFluidizer extends TileMachine
             if (canWork())
             {
                 addProgress();
-                if (getProgress() >= 100)
+                if (getProgress() >= getMaxProgress())
                 {
                     work();
                     resetProgress();

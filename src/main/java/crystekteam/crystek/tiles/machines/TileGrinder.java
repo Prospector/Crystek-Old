@@ -22,7 +22,7 @@ public class TileGrinder extends TileMachine
 
 	public TileGrinder()
 	{
-		super(3, "grinder", 64, 10000, 50, 50, 0);
+		super(3, "grinder", 64, 10000, 50, 50, 0, 100);
 	}
 
 	@Override public void update()

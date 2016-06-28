@@ -21,7 +21,7 @@ public class TileCoalGenerator extends TileGenerator
 
     public TileCoalGenerator()
     {
-        super(2, "coalgenerator", 64, 10000, 50, 50, 0);
+        super(2, "coalgenerator", 64, 10000, 50, 50, 0, 100);
     }
 
     @Override
