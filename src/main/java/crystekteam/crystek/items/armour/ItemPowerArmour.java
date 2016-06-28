@@ -1,7 +1,6 @@
 package crystekteam.crystek.items.armour;
 
 import crystekteam.crystek.CreativeTabCrystek;
-import crystekteam.crystek.items.armour.ItemTeslaArmour;
 import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
