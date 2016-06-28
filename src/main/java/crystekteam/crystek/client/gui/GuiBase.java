@@ -19,7 +19,7 @@ public class GuiBase extends GuiContainer
     public TileBase tile;
     public ContainerBase container;
 
-    private static final ResourceLocation overlays = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/guiSheet.png");
+    public static final ResourceLocation overlays = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/guiSheet.png");
 
 	public GuiBase(EntityPlayer player, TileBase tile, ContainerBase container, String name, ResourceLocation texture)
 	{

@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiGrinder extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/grinder.png");
+    public static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/grinder.png");
     TileGrinder tile;
 
     public GuiGrinder(EntityPlayer player, TileBase tile)
