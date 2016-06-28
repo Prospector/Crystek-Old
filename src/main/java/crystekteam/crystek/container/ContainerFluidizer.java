@@ -1,5 +1,6 @@
 package crystekteam.crystek.container;
 
+import crystekteam.crystek.container.slot.SlotCharge;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -13,6 +14,7 @@ public class ContainerFluidizer extends ContainerBase
         super(tile, player);
         addPlayersHotbar();
         addPlayersInventory();
-        addUpgradeSlots(tile, 1);
+        addUpgradeSlots(tile, 0);
+        this.addSlotToContainer(new SlotCharge(tile.inv, 3, 8, 62));
     }
 }

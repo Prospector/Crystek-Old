@@ -38,6 +38,7 @@ public class TileFluidizer extends TileMachine
                     this.updateState();
             }
         }
+        handleChargeSlots(0, false, 3, true);
     }
 
     public void work()

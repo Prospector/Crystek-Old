@@ -1,5 +1,6 @@
 package crystekteam.crystek.container;
 
+import crystekteam.crystek.container.slot.SlotCharge;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -15,7 +16,9 @@ public class ContainerPoweredFurnace extends ContainerBase
         super(tile, player);
         addPlayersHotbar();
         addPlayersInventory();
+        addUpgradeSlots(tile, 2);
         this.addSlotToContainer(new Slot(tile.getInv(), 0, 48, 35));
         this.addSlotToContainer(new SlotFurnaceOutput(player, tile.getInv(), 1, 108, 35));
+        this.addSlotToContainer(new SlotCharge(tile.inv, 5, 8, 62));
     }
 }

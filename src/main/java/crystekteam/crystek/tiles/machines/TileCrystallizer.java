@@ -43,6 +43,7 @@ public class TileCrystallizer extends TileMachine
             resetProgress();
             this.updateState();
         }
+        handleChargeSlots(0, false, 5, true);
     }
 
     public void work()
