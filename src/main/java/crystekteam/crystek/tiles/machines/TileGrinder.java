@@ -50,28 +50,29 @@ public class TileGrinder extends TileMachine
 	public void work()
 	{
 		usePower(cost);
-		if (getStackInSlot(OUTPUT_SLOT) == null)
+        ItemStack grindingBlade = getStackInSlot(GRINDING_BLADE_SLOT);
+
+        if (getStackInSlot(OUTPUT_SLOT) == null)
 		{
 			setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
 			decrStackSize(ORE_SLOT, 1);
-		} else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true)
-				&& getStackInSlot(OUTPUT_SLOT).stackSize != 64)
+		}
+		else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
 		{
 			getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
 			decrStackSize(ORE_SLOT, 1);
-			ItemStack grindingBlade = getStackInSlot(GRINDING_BLADE_SLOT);
-			if (grindingBlade.getMaxDamage() != 0)
-			{
-				System.out.println("BLADE WITH META: "+grindingBlade.getMetadata()+ " AND MAX: "+grindingBlade.getMaxDamage());
-				if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage())
-				{
-					removeStackFromSlot(GRINDING_BLADE_SLOT);
-				} else
-				{
-					getStackInSlot(GRINDING_BLADE_SLOT).attemptDamageItem(1, new Random());
-				}
-			}
 		}
+        if (grindingBlade.getMaxDamage() != 0)
+        {
+            if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage())
+            {
+                removeStackFromSlot(GRINDING_BLADE_SLOT);
+            }
+            else
+            {
+                getStackInSlot(GRINDING_BLADE_SLOT).attemptDamageItem(1, new Random());
+            }
+        }
 
 		if (inv.hasChanged)
 		{
