@@ -1,5 +1,6 @@
 package crystekteam.crystek.tiles;
 
+import crystekteam.crystek.config.ConfigAE;
 import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.item.ItemStack;
@@ -14,13 +15,14 @@ public class TileTeslaCell extends TileTeslaStorage
 
     public TileTeslaCell()
     {
-        super(2, "teslacell", 1, 50000, 50, 50, 0);
+        super(6, "teslacell", 16, ConfigAE.teslacellBaseStorage, 50, 50, 0);
     }
 
     @Override
     public void update()
     {
         handleChargeSlots(CHARGE_SLOT, true, DISCHARGE_SLOT, true);
+        handleUpgrades(2, ConfigAE.teslacellBaseStorage);
     }
 
     @Override

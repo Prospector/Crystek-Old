@@ -10,10 +10,13 @@ public class ConfigAE
 
     public static String CATEGORY_RECIPE = "recipe";
     public static String CATEGORY_POWER = "power";
+    public static String CATEGORY_UPGRADES = "upgrade";
 
     public static long generatorTick;
     public static long solarTick;
     public static int solarPanelMaxUpgrades;
+
+    public static long teslacellBaseStorage;
 
     public static Configuration config;
 
@@ -44,7 +47,6 @@ public class ConfigAE
     {
         if (instance == null)
         {
-
             throw new IllegalStateException("Instance of Crystek requested before initialization");
         }
         return instance;
@@ -65,6 +67,10 @@ public class ConfigAE
                 "solarPanelMaxUpgrades", 16,
                 "The amount of upgrades the solar panel can have")
                 .getInt();
+        teslacellBaseStorage = config.get(CATEGORY_POWER,
+                "teslacellBaseStorage", 500000,
+                "The amount of base power the tesla cell can store")
+                .getLong();
 
 
         if(config.hasChanged())

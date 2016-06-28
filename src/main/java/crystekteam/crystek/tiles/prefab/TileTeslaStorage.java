@@ -1,5 +1,7 @@
 package crystekteam.crystek.tiles.prefab;
 
+import crystekteam.crystek.config.ConfigAE;
+import crystekteam.crystek.items.tools.ItemCircuit;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -31,5 +33,29 @@ public class TileTeslaStorage extends TileBase
             return true;
 
         return super.hasCapability(capability, facing);
+    }
+
+    @Override
+    public void handleUpgrades(int upgradeslotstart, long maxcapcity)
+    {
+        int i;
+        for (i = upgradeslotstart; i < upgradeslotstart + 3; ++i)
+        {
+            if(getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
+            {
+                if(getStackInSlot(i).getMetadata() == 1)
+                {
+                    long upgradeamount = 100000;
+                    long base = ConfigAE.teslacellBaseStorage;
+                    container.setCapacity(base + (getStackInSlot(i).stackSize * upgradeamount));
+                    break;
+                }
+            }
+            //reset
+            else if(getStackInSlot(i) == null && getMaxCapacity() != maxcapcity)
+            {
+                container.setCapacity(maxcapcity);
+            }
+        }
     }
 }
