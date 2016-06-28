@@ -14,7 +14,7 @@ public class CrystekApi
     public static List<RecipeCrystallizer> crystallizerRecipes = new ArrayList<RecipeCrystallizer>();
     public static List<FluidFuelHandler> fluidFuelHandlers = new ArrayList<FluidFuelHandler>();
 
-    public static RecipeGrinder registerSmasherRecipe(ItemStack output, Object input)
+    public static RecipeGrinder registerGrinderRecipe(ItemStack output, Object input)
     {
         RecipeGrinder recipe = new RecipeGrinder(output, input);
         smasherRecipes.add(recipe);

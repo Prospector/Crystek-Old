@@ -19,6 +19,19 @@ item.crystek.crafting.dustObsidian.name=Obsidian Dust
 item.crystek.crafting.ingotTeslaAlloy.name=Tesla-Iron Alloy Ingot
 item.crystek.crafting.ingotObsidian.name=Obsidian Ingot
 
+//Crystals
+item.crystek.crafting.crystalTesla.name=Tesla Crystal
+item.crystek.crafting.crystalTeslaRed.name=Tesla Crystal
+item.crystek.crafting.crystalTeslaYellow.name=Tesla Crystal
+item.crystek.crafting.crystalTeslaPurple.name=Tesla Crystal
+item.crystek.crafting.crystalTeslaBlue.name=Tesla Crystal
+
+//Catalyst
+item.crystek.crafting.catalystRed.name=Catalyst
+item.crystek.crafting.catalystYellow.name=Catalyst
+item.crystek.crafting.catalystPurple.name=Catalyst
+item.crystek.crafting.catalystBlue.name=Catalyst
+
 //Circuits
 item.crystek.circuit.circuitEfficiency.name=Fuel Efficiency Circuit
 item.crystek.circuit.circuitSpeed.name=Processing Speed Circuit
@@ -26,6 +39,10 @@ item.crystek.circuit.circuitStorage.name=Tesla Storage Circuit
 
 //Grinding Blades
 item.crystek.grindingbladeIron.name=Iron Grinding Blade
+item.crystek.grindingbladeGold.name=Gold Grinding Blade
+item.crystek.grindingbladeDiamond.name=Diamond Grinding Blade
+item.crystek.grindingbladeObsidian.name=Obsidian Grinding Blade
+item.crystek.grindingbladeTeslaAlloy.name=Tesla-Iron Alloy Grinding Blade
 
 //Fluids
 fluid.fluidTesla=Fluid Tesla
@@ -55,3 +72,4 @@ desc.circuit.storage.1=Increases the max tesla
 desc.circuit.storage.2=a machine can store
 desc.circuit.efficiency.1=Creates more power with
 desc.circuit.efficiency.2=the same amount of fuel
+desc.grindingblade=Can be repaired with

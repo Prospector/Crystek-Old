@@ -28,6 +28,10 @@ public class ModelHandler
         registerItemModel(ModItems.battery, 0);
         registerItemModel(ModItems.drill, 0);
         registerItemModel(ModItems.ironGrindingBlade, 0);
+        registerItemModel(ModItems.goldGrindingBlade, 0);
+        registerItemModel(ModItems.diamondGrindingBlade, 0);
+        registerItemModel(ModItems.obsidianGrindingBlade, 0);
+        registerItemModel(ModItems.teslaAlloyGrindingBlade, 0);
 
         int i;
         //Register all crafting items textures

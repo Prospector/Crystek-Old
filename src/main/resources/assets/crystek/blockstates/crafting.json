@@ -53,6 +53,46 @@
         "textures": {
           "layer0": "crystek:items/crystal/crystalTesla"
         }
+      },
+      "crystalteslared": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystalTeslaRed"
+        }
+      },
+      "crystalteslayellow": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystalTeslaYellow"
+        }
+      },
+      "crystalteslapurple": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystalTeslaPurple"
+        }
+      },
+      "crystalteslablue": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystalTeslaBlue"
+        }
+      },
+      "catalystred": {
+        "textures": {
+          "layer0": "crystek:items/catalyst/catalystRed"
+        }
+      },
+      "catalystyellow": {
+        "textures": {
+          "layer0": "crystek:items/catalyst/catalystYellow"
+        }
+      },
+      "catalystpurple": {
+        "textures": {
+          "layer0": "crystek:items/catalyst/catalystPurple"
+        }
+      },
+      "catalystblue": {
+        "textures": {
+          "layer0": "crystek:items/catalyst/catalystBlue"
+        }
       }
     }
   }
