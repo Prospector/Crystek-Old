@@ -1,9 +1,9 @@
 package crystekteam.crystek.blocks.generator;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.blocks.BlockBase;
+import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

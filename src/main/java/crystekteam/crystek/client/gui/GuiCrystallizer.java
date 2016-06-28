@@ -4,7 +4,6 @@ import crystekteam.crystek.container.ContainerCrystallizer;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
 import crystekteam.crystek.tiles.prefab.TileBase;
-import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 

@@ -1,9 +1,7 @@
 package crystekteam.crystek.client.gui;
 
-import crystekteam.crystek.container.ContainerCrystallizer;
 import crystekteam.crystek.container.ContainerFluidizer;
 import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.tiles.machines.TileCrystallizer;
 import crystekteam.crystek.tiles.machines.TileFluidizer;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;

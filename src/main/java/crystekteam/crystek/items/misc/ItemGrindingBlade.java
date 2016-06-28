@@ -1,7 +1,7 @@
 package crystekteam.crystek.items.misc;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.items.ItemBase;
+import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.item.ItemStack;
 
 public class ItemGrindingBlade extends ItemBase

@@ -1,9 +1,9 @@
 package crystekteam.crystek.compat.jei;
 
 import crystekteam.crystek.api.CrystekApi;
+import crystekteam.crystek.client.gui.GuiGrinder;
 import crystekteam.crystek.client.gui.GuiPoweredFurnace;
 import crystekteam.crystek.compat.jei.grinder.GrinderRecipeCategory;
-import crystekteam.crystek.client.gui.GuiGrinder;
 import mezz.jei.api.BlankModPlugin;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IJeiRuntime;

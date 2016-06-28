@@ -3,7 +3,6 @@ package crystekteam.crystek.blocks.machines;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.blocks.BlockBase;
-import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
 import net.minecraft.block.state.IBlockState;
@@ -14,7 +13,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 

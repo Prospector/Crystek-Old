@@ -1,10 +1,10 @@
 package crystekteam.crystek.blocks.machines;
 
 import crystekteam.crystek.Crystek;
-import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.tiles.machines.TileFurnace;
 import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.blocks.BlockBase;
+import crystekteam.crystek.lib.ModInfo;
+import crystekteam.crystek.tiles.machines.TileFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

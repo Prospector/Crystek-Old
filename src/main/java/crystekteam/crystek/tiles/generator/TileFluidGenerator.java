@@ -2,13 +2,7 @@ package crystekteam.crystek.tiles.generator;
 
 import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.api.FluidFuelHandler;
-import crystekteam.crystek.api.recipe.RecipeCrystallizer;
-import crystekteam.crystek.config.ConfigAE;
-import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.tiles.prefab.TileGenerator;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fluids.FluidStack;
 

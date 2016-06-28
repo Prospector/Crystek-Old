@@ -1,7 +1,7 @@
 package crystekteam.crystek.tiles.generator;
 
-import crystekteam.crystek.tiles.prefab.TileGenerator;
 import crystekteam.crystek.config.ConfigAE;
+import crystekteam.crystek.tiles.prefab.TileGenerator;
 import net.minecraft.util.EnumFacing;
 
 /**

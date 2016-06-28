@@ -1,8 +1,8 @@
 package crystekteam.crystek.items.misc;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.init.ModItems;
 import crystekteam.crystek.items.ItemBase;
+import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

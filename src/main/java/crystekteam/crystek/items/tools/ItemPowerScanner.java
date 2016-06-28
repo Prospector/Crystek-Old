@@ -1,7 +1,7 @@
 package crystekteam.crystek.items.tools;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.items.ItemBase;
+import crystekteam.crystek.lib.ModInfo;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.entity.player.EntityPlayer;

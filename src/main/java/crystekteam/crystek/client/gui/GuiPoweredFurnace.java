@@ -1,8 +1,8 @@
 package crystekteam.crystek.client.gui;
 
+import crystekteam.crystek.container.ContainerPoweredFurnace;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileFurnace;
-import crystekteam.crystek.container.ContainerPoweredFurnace;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

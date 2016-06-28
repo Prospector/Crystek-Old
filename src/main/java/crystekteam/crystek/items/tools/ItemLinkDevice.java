@@ -1,7 +1,7 @@
 package crystekteam.crystek.items.tools;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.items.ItemBase;
+import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;

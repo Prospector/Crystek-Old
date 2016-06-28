@@ -1,15 +1,15 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
-import crystekteam.crystek.blocks.machines.BlockFluidizer;
-import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.blocks.BlockMachineFrame;
 import crystekteam.crystek.blocks.BlockTeslaCell;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
+import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
 import crystekteam.crystek.blocks.machines.BlockCrystallizer;
+import crystekteam.crystek.blocks.machines.BlockFluidizer;
 import crystekteam.crystek.blocks.machines.BlockFurnace;
 import crystekteam.crystek.blocks.machines.BlockGrinder;
+import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;

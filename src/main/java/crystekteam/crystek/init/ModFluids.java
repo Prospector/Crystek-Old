@@ -1,7 +1,7 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.blocks.fluids.FluidBlockBase;
+import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;

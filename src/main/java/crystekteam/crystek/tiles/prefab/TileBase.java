@@ -1,9 +1,9 @@
 package crystekteam.crystek.tiles.prefab;
 
+import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.util.Inventory;
-import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.util.Tank;
 import net.darkhax.tesla.api.BaseTeslaContainer;
 import net.minecraft.block.state.IBlockState;
@@ -20,9 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

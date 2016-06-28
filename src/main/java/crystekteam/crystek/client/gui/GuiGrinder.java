@@ -2,8 +2,8 @@ package crystekteam.crystek.client.gui;
 
 import crystekteam.crystek.container.ContainerGrinder;
 import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.machines.TileGrinder;
+import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
