@@ -1,5 +1,6 @@
 package crystekteam.crystek.tiles.prefab;
 
+import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.util.Inventory;
 import crystekteam.crystek.blocks.BlockBase;
@@ -166,17 +167,25 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         return inv.getDisplayName();
     }
 
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket ()
+    public void syncWithAll()
     {
-        return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
+        if (!worldObj.isRemote)
+        {
+            PacketHandler.sendPacketToAllPlayers(getUpdatePacket(), worldObj);
+        }
+    }
+
+    @Nullable
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket()
+    {
+        return new SPacketUpdateTileEntity(getPos(), getBlockMetadata(), writeToNBT(new NBTTagCompound()));
     }
 
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
     {
-        super.onDataPacket(net, packet);
-        this.readFromNBT(packet.getNbtCompound());
+        readFromNBT(packet.getNbtCompound());
     }
 
     @Override
@@ -191,7 +200,6 @@ public class TileBase extends TileEntity implements IInventory, ITickable
 
         if(tank != null)
             writeTankToNBT(compound);
-//            tank.writeToNBT(compound);
 
         compound.setTag("TeslaContainer", this.container.serializeNBT());
         return super.writeToNBT(compound);

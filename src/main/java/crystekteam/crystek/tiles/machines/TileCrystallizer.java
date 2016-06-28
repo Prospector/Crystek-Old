@@ -3,11 +3,18 @@ package crystekteam.crystek.tiles.machines;
 
 import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.api.recipe.RecipeCrystallizer;
+import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tiles.prefab.TileMachine;
 import crystekteam.crystek.util.ItemUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraftforge.fluids.FluidStack;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by Gigabit101 on 27/06/2016.
@@ -60,11 +67,11 @@ public class TileCrystallizer extends TileMachine
             decrStackSize(INPUT_SLOT, 1);
             tank.drain(1000, true);
         }
-
         if(inv.hasChanged)
         {
             resetProgress();
         }
+        syncWithAll();
     }
 
     public boolean canWork()

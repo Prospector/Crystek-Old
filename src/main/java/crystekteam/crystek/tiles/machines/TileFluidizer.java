@@ -53,6 +53,7 @@ public class TileFluidizer extends TileMachine
             tank.fill(new FluidStack(ModFluids.fluidTesla, 50), true);
             tank.compareAndUpdate();
         }
+        syncWithAll();
     }
 
     public boolean canWork()
