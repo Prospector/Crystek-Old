@@ -27,7 +27,6 @@ public class TileFurnace extends TileMachine
         boolean updateInventory = false;
         if (isBurning() && canSmelt())
         {
-            updateState();
             this.addProgress();
             if(this.getProgress() % 10 == 0)
             {
@@ -35,15 +34,11 @@ public class TileFurnace extends TileMachine
             }
             if (getProgress() >= fuelScale)
             {
+                updateState();
                 this.resetProgress();
                 cookItems();
                 updateInventory = true;
             }
-        }
-        else
-        {
-            this.resetProgress();
-            this.updateState();
         }
         if (burning != isBurning())
         {
@@ -58,25 +53,29 @@ public class TileFurnace extends TileMachine
 
     public void cookItems()
     {
-        if (this.canSmelt())
+        if(!worldObj.isRemote)
         {
-            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
+            if (this.canSmelt())
+            {
+                ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
 
-            if (getStackInSlot(output) == null)
-            {
-                setInventorySlotContents(output, itemstack.copy());
-            }
-            else if (getStackInSlot(output).isItemEqual(itemstack))
-            {
-                getStackInSlot(output).stackSize += itemstack.stackSize;
-            }
-            if (getStackInSlot(input1).stackSize > 1)
-            {
-                this.decrStackSize(input1, 1);
-            }
-            else
-            {
-                setInventorySlotContents(input1, null);
+                if (getStackInSlot(output) == null)
+                {
+                    setInventorySlotContents(output, itemstack.copy());
+                }
+                else if (getStackInSlot(output).isItemEqual(itemstack))
+                {
+                    getStackInSlot(output).stackSize += itemstack.stackSize;
+                }
+                if (getStackInSlot(input1).stackSize > 1)
+                {
+                    this.decrStackSize(input1, 1);
+                }
+                else
+                {
+                    setInventorySlotContents(input1, null);
+                }
+                syncWithAll();
             }
         }
     }

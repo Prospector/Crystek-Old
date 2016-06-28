@@ -84,8 +84,7 @@ public class TileGrinder extends TileMachine
 	public boolean canWork()
 	{
 		syncWithAll();
-		if (getOutput() != null && getStoredPower() >= cost && getStackInSlot(GRINDING_BLADE_SLOT) != null
-				&& getStackInSlot(GRINDING_BLADE_SLOT).getItem() instanceof ItemGrindingBlade)
+		if (getOutput() != null && getStoredPower() >= cost && getStackInSlot(GRINDING_BLADE_SLOT) != null && getStackInSlot(GRINDING_BLADE_SLOT).getItem() instanceof ItemGrindingBlade)
 		{
 			return true;
 		}
