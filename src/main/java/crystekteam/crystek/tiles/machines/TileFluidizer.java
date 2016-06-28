@@ -20,18 +20,23 @@ public class TileFluidizer extends TileMachine
     @Override
     public void update()
     {
-        if(canWork())
+        if(!worldObj.isRemote)
         {
-            addProgress();
-            if(getProgress() >= 100) {
-                work();
-                resetProgress();
-            }
+            tank.compareAndUpdate();
+            if (canWork())
+            {
+                addProgress();
+                if (getProgress() >= 100)
+                {
+                    work();
+                    resetProgress();
+                }
 
-            if(this.getProgress() == 1)
-                this.updateState();
-            else if(this.getProgress() == 0)
-                this.updateState();
+                if (this.getProgress() == 1)
+                    this.updateState();
+                else if (this.getProgress() == 0)
+                    this.updateState();
+            }
         }
     }
 
@@ -41,10 +46,12 @@ public class TileFluidizer extends TileMachine
         if(tank.getFluid() == null)
         {
             tank.setFluid(new FluidStack(ModFluids.fluidTesla, 50));
+            tank.compareAndUpdate();
         }
         else if (tank.getFluid().isFluidEqual(new FluidStack(ModFluids.fluidTesla, 50)))
         {
             tank.fill(new FluidStack(ModFluids.fluidTesla, 50), true);
+            tank.compareAndUpdate();
         }
     }
 

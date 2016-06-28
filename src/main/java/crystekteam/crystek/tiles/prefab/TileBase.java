@@ -273,32 +273,10 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         return tank.getFluidAmount();
     }
 
-//    public void setFluidAmount(int amount)
-//    {
-//        tank.setFluidAmount(amount);
-//    }
-
     public void setFluid(FluidStack fluidStack)
     {
         tank.setFluid(fluidStack);
     }
-
-    public boolean isEmpty()
-    {
-        return tank.isEmpty();
-    }
-
-    public boolean isFull()
-    {
-        return tank.isFull();
-    }
-
-    public Fluid getFluidType()
-    {
-        return tank.getFluidType();
-    }
-
-    public int getFluidMax() { return tank.getCapacity(); }
 
     public static <T> List<T> getConnectedCapabilities (Capability<T> capability, World world, BlockPos pos)
     {

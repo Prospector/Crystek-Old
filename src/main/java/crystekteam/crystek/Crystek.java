@@ -8,6 +8,7 @@ import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.init.ModItems;
 import crystekteam.crystek.init.ModRecipes;
 import crystekteam.crystek.lib.ModInfo;
+import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -44,6 +45,8 @@ public class Crystek
         ModRecipes.init();
         //Register fluids
         ModFluids.init();
+        //Packets
+        PacketHandler.setChannels(NetworkRegistry.INSTANCE.newChannel(ModInfo.MOD_ID + "_packets", new PacketHandler()));
         //Register Item/Block textures (Client side only)
         proxy.registerRenders();
     }
