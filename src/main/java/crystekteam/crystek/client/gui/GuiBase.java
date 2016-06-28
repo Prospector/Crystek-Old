@@ -107,5 +107,14 @@ public class GuiBase extends GuiContainer
     public void drawTank(TileBase tile)
     {
         RenderUtil.renderGuiTank(tile.tank, guiLeft + 39, guiTop + 11, zLevel, 14,64);
+        drawTankOverlay(tile, 38, 15);
+    }
+
+    public void drawTankOverlay(TileBase tile, int x, int y)
+    {
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.mc.getTextureManager().bindTexture(overlays);
+        this.drawTexturedModalRect(k + x, l + y, 14, 10, 20, 64);
     }
 }
