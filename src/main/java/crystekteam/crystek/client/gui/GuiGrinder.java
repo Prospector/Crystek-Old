@@ -17,7 +17,7 @@ public class GuiGrinder extends GuiBase
 
     public GuiGrinder(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerGrinder(tile, player), "crystek.oresmasher", textureloc);
+        super(player, tile, new ContainerGrinder(tile, player), "crystek.grinder", textureloc);
         this.tile = (TileGrinder) tile;
     }
 
