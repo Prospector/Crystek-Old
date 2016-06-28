@@ -132,7 +132,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
-        return isItemValidForSlot(index, stack);
+        return inv.isItemValidForSlot(index, stack);
     }
 
     @Override

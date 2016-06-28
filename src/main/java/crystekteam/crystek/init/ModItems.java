@@ -1,9 +1,9 @@
 package crystekteam.crystek.init;
 
+import crystekteam.crystek.items.armour.ItemPowerArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
 import crystekteam.crystek.items.powered.ItemBattery;
-import crystekteam.crystek.items.powered.ItemPowerArmour;
 import crystekteam.crystek.items.tools.ItemCircuit;
 import crystekteam.crystek.items.tools.ItemLinkDevice;
 import crystekteam.crystek.items.tools.ItemPowerScanner;
