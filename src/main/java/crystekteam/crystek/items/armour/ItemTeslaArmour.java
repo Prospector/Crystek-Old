@@ -22,10 +22,17 @@ import java.util.List;
  */
 public class ItemTeslaArmour extends ItemArmor implements ISpecialArmor
 {
+    private long maxCapacity;
+    private long output;
+    private long input;
+
     long cost = 20;
-    public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn)
+    public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, long maxCapacity, long input, long output)
     {
         super(materialIn, renderIndexIn, equipmentSlotIn);
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
     }
 
     @Override
@@ -37,7 +44,7 @@ public class ItemTeslaArmour extends ItemArmor implements ISpecialArmor
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
     {
-        return new BaseTeslaContainerProvider(new BaseTeslaContainer());
+        return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
 
     @Override

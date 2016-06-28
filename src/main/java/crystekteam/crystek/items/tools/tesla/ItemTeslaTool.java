@@ -20,11 +20,18 @@ import java.util.Set;
  */
 public class ItemTeslaTool extends ItemTool
 {
-    public ItemTeslaTool(float attackDamageIn, float attackSpeedIn, ToolMaterial materialIn, Set<Block> effectiveBlocksIn)
+    private long maxCapacity;
+    private long output;
+    private long input;
+
+    public ItemTeslaTool(float attackDamageIn, float attackSpeedIn, ToolMaterial materialIn, Set<Block> effectiveBlocksIn, long maxCapacity, long input, long output)
     {
         super(attackDamageIn, attackSpeedIn, materialIn, effectiveBlocksIn);
         setMaxStackSize(1);
         setMaxDamage(240);
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
     }
 
     @Override
@@ -36,6 +43,6 @@ public class ItemTeslaTool extends ItemTool
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
     {
-        return new BaseTeslaContainerProvider(new BaseTeslaContainer());
+        return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
     }
 }

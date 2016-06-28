@@ -79,19 +79,19 @@ public class ModItems
 		teslaAlloyGrindingBlade = new ItemGrindingBlade("grindingbladeTeslaAlloy", 3, -1, ItemBank.teslaIngot);
 		GameRegistry.register(teslaAlloyGrindingBlade);
 
-		powerArmourHelmet = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD)
+		powerArmourHelmet = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200, 200)
 				.setRegistryName("powerarmour.helmet");
 		GameRegistry.register(powerArmourHelmet);
 
-		powerArmourChestplate = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST)
+		powerArmourChestplate = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000, 200, 200)
 				.setRegistryName("powerarmour.chestplate");
 		GameRegistry.register(powerArmourChestplate);
 
-		powerArmourLeggings = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS)
+		powerArmourLeggings = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000, 200, 200)
 				.setRegistryName("powerarmour.leggings");
 		GameRegistry.register(powerArmourLeggings);
 
-		powerArmourBoots = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET)
+		powerArmourBoots = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200, 200)
 				.setRegistryName("powerarmour.boots");
 		GameRegistry.register(powerArmourBoots);
 

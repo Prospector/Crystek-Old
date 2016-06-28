@@ -17,10 +17,17 @@ import java.util.List;
  */
 public class ItemTeslaBase extends ItemBase
 {
-	public ItemTeslaBase(long capacity, long input, long output)
+	private long maxCapacity;
+	private long output;
+	private long input;
+
+	public ItemTeslaBase(long maxCapacity, long input, long output)
 	{
 		setMaxStackSize(1);
 		setMaxDamage(5000);
+		this.maxCapacity = maxCapacity;
+		this.output = output;
+		this.input = input;
 	}
 
 	@Override public boolean isRepairable()
@@ -47,6 +54,6 @@ public class ItemTeslaBase extends ItemBase
 
 	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
 	{
-		return new BaseTeslaContainerProvider(new BaseTeslaContainer());
+		return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
 	}
 }

@@ -10,7 +10,7 @@ public class ItemBattery extends ItemTeslaBase
 {
     public ItemBattery()
     {
-        super(5000, 100, 100);
+        super(50000, 100, 100);
         setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".battery");
         setRegistryName("battery");
     }

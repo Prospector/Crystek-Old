@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-
 /**
  * Created by Gigabit101 on 26/06/2016.
  */
@@ -25,7 +24,7 @@ public class ItemDrill extends ItemTeslaTool
 
     public ItemDrill()
     {
-        super(0F, 0F, ToolMaterial.DIAMOND, EFFECTIVE_ON);
+        super(0F, 0F, ToolMaterial.DIAMOND, EFFECTIVE_ON, 10000, 200, 200);
         setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".drill");
         setRegistryName("drill");
     }

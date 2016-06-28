@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class ItemPowerArmour extends ItemTeslaArmour
 {
-    public ItemPowerArmour(ArmorMaterial material, EntityEquipmentSlot slot)
+    public ItemPowerArmour(ArmorMaterial material, EntityEquipmentSlot slot, long maxCapacity, long input, long output)
     {
-        super(material, material.getDamageReductionAmount(slot), slot);
+        super(material, material.getDamageReductionAmount(slot), slot, maxCapacity, input, output);
         if (slot == EntityEquipmentSlot.HEAD)
             setUnlocalizedName(ModInfo.MOD_NAME.toLowerCase() + ".powerarmour.helmet");
         if (slot == EntityEquipmentSlot.CHEST)

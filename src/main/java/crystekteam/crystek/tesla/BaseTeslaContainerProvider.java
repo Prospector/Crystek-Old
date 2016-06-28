@@ -14,10 +14,19 @@ import net.minecraftforge.common.util.INBTSerializable;
 public class BaseTeslaContainerProvider implements INBTSerializable<NBTTagCompound>, ICapabilityProvider
 {
     private final BaseTeslaContainer container;
+    private long maxCapacity;
+    private long output;
+    private long input;
 
-    public BaseTeslaContainerProvider(BaseTeslaContainer container)
+    public BaseTeslaContainerProvider(BaseTeslaContainer container, long maxCapacity, long input, long output)
     {
         this.container = container;
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
+        container.setCapacity(maxCapacity);
+        container.setOutputRate(output);
+        container.setInputRate(input);
     }
 
     @Override
