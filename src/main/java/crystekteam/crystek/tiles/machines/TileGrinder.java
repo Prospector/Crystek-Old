@@ -49,36 +49,36 @@ public class TileGrinder extends TileMachine
 
 	public void work()
 	{
-		usePower(cost);
-        ItemStack grindingBlade = getStackInSlot(GRINDING_BLADE_SLOT);
-
-        if (getStackInSlot(OUTPUT_SLOT) == null)
-		{
-			setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
-			decrStackSize(ORE_SLOT, 1);
-		}
-		else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
-		{
-			getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
-			decrStackSize(ORE_SLOT, 1);
-		}
-        if (grindingBlade.getMaxDamage() != 0)
+        if(!worldObj.isRemote)
         {
-            if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage())
-            {
-                removeStackFromSlot(GRINDING_BLADE_SLOT);
-            }
-            else
-            {
-                getStackInSlot(GRINDING_BLADE_SLOT).attemptDamageItem(1, new Random());
-            }
-        }
+            usePower(cost);
+            ItemStack grindingBlade = getStackInSlot(GRINDING_BLADE_SLOT);
 
-		if (inv.hasChanged)
-		{
-			resetProgress();
-		}
-		syncWithAll();
+            if (getStackInSlot(OUTPUT_SLOT) == null)
+            {
+                setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
+                decrStackSize(ORE_SLOT, 1);
+                resetProgress();
+            }
+            else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
+            {
+                getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
+                decrStackSize(ORE_SLOT, 1);
+                resetProgress();
+            }
+            if (grindingBlade.getMaxDamage() != 0)
+            {
+                if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage())
+                {
+                    removeStackFromSlot(GRINDING_BLADE_SLOT);
+                }
+                else
+                {
+                    getStackInSlot(GRINDING_BLADE_SLOT).attemptDamageItem(1, new Random());
+                }
+            }
+            syncWithAll();
+        }
 	}
 
 	public boolean canWork()
