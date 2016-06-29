@@ -11,6 +11,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -51,10 +52,13 @@ public class CrystallizerRecipeWrapper implements IRecipeWrapper
         return ImmutableList.of(output);
     }
 
+    @SuppressWarnings("null")
     @Override
-    public List<FluidStack> getFluidInputs()
-    {
-        return ImmutableList.of(fluidStack);
+    public @Nonnull List<FluidStack> getFluidInputs() {
+        if (fluidStack != null) {
+            return Collections.singletonList(fluidStack);
+        }
+        return Collections.emptyList();
     }
 
     @Override

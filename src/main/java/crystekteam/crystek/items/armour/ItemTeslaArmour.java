@@ -24,15 +24,14 @@ import java.util.List;
 /**
  * Created by Giabit101 on 28/06/2016.
  */
-public class ItemTeslaArmour extends ItemArmor implements ISpecialArmor
+public class ItemTeslaArmour extends ItemArmor// implements ISpecialArmor
 {
 	long cost = 20;
 	private long maxCapacity;
 	private long output;
 	private long input;
 
-	public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn,
-			long maxCapacity, long input, long output)
+	public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, long maxCapacity, long input, long output)
 	{
 		super(materialIn, renderIndexIn, equipmentSlotIn);
 		this.maxCapacity = maxCapacity;
@@ -74,22 +73,21 @@ public class ItemTeslaArmour extends ItemArmor implements ISpecialArmor
 		return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
 	}
 
-	@Override public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source,
-			double damage, int slot)
-	{
-		return null;
-	}
-
-	@Override public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
-	{
-		return 0;
-	}
-
-	@Override public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage,
-			int slot)
-	{
-		TeslaUtils.usePower(stack, damage * cost);
-	}
+//	@Override public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
+//	{
+//		return null;
+//	}
+//
+//	@Override public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
+//	{
+//		return 0;
+//	}
+//
+//	@Override public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage,
+//			int slot)
+//	{
+//		TeslaUtils.usePower(stack, damage * cost);
+//	}
 
 	@Override public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
 	{
