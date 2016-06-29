@@ -118,18 +118,16 @@ public class ModRecipes
 		CrystekApi.registerGrinderRecipe(ItemBank.obsidianDust, new ItemStack(Blocks.OBSIDIAN));
 
 		//Ores
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
-
-		//Compat
 		addOreGrinderRecipe("Iron");
 		addOreGrinderRecipe("Gold");
 		addOreGrinderRecipe("Coal");
 		addOreGrinderRecipe("Redstone");
 		addOreGrinderRecipe("Diamond");
 		addOreGrinderRecipe("Emerald");
+		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
+		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
+		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
+		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
 		addOreGrinderRecipe("Copper");
 		addOreGrinderRecipe("Tin");
 		addOreGrinderRecipe("Nickel");
@@ -150,17 +148,17 @@ public class ModRecipes
 
 	public static void addOreGrinderRecipe(String name)
 	{
-		//addGrinderOreDictRecipe("dust"+name, "ingot"+name);
-		//addGrinderOreDictRecipe("dust"+name, "gem"+name);
+		addGrinderOreDictRecipe("dust"+name, "ingot"+name);
+		addGrinderOreDictRecipe("dust"+name, "gem"+name);
 		addGrinderOreDictRecipe("dust" + name, 2, "ore" + name);
-		//addGrinderOreDictRecipe("dust"+name, 9, "block"+name);
+		addGrinderOreDictRecipe("dust"+name, 9, "block"+name);
 	}
 
 	public static void addGrinderOreDictRecipe(String oreDictOutput, int outputAmount, String oreDictInput)
 	{
 		if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput))
 		{
-			ItemStack output = OreDictionary.getOres(oreDictOutput).get(0);
+			ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
 			output.stackSize = outputAmount;
 			CrystekApi.registerGrinderRecipe(output, oreDictInput);
 		}
