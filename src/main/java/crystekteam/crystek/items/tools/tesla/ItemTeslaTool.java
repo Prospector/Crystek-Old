@@ -39,9 +39,8 @@ public class ItemTeslaTool extends ItemTool
 
 	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
 	{
-		ItemStack powered = new ItemStack(itemIn);
+		ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
 		ItemStack unpowered = new ItemStack(itemIn);
-		TeslaUtils.addPower(powered, TeslaUtils.getMaxCapacity(powered));
 		subItems.add(powered);
 		subItems.add(unpowered);
 	}

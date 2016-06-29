@@ -89,6 +89,19 @@ public class TeslaUtils
         return 0;
     }
 
+    public static ItemStack createChargedStack(ItemStack stack)
+    {
+        if(isPoweredItem(stack))
+        {
+            ItemStack chargedstack = stack.copy();
+            getContainer(chargedstack).setInputRate(TeslaUtils.getMaxCapacity(stack));
+            addPower(chargedstack, getMaxCapacity(stack));
+            getContainer(chargedstack).setInputRate(TeslaUtils.getMaxInput(stack));
+            return chargedstack;
+        }
+        return null;
+    }
+
     /**
      * Blocks
      */

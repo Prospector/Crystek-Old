@@ -42,9 +42,8 @@ public class ItemTeslaArmour extends ItemArmor implements ISpecialArmor
 
 	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
 	{
-		ItemStack powered = new ItemStack(itemIn);
+		ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
 		ItemStack unpowered = new ItemStack(itemIn);
-		TeslaUtils.addPower(powered, maxCapacity);
 		subItems.add(powered);
 		subItems.add(unpowered);
 	}

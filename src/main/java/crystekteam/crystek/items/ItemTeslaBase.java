@@ -33,9 +33,8 @@ public class ItemTeslaBase extends ItemBase
 
 	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
 	{
-		ItemStack powered = new ItemStack(itemIn);
+		ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
 		ItemStack unpowered = new ItemStack(itemIn);
-		TeslaUtils.addPower(powered, maxCapacity);
 		subItems.add(powered);
 		subItems.add(unpowered);
 	}
