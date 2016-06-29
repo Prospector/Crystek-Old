@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 /**
  * Created by Gigabit101 on 26/06/2016.
  */
-//@mezz.jei.api.JEIPlugin
+@mezz.jei.api.JEIPlugin
 public class CrystekJeiPlugin extends BlankModPlugin
 {
     @Override
@@ -29,7 +29,6 @@ public class CrystekJeiPlugin extends BlankModPlugin
     {
         IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 
-        //Grinder
         registry.addRecipeCategories(new GrinderRecipeCategory(jeiHelpers.getGuiHelper()), new CrystallizerRecipeCategory(jeiHelpers.getGuiHelper()));
         registry.addRecipeHandlers(new GrinderRecipeHandler(jeiHelpers), new CrystallizerRecipeHandler(jeiHelpers));
 

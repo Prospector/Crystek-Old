@@ -27,7 +27,7 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
 
     public CrystallizerRecipeCategory(IGuiHelper guiHelper)
     {
-        background = guiHelper.createDrawable(GuiCrystallizer.textureloc, 7, 15, 141, 55);
+        background = guiHelper.createDrawable(GuiCrystallizer.textureloc, 25, 15, 141, 55);
         title = I18n.translateToLocal("crystek.jei.category.crystallizer");
     }
 
