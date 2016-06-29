@@ -1,9 +1,7 @@
 package crystekteam.crystek.compat.jei.crystallizer;
 
 import crystekteam.crystek.api.recipe.RecipeCrystallizer;
-import crystekteam.crystek.api.recipe.RecipeGrinder;
-import crystekteam.crystek.compat.jei.RecipeCategoryUids;
-import crystekteam.crystek.compat.jei.grinder.GrinderRecipeWrapper;
+import crystekteam.crystek.compat.jei.CrystekRecipeCategoryUids;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -25,7 +23,7 @@ public class CrystallizerRecipeHandler implements IRecipeHandler<RecipeCrystalli
 	@Nonnull
 	@Override public String getRecipeCategoryUid(@Nonnull RecipeCrystallizer recipe)
 	{
-		return RecipeCategoryUids.CRYSTALLIZER;
+		return CrystekRecipeCategoryUids.CRYSTALLIZER;
 	}
 
 	@Nonnull @Override public Class<RecipeCrystallizer> getRecipeClass()
@@ -35,15 +33,15 @@ public class CrystallizerRecipeHandler implements IRecipeHandler<RecipeCrystalli
 
 	@Nonnull @Override public String getRecipeCategoryUid()
 	{
-		return RecipeCategoryUids.CRYSTALLIZER;
+		return CrystekRecipeCategoryUids.CRYSTALLIZER;
 	}
 
-	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeCrystallizer recipeOreSmasher)
+	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeCrystallizer recipe)
 	{
-		return new CrystallizerRecipeWrapper(recipeOreSmasher);
+		return new CrystallizerRecipeWrapper(recipe);
 	}
 
-	@Override public boolean isRecipeValid(@Nonnull RecipeCrystallizer recipeGrinder)
+	@Override public boolean isRecipeValid(@Nonnull RecipeCrystallizer recipe)
 	{
 		return true;
 	}

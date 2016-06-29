@@ -1,7 +1,6 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.api.CrystekApi;
-import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -10,6 +9,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class ModRecipes
 {
@@ -17,57 +17,112 @@ public class ModRecipes
 	{
 		registerCraftingRecipes();
 		registerSmeltingRecipes();
-		registerSmasherRecipes();
+		registerGrinderRecipes();
 		registerCrystallizerRecipes();
 		CrystekApi.registerFuel(new FluidStack(FluidRegistry.LAVA, 1000), 1000, 50);
 	}
 
 	static void registerCraftingRecipes()
 	{
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.drill), " ii", "oci", "rt ", 'i', "ingotIron", 'o',
+						"ingotObsidian", 'c', "crystalTesla", 'r', "dustRedstone", 't', "ingotTeslaAlloy"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.powerScanner), "oto", "tct", "i i", 'i', "ingotIron", 'o',
+						"ingotObsidian", 'c', "crystalTesla", 't', "ingotTeslaAlloy"));
+		GameRegistry.addShapelessRecipe(ItemBank.obsidianIngot, new ItemStack(Items.WATER_BUCKET),
+				new ItemStack(Items.LAVA_BUCKET));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystRed, ItemBank.ironDust, new ItemStack(Items.REDSTONE));
+		GameRegistry
+				.addShapelessRecipe(ItemBank.catalystYellow, ItemBank.ironDust, new ItemStack(Items.GLOWSTONE_DUST));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystPurple, ItemBank.ironDust, new ItemStack(Items.CHORUS_FRUIT));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystBlue, ItemBank.ironDust, new ItemStack(Items.DYE, 1, 11));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(ItemBank.efficiencyUpgrade, "rtr", "tct", "rtr", 'r', "blockRedstone", 'c',
+						ItemBank.teslaCrystalYellow, 't', "ingotTeslaAlloy"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.battery), " i ", "tct", "oco", 'i', "ingotIron", 'c',
+						"crystalTesla", 't', "ingotTeslaAlloy", 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.ironGrindingBlade), " m ", "mom", " m ", 'm', "ingotIron",
+						'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.goldGrindingBlade), " m ", "mom", " m ", 'm', "ingotGold",
+						'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.diamondGrindingBlade), " m ", "mom", " m ", 'm',
+						"gemDiamond", 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.obsidianGrindingBlade), " m ", "mom", " m ", 'm', "obsidian",
+						'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModItems.teslaAlloyGrindingBlade), " m ", "mom", " m ", 'm',
+						"ingotTesla", 'o', "ingotObsidian"));
+		//TODO Add manual power generation and make this require tesla crystal
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.coalGen), "ooo", "oco", "obo", 'c', "blockGlass", 'o',
+						"ingotObsidian", 'b', new ItemStack(Blocks.IRON_BARS)));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.fluidGen), "ooo", "oco", "obo", 'c', "crystalTesla", 'o',
+						"ingotObsidian", 'b', new ItemStack(Items.BUCKET)));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.fluidizer), "olo", "cgc", "oro", 'l', "gemLapis", 'r',
+						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Blocks.CAULDRON), 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.crystallizer), "olo", "cgc", "oro", 'l', "ingotGold", 'r',
+						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Blocks.CAULDRON), 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "oio", "fcf", "oro", 'i', "ingotIron", 'r',
+						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Items.FLINT), 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.grinder), "odo", "fcf", "oro", 'd', "dustIron", 'r',
+						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Blocks.FURNACE), 'o', "ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.teslaCell), "oco", "oco", "oco", 'c', "crystalTesla", 'o',
+						"ingotObsidian"));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(new ItemStack(ModBlocks.solarGen), "ccc", "oco", "oro", 'c', "crystalTesla", 'o',
+						"ingotObsidian", 'r', "dustRedstone"));
 
 	}
 
-    static void registerCrystallizerRecipes()
-    {
-		CrystekApi.registerCrystallizerRecipes("dustIron", new FluidStack(ModFluids.fluidTesla, 1000), ItemBank.teslaCrystal);
-		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystRed, new FluidStack(ModFluids.fluidTesla, 1000), ItemBank.teslaCrystalRed);
-		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystYellow, new FluidStack(ModFluids.fluidTesla, 1000), ItemBank.teslaCrystalYellow);
-		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystPurple, new FluidStack(ModFluids.fluidTesla, 1000), ItemBank.teslaCrystalPurple);
-		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystBlue, new FluidStack(ModFluids.fluidTesla, 1000), ItemBank.teslaCrystalBlue);
-    }
+	static void registerCrystallizerRecipes()
+	{
+		CrystekApi.registerCrystallizerRecipes("dustIron", new FluidStack(ModFluids.fluidTesla, 1000),
+				ItemBank.teslaCrystal);
+		CrystekApi.registerCrystallizerRecipes("ingotIron", new FluidStack(ModFluids.fluidTesla, 10),
+				ItemBank.teslaIngot);
+		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystRed, new FluidStack(ModFluids.fluidTesla, 1000),
+				ItemBank.teslaCrystalRed);
+		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystYellow, new FluidStack(ModFluids.fluidTesla, 1000),
+				ItemBank.teslaCrystalYellow);
+		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystPurple, new FluidStack(ModFluids.fluidTesla, 1000),
+				ItemBank.teslaCrystalPurple);
+		CrystekApi.registerCrystallizerRecipes(ItemBank.catalystBlue, new FluidStack(ModFluids.fluidTesla, 1000),
+				ItemBank.teslaCrystalBlue);
+	}
+
 	static void registerSmeltingRecipes()
 	{
 		//Dusts
 		GameRegistry.addSmelting(ItemBank.ironDust, new ItemStack(Items.IRON_INGOT), 0.5F);
 		GameRegistry.addSmelting(ItemBank.goldDust, new ItemStack(Items.GOLD_INGOT), 0.5F);
+		GameRegistry.addSmelting(ItemBank.obsidianDust, ItemBank.obsidianIngot, 0.5F);
 	}
 
-	static void registerSmasherRecipes()
+	static void registerGrinderRecipes()
 	{
 		//General
 		CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.COBBLESTONE));
 		CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.GRAVEL));
+		CrystekApi.registerGrinderRecipe(ItemBank.obsidianDust, new ItemStack(Blocks.OBSIDIAN));
+
 		//Ores
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustIron", 2), "oreIron");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustGold", 2), "oreGold");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustDiamond", 2), "oreDiamond");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustEmerald", 2), "oreEmerald");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.REDSTONE, 6), "oreRedstone");
 		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
 		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
-		//Blocks
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustIron", 9), "blockIron");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustGold", 9), "blockGold");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustDiamond", 9), "blockDiamond");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustEmerald", 9), "blockEmerald");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.REDSTONE, 9), "blockRedstone");
 		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
 		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
-		//Ingots/Gems
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustIron", 1), "ingotIron");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustGold", 1), "ingotGold");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustDiamond", 1), "gemDiamond");
-		CrystekApi.registerGrinderRecipe(ItemCrafting.getStack("dustEmerald", 1), "gemEmerald");
+
 		//Compat
 		addOreGrinderRecipe("Iron");
 		addOreGrinderRecipe("Gold");
@@ -93,22 +148,26 @@ public class ModRecipes
 		addOreGrinderRecipe("Platinum");
 	}
 
-	public static void addOreGrinderRecipe(String name){
-		addGrinderOreDictRecipe("dust"+name, "ingot"+name);
-		addGrinderOreDictRecipe("dust"+name, "gem"+name);
-		addGrinderOreDictRecipe("dust"+name, 2, "ore"+name);
-		addGrinderOreDictRecipe("dust"+name, 9, "block"+name);
+	public static void addOreGrinderRecipe(String name)
+	{
+		//addGrinderOreDictRecipe("dust"+name, "ingot"+name);
+		//addGrinderOreDictRecipe("dust"+name, "gem"+name);
+		addGrinderOreDictRecipe("dust" + name, 2, "ore" + name);
+		//addGrinderOreDictRecipe("dust"+name, 9, "block"+name);
 	}
 
-	public static void addGrinderOreDictRecipe(String oreDictOutput, int outputAmount, String oreDictInput){
-		if(OreDictionary.doesOreNameExist(oreDictOutput)&&OreDictionary.doesOreNameExist(oreDictInput)){
+	public static void addGrinderOreDictRecipe(String oreDictOutput, int outputAmount, String oreDictInput)
+	{
+		if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput))
+		{
 			ItemStack output = OreDictionary.getOres(oreDictOutput).get(0);
-			output.stackSize=outputAmount;
+			output.stackSize = outputAmount;
 			CrystekApi.registerGrinderRecipe(output, oreDictInput);
 		}
 	}
 
-	public static void addGrinderOreDictRecipe(String oreDictOutput, String oreDictInput){
+	public static void addGrinderOreDictRecipe(String oreDictOutput, String oreDictInput)
+	{
 		addGrinderOreDictRecipe(oreDictOutput, 1, oreDictInput);
 	}
 }

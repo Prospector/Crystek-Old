@@ -1,13 +1,11 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.items.armour.ItemPowerArmour;
+import crystekteam.crystek.items.armour.ItemInfusedArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
 import crystekteam.crystek.items.powered.ItemBattery;
 import crystekteam.crystek.items.tools.ItemCircuit;
-import crystekteam.crystek.items.tools.ItemLinkDevice;
 import crystekteam.crystek.items.tools.ItemPowerScanner;
-import crystekteam.crystek.items.tools.ItemWelder;
 import crystekteam.crystek.items.tools.tesla.ItemDrill;
 import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
@@ -21,10 +19,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ModItems
 {
-	public static Item welder;
 	public static Item powerScanner;
-	public static Item wrench;
-	public static Item laserLinkingDevice;
 	public static Item crafting;
 	public static Item circuit;
 	public static Item battery;
@@ -43,14 +38,9 @@ public class ModItems
 
 	public static void init()
 	{
-		welder = new ItemWelder();
-		GameRegistry.register(welder);
 
 		powerScanner = new ItemPowerScanner();
 		GameRegistry.register(powerScanner);
-
-		laserLinkingDevice = new ItemLinkDevice();
-		GameRegistry.register(laserLinkingDevice);
 
 		crafting = new ItemCrafting();
 		GameRegistry.register(crafting);
@@ -79,21 +69,27 @@ public class ModItems
 		teslaAlloyGrindingBlade = new ItemGrindingBlade("grindingbladeTeslaAlloy", 3, -1, ItemBank.teslaIngot);
 		GameRegistry.register(teslaAlloyGrindingBlade);
 
-		powerArmourHelmet = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200, 200)
-				.setRegistryName("powerarmour.helmet");
+		powerArmourHelmet = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200, 200)
+				.setRegistryName("infusedarmour.helmet");
 		GameRegistry.register(powerArmourHelmet);
 
-		powerArmourChestplate = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000, 200, 200)
-				.setRegistryName("powerarmour.chestplate");
+		powerArmourChestplate = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000, 200, 200)
+				.setRegistryName("infusedarmour.chestplate");
 		GameRegistry.register(powerArmourChestplate);
 
-		powerArmourLeggings = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000, 200, 200)
-				.setRegistryName("powerarmour.leggings");
+		powerArmourLeggings = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000, 200, 200)
+				.setRegistryName("infusedarmour.leggings");
 		GameRegistry.register(powerArmourLeggings);
 
-		powerArmourBoots = new ItemPowerArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200, 200)
-				.setRegistryName("powerarmour.boots");
+		powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200, 200)
+				.setRegistryName("infusedarmour.boots");
 		GameRegistry.register(powerArmourBoots);
+
+		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
+		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);
+		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalYellow);
+		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalPurple);
+		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalBlue);
 
 		int i;
 		//Register ore dict values for all crafting items

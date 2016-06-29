@@ -1,9 +1,7 @@
 package crystekteam.crystek.compat.jei.crystallizer;
 
 import crystekteam.crystek.client.gui.GuiCrystallizer;
-import crystekteam.crystek.client.gui.GuiGrinder;
-import crystekteam.crystek.compat.jei.RecipeCategoryUids;
-import crystekteam.crystek.compat.jei.grinder.GrinderRecipeWrapper;
+import crystekteam.crystek.compat.jei.CrystekRecipeCategoryUids;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiFluidStackGroup;
@@ -37,7 +35,7 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
     @Override
     public String getUid()
     {
-        return RecipeCategoryUids.CRYSTALLIZER;
+        return CrystekRecipeCategoryUids.CRYSTALLIZER;
     }
 
     @Nonnull

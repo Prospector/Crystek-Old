@@ -12,8 +12,8 @@ import java.util.List;
 public class ItemGrindingBlade extends ItemBase
 {
 
-	ItemStack repairStack;
-	int speed;
+	public ItemStack repairStack;
+	public int speed;
 
 	public ItemGrindingBlade(String name, int speed, int durability, ItemStack repairMaterial)
 	{

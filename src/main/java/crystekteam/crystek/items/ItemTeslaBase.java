@@ -4,7 +4,9 @@ import crystekteam.crystek.tesla.BaseTeslaContainerProvider;
 import crystekteam.crystek.tesla.TeslaUtils;
 import net.darkhax.tesla.api.BaseTeslaContainer;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
@@ -29,15 +31,23 @@ public class ItemTeslaBase extends ItemBase
 		this.input = input;
 	}
 
+	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+	{
+		ItemStack powered = new ItemStack(itemIn);
+		ItemStack unpowered = new ItemStack(itemIn);
+		TeslaUtils.addPower(powered, maxCapacity);
+		subItems.add(powered);
+		subItems.add(unpowered);
+	}
+
 	@Override public boolean isRepairable()
 	{
 		return false;
 	}
 
-	@Override
-	public double getDurabilityForDisplay(ItemStack stack)
+	@Override public double getDurabilityForDisplay(ItemStack stack)
 	{
-		return (1-(double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
+		return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
 	}
 
 	@Override public boolean showDurabilityBar(ItemStack stack)
@@ -47,7 +57,8 @@ public class ItemTeslaBase extends ItemBase
 
 	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 	{
-		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils.getMaxCapacity(stack) + " Tesla"));
+		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
+				.getMaxCapacity(stack) + " Tesla"));
 	}
 
 	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)

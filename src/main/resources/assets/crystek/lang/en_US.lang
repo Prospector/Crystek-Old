@@ -44,6 +44,12 @@ item.crystek.grindingbladeDiamond.name=Diamond Grinding Blade
 item.crystek.grindingbladeObsidian.name=Obsidian Grinding Blade
 item.crystek.grindingbladeTeslaAlloy.name=Tesla-Iron Alloy Grinding Blade
 
+//Infused Armour
+item.crystek.infusedarmour.helmet.name=Tesla-Infused Helmet
+item.crystek.infusedarmour.chestplate.name=Tesla-Infused Chestplate
+item.crystek.infusedarmour.leggings.name=Tesla-Infused Leggings
+item.crystek.infusedarmour.boots.name=Tesla-Infused Boots
+
 //Fluids
 fluid.fluidTesla=Fluid Tesla
 

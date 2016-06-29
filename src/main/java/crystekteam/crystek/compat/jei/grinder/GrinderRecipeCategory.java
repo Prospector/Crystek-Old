@@ -1,22 +1,16 @@
 package crystekteam.crystek.compat.jei.grinder;
 
-import crystekteam.crystek.client.gui.GuiBase;
 import crystekteam.crystek.client.gui.GuiGrinder;
-import crystekteam.crystek.compat.jei.RecipeCategoryUids;
-import crystekteam.crystek.init.ModItems;
+import crystekteam.crystek.compat.jei.CrystekRecipeCategoryUids;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
-import mezz.jei.api.gui.IDrawableAnimated;
-import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
 
 /**
  * Created by Gigabit101 on 26/06/2016.
@@ -40,7 +34,7 @@ public class GrinderRecipeCategory implements IRecipeCategory
     @Override
     public String getUid()
     {
-        return RecipeCategoryUids.GRINDER;
+        return CrystekRecipeCategoryUids.GRINDER;
     }
 
     @Nonnull

@@ -112,7 +112,7 @@ public class CrystekWorldEventListener implements IWorldEventListener
 
 	public boolean isValidRecipe(ItemStack input)
 	{
-		for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
+		for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
 		{
 			if (recipe.getInput() instanceof ItemStack)
 			{
@@ -130,7 +130,7 @@ public class CrystekWorldEventListener implements IWorldEventListener
 
 	public ItemStack getOutputItem(ItemStack input)
 	{
-		for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
+		for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
 		{
 			if (recipe.matches(input))
 			{

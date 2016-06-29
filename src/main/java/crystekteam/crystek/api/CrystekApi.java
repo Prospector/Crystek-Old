@@ -10,14 +10,14 @@ import java.util.List;
 
 public class CrystekApi
 {
-    public static List<RecipeGrinder> smasherRecipes = new ArrayList<RecipeGrinder>();
+    public static List<RecipeGrinder> grinderRecipes = new ArrayList<RecipeGrinder>();
     public static List<RecipeCrystallizer> crystallizerRecipes = new ArrayList<RecipeCrystallizer>();
     public static List<FluidFuelHandler> fluidFuelHandlers = new ArrayList<FluidFuelHandler>();
 
     public static RecipeGrinder registerGrinderRecipe(ItemStack output, Object input)
     {
         RecipeGrinder recipe = new RecipeGrinder(output, input);
-        smasherRecipes.add(recipe);
+        grinderRecipes.add(recipe);
         return recipe;
     }
 

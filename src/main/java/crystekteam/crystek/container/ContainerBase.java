@@ -57,9 +57,9 @@ public class ContainerBase extends Container
 
     public void addUpgradeSlots(TileBase tile, int upgradeslotStart)
     {
-        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart, 152, 15));
-        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart + 1, 152, 35));
-        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart + 2, 152, 55));
+        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart, 152, 26));
+        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart + 1, 152, 44));
+        this.addSlotToContainer(new SlotCircuit(tile.getInv(), upgradeslotStart + 2, 152, 62));
     }
 
     @Override

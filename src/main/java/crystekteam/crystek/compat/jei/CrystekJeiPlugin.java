@@ -1,6 +1,5 @@
 package crystekteam.crystek.compat.jei;
 
-import crystekteam.crystek.Crystek;
 import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.client.gui.GuiCrystallizer;
 import crystekteam.crystek.client.gui.GuiGrinder;
@@ -22,7 +21,7 @@ import javax.annotation.Nonnull;
 /**
  * Created by Gigabit101 on 26/06/2016.
  */
-@mezz.jei.api.JEIPlugin
+//@mezz.jei.api.JEIPlugin
 public class CrystekJeiPlugin extends BlankModPlugin
 {
     @Override
@@ -35,15 +34,17 @@ public class CrystekJeiPlugin extends BlankModPlugin
         registry.addRecipeHandlers(new GrinderRecipeHandler(jeiHelpers), new CrystallizerRecipeHandler(jeiHelpers));
 
 
-        registry.addRecipeClickArea(GuiGrinder.class, 78, 36, 24, 16, RecipeCategoryUids.GRINDER);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.grinder), RecipeCategoryUids.GRINDER);
-        registry.addRecipes(CrystekApi.smasherRecipes);
-        registry.addRecipeClickArea(GuiCrystallizer.class, 78, 36, 24, 16, RecipeCategoryUids.CRYSTALLIZER);
-        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.crystallizer), RecipeCategoryUids.CRYSTALLIZER);
+        registry.addRecipeClickArea(GuiGrinder.class, 78, 36, 24, 16, CrystekRecipeCategoryUids.GRINDER);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.grinder), CrystekRecipeCategoryUids.GRINDER);
+        registry.addRecipes(CrystekApi.grinderRecipes);
+
+        registry.addRecipeClickArea(GuiCrystallizer.class, 78, 36, 24, 16, CrystekRecipeCategoryUids.CRYSTALLIZER);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.crystallizer), CrystekRecipeCategoryUids.CRYSTALLIZER);
         registry.addRecipes(CrystekApi.crystallizerRecipes);
 
         //vanilla
         registry.addRecipeClickArea(GuiPoweredFurnace.class, 78, 36, 24, 16, VanillaRecipeCategoryUid.SMELTING);
+        registry.addRecipeCategoryCraftingItem(new ItemStack(ModBlocks.poweredFurnace), VanillaRecipeCategoryUid.SMELTING);
     }
 
     @Override

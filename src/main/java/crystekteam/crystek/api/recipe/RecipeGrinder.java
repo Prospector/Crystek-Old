@@ -56,7 +56,7 @@ public class RecipeGrinder
     {
         if(input != null)
         {
-            for (RecipeGrinder recipe : CrystekApi.smasherRecipes)
+            for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
             {
                 if (recipe.matches(input))
                 {

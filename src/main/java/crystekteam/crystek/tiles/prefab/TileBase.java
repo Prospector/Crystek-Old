@@ -55,6 +55,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         {
             this.tank = new Tank(tankCapacity, this);
         }
+        this.maxProgress=maxProgress;
     }
 
     public void generatePower(long amount)

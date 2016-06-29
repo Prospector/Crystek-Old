@@ -18,20 +18,26 @@ public class ModelHandler
         registerItemModel(ModBlocks.coalGen, 0);
         registerItemModel(ModBlocks.machineframe, 0);
         registerItemModel(ModBlocks.poweredFurnace, 0);
-        registerItemModel(ModItems.welder, 0);
         registerItemModel(ModItems.powerScanner, 0);
-        registerItemModel(ModItems.laserLinkingDevice, 0);
         registerItemModel(ModBlocks.grinder, 0);
         registerItemModel(ModBlocks.crystallizer, 0);
+        registerItemModel(ModBlocks.fluidizer, 0);
         registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.teslaCell, 0);
+
         registerItemModel(ModItems.battery, 0);
         registerItemModel(ModItems.drill, 0);
+
         registerItemModel(ModItems.ironGrindingBlade, 0);
         registerItemModel(ModItems.goldGrindingBlade, 0);
         registerItemModel(ModItems.diamondGrindingBlade, 0);
         registerItemModel(ModItems.obsidianGrindingBlade, 0);
         registerItemModel(ModItems.teslaAlloyGrindingBlade, 0);
+
+        registerItemModel(ModItems.powerArmourHelmet, 0);
+        registerItemModel(ModItems.powerArmourChestplate, 0);
+        registerItemModel(ModItems.powerArmourLeggings, 0);
+        registerItemModel(ModItems.powerArmourBoots, 0);
 
         int i;
         //Register all crafting items textures

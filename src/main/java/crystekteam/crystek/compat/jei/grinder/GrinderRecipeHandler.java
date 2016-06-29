@@ -1,7 +1,7 @@
 package crystekteam.crystek.compat.jei.grinder;
 
 import crystekteam.crystek.api.recipe.RecipeGrinder;
-import crystekteam.crystek.compat.jei.RecipeCategoryUids;
+import crystekteam.crystek.compat.jei.CrystekRecipeCategoryUids;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.recipe.IRecipeHandler;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -23,7 +23,7 @@ public class GrinderRecipeHandler implements IRecipeHandler<RecipeGrinder>
 	@Nonnull
 	@Override public String getRecipeCategoryUid(@Nonnull RecipeGrinder recipe)
 	{
-		return RecipeCategoryUids.GRINDER;
+		return CrystekRecipeCategoryUids.GRINDER;
 	}
 
 	@Nonnull @Override public Class<RecipeGrinder> getRecipeClass()
@@ -33,15 +33,15 @@ public class GrinderRecipeHandler implements IRecipeHandler<RecipeGrinder>
 
 	@Nonnull @Override public String getRecipeCategoryUid()
 	{
-		return RecipeCategoryUids.GRINDER;
+		return CrystekRecipeCategoryUids.GRINDER;
 	}
 
-	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeGrinder recipeOreSmasher)
+	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeGrinder recipe)
 	{
-		return new GrinderRecipeWrapper(recipeOreSmasher);
+		return new GrinderRecipeWrapper(recipe);
 	}
 
-	@Override public boolean isRecipeValid(@Nonnull RecipeGrinder recipeGrinder)
+	@Override public boolean isRecipeValid(@Nonnull RecipeGrinder recipe)
 	{
 		return true;
 	}
