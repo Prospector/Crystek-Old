@@ -117,6 +117,6 @@ public class GuiBase extends GuiContainer
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.mc.getTextureManager().bindTexture(overlays);
-		this.drawTexturedModalRect(k + x, l + y, 14, 10, 20, 64);
+		this.drawTexturedModalRect(k + x, l + y, 14, 10, 16, 64);
 	}
 }
