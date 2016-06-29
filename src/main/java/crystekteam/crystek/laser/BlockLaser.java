@@ -47,20 +47,20 @@ public class BlockLaser extends BlockBase
     }
 
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.INVISIBLE;
-    }
-
-
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
-    }
-
-    public boolean renderAsNormalBlock() {
-        return false;
-    }
+//    @Override
+//    public EnumBlockRenderType getRenderType(IBlockState state) {
+//        return EnumBlockRenderType.INVISIBLE;
+//    }
+//
+//
+//    @Override
+//    public boolean isOpaqueCube(IBlockState state) {
+//        return false;
+//    }
+//
+//    public boolean renderAsNormalBlock() {
+//        return false;
+//    }
 
 
 }

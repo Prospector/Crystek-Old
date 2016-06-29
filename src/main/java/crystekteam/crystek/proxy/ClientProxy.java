@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy
 
 	private static void registerFluid(FluidBlockBase fluid){
 		Item fluidTeslaItem = Item.getItemFromBlock(fluid);
-		ModelResourceLocation fluidTeslaLocation = new ModelResourceLocation(ModInfo.MOD_ID.toLowerCase()+":fluids", fluid.getFluid().getName().toLowerCase());
+		final ModelResourceLocation fluidTeslaLocation = new ModelResourceLocation(ModInfo.MOD_ID.toLowerCase()+":fluids", fluid.getFluid().getName().toLowerCase());
 		ModelBakery.registerItemVariants(fluidTeslaItem);
 		ModelLoader.setCustomMeshDefinition(fluidTeslaItem, new ItemMeshDefinition()
 		{
