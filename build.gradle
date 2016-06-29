@@ -24,21 +24,35 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.9.4-1.0.0"
+def ENV = System.getenv()
+
+version = "1.0.0"
+
+if(ENV.JOB_BASE_NAME == "Crytek-1.10.2"){
+    version = "1.10.2" + version
+} else if(ENV.JOB_BASE_NAME == "Crytek-1.10"){
+    version = "1.10" + version
+} else if(ENV.JOB_BASE_NAME == "Crytek-1.9.4"){
+    version = "1.9.4" + version
+}
+
 group= "com.crytekteam.crytek"
 archivesBaseName = "Crytek"
 
-def ENV = System.getenv()
+
 if (ENV.BUILD_NUMBER) {
     version = version + "." + "${System.getenv().BUILD_NUMBER}"
 }
 
 minecraft {
-    version = "1.9.4-12.17.0.1976"
+    version = "1.10.2-12.18.0.2002-1.10.0"
 	
     if(ENV.JOB_BASE_NAME == "Crytek-1.10"){
 	    version = "1.10-12.18.0.2000-1.10.0"
 	}
+    if(ENV.JOB_BASE_NAME == "Crytek-1.9.4"){
+        version = "1.9.4-12.17.0.1976"
+    }
     runDir = "run"
     mappings = "snapshot_20160518"
 }
