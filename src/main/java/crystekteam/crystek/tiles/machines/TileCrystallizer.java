@@ -53,13 +53,13 @@ public class TileCrystallizer extends TileMachine
         {
             setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
             decrStackSize(INPUT_SLOT, 1);
-            tank.drain(1000, true);
+            tank.drain(getDrainAmount(), true);
         }
         else if(ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
         {
             getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
             decrStackSize(INPUT_SLOT, 1);
-            tank.drain(1000, true);
+            tank.drain(getDrainAmount(), true);
         }
         if(inv.hasChanged)
         {
@@ -94,5 +94,22 @@ public class TileCrystallizer extends TileMachine
             }
         }
         return null;
+    }
+
+    public int getDrainAmount()
+    {
+        if(getStackInSlot(INPUT_SLOT) != null && tank.getFluid() != null)
+        {
+            ItemStack input = getStackInSlot(this.INPUT_SLOT);
+            FluidStack fluid = tank.getFluid();
+            for (RecipeCrystallizer recipe : CrystekApi.crystallizerRecipes)
+            {
+                if (recipe.matches(input, fluid) || recipe.getOutput().getItem() == Item.getItemFromBlock(getBlockType()))
+                {
+                    return recipe.getFluidStack().amount;
+                }
+            }
+        }
+        return 0;
     }
 }
