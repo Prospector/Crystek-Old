@@ -2,7 +2,6 @@ package crystekteam.crystek.compat.jei.crystallizer;
 
 import com.google.common.collect.ImmutableList;
 import crystekteam.crystek.api.recipe.RecipeCrystallizer;
-import crystekteam.crystek.api.recipe.RecipeGrinder;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;

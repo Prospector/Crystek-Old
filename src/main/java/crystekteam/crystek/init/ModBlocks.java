@@ -5,20 +5,14 @@ import crystekteam.crystek.blocks.BlockTeslaCell;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
-import crystekteam.crystek.blocks.machines.BlockCrystallizer;
-import crystekteam.crystek.blocks.machines.BlockFluidizer;
-import crystekteam.crystek.blocks.machines.BlockFurnace;
-import crystekteam.crystek.blocks.machines.BlockGrinder;
+import crystekteam.crystek.blocks.machines.*;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
-import crystekteam.crystek.tiles.machines.TileCrystallizer;
-import crystekteam.crystek.tiles.machines.TileFluidizer;
-import crystekteam.crystek.tiles.machines.TileFurnace;
-import crystekteam.crystek.tiles.machines.TileGrinder;
+import crystekteam.crystek.tiles.machines.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -37,6 +31,8 @@ public class ModBlocks
     public static Block grinder;
     public static Block crystallizer;
     public static Block fluidizer;
+    public static Block bucketer;
+
     //Power Storage
     public static Block teslaCell;
     //Power gen
@@ -86,6 +82,10 @@ public class ModBlocks
         fluidizer = new BlockFluidizer();
         registerBlock(fluidizer, "fluidizer");
         GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
+
+        bucketer = new BlockBucketer();
+        registerBlock(bucketer, "bucketer");
+        GameRegistry.registerTileEntity(TileBucketer.class, "bucketer");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

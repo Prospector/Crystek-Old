@@ -6,10 +6,7 @@ import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
-import crystekteam.crystek.tiles.machines.TileCrystallizer;
-import crystekteam.crystek.tiles.machines.TileFluidizer;
-import crystekteam.crystek.tiles.machines.TileFurnace;
-import crystekteam.crystek.tiles.machines.TileGrinder;
+import crystekteam.crystek.tiles.machines.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,6 +25,7 @@ public class GuiHandler implements IGuiHandler
     public static int crystallizer = 5;
     public static int fluidGenerator = 6;
     public static int fluidizer = 7;
+    public static int bucketer = 8;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -63,6 +61,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == fluidizer)
         {
             return new ContainerFluidizer((TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)), player);
+        }
+        if(ID == bucketer)
+        {
+            return new ContainerBucketer((TileBucketer) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
         return null;
     }
@@ -101,6 +103,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == fluidizer)
         {
             return new GuiFluidizer(player, (TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)));
+        }
+        if(ID == bucketer)
+        {
+            return new GuiBucketer(player, (TileBucketer) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }
