@@ -32,7 +32,7 @@ if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
     version = "1.10.2" + version
 } else if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
     version = "1.10" + version
-} else if(ENV.JOB_BASE_NAME == "Crystek-1.10.2){
+} else if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
     version = "1.9.4" + version
 }
 
