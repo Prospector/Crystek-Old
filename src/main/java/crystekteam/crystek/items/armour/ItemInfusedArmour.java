@@ -2,6 +2,7 @@ package crystekteam.crystek.items.armour;
 
 import crystekteam.crystek.CreativeTabCrystek;
 import crystekteam.crystek.lib.ModInfo;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
@@ -14,8 +15,7 @@ import java.util.List;
  */
 public class ItemInfusedArmour extends ItemTeslaArmour
 {
-	public ItemInfusedArmour(ArmorMaterial material, EntityEquipmentSlot slot, long maxCapacity, long input,
-			long output)
+	public ItemInfusedArmour(ArmorMaterial material, EntityEquipmentSlot slot, long maxCapacity, long input, long output)
 	{
 		super(material, material.getDamageReductionAmount(slot), slot, maxCapacity, input, output);
 		if (slot == EntityEquipmentSlot.HEAD)
@@ -33,5 +33,15 @@ public class ItemInfusedArmour extends ItemTeslaArmour
 	{
 		tooltip.add(TextFormatting.RED + "" + TextFormatting.BOLD + "<WIP>");
 		super.addInformation(stack, playerIn, tooltip, advanced);
+	}
+
+	@Override
+	public String getArmorTexture(ItemStack itemStack, Entity entity, EntityEquipmentSlot slot, String layer)
+	{
+		if(armorType == EntityEquipmentSlot.LEGS)
+		{
+			return "crystek:textures/armour/infused_layer_2.png";
+		}
+		return "crystek:textures/armour/infused_layer_1.png";
 	}
 }
