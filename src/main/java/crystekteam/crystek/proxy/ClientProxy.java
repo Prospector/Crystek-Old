@@ -1,10 +1,8 @@
 package crystekteam.crystek.proxy;
 
 import crystekteam.crystek.blocks.fluids.FluidBlockBase;
-import crystekteam.crystek.client.render.RenderLaser;
 import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.init.ModelHandler;
-import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -14,7 +12,6 @@ import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy
 {
@@ -22,7 +19,6 @@ public class ClientProxy extends CommonProxy
     public void registerRenders()
     {
         ModelHandler.init();
-        ClientRegistry.bindTileEntitySpecialRenderer(TileLaser.class, new RenderLaser());
 		registerFluidRenders();
     }
 

@@ -23,7 +23,7 @@ public class ModFluids
 	public static void init()
 	{
 		FluidRegistry.registerFluid(fluidTesla);
-		fluidTeslaBlock=new FluidBlockBase(fluidTesla, Material.LAVA);
+		fluidTeslaBlock = new FluidBlockBase(fluidTesla, Material.LAVA);
 		GameRegistry.register(fluidTeslaBlock);
 		GameRegistry.register(new ItemBlock(fluidTeslaBlock).setRegistryName(fluidTeslaBlock.getRegistryName()));
 		FluidRegistry.addBucketForFluid(fluidTesla);

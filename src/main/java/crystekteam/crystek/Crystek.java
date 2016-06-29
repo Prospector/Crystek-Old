@@ -37,12 +37,12 @@ public class Crystek
         //Config stuff
         String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(ModInfo.MOD_ID, "Crystek");
         config = ConfigAE.initialize(new File(path));
+        //Register fluids
+        ModFluids.init();
         //Register Items
         ModItems.init();
         //Register Blocks
         ModBlocks.init();
-        //Register fluids
-        ModFluids.init();
         //Register Recipes
         ModRecipes.init();
         //Packets
