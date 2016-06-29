@@ -1,5 +1,7 @@
 package crystekteam.crystek.laser;
 
+import crystekteam.crystek.client.partciles.PartcileEngine;
+import crystekteam.crystek.init.ModBlocks;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.tileentity.TileEntity;
@@ -29,6 +31,22 @@ public class TileLaser extends TileTeslaStorage
         if(hasConnectedTile() && getStoredPower() != 1000)
         {
             requestPower(1000);
+        }
+
+        int radius = 10;
+
+        for (int x = -radius; x < radius; x++) {
+            for (int y = -radius; y < radius; y++) {
+                for (int z = -radius; z < radius; z++) {
+                    BlockPos pos = getPos().add(x, y, z);
+                    if(!pos.equals(getPos())){
+                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.laser){
+                            PartcileEngine.renderEnergyBeam(worldObj, getPos(), pos);
+                        }
+                    }
+
+                }
+            }
         }
     }
 

@@ -26,7 +26,7 @@ targetCompatibility = 1.8
 
 def ENV = System.getenv()
 
-version = "1.0.0"
+version = "-1.0.0"
 
 if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
     version = "1.10.2" + version
@@ -36,8 +36,8 @@ if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
     version = "1.9.4" + version
 }
 
-group= "com.crytekteam.crytek"
-archivesBaseName = "Crytek"
+group= "com.crytekteam.crystek"
+archivesBaseName = "Crystek"
 
 
 if (ENV.BUILD_NUMBER) {
