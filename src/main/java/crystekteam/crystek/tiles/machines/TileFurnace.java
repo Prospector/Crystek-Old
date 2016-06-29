@@ -34,15 +34,17 @@ public class TileFurnace extends TileMachine
             }
             if (getProgress() >= fuelScale)
             {
+                resetProgress();
                 updateState();
-                this.resetProgress();
                 cookItems();
                 updateInventory = true;
+                syncWithAll();
             }
         }
         if (burning != isBurning())
         {
             updateInventory = true;
+            resetProgress();
         }
         if (updateInventory)
         {

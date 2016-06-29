@@ -6,4 +6,5 @@ package crystekteam.crystek.compat.jei;
 public class RecipeCategoryUids
 {
     public static final String GRINDER = "Crystek.Grinder";
+    public static final String CRYSTALLIZER = "Crystek.Crystallizer";
 }

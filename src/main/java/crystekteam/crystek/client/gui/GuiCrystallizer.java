@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiCrystallizer extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/crystallizer.png");
+    public static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/crystallizer.png");
     TileCrystallizer tileCrystallizer;
 
     public GuiCrystallizer(EntityPlayer player, TileBase tile)
