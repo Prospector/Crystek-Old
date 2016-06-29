@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.io.File;
 
-@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION)
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION, dependencies = ModInfo.MOD_DRPENDENCES)
 public class Crystek
 {
     @Mod.Instance(ModInfo.MOD_ID)
