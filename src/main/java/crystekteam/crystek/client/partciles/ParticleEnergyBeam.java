@@ -1,22 +1,11 @@
 package crystekteam.crystek.client.partciles;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.FMLClientHandler;
-import org.lwjgl.opengl.GL11;
-
-import java.util.ArrayDeque;
-import java.util.Queue;
 
 
 /**
@@ -46,7 +35,7 @@ public class ParticleEnergyBeam extends Particle {
         this.reddustParticleScale = this.particleScale;
         this.particleMaxAge = (int)  10F;
 
-        field_190017_n = false;
+        //field_190017_n = false;
 
     }
 

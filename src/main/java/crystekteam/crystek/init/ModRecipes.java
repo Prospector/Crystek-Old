@@ -67,10 +67,10 @@ public class ModRecipes
 						"ingotObsidian", 'b', new ItemStack(Items.BUCKET)));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModBlocks.fluidizer), "olo", "cgc", "oro", 'l', "gemLapis", 'r',
-						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Blocks.CAULDRON), 'o', "ingotObsidian"));
+						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Items.CAULDRON), 'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModBlocks.crystallizer), "olo", "cgc", "oro", 'l', "ingotGold", 'r',
-						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Blocks.CAULDRON), 'o', "ingotObsidian"));
+						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Items.CAULDRON), 'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "oio", "fcf", "oro", 'i', "ingotIron", 'r',
 						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Items.FLINT), 'o', "ingotObsidian"));
