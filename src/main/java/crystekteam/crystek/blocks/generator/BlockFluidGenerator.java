@@ -33,10 +33,13 @@ public class BlockFluidGenerator extends BlockBase
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!fillBlockWithFluid(worldIn, pos, playerIn, heldItem, side))
-            playerIn.openGui(Crystek.instance, GuiHandler.fluidGenerator, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        if(!fillBlockWithFluid(world, pos, playerIn, heldItem, side))
+        {
+            super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+            playerIn.openGui(Crystek.instance, GuiHandler.fluidGenerator, world, pos.getX(), pos.getY(), pos.getZ());
+        }
         return true;
     }
 }

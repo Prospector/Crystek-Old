@@ -5,6 +5,7 @@ import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
+import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,6 +32,7 @@ public class BlockCrystallizer extends BlockBase
     {
         if(!playerIn.isSneaking() && !fillBlockWithFluid(world, pos, playerIn, heldItem, side))
         {
+            super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
             playerIn.openGui(Crystek.instance, GuiHandler.crystallizer, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;

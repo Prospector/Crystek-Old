@@ -219,7 +219,6 @@ public class TileBase extends TileEntity implements IInventory, ITickable
 
         if(tank != null)
             readTankFromNBT(compound);
-//            tank.readFromNBT(compound);
 
         this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }

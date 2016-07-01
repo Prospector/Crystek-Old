@@ -1,6 +1,7 @@
 package crystekteam.crystek.blocks;
 
 import crystekteam.crystek.CreativeTabCrystek;
+import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -17,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidBase;
@@ -24,6 +26,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,6 +43,17 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
         setCreativeTab(CreativeTabCrystek.instance);
         setHardness(2.0F);
         isBlockContainer = true;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+        if(world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileBase)
+        {
+            TileBase tileBase = (TileBase) world.getTileEntity(pos);
+            tileBase.syncWithAll();
+        }
+        return true;
     }
 
     @Override

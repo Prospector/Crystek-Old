@@ -37,6 +37,7 @@ public class BlockFluidizer extends BlockBase
     {
         if(!playerIn.isSneaking() && !fillBlockWithFluid(world, pos, playerIn, heldItem, side))
         {
+            super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
             playerIn.openGui(Crystek.instance, GuiHandler.fluidizer, world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
