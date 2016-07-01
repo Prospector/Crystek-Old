@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -127,9 +128,12 @@ public class ContainerBase extends Container
             int playerInv = 30;
             if (i < this.tile.getSizeInventory() + playerInv)
             {
-                if (!this.mergeItemStack(itemstack1, this.tile.getSizeInventory() + playerInv, this.inventorySlots.size(), true))
+                if(!(slot instanceof SlotFurnaceOutput))
                 {
-                    return null;
+                    if (!this.mergeItemStack(itemstack1, this.tile.getSizeInventory() + playerInv, this.inventorySlots.size(), true))
+                    {
+                        return null;
+                    }
                 }
             }
             else if (!this.mergeItemStack(itemstack1, 0, this.tile.getSizeInventory() + playerInv, false))
