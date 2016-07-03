@@ -63,7 +63,7 @@ public class ConfigAE
                 "solarTick", 5,
                 "The amount of power crated by the solar panel")
                 .getLong();
-        solarPanelMaxUpgrades = config.get(CATEGORY_POWER,
+        solarPanelMaxUpgrades = config.get(CATEGORY_UPGRADES,
                 "solarPanelMaxUpgrades", 16,
                 "The amount of upgrades the solar panel can have")
                 .getInt();

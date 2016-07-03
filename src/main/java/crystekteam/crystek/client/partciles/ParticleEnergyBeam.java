@@ -27,11 +27,11 @@ public class ParticleEnergyBeam extends Particle {
         this.motionZ *= pos1.getZ() - pos2.getZ();
 
         float f4 = (float) Math.random() * 0.4F + 0.6F;
-        this.particleRed = 0.2F;
-        this.particleGreen = 0.2F;
-        this.particleBlue = 0.9F;
+        this.particleRed = 0.99F;
+        this.particleGreen = 0.0F;
+        this.particleBlue = 0.0F;
         this.particleScale *= 1F;
-        this.particleAlpha = 1f;
+        this.particleAlpha = 2f;
         this.reddustParticleScale = this.particleScale;
         this.particleMaxAge = (int)  10F;
 
@@ -81,7 +81,7 @@ public class ParticleEnergyBeam extends Particle {
             this.setExpired();
         }
 
-       // this.setParticleTextureIndex(7 - this.particleAge * 8 / this.particleMaxAge);
+        this.setParticleTextureIndex(7 - this.particleAge * 8 / this.particleMaxAge);
         this.moveEntity(this.motionX, this.motionY, this.motionZ);
 
         if (this.posY == this.prevPosY)
