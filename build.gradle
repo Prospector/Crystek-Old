@@ -106,6 +106,12 @@ processResources
     }
 }
 
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    from sourceSets.main.java
+    classifier = 'dev'
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
