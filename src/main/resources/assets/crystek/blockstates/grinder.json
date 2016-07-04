@@ -6,7 +6,7 @@
       "textures":{
          "particle":"crystek:blocks/machine/machine_top",
          "top":"crystek:blocks/machine/machine_top",
-         "bottom":"crystek:blocks/machine/machine_bottom",
+         "down":"crystek:blocks/machine/machine_bottom",
          "side":"crystek:blocks/machine/machine_side"
       }
    },
@@ -48,7 +48,7 @@
          "textures": {
             "particle": "crystek:blocks/machine/machine_top",
             "top": "crystek:blocks/machine/machine_top",
-			"bottom":"crystek:blocks/machine/machine_bottom",
+			"down":"crystek:blocks/machine/machine_bottom",
             "side": "crystek:blocks/machine/machine_side",
             "front": "crystek:blocks/machine/grinder_front"
          }
