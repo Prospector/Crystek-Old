@@ -26,7 +26,7 @@ public class GuiBucketer extends GuiBase
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         drawPowerBar(tileCrystallizer);
-        drawProgressbar(tile, 85, 40);
+        drawProgressbar(tile, 85, 41);
         drawTank(tile, guiLeft + 82, guiTop + 11, zLevel, 14, 64);
     }
 }
