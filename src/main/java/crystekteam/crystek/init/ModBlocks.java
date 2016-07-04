@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.blocks.BlockMachineFrame;
+import crystekteam.crystek.blocks.BlockTank;
 import crystekteam.crystek.blocks.BlockTeslaCell;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
@@ -8,6 +9,7 @@ import crystekteam.crystek.blocks.generator.BlockSolarPanel;
 import crystekteam.crystek.blocks.machines.*;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
+import crystekteam.crystek.tiles.TileTank;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
@@ -24,6 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 public class ModBlocks
 {
     public static Block machineframe;
+    public static Block tank;
     //Decor
     public static Block lamp;
     //Machines
@@ -86,6 +89,10 @@ public class ModBlocks
         bucketer = new BlockBucketer();
         registerBlock(bucketer, "bucketer");
         GameRegistry.registerTileEntity(TileBucketer.class, "bucketer");
+
+        tank = new BlockTank();
+        registerBlock(tank, "tank");
+        GameRegistry.registerTileEntity(TileTank.class, "tank");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)
