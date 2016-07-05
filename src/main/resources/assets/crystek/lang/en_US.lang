@@ -52,6 +52,7 @@ item.crystek.infusedarmour.boots.name=Tesla-Infused Boots
 
 //Fluids
 fluid.fluidTesla=Fluid Tesla
+tile.crystek.fluid.fluidtesla.name=Fluid Tesla
 
 //Generators
 tile.crystek.coalgenerator.name=Generator
@@ -79,3 +80,7 @@ desc.circuit.storage.2=a machine can store
 desc.circuit.efficiency.1=Creates more power with
 desc.circuit.efficiency.2=the same amount of fuel
 desc.grindingblade=Can be repaired with
+
+//JEI
+crystek.jei.category.grinder=Grinding
+crystek.jei.category.crystallizer=Crystallizing

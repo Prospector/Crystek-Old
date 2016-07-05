@@ -94,17 +94,8 @@ public class CrystekWorldEventListener implements IWorldEventListener
 							worldObj.spawnEntityInWorld(
 									new EntityItem(worldObj, blockPosIn.getX(), blockPosIn.getY(), blockPosIn.getZ(),
 											getOutputItem(input)));
-						} else
-						{
-							System.out.println("Output is null");
 						}
-					} else
-					{
-						System.out.println("Recipe not valid");
 					}
-				} else
-				{
-					System.out.println("State was null");
 				}
 			}
 		}
@@ -114,15 +105,9 @@ public class CrystekWorldEventListener implements IWorldEventListener
 	{
 		for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
 		{
-			if (recipe.getInput() instanceof ItemStack)
+			if (recipe.matches(input))
 			{
-				ItemStack stack = (ItemStack) recipe.getInput();
-				if (stack.isItemEqual(input))
-				{
-					ItemStack output = recipe.getOutput().copy();
-					return true;
-				}
-
+				return true;
 			}
 		}
 		return false;

@@ -50,7 +50,8 @@ public class GuiBase extends GuiContainer
 		int l = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 		//TODO Remove this later
-		this.drawTexturedModalRect(k + 151, l + 7, 32, 5, 18, 18);
+		this.mc.getTextureManager().bindTexture(overlays);
+		this.drawTexturedModalRect(k + 151, l + 7, 31, 5, 18, 18);
 	}
 
 	public void drawProgressbar(TileBase tile, int x, int y)

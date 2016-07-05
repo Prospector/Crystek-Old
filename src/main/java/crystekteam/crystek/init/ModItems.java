@@ -91,6 +91,12 @@ public class ModItems
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalPurple);
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalBlue);
 
+		OreDictionary.registerOre("crystekGrindingBlade", ironGrindingBlade);
+		OreDictionary.registerOre("crystekGrindingBlade", goldGrindingBlade);
+		OreDictionary.registerOre("crystekGrindingBlade", diamondGrindingBlade);
+		OreDictionary.registerOre("crystekGrindingBlade", obsidianGrindingBlade);
+		OreDictionary.registerOre("crystekGrindingBlade", teslaAlloyGrindingBlade);
+
 		int i;
 		//Register ore dict values for all crafting items
 		for (i = 0; i < ItemCrafting.types.length; ++i)

@@ -36,7 +36,7 @@ public class ItemGrindingBlade extends ItemBase
 		ItemGrindingBlade blade = (ItemGrindingBlade) stack.getItem();
 		tooltip.add(TextFormatting.DARK_GRAY + I18n.translateToLocal("desc.grindingblade") + " " + I18n
 				.translateToLocal(blade.repairStack.getUnlocalizedName() + ".name"));
-		switch (speed)
+		/*switch (speed)
 		{
 			case 0:
 				tooltip.add(TextFormatting.GRAY + "Slow Speed");
@@ -47,6 +47,7 @@ public class ItemGrindingBlade extends ItemBase
 			case 3:
 				tooltip.add(TextFormatting.GRAY + "Fast Speed");
 		}
+		*/
 		if (stack.getMaxDamage() != 0)
 		{
 			tooltip.add(

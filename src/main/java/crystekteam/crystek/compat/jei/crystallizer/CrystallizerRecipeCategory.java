@@ -1,7 +1,7 @@
 package crystekteam.crystek.compat.jei.crystallizer;
 
-import crystekteam.crystek.client.gui.GuiCrystallizer;
 import crystekteam.crystek.compat.jei.CrystekRecipeCategoryUids;
+import crystekteam.crystek.lib.ModInfo;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiFluidStackGroup;
@@ -9,6 +9,7 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 
 import javax.annotation.Nonnull;
@@ -22,12 +23,13 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
     private static final int FLUID_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
 
+    public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/jei/crystallizer.png");
     private final IDrawable background;
     private final String title;
 
     public CrystallizerRecipeCategory(IGuiHelper guiHelper)
     {
-        background = guiHelper.createDrawable(GuiCrystallizer.textureloc, 5, 5, 140, 76);
+        background = guiHelper.createDrawable(texture, 34, 6, 108, 74);
         title = I18n.translateToLocal("crystek.jei.category.crystallizer");
     }
 
@@ -62,17 +64,17 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
     @Override
     public void setRecipe(@Nonnull IRecipeLayout recipeLayout, @Nonnull IRecipeWrapper recipeWrapper)
     {
-        recipeLayout.getItemStacks().init(INPUT_SLOT, true, 55, 29);
-        recipeLayout.getItemStacks().init(OUTPUT_SLOT, false, 116, 29);
+        recipeLayout.getItemStacks().init(INPUT_SLOT, true, 26, 28);
+        recipeLayout.getItemStacks().init(OUTPUT_SLOT, false, 86, 28);
         IGuiFluidStackGroup guiFluidStacks = recipeLayout.getFluidStacks();
-        guiFluidStacks.init(FLUID_SLOT, true, 34, 5, 14, 65, 4000, true, null);
+        guiFluidStacks.init(FLUID_SLOT, true, 5, 5, 14, 64, 4000, true, null);
 
         if (recipeWrapper instanceof CrystallizerRecipeWrapper)
         {
-            CrystallizerRecipeWrapper alchemyArrayWrapper = (CrystallizerRecipeWrapper) recipeWrapper;
-            recipeLayout.getItemStacks().set(INPUT_SLOT, alchemyArrayWrapper.getInputs());
-            recipeLayout.getItemStacks().set(OUTPUT_SLOT, alchemyArrayWrapper.getOutputs());
-            guiFluidStacks.set(FLUID_SLOT, alchemyArrayWrapper.getFluidInputs());
+            CrystallizerRecipeWrapper wrapper = (CrystallizerRecipeWrapper) recipeWrapper;
+            recipeLayout.getItemStacks().set(INPUT_SLOT, wrapper.getInputs());
+            recipeLayout.getItemStacks().set(OUTPUT_SLOT, wrapper.getOutputs());
+            guiFluidStacks.set(FLUID_SLOT, wrapper.getFluidInputs());
         }
     }
 }
