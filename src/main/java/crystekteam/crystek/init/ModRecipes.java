@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class ModRecipes
 {
 	public static void init()
@@ -158,9 +160,16 @@ public class ModRecipes
 	{
 		if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput))
 		{
-			ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
-			output.stackSize = outputAmount;
-			CrystekApi.registerGrinderRecipe(output, oreDictInput);
+			try
+            {
+				ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
+				output.stackSize = outputAmount;
+				CrystekApi.registerGrinderRecipe(output, oreDictInput);
+			}
+            catch (NullPointerException e)
+            {
+                e.printStackTrace();
+            }
 		}
 	}
 
