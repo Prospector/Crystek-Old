@@ -5,7 +5,7 @@
       "model":"orientable",
       "textures":{
          "particle":"crystek:blocks/machine/machine_top",
-         "bottom":"crystek:blocks/machine/machine_bottom"
+         "down":"crystek:blocks/machine/machine_bottom"
       }
    },
    "variants":{

@@ -57,7 +57,7 @@ public class ModRecipes
 						'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModItems.teslaAlloyGrindingBlade), " m ", "mom", " m ", 'm',
-						"ingotTesla", 'o', "ingotObsidian"));
+						"ingotTeslaAlloy", 'o', "ingotObsidian"));
 		//TODO Add manual power generation and make this require tesla crystal
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModBlocks.coalGen), "ooo", "oco", "obo", 'c', "blockGlass", 'o',
@@ -72,10 +72,10 @@ public class ModRecipes
 				new ShapedOreRecipe(new ItemStack(ModBlocks.crystallizer), "olo", "cgc", "oro", 'l', "ingotGold", 'r',
 						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Items.CAULDRON), 'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "oio", "fcf", "oro", 'i', "ingotIron", 'r',
+				new ShapedOreRecipe(new ItemStack(ModBlocks.grinder), "oio", "fcf", "oro", 'i', "dustIron", 'r',
 						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Items.FLINT), 'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.grinder), "odo", "fcf", "oro", 'd', "dustIron", 'r',
+				new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "odo", "fcf", "oro", 'd', "ingotIron", 'r',
 						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Blocks.FURNACE), 'o', "ingotObsidian"));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(new ItemStack(ModBlocks.teslaCell), "oco", "oco", "oco", 'c', "crystalTesla", 'o',
@@ -118,32 +118,33 @@ public class ModRecipes
 		CrystekApi.registerGrinderRecipe(ItemBank.obsidianDust, new ItemStack(Blocks.OBSIDIAN));
 
 		//Ores
-		addOreGrinderRecipe("Iron");
-		addOreGrinderRecipe("Gold");
-		addOreGrinderRecipe("Coal");
-		addOreGrinderRecipe("Redstone");
-		addOreGrinderRecipe("Diamond");
-		addOreGrinderRecipe("Emerald");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
-		addOreGrinderRecipe("Copper");
-		addOreGrinderRecipe("Tin");
-		addOreGrinderRecipe("Nickel");
-		addOreGrinderRecipe("Zinc");
-		addOreGrinderRecipe("Bronze");
-		addOreGrinderRecipe("Brass");
-		addOreGrinderRecipe("Silver");
-		addOreGrinderRecipe("Lead");
-		addOreGrinderRecipe("Steel");
-		addOreGrinderRecipe("Electrum");
-		addOreGrinderRecipe("AluminumBrass");
-		addOreGrinderRecipe("AluminiumBrass");
-		addOreGrinderRecipe("Invar");
-		addOreGrinderRecipe("Aluminum");
-		addOreGrinderRecipe("Aluminium");
-		addOreGrinderRecipe("Platinum");
+        //Todo recipe handler for this 
+//		addOreGrinderRecipe("Iron");
+//		addOreGrinderRecipe("Gold");
+//		addOreGrinderRecipe("Coal");
+//		addOreGrinderRecipe("Redstone");
+//		addOreGrinderRecipe("Diamond");
+//		addOreGrinderRecipe("Emerald");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
+//		addOreGrinderRecipe("Copper");
+//		addOreGrinderRecipe("Tin");
+//		addOreGrinderRecipe("Nickel");
+//		addOreGrinderRecipe("Zinc");
+//		addOreGrinderRecipe("Bronze");
+//		addOreGrinderRecipe("Brass");
+//		addOreGrinderRecipe("Silver");
+//		addOreGrinderRecipe("Lead");
+//		addOreGrinderRecipe("Steel");
+//		addOreGrinderRecipe("Electrum");
+//		addOreGrinderRecipe("AluminumBrass");
+//		addOreGrinderRecipe("AluminiumBrass");
+//		addOreGrinderRecipe("Invar");
+//		addOreGrinderRecipe("Aluminum");
+//		addOreGrinderRecipe("Aluminium");
+//		addOreGrinderRecipe("Platinum");
 	}
 
 	public static void addOreGrinderRecipe(String name)
@@ -158,9 +159,16 @@ public class ModRecipes
 	{
 		if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput))
 		{
-			ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
-			output.stackSize = outputAmount;
-			CrystekApi.registerGrinderRecipe(output, oreDictInput);
+			try
+            {
+				ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
+				output.stackSize = outputAmount;
+				CrystekApi.registerGrinderRecipe(output, oreDictInput);
+			}
+            catch (NullPointerException e)
+            {
+                e.printStackTrace();
+            }
 		}
 	}
 

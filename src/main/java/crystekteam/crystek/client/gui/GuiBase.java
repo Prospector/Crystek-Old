@@ -64,7 +64,7 @@ public class GuiBase extends GuiContainer
 			int j = this.container.progress / 4;
 			this.mc.getTextureManager().bindTexture(overlays);
 			if (j > 0)
-				this.drawTexturedModalRect(k + x, l + y, 16, 0, j + 1, 4);
+				this.drawTexturedModalRect(k + x, l + y, 14, 1, j + 1, 4);
 		}
 	}
 

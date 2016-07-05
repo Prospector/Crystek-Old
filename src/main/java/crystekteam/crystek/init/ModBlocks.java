@@ -51,8 +51,8 @@ public class ModBlocks
         registerBlock(machineframe, "machineframe");
 
         coalGen = new BlockCoalGenerator();
-        registerBlock(coalGen, "Coalgenerator");
-        GameRegistry.registerTileEntity(TileCoalGenerator.class, "coalgentile");
+        registerBlock(coalGen, "coalgenerator");
+        GameRegistry.registerTileEntity(TileCoalGenerator.class, "coalgenerator");
 
         teslaCell = new BlockTeslaCell();
         registerBlock(teslaCell, "teslacell");
