@@ -26,6 +26,6 @@ public class GuiPoweredFurnace extends GuiBase
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         drawPowerBar(tileFurnace);
-        drawProgressbar(tile, 72, 40);
+        drawProgressbar(tile, 72, 41);
     }
 }
