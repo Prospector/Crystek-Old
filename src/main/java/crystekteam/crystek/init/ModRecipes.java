@@ -120,32 +120,33 @@ public class ModRecipes
 		CrystekApi.registerGrinderRecipe(ItemBank.obsidianDust, new ItemStack(Blocks.OBSIDIAN));
 
 		//Ores
-		addOreGrinderRecipe("Iron");
-		addOreGrinderRecipe("Gold");
-		addOreGrinderRecipe("Coal");
-		addOreGrinderRecipe("Redstone");
-		addOreGrinderRecipe("Diamond");
-		addOreGrinderRecipe("Emerald");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
-		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
-		addOreGrinderRecipe("Copper");
-		addOreGrinderRecipe("Tin");
-		addOreGrinderRecipe("Nickel");
-		addOreGrinderRecipe("Zinc");
-		addOreGrinderRecipe("Bronze");
-		addOreGrinderRecipe("Brass");
-		addOreGrinderRecipe("Silver");
-		addOreGrinderRecipe("Lead");
-		addOreGrinderRecipe("Steel");
-		addOreGrinderRecipe("Electrum");
-		addOreGrinderRecipe("AluminumBrass");
-		addOreGrinderRecipe("AluminiumBrass");
-		addOreGrinderRecipe("Invar");
-		addOreGrinderRecipe("Aluminum");
-		addOreGrinderRecipe("Aluminium");
-		addOreGrinderRecipe("Platinum");
+        //Todo recipe handler for this 
+//		addOreGrinderRecipe("Iron");
+//		addOreGrinderRecipe("Gold");
+//		addOreGrinderRecipe("Coal");
+//		addOreGrinderRecipe("Redstone");
+//		addOreGrinderRecipe("Diamond");
+//		addOreGrinderRecipe("Emerald");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 6, 11), "oreLapis");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 2), "oreQuartz");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.DYE, 9, 11), "blockLapis");
+//		CrystekApi.registerGrinderRecipe(new ItemStack(Items.QUARTZ, 4), "blockQuartz");
+//		addOreGrinderRecipe("Copper");
+//		addOreGrinderRecipe("Tin");
+//		addOreGrinderRecipe("Nickel");
+//		addOreGrinderRecipe("Zinc");
+//		addOreGrinderRecipe("Bronze");
+//		addOreGrinderRecipe("Brass");
+//		addOreGrinderRecipe("Silver");
+//		addOreGrinderRecipe("Lead");
+//		addOreGrinderRecipe("Steel");
+//		addOreGrinderRecipe("Electrum");
+//		addOreGrinderRecipe("AluminumBrass");
+//		addOreGrinderRecipe("AluminiumBrass");
+//		addOreGrinderRecipe("Invar");
+//		addOreGrinderRecipe("Aluminum");
+//		addOreGrinderRecipe("Aluminium");
+//		addOreGrinderRecipe("Platinum");
 	}
 
 	public static void addOreGrinderRecipe(String name)
