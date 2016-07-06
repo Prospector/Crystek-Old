@@ -6,6 +6,7 @@ import crystekteam.crystek.items.misc.ItemGrindingBlade;
 import crystekteam.crystek.items.powered.ItemBattery;
 import crystekteam.crystek.items.tools.ItemCircuit;
 import crystekteam.crystek.items.tools.ItemPowerScanner;
+import crystekteam.crystek.items.tools.ItemWrench;
 import crystekteam.crystek.items.tools.tesla.ItemDrill;
 import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
@@ -24,6 +25,7 @@ public class ModItems
 	public static Item circuit;
 	public static Item battery;
 	public static Item drill;
+	public static Item wrench;
 	public static ItemGrindingBlade ironGrindingBlade;
 	public static ItemGrindingBlade goldGrindingBlade;
 	public static ItemGrindingBlade diamondGrindingBlade;
@@ -53,6 +55,9 @@ public class ModItems
 
 		drill = new ItemDrill();
 		GameRegistry.register(drill);
+
+        wrench = new ItemWrench();
+        GameRegistry.register(wrench);
 
 		ironGrindingBlade = new ItemGrindingBlade("grindingbladeIron", 2, 63, new ItemStack(Items.IRON_INGOT));
 		GameRegistry.register(ironGrindingBlade);

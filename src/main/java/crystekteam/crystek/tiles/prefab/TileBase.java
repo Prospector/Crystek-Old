@@ -1,5 +1,6 @@
 package crystekteam.crystek.tiles.prefab;
 
+import crystekteam.crystek.api.IWrenchable;
 import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * Created by Gigabit101 on 01/06/2016.
  */
-public class TileBase extends TileEntity implements IInventory, ITickable
+public class TileBase extends TileEntity implements IInventory, ITickable, IWrenchable
 {
     public Inventory inv;
     public Tank tank;
@@ -201,7 +202,8 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         if(tank != null)
             writeTankToNBT(compound);
 
-        compound.setTag("TeslaContainer", this.container.serializeNBT());
+        if(getMaxCapacity() != 0)
+            compound.setTag("TeslaContainer", this.container.serializeNBT());
         return super.writeToNBT(compound);
     }
 
@@ -220,7 +222,8 @@ public class TileBase extends TileEntity implements IInventory, ITickable
         if(tank != null)
             readTankFromNBT(compound);
 
-        this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
+        if(getMaxCapacity() != 0)
+            this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }
 
     public void readTankFromNBT(NBTTagCompound tags) {
@@ -391,5 +394,17 @@ public class TileBase extends TileEntity implements IInventory, ITickable
 //        {
 //            info.add(this.container.getStoredPower() + " / " + getMaxCapacity());
 //        }
+    }
+
+    @Override
+    public boolean isWrenchable()
+    {
+        return true;
+    }
+
+    @Override
+    public ItemStack returnStack()
+    {
+        return new ItemStack(this.getBlockType());
     }
 }
