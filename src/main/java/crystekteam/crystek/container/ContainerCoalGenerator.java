@@ -1,5 +1,6 @@
 package crystekteam.crystek.container;
 
+import crystekteam.crystek.container.slot.SlotCharge;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -13,6 +14,6 @@ public class ContainerCoalGenerator extends ContainerBase
         addPlayersHotbar();
         addPlayersInventory();
         this.addSlotToContainer(new SlotFurnaceFuel(tile.getInv(), 0, 80, 55));
-        this.addSlotToContainer(new Slot(tile.getInv(), 1, 8, 62));
+        this.addSlotToContainer(new SlotCharge(tile.getInv(), 1, 8, 62));
     }
 }
