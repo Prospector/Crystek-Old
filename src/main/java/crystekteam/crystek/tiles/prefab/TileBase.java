@@ -196,15 +196,6 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         writeToNBTWithoutCoords(compound);
-//        compound = super.writeToNBT(compound);
-//        if(inv != null)
-//         inv.writeToNBT(compound);
-//
-//        if(tank != null)
-//            writeTankToNBT(compound);
-//
-//        if(getMaxCapacity() != 0)
-//            compound.setTag("TeslaContainer", this.container.serializeNBT());
         return super.writeToNBT(compound);
     }
 
@@ -218,10 +209,6 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         return tagCompound;
     }
 
-//    public void writeTankToNBT(NBTTagCompound tags)
-//    {
-//        tank.writeToNBT(tags);
-//    }
 
     public void readFromNBTWithoutCoords(NBTTagCompound tagCompound)
     {
@@ -237,19 +224,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     {
         super.readFromNBT(compound);
         readFromNBTWithoutCoords(compound);
-//        if(inv != null)
-//            inv.readFromNBT(compound);
-//
-//        if(tank != null)
-//            readTankFromNBT(compound);
-//
-//        if(getMaxCapacity() != 0)
-//            this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }
-
-//    public void readTankFromNBT(NBTTagCompound tags) {
-//        tank.readFromNBT(tags);
-//    }
 
     public long getPowerScaled (int scale)
     {
