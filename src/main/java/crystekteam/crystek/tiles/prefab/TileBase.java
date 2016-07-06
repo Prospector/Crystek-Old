@@ -195,40 +195,61 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        compound = super.writeToNBT(compound);
-        if(inv != null)
-         inv.writeToNBT(compound);
-
-        if(tank != null)
-            writeTankToNBT(compound);
-
-        if(getMaxCapacity() != 0)
-            compound.setTag("TeslaContainer", this.container.serializeNBT());
+        writeToNBTWithoutCoords(compound);
+//        compound = super.writeToNBT(compound);
+//        if(inv != null)
+//         inv.writeToNBT(compound);
+//
+//        if(tank != null)
+//            writeTankToNBT(compound);
+//
+//        if(getMaxCapacity() != 0)
+//            compound.setTag("TeslaContainer", this.container.serializeNBT());
         return super.writeToNBT(compound);
     }
 
-    public void writeTankToNBT(NBTTagCompound tags)
+    public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound tagCompound)
     {
-        tank.writeToNBT(tags);
+        if(tank != null)
+         tank.writeToNBT(tagCompound);
+        if(inv != null)
+            inv.writeToNBT(tagCompound);
+        tagCompound.setTag("TeslaContainer", this.container.serializeNBT());
+        return tagCompound;
+    }
+
+//    public void writeTankToNBT(NBTTagCompound tags)
+//    {
+//        tank.writeToNBT(tags);
+//    }
+
+    public void readFromNBTWithoutCoords(NBTTagCompound tagCompound)
+    {
+        if(tank != null)
+            tank.readFromNBT(tagCompound);
+        if(inv != null)
+            inv.readFromNBT(tagCompound);
+        this.container = new BaseTeslaContainer(tagCompound.getCompoundTag("TeslaContainer"));
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        if(inv != null)
-            inv.readFromNBT(compound);
-
-        if(tank != null)
-            readTankFromNBT(compound);
-
-        if(getMaxCapacity() != 0)
-            this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
+        readFromNBTWithoutCoords(compound);
+//        if(inv != null)
+//            inv.readFromNBT(compound);
+//
+//        if(tank != null)
+//            readTankFromNBT(compound);
+//
+//        if(getMaxCapacity() != 0)
+//            this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }
 
-    public void readTankFromNBT(NBTTagCompound tags) {
-        tank.readFromNBT(tags);
-    }
+//    public void readTankFromNBT(NBTTagCompound tags) {
+//        tank.readFromNBT(tags);
+//    }
 
     public long getPowerScaled (int scale)
     {
@@ -396,6 +417,16 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 //        }
     }
 
+    public ItemStack getDropWithNBT()
+    {
+        NBTTagCompound tileEntity = new NBTTagCompound();
+        ItemStack dropStack = new ItemStack(this.getBlockType(), 1);
+        writeToNBTWithoutCoords(tileEntity);
+        dropStack.setTagCompound(new NBTTagCompound());
+        dropStack.getTagCompound().setTag("tileEntity", tileEntity);
+        return dropStack;
+    }
+
     @Override
     public boolean isWrenchable()
     {
@@ -405,6 +436,6 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     @Override
     public ItemStack returnStack()
     {
-        return new ItemStack(this.getBlockType());
+        return getDropWithNBT();//new ItemStack(this.getBlockType());
     }
 }

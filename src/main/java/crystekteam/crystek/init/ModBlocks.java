@@ -7,6 +7,7 @@ import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
 import crystekteam.crystek.blocks.machines.*;
+import crystekteam.crystek.items.Itemblocks.ItemBlockMachine;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTank;
@@ -51,15 +52,15 @@ public class ModBlocks
         registerBlock(machineframe, "machineframe");
 
         coalGen = new BlockCoalGenerator();
-        registerBlock(coalGen, "coalgenerator");
+        registerBlock(coalGen, ItemBlockMachine.class, "coalgenerator");
         GameRegistry.registerTileEntity(TileCoalGenerator.class, "coalgenerator");
 
         teslaCell = new BlockTeslaCell();
-        registerBlock(teslaCell, "teslacell");
+        registerBlock(teslaCell, ItemBlockMachine.class , "teslacell");
         GameRegistry.registerTileEntity(TileTeslaCell.class, "teslacell");
 
         poweredFurnace = new BlockFurnace();
-        registerBlock(poweredFurnace, "poweredfurnace");
+        registerBlock(poweredFurnace, ItemBlockMachine.class , "poweredfurnace");
         GameRegistry.registerTileEntity(TileFurnace.class, "poweredfurnace");
 
         laser = new BlockLaser();
@@ -67,31 +68,31 @@ public class ModBlocks
         GameRegistry.registerTileEntity(TileLaser.class, "lasertile");
 
         grinder = new BlockGrinder();
-        registerBlock(grinder, "grinder");
+        registerBlock(grinder, ItemBlockMachine.class , "grinder");
         GameRegistry.registerTileEntity(TileGrinder.class, "oresmasher");
 
         solarGen = new BlockSolarPanel();
-        registerBlock(solarGen, "solarpanel");
+        registerBlock(solarGen, ItemBlockMachine.class , "solarpanel");
         GameRegistry.registerTileEntity(TileSolarPanel.class, "solarpanel");
 
         crystallizer = new BlockCrystallizer();
-        registerBlock(crystallizer, "crystallizer");
+        registerBlock(crystallizer, ItemBlockMachine.class , "crystallizer");
         GameRegistry.registerTileEntity(TileCrystallizer.class, "crystallizer");
 
         fluidGen = new BlockFluidGenerator();
-        registerBlock(fluidGen, "fluidgen");
+        registerBlock(fluidGen, ItemBlockMachine.class , "fluidgen");
         GameRegistry.registerTileEntity(TileFluidGenerator.class, "fluidgen");
 
         fluidizer = new BlockFluidizer();
-        registerBlock(fluidizer, "fluidizer");
+        registerBlock(fluidizer, ItemBlockMachine.class , "fluidizer");
         GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
 
         bucketer = new BlockBucketer();
-        registerBlock(bucketer, "bucketer");
+        registerBlock(bucketer, ItemBlockMachine.class , "bucketer");
         GameRegistry.registerTileEntity(TileBucketer.class, "bucketer");
 
         tank = new BlockTank();
-        registerBlock(tank, "tank");
+        registerBlock(tank, ItemBlockMachine.class , "tank");
         GameRegistry.registerTileEntity(TileTank.class, "tank");
     }
 

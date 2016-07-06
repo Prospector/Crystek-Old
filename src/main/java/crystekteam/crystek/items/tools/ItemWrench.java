@@ -36,7 +36,8 @@ public class ItemWrench extends ItemBase
             if(wrenchable.isWrenchable() && returnstack != null)
             {
                 worldIn.spawnEntityInWorld(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), returnstack));
-                worldIn.destroyBlock(pos, false);
+                worldIn.removeTileEntity(pos);
+                worldIn.setBlockToAir(pos);
                 return EnumActionResult.SUCCESS;
             }
         }
