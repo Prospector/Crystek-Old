@@ -5,7 +5,6 @@ import crystekteam.crystek.container.slot.SlotOutput;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceOutput;
 
 /**
  * Created by Gigabit101 on 16/06/2016.

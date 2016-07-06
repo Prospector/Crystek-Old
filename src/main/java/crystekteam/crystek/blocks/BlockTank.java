@@ -1,8 +1,5 @@
 package crystekteam.crystek.blocks;
 
-
-import crystekteam.crystek.Crystek;
-import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.TileTank;
 import net.minecraft.block.state.IBlockState;

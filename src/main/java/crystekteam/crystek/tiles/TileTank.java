@@ -1,7 +1,6 @@
 package crystekteam.crystek.tiles;
 
 import crystekteam.crystek.tiles.prefab.TileBase;
-import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;

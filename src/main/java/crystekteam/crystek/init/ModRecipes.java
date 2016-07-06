@@ -11,8 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class ModRecipes
 {
 	public static void init()

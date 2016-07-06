@@ -5,7 +5,6 @@ import crystekteam.crystek.GuiHandler;
 import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
-import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
