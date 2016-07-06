@@ -24,7 +24,7 @@ public class BlockTank extends BlockBase
 {
     public BlockTank()
     {
-        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + "tank");
+        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".tank");
     }
 
     @Override
