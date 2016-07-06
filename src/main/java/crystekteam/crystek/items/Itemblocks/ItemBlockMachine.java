@@ -8,6 +8,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,8 +32,11 @@ public class ItemBlockMachine extends ItemBlock
     {
         if (stack != null && stack.hasTagCompound())
         {
-//            if (stack.getTagCompound().getCompoundTag("tileEntity") != null)
-//                list.add(stack.getTagCompound().getCompoundTag("tileEntity"));
+            if(stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer") != null)
+            {
+                list.add("" + TextFormatting.GREEN  + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaPower") + " / "
+                        + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaCapacity"));
+            }
         }
     }
 
