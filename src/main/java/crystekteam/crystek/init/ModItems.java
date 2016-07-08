@@ -1,5 +1,6 @@
 package crystekteam.crystek.init;
 
+import crystekteam.crystek.items.ItemBook;
 import crystekteam.crystek.items.armour.ItemInfusedArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
@@ -26,6 +27,7 @@ public class ModItems
 	public static Item battery;
 	public static Item drill;
 	public static Item wrench;
+	public static Item book;
 	public static ItemGrindingBlade ironGrindingBlade;
 	public static ItemGrindingBlade goldGrindingBlade;
 	public static ItemGrindingBlade diamondGrindingBlade;
@@ -89,6 +91,9 @@ public class ModItems
 		powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200, 200)
 				.setRegistryName("infusedarmour.boots");
 		GameRegistry.register(powerArmourBoots);
+
+        book = new ItemBook();
+        GameRegistry.register(book);
 
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);

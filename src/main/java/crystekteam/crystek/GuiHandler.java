@@ -26,6 +26,7 @@ public class GuiHandler implements IGuiHandler
     public static int fluidGenerator = 6;
     public static int fluidizer = 7;
     public static int bucketer = 8;
+    public static int book = 9;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -65,6 +66,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == bucketer)
         {
             return new ContainerBucketer((TileBucketer) world.getTileEntity(new BlockPos(x, y, z)), player);
+        }
+        if(ID == book)
+        {
+            return null;
         }
         return null;
     }
@@ -107,6 +112,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == bucketer)
         {
             return new GuiBucketer(player, (TileBucketer) world.getTileEntity(new BlockPos(x, y, z)));
+        }
+        if(ID == book)
+        {
+            return new GuiBook(player);
         }
         return null;
     }
