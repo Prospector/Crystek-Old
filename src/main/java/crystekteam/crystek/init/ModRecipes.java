@@ -115,7 +115,8 @@ public class ModRecipes
 		//General
 		CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.COBBLESTONE));
 		CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.GRAVEL));
-		CrystekApi.registerGrinderRecipe(ItemBank.obsidianDust, new ItemStack(Blocks.OBSIDIAN));
+		ItemStack dustObsidian = OreDictionary.getOres("dustObsidian").get(0).copy();
+		CrystekApi.registerGrinderRecipe(dustObsidian, new ItemStack(Blocks.OBSIDIAN));
 
 		//Ores
         //Todo recipe handler for this 
