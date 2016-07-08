@@ -6,6 +6,7 @@ import crystekteam.crystek.blocks.BlockTeslaCell;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
+import crystekteam.crystek.blocks.logic.BlockTeslaReader;
 import crystekteam.crystek.blocks.machines.*;
 import crystekteam.crystek.items.Itemblocks.ItemBlockMachine;
 import crystekteam.crystek.laser.BlockLaser;
@@ -15,6 +16,7 @@ import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
+import crystekteam.crystek.tiles.logic.TileTeslaReader;
 import crystekteam.crystek.tiles.machines.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -36,6 +38,8 @@ public class ModBlocks
     public static Block crystallizer;
     public static Block fluidizer;
     public static Block bucketer;
+    //Logic
+    public static Block teslaReader;
 
     //Power Storage
     public static Block teslaCell;
@@ -94,6 +98,10 @@ public class ModBlocks
         tank = new BlockTank();
         registerBlock(tank, ItemBlockMachine.class , "tank");
         GameRegistry.registerTileEntity(TileTank.class, "tank");
+
+        teslaReader = new BlockTeslaReader();
+        registerBlock(teslaReader, "teslareader");
+        GameRegistry.registerTileEntity(TileTeslaReader.class, "teslareader");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)
