@@ -13,6 +13,7 @@ public class ConfigAE
     public static String CATEGORY_UPGRADES = "upgrade";
 
     public static long generatorTick;
+    public static long generatorStorage;
     public static long solarTick;
     public static int solarPanelMaxUpgrades;
 
@@ -68,8 +69,12 @@ public class ConfigAE
                 "The amount of upgrades the solar panel can have")
                 .getInt();
         teslacellBaseStorage = config.get(CATEGORY_POWER,
-                "teslacellBaseStorage", 500000,
+                "teslacellBaseStorage", 5000000,
                 "The amount of base power the tesla cell can store")
+                .getLong();
+        generatorStorage = config.get(CATEGORY_POWER,
+                "generatorStorage", 500000,
+                "The amount of power the generator can store")
                 .getLong();
 
 
