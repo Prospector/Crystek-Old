@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.api.CrystekApi;
+import crystekteam.crystek.util.CraftingHelper;
 import crystekteam.crystek.util.ItemBank;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -32,10 +33,10 @@ public class ModRecipes
 						"ingotObsidian", 'c', "crystalTesla", 't', "ingotTeslaAlloy"));
 		GameRegistry.addShapelessRecipe(ItemBank.obsidianIngot, new ItemStack(Items.WATER_BUCKET),
 				new ItemStack(Items.LAVA_BUCKET));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystRed, "dustIron", new ItemStack(Items.REDSTONE));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystYellow, "dustIron", new ItemStack(Items.GLOWSTONE_DUST));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystPurple, "dustIron", new ItemStack(Items.CHORUS_FRUIT));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystBlue, "dustIron", new ItemStack(Items.DYE, 1, 11));
+		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystRed, "dustIron", new ItemStack(Items.REDSTONE));
+		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystYellow, "dustIron", new ItemStack(Items.GLOWSTONE_DUST));
+		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystPurple, "dustIron", new ItemStack(Items.CHORUS_FRUIT));
+		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystBlue, "dustIron", new ItemStack(Items.DYE, 1, 11));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(ItemBank.efficiencyUpgrade, "rtr", "tct", "rtr", 'r', "blockRedstone", 'c',
 						ItemBank.teslaCrystalYellow, 't', "ingotTeslaAlloy"));
