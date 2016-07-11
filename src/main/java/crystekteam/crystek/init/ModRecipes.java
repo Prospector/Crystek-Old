@@ -32,11 +32,10 @@ public class ModRecipes
 						"ingotObsidian", 'c', "crystalTesla", 't', "ingotTeslaAlloy"));
 		GameRegistry.addShapelessRecipe(ItemBank.obsidianIngot, new ItemStack(Items.WATER_BUCKET),
 				new ItemStack(Items.LAVA_BUCKET));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystRed, ItemBank.ironDust, new ItemStack(Items.REDSTONE));
-		GameRegistry
-				.addShapelessRecipe(ItemBank.catalystYellow, ItemBank.ironDust, new ItemStack(Items.GLOWSTONE_DUST));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystPurple, ItemBank.ironDust, new ItemStack(Items.CHORUS_FRUIT));
-		GameRegistry.addShapelessRecipe(ItemBank.catalystBlue, ItemBank.ironDust, new ItemStack(Items.DYE, 1, 11));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystRed, "dustIron", new ItemStack(Items.REDSTONE));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystYellow, "dustIron", new ItemStack(Items.GLOWSTONE_DUST));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystPurple, "dustIron", new ItemStack(Items.CHORUS_FRUIT));
+		GameRegistry.addShapelessRecipe(ItemBank.catalystBlue, "dustIron", new ItemStack(Items.DYE, 1, 11));
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(ItemBank.efficiencyUpgrade, "rtr", "tct", "rtr", 'r', "blockRedstone", 'c',
 						ItemBank.teslaCrystalYellow, 't', "ingotTeslaAlloy"));
