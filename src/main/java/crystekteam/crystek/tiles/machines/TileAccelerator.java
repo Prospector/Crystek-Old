@@ -59,13 +59,13 @@ public class TileAccelerator extends TileMachine
                     {
                         if(!(cropBlock instanceof BlockAccelerator))
                         {
-                            IGrowable growable = (IGrowable) cropBlock;
-                            if(growable.canGrow(world, new BlockPos(x, y, z), cropState, true))
-                            {
-                                world.scheduleBlockUpdate(new BlockPos(x, y, z), cropBlock, (int) (distanceCoefficient * (float) secondsBetweenGrowthTicks * 20F), 1);
-                                cropBlock.updateTick(world, new BlockPos(x, y, z), cropState, world.rand);
-                                usePower(cost);
-                            }
+//                            IGrowable growable = (IGrowable) cropBlock;
+//                            if(growable.canGrow(world, new BlockPos(x, y, z), cropState, true))
+//                            {
+                            world.scheduleBlockUpdate(new BlockPos(x, y, z), cropBlock, (int) (distanceCoefficient * (float) secondsBetweenGrowthTicks * 20F), 1);
+                            cropBlock.updateTick(world, new BlockPos(x, y, z), cropState, world.rand);
+                            usePower(cost);
+//                            }
                         }
                     }
                 }
