@@ -1,17 +1,26 @@
 package crystekteam.crystek.util;
 
+import crystekteam.crystek.client.partciles.ParticleColored;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -102,5 +111,26 @@ public class RenderUtil
             }
         }
         GlStateManager.disableBlend();
+    }
+
+    //Todo use for tinker table
+    @SideOnly(Side.CLIENT)
+    public static void renderBlockInWorld(Block block, int meta)
+    {
+        renderItemInWorld(new ItemStack(block, 1, meta));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void renderItemInWorld(ItemStack stack)
+    {
+        GlStateManager.pushMatrix();
+        GlStateManager.disableLighting();
+        GlStateManager.pushAttrib();
+        RenderHelper.enableStandardItemLighting();
+        Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.popAttrib();
+        GlStateManager.enableLighting();
+        GlStateManager.popMatrix();
     }
 }

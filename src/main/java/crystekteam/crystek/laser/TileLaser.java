@@ -3,9 +3,11 @@ package crystekteam.crystek.laser;
 import crystekteam.crystek.init.ModBlocks;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
+import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BossInfo;
 
 /**
  * Created by Gigabit101 on 02/06/2016.
@@ -14,6 +16,7 @@ public class TileLaser extends TileTeslaStorage
 {
     BlockPos connectedPos;
     TileEntity connectedTile;
+    public static final float[] COLORS = new float[]{93F/255F, 43F/255F, 181F/955F};
 
     public TileLaser()
     {
@@ -40,7 +43,7 @@ public class TileLaser extends TileTeslaStorage
                     BlockPos pos = getPos().add(x, y, z);
                     if(!pos.equals(getPos())){
                         if(worldObj.getBlockState(pos).getBlock() == ModBlocks.laser) {
-//                            PartcileEngine.renderEnergyBeam(worldObj, getPos(), pos);
+                            LaserUtil.renderParticlesFromAToB(getPos().getX(), getPos().getY(), getPos().getZ(), pos.getX(), pos.getY(), pos.getZ(), 3, 0.55F, COLORS, 3);
                         }
                     }
 
