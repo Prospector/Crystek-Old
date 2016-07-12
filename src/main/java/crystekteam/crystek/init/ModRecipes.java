@@ -25,65 +25,112 @@ public class ModRecipes
 
 	static void registerCraftingRecipes()
 	{
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.drill), " ii", "oci", "rt ", 'i', "ingotIron", 'o',
-						"ingotObsidian", 'c', "crystalTesla", 'r', "dustRedstone", 't', "ingotTeslaAlloy"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.powerScanner), "oto", "tct", "i i", 'i', "ingotIron", 'o',
-						"ingotObsidian", 'c', "crystalTesla", 't', "ingotTeslaAlloy"));
-		GameRegistry.addShapelessRecipe(ItemBank.obsidianIngot, new ItemStack(Items.WATER_BUCKET),
-				new ItemStack(Items.LAVA_BUCKET));
-		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystRed, "dustIron", new ItemStack(Items.REDSTONE));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.drill), " ii", "oci", "rt ",
+                'i', "ingotIron",
+                'o', "ingotObsidian",
+                'c', "crystalTesla",
+                'r', "dustRedstone",
+                't', "ingotTeslaAlloy"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.powerScanner), "oto", "tct", "i i",
+                'i', "ingotIron",
+                'o', "ingotObsidian",
+                'c', "crystalTesla",
+                't', "ingotTeslaAlloy"));
+
+        GameRegistry.addShapelessRecipe(ItemBank.obsidianIngot, new ItemStack(Items.WATER_BUCKET), new ItemStack(Items.LAVA_BUCKET));
+        CraftingHelper.addShapelessOreRecipe(ItemBank.catalystRed, "dustIron", new ItemStack(Items.REDSTONE));
 		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystYellow, "dustIron", new ItemStack(Items.GLOWSTONE_DUST));
 		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystPurple, "dustIron", new ItemStack(Items.CHORUS_FRUIT));
 		CraftingHelper.addShapelessOreRecipe(ItemBank.catalystBlue, "dustIron", new ItemStack(Items.DYE, 1, 11));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(ItemBank.efficiencyUpgrade, "rtr", "tct", "rtr", 'r', "blockRedstone", 'c',
-						ItemBank.teslaCrystalYellow, 't', "ingotTeslaAlloy"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.battery), " i ", "tct", "oco", 'i', "ingotIron", 'c',
-						"crystalTesla", 't', "ingotTeslaAlloy", 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.ironGrindingBlade), " m ", "mom", " m ", 'm', "ingotIron",
-						'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.goldGrindingBlade), " m ", "mom", " m ", 'm', "ingotGold",
-						'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.diamondGrindingBlade), " m ", "mom", " m ", 'm',
-						"gemDiamond", 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.obsidianGrindingBlade), " m ", "mom", " m ", 'm', "obsidian",
-						'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModItems.teslaAlloyGrindingBlade), " m ", "mom", " m ", 'm',
-						"ingotTeslaAlloy", 'o', "ingotObsidian"));
-		//TODO Add manual power generation and make this require tesla crystal
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.coalGen), "ooo", "oco", "obo", 'c', "blockGlass", 'o',
-						"ingotObsidian", 'b', new ItemStack(Blocks.IRON_BARS)));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.fluidGen), "ooo", "oco", "obo", 'c', "crystalTesla", 'o',
-						"ingotObsidian", 'b', new ItemStack(Items.BUCKET)));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.fluidizer), "olo", "cgc", "oro", 'l', "gemLapis", 'r',
-						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Items.CAULDRON), 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.crystallizer), "olo", "cgc", "oro", 'l', "ingotGold", 'r',
-						"dustRedstone", 'g', "blockGlass", 'c', new ItemStack(Items.CAULDRON), 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.grinder), "oio", "fcf", "oro", 'i', "dustIron", 'r',
-						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Items.FLINT), 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "odo", "fcf", "oro", 'd', "ingotIron", 'r',
-						"dustRedstone", 'c', "crystalTesla", 'f', new ItemStack(Blocks.FURNACE), 'o', "ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.teslaCell), "oco", "oco", "oco", 'c', "crystalTesla", 'o',
-						"ingotObsidian"));
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(new ItemStack(ModBlocks.solarGen), "ccc", "oco", "oro", 'c', "crystalTesla", 'o',
-						"ingotObsidian", 'r', "dustRedstone"));
 
+        GameRegistry.addRecipe(new ShapedOreRecipe(ItemBank.efficiencyUpgrade, "rtr", "tct", "rtr",
+                'r', "blockRedstone",
+                'c', ItemBank.teslaCrystalYellow,
+                't', "ingotTeslaAlloy"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.battery), " i ", "tct", "oco",
+                'i', "ingotIron",
+                'c', "crystalTesla",
+                't', "ingotTeslaAlloy",
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ironGrindingBlade), " m ", "mom", " m ",
+                'm', "ingotIron",
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.goldGrindingBlade), " m ", "mom", " m ",
+                'm', "ingotGold",
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.diamondGrindingBlade), " m ", "mom", " m ",
+                'm', "gemDiamond",
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.obsidianGrindingBlade), " m ", "mom", " m ",
+                'm', "obsidian",
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.teslaAlloyGrindingBlade), " m ", "mom", " m ",
+                'm', "ingotTeslaAlloy",
+                'o', "ingotObsidian"));
+
+		//TODO Add manual power generation and make this require tesla crystal
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.coalGen), "ooo", "oco", "obo",
+                'c', "blockGlass",
+                'o', "ingotObsidian",
+                'b', new ItemStack(Blocks.IRON_BARS)));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fluidGen), "ooo", "oco", "obo",
+                'c', "crystalTesla",
+                'o', "ingotObsidian",
+                'b', new ItemStack(Items.BUCKET)));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fluidizer), "olo", "cgc", "oro",
+                'l', "gemLapis",
+                'r', "dustRedstone",
+                'g', "blockGlass",
+                'c', new ItemStack(Items.CAULDRON),
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.crystallizer), "olo", "cgc", "oro",
+                'l', "ingotGold",
+                'r', "dustRedstone",
+                'g', "blockGlass",
+                'c', new ItemStack(Items.CAULDRON),
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.grinder), "oio", "fcf", "oro",
+                'i', "dustIron",
+                'r', "dustRedstone",
+                'c', "crystalTesla",
+                'f', new ItemStack(Items.FLINT),
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.poweredFurnace), "odo", "fcf", "oro",
+                'd', "ingotIron",
+                'r', "dustRedstone",
+                'c', "crystalTesla",
+                'f', new ItemStack(Blocks.FURNACE),
+                'o', "ingotObsidian"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.teslaCell), "oco", "oco", "oco",
+                'c', "crystalTesla",
+                'o', "ingotObsidian"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.solarGen), "ccc", "oco", "oro",
+                'c', "crystalTesla",
+                'o', "ingotObsidian",
+                'r', "dustRedstone"));
+
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.accelerator), "wow", "ogo", "wow",
+                'w', new ItemStack(Items.WHEAT),
+		        'o', "ingotObsidian",
+                'g', "blockGlass"));
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.wrench), "o o", " o ", " o ",
+                'o', "ingotObsidian"));
 	}
 
 	static void registerCrystallizerRecipes()

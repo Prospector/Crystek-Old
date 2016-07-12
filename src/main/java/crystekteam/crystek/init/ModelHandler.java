@@ -24,6 +24,7 @@ public class ModelHandler
         registerItemModel(ModBlocks.fluidizer, 0);
         registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.teslaCell, 0);
+        registerItemModel(ModBlocks.accelerator, 0);
 
         registerItemModel(ModItems.battery, 0);
         registerItemModel(ModItems.drill, 0);

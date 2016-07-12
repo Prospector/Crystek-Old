@@ -43,7 +43,7 @@ public class TileLaser extends TileTeslaStorage
                     BlockPos pos = getPos().add(x, y, z);
                     if(!pos.equals(getPos())){
                         if(worldObj.getBlockState(pos).getBlock() == ModBlocks.laser) {
-                            LaserUtil.renderParticlesFromAToB(getPos().getX(), getPos().getY(), getPos().getZ(), pos.getX(), pos.getY(), pos.getZ(), 3, 0.55F, COLORS, 3);
+//                            LaserUtil.renderParticlesFromAToB(getPos().getX(), getPos().getY(), getPos().getZ(), pos.getX(), pos.getY(), pos.getZ(), 3, 0.55F, COLORS, 3);
                         }
                     }
 

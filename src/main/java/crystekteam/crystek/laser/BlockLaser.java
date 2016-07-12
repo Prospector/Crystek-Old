@@ -31,7 +31,6 @@ public class BlockLaser extends BlockBase
         return new TileLaser();
     }
 
-
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
@@ -46,12 +45,10 @@ public class BlockLaser extends BlockBase
         return true;
     }
 
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.INVISIBLE;
-    }
-
+//    @Override
+//    public EnumBlockRenderType getRenderType(IBlockState state) {
+//        return EnumBlockRenderType.INVISIBLE;
+//    }
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {
@@ -61,6 +58,4 @@ public class BlockLaser extends BlockBase
     public boolean renderAsNormalBlock() {
         return false;
     }
-
-
 }

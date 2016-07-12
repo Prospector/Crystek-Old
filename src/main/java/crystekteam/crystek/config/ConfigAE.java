@@ -19,6 +19,10 @@ public class ConfigAE
 
     public static long teslacellBaseStorage;
 
+    public static long acceleratorCost;
+    public static int acceleratorRange;
+    public static int acceleratorSecondsBetweenGrowthTicks;
+
     public static Configuration config;
 
     private ConfigAE(File configFile)
@@ -76,6 +80,18 @@ public class ConfigAE
                 "generatorStorage", 500000,
                 "The amount of power the generator can store")
                 .getLong();
+        acceleratorCost = config.get(CATEGORY_POWER,
+                "acceleratorCost", 100,
+                "The amount of power consumed")
+                .getLong();
+        acceleratorRange = config.get(CATEGORY_POWER,
+                "acceleratorRange", 5,
+                "The range of the accelerator")
+                .getInt();
+        acceleratorSecondsBetweenGrowthTicks = config.get(CATEGORY_POWER,
+                "acceleratorSecondsBetweenGrowthTicks", 5,
+                "The range of seconds between uses")
+                .getInt();
 
 
         if(config.hasChanged())

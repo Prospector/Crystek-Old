@@ -38,6 +38,7 @@ public class ModBlocks
     public static Block crystallizer;
     public static Block fluidizer;
     public static Block bucketer;
+    public static Block accelerator;
     //Logic
     public static Block teslaReader;
 
@@ -102,6 +103,10 @@ public class ModBlocks
         teslaReader = new BlockTeslaReader();
         registerBlock(teslaReader, "teslareader");
         GameRegistry.registerTileEntity(TileTeslaReader.class, "teslareader");
+
+        accelerator = new BlockAccelerator();
+        registerBlock(accelerator, ItemBlockMachine.class, "accelerator");
+        GameRegistry.registerTileEntity(TileAccelerator.class, "accelerator");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

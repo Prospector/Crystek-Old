@@ -7,7 +7,6 @@ item.crystek.battery.name=Battery
 item.crystek.drill.name=Drill
 item.crystek.wrench.name=Wrench
 
-
 //Dusts
 item.crystek.crafting.dustIron.name=Iron Dust
 item.crystek.crafting.dustGold.name=Gold Dust
@@ -67,6 +66,7 @@ tile.crystek.poweredfurnace.name=Powered Furnace
 tile.crystek.grinder.name=Grinder
 tile.crystek.crystallizer.name=Crystallizer
 tile.crystek.fluidizer.name=Fluidizer
+tile.crystek.accelerator.name=Accelerator
 
 //Misc
 tile.crystek.machineframe.name=Machine Frame
