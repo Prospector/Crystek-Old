@@ -34,12 +34,12 @@
       "active":{
          "true":{
             "textures":{
-               "front":"crystek:blocks/machine/grinder_front_on"
+               "front":"crystek:blocks/machine/poweredfurnace_front_on"
             }
          },
          "false":{
             "textures":{
-               "front":"crystek:blocks/machine/grinder_front"
+               "front":"crystek:blocks/machine/poweredfurnace_front"
             }
          }
       },
