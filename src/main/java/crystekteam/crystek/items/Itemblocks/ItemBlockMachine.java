@@ -34,8 +34,8 @@ public class ItemBlockMachine extends ItemBlock
         {
             if(stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer") != null)
             {
-                list.add("" + TextFormatting.GREEN  + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaPower") + " / "
-                        + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaCapacity"));
+                list.add("" + TextFormatting.DARK_AQUA  + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaPower") + "/"
+                        + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaCapacity")+" Tesla");
             }
         }
     }

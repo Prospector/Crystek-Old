@@ -101,6 +101,7 @@ public class ModItems
         GameRegistry.register(book);
 
 		OreDictionary.registerOre("dyeCyan", teslabonemeal);
+		OreDictionary.registerOre("cropBeetroot", Items.BEETROOT);
 
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);

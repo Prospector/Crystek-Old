@@ -16,6 +16,11 @@ item.crystek.crafting.dustEmerald.name=Emerald Dust
 item.crystek.crafting.dustTesla.name=Tesla Dust
 item.crystek.crafting.dustObsidian.name=Obsidian Dust
 
+item.crystek.crafting.dustNature.name=Nature Dust
+item.crystek.crafting.dustDemonic.name=Demonic Dust
+item.crystek.crafting.dustVoid.name=Void Dust
+item.crystek.crafting.dustDimensional.name=Dimensional Dust
+
 //Ingots
 item.crystek.crafting.ingotTeslaAlloy.name=Tesla-Iron Alloy Ingot
 item.crystek.crafting.ingotObsidian.name=Obsidian Ingot
@@ -67,7 +72,7 @@ tile.crystek.poweredfurnace.name=Powered Furnace
 tile.crystek.grinder.name=Grinder
 tile.crystek.crystallizer.name=Crystallizer
 tile.crystek.fluidizer.name=Fluidizer
-tile.crystek.accelerator.name=Accelerator
+tile.crystek.accelerator.name=Crop Accelerator
 
 //Misc
 tile.crystek.machineframe.name=Machine Frame

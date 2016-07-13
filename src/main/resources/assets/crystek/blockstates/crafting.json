@@ -39,6 +39,26 @@
           "layer0": "crystek:items/dust/dustObsidian"
         }
       },
+      "dustnature": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustNature"
+        }
+      },
+      "dustdemonic": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustDemonic"
+        }
+      },
+      "dustvoid": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustVoid"
+        }
+      },
+      "dustdimensional": {
+        "textures": {
+          "layer0": "crystek:items/dust/dustDimensional"
+        }
+      },
       "ingotteslaalloy": {
         "textures": {
           "layer0": "crystek:items/ingot/ingotTeslaAlloy"

@@ -18,9 +18,9 @@ import java.util.List;
 public class ItemCrafting extends ItemBase
 {
 	public static final String[] types = new String[] { "dustIron", "dustGold", "dustDiamond", "dustEmerald",
-			"dustTesla", "dustObsidian", "ingotTeslaAlloy", "ingotObsidian", "catalystRed", "catalystYellow",
-			"catalystPurple", "catalystBlue", "crystalTesla", "crystalTeslaRed", "crystalTeslaYellow",
-			"crystalTeslaPurple", "crystalTeslaBlue" };
+			"dustTesla", "dustObsidian", "dustNature", "dustDemonic", "dustVoid", "dustDimensional", "ingotTeslaAlloy",
+			"ingotObsidian", "catalystRed", "catalystYellow", "catalystPurple", "catalystBlue", "crystalTesla",
+			"crystalTeslaRed", "crystalTeslaYellow", "crystalTeslaPurple", "crystalTeslaBlue" };
 
 	public ItemCrafting()
 	{
@@ -68,25 +68,25 @@ public class ItemCrafting extends ItemBase
 
 	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 	{
-		if (types[stack.getMetadata()] == "catalystRed"||types[stack.getMetadata()] == "crystalTeslaRed")
+		if (types[stack.getMetadata()] == "catalystRed" || types[stack.getMetadata()] == "crystalTeslaRed")
 		{
 			tooltip.add(TextFormatting.RED + "Speed");
 			tooltip.add(TextFormatting.RED + "   +200% Speed");
 			tooltip.add(TextFormatting.RED + "   +200% Energy Cost");
 		}
-		if (types[stack.getMetadata()] == "catalystYellow"||types[stack.getMetadata()] == "crystalTeslaYellow")
+		if (types[stack.getMetadata()] == "catalystYellow" || types[stack.getMetadata()] == "crystalTeslaYellow")
 		{
 			tooltip.add(TextFormatting.YELLOW + "Efficiency");
 			tooltip.add(TextFormatting.YELLOW + "   -50% Speed");
 			tooltip.add(TextFormatting.YELLOW + "   -50% Energy Cost");
 		}
-		if (types[stack.getMetadata()] == "catalystPurple"||types[stack.getMetadata()] == "crystalTeslaPurple")
+		if (types[stack.getMetadata()] == "catalystPurple" || types[stack.getMetadata()] == "crystalTeslaPurple")
 		{
 			tooltip.add(TextFormatting.DARK_PURPLE + "Oblivion");
 			tooltip.add(TextFormatting.DARK_PURPLE + "   +Instant Speed");
 			tooltip.add(TextFormatting.DARK_PURPLE + "   +1600% Energy Cost");
 		}
-		if (types[stack.getMetadata()] == "catalystBlue"||types[stack.getMetadata()] == "crystalTeslaBlue")
+		if (types[stack.getMetadata()] == "catalystBlue" || types[stack.getMetadata()] == "crystalTeslaBlue")
 		{
 			tooltip.add(TextFormatting.BLUE + "Luck");
 			tooltip.add(TextFormatting.BLUE + "   +33% Fortune");
