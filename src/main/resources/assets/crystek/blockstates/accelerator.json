@@ -4,17 +4,17 @@
       "transform":"forge:default-block",
       "model":"orientable",
       "textures":{
-         "particle":"crystek:blocks/machine/accelerator",
-         "top":"crystek:blocks/machine/accelerator",
-         "down":"crystek:blocks/machine/accelerator"
+         "particle":"crystek:blocks/machine/accelerator_side",
+         "top":"crystek:blocks/machine/machine_top",
+         "down":"crystek:blocks/machine/accelerator_bottom"
       }
    },
    "variants":{
       "inventory":{
          "transform":"forge:default-block",
          "textures":{
-            "front":"crystek:blocks/machine/accelerator",
-            "side":"crystek:blocks/machine/accelerator"
+            "front":"crystek:blocks/machine/accelerator_side",
+            "side":"crystek:blocks/machine/accelerator_side"
          }
       },
       "facing":{
@@ -34,25 +34,27 @@
       "active":{
          "true":{
             "textures":{
-               "front":"crystek:blocks/machine/accelerator",
-               "side":"crystek:blocks/machine/accelerator"
+               "front":"crystek:blocks/machine/accelerator_side_on",
+               "side":"crystek:blocks/machine/accelerator_side_on",
+			   "down": "crystek:blocks/machine/accelerator_bottom_on"
             }
          },
          "false":{
             "textures":{
-               "front":"crystek:blocks/machine/accelerator",
-         "side":"crystek:blocks/machine/accelerator"
+               "front":"crystek:blocks/machine/accelerator_side",
+			   "side":"crystek:blocks/machine/accelerator_side",
+			   "down": "crystek:blocks/machine/accelerator_bottom"
             }
          }
       },
       "inventory": {
          "model": "orientable",
          "textures": {
-            "particle": "crystek:blocks/machine/accelerator",
-            "top": "crystek:blocks/machine/accelerator",
-            "down": "crystek:blocks/machine/accelerator",
-            "side": "crystek:blocks/machine/accelerator",
-            "front": "crystek:blocks/machine/accelerator"
+            "particle": "crystek:blocks/machine/accelerator_side",
+            "top": "crystek:blocks/machine/machine_top",
+            "down": "crystek:blocks/machine/accelerator_bottom",
+            "side": "crystek:blocks/machine/accelerator_side",
+            "front": "crystek:blocks/machine/accelerator_side"
          }
       }
    }

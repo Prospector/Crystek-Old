@@ -4,6 +4,7 @@ import crystekteam.crystek.items.ItemBook;
 import crystekteam.crystek.items.armour.ItemInfusedArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
+import crystekteam.crystek.items.misc.ItemTeslaBoneMeal;
 import crystekteam.crystek.items.powered.ItemBattery;
 import crystekteam.crystek.items.tools.ItemCircuit;
 import crystekteam.crystek.items.tools.ItemPowerScanner;
@@ -28,6 +29,7 @@ public class ModItems
 	public static Item drill;
 	public static Item wrench;
 	public static Item book;
+	public static Item teslabonemeal;
 	public static ItemGrindingBlade ironGrindingBlade;
 	public static ItemGrindingBlade goldGrindingBlade;
 	public static ItemGrindingBlade diamondGrindingBlade;
@@ -58,8 +60,11 @@ public class ModItems
 		drill = new ItemDrill();
 		GameRegistry.register(drill);
 
-        wrench = new ItemWrench();
-        GameRegistry.register(wrench);
+		wrench = new ItemWrench();
+		GameRegistry.register(wrench);
+
+		teslabonemeal = new ItemTeslaBoneMeal();
+		GameRegistry.register(teslabonemeal);
 
 		ironGrindingBlade = new ItemGrindingBlade("grindingbladeIron", 2, 63, new ItemStack(Items.IRON_INGOT));
 		GameRegistry.register(ironGrindingBlade);
@@ -94,6 +99,8 @@ public class ModItems
 
         book = new ItemBook();
         GameRegistry.register(book);
+
+		OreDictionary.registerOre("dyeCyan", teslabonemeal);
 
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
 		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);

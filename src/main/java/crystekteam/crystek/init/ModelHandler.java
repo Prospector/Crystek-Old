@@ -29,6 +29,7 @@ public class ModelHandler
         registerItemModel(ModItems.battery, 0);
         registerItemModel(ModItems.drill, 0);
         registerItemModel(ModItems.wrench, 0);
+        registerItemModel(ModItems.teslabonemeal, 0);
 
         registerItemModel(ModItems.ironGrindingBlade, 0);
         registerItemModel(ModItems.goldGrindingBlade, 0);
