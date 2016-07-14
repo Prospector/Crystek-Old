@@ -4,6 +4,7 @@ import crystekteam.crystek.container.ContainerCoalGenerator;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.prefab.TileBase;
+import crystekteam.crystek.util.tooltip.TooltipRenderer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -27,30 +28,4 @@ public class GuiCoalGenerator extends GuiBase
         drawPowerBar(tile);
         drawBurn(tile, 80, 39);
     }
-
-    //TODO not the best way of doing this (interface maybe?)
-//    @Override
-//    public void initGui()
-//    {
-//        super.initGui();
-//    }
-//
-//    public boolean isMouseOver(int mouseX, int mouseY)
-//    {
-//        return mc.currentScreen == this && (mouseX >= guiLeft) && (mouseY >= guiTop) && (mouseX < guiLeft + xSize) && (mouseY < guiTop + ySize);
-//    }
-//
-//    @Override
-//    public void drawScreen(int mouseX, int mouseY, float partialTicks)
-//    {
-//        super.drawScreen(mouseX, mouseY, partialTicks);
-//
-//        if(!rec.contains(mouseX, mouseY))
-//        {
-//            if (isMouseOver(mouseX, mouseY))
-//            {
-//                TooltipRenderer.drawHoveringText(mc, "test", mouseX, mouseY);
-//            }
-//        }
-//    }
 }

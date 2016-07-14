@@ -3,11 +3,9 @@ package crystekteam.crystek.laser;
 import crystekteam.crystek.init.ModBlocks;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
-import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BossInfo;
 
 /**
  * Created by Gigabit101 on 02/06/2016.
@@ -23,12 +21,13 @@ public class TileLaser extends TileTeslaStorage
         super(0, "", 0, 1000, 1000, 1000, 0, 0);
     }
 
+    //Todo rewrite all of this
     @Override
     public void update()
     {
         if(!hasConnectedTile())
         {
-            findConnections();
+//            findConnections();
         }
         if(hasConnectedTile() && getStoredPower() != 1000)
         {
@@ -37,13 +36,15 @@ public class TileLaser extends TileTeslaStorage
 
         int radius = 10;
 
+        //Todo remove
         for (int x = -radius; x < radius; x++) {
             for (int y = -radius; y < radius; y++) {
                 for (int z = -radius; z < radius; z++) {
                     BlockPos pos = getPos().add(x, y, z);
                     if(!pos.equals(getPos())){
-                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.laser) {
-//                            LaserUtil.renderParticlesFromAToB(getPos().getX(), getPos().getY(), getPos().getZ(), pos.getX(), pos.getY(), pos.getZ(), 3, 0.55F, COLORS, 3);
+                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.poweredFurnace) {
+                            if(connectedTile == null)
+                                connectedTile = worldObj.getTileEntity(pos);
                         }
                     }
 

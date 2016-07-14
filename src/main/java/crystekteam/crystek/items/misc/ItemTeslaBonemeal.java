@@ -18,10 +18,10 @@ import java.util.List;
 /**
  * Created by Gigabit101 on 02/06/2016.
  */
-public class ItemTeslaBoneMeal extends ItemBase
+public class ItemTeslaBonemeal extends ItemBase
 {
 
-	public ItemTeslaBoneMeal()
+	public ItemTeslaBonemeal()
 	{
 		setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".teslabonemeal");
 		setHasSubtypes(true);

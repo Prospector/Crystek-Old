@@ -4,7 +4,7 @@ import crystekteam.crystek.items.ItemBook;
 import crystekteam.crystek.items.armour.ItemInfusedArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
-import crystekteam.crystek.items.misc.ItemTeslaBoneMeal;
+import crystekteam.crystek.items.misc.ItemTeslaBonemeal;
 import crystekteam.crystek.items.powered.ItemBattery;
 import crystekteam.crystek.items.tools.ItemCircuit;
 import crystekteam.crystek.items.tools.ItemPowerScanner;
@@ -63,7 +63,7 @@ public class ModItems
 		wrench = new ItemWrench();
 		GameRegistry.register(wrench);
 
-		teslabonemeal = new ItemTeslaBoneMeal();
+		teslabonemeal = new ItemTeslaBonemeal();
 		GameRegistry.register(teslabonemeal);
 
 		ironGrindingBlade = new ItemGrindingBlade("grindingbladeIron", 2, 63, new ItemStack(Items.IRON_INGOT));

@@ -4,6 +4,8 @@ import crystekteam.crystek.blocks.fluids.FluidBlockBase;
 import crystekteam.crystek.client.render.TileTankRender;
 import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.init.ModelHandler;
+import crystekteam.crystek.laser.TileLaser;
+import crystekteam.crystek.laser.TileLaserRender;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.TileTank;
 import net.minecraft.block.state.IBlockState;
@@ -24,13 +26,15 @@ public class ClientProxy extends CommonProxy
         ModelHandler.init();
 		registerFluidRenders();
         ClientRegistry.bindTileEntitySpecialRenderer(TileTank.class, new TileTankRender());
-    }
+		ClientRegistry.bindTileEntitySpecialRenderer(TileLaser.class, new TileLaserRender());
+	}
 
     private static void registerFluidRenders(){
 		registerFluid(ModFluids.fluidTeslaBlock);
     }
 
-	private static void registerFluid(FluidBlockBase fluid){
+	private static void registerFluid(FluidBlockBase fluid)
+    {
 		Item fluidTeslaItem = Item.getItemFromBlock(fluid);
 		final ModelResourceLocation fluidTeslaLocation = new ModelResourceLocation(ModInfo.MOD_ID.toLowerCase()+":fluids", fluid.getFluid().getName().toLowerCase());
 		ModelBakery.registerItemVariants(fluidTeslaItem);
