@@ -2,6 +2,7 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.items.ItemBook;
 import crystekteam.crystek.items.armour.ItemInfusedArmour;
+import crystekteam.crystek.items.armour.ItemJetArmour;
 import crystekteam.crystek.items.misc.ItemCrafting;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
 import crystekteam.crystek.items.misc.ItemTeslaBonemeal;
@@ -42,6 +43,11 @@ public class ModItems
 	public static Item powerArmourLeggings;
 	public static Item powerArmourBoots;
 
+	public static Item jetSuitHelmet;
+	public static Item jetSuitChestplate;
+	public static Item jetSuitLeggings;
+	public static Item jetSuitBoots;
+
 	public static void init()
 	{
 
@@ -81,24 +87,40 @@ public class ModItems
 		teslaAlloyGrindingBlade = new ItemGrindingBlade("grindingbladeTeslaAlloy", 3, -1, ItemBank.teslaIngot);
 		GameRegistry.register(teslaAlloyGrindingBlade);
 
-		powerArmourHelmet = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200, 200)
-				.setRegistryName("infusedarmour.helmet");
+		powerArmourHelmet = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200,
+				200).setRegistryName("infusedarmour.helmet");
 		GameRegistry.register(powerArmourHelmet);
 
-		powerArmourChestplate = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000, 200, 200)
-				.setRegistryName("infusedarmour.chestplate");
+		powerArmourChestplate = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000,
+				200, 200).setRegistryName("infusedarmour.chestplate");
 		GameRegistry.register(powerArmourChestplate);
 
-		powerArmourLeggings = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000, 200, 200)
-				.setRegistryName("infusedarmour.leggings");
+		powerArmourLeggings = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000,
+				200, 200).setRegistryName("infusedarmour.leggings");
 		GameRegistry.register(powerArmourLeggings);
 
-		powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200, 200)
-				.setRegistryName("infusedarmour.boots");
+		powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200,
+				200).setRegistryName("infusedarmour.boots");
 		GameRegistry.register(powerArmourBoots);
 
-        book = new ItemBook();
-        GameRegistry.register(book);
+		jetSuitHelmet = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.HEAD, 5000, 200, 200)
+				.setRegistryName("jetsuit.helmet");
+		GameRegistry.register(jetSuitHelmet);
+
+		jetSuitChestplate = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.CHEST, 5000, 200, 200)
+				.setRegistryName("jetsuit.chestplate");
+		GameRegistry.register(jetSuitChestplate);
+
+		jetSuitLeggings = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.LEGS, 5000, 200, 200)
+				.setRegistryName("jetsuit.leggings");
+		GameRegistry.register(jetSuitLeggings);
+
+		jetSuitBoots = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.FEET, 5000, 200, 200)
+				.setRegistryName("jetsuit.boots");
+		GameRegistry.register(jetSuitBoots);
+
+		book = new ItemBook();
+		GameRegistry.register(book);
 
 		OreDictionary.registerOre("dyeCyan", teslabonemeal);
 		OreDictionary.registerOre("cropBeetroot", Items.BEETROOT);

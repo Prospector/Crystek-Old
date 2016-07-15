@@ -26,6 +26,8 @@ public class ModelHandler
         registerItemModel(ModBlocks.teslaCell, 0);
         registerItemModel(ModBlocks.accelerator, 0);
 
+        registerItemModel(ModBlocks.laser, 0);
+
         registerItemModel(ModItems.battery, 0);
         registerItemModel(ModItems.drill, 0);
         registerItemModel(ModItems.wrench, 0);

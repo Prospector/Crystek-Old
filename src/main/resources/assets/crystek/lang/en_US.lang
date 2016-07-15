@@ -1,7 +1,6 @@
 itemGroup.crystek=Crystek
 
 //Items
-item.crystek.welder.name=Welder
 item.crystek.powerscanner.name=Teslometer
 item.crystek.battery.name=Battery
 item.crystek.drill.name=Drill
@@ -76,7 +75,7 @@ tile.crystek.accelerator.name=Crop Accelerator
 
 //Misc
 tile.crystek.machineframe.name=Machine Frame
-tile.crystek.laser.name=Laser
+tile.crystek.laser.name=Tesla Coil
 
 //Descriptions
 desc.teslometer=Measures Tesla
