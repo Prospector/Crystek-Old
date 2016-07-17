@@ -1,7 +1,7 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "particle": "blocks/crystek:blocks/machine/machine_top",
+        "particle": "crystek:blocks/machine/machine_top",
         "0": "crystek:blocks/pedestal",
         "1": "crystek:blocks/pedestal_top_stuff",
         "2": "crystek:blocks/pedestal_base",
