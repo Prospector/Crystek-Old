@@ -11,6 +11,7 @@ import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,6 +26,11 @@ public class Crystek
 {
     @Mod.Instance(ModInfo.MOD_ID)
     public static Crystek instance;
+
+    public Crystek()
+    {
+        FluidRegistry.enableUniversalBucket();
+    }
 
     public static ConfigAE config;
 

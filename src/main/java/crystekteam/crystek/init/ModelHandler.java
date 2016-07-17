@@ -15,14 +15,15 @@ public class ModelHandler
 {
     public static void init()
     {
-        registerItemModel(ModBlocks.coalGen, 0);
+		registerItemModel(ModBlocks.coalGen, 0);
+		registerItemModel(ModBlocks.fluidGen, 0);
+		registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.machineframe, 0);
         registerItemModel(ModBlocks.poweredFurnace, 0);
         registerItemModel(ModItems.powerScanner, 0);
         registerItemModel(ModBlocks.grinder, 0);
         registerItemModel(ModBlocks.crystallizer, 0);
         registerItemModel(ModBlocks.fluidizer, 0);
-        registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.teslaCell, 0);
         registerItemModel(ModBlocks.accelerator, 0);
 

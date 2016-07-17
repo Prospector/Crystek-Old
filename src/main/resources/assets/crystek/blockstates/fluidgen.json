@@ -6,15 +6,15 @@
       "textures":{
          "particle":"crystek:blocks/machine/machine_top",
          "top":"crystek:blocks/machine/machine_top",
-            "bottom": "crystek:blocks/machine/machine_bottom",
-            "side": "crystek:blocks/machine/machine_side"
+         "down":"crystek:blocks/machine/machine_bottom"
       }
    },
    "variants":{
       "inventory":{
          "transform":"forge:default-block",
          "textures":{
-            "front":"crystek:blocks/machine/fluidizer_front"
+            "front":"crystek:blocks/machine/fluidgenerator_front",
+            "side":"crystek:blocks/machine/generator_side"
          }
       },
       "facing":{
@@ -34,12 +34,14 @@
       "active":{
          "true":{
             "textures":{
-               "front":"crystek:blocks/machine/fluidizer_front_on"
+               "front":"crystek:blocks/machine/fluidgenerator_front_on",
+               "side":"crystek:blocks/machine/generator_side_on"
             }
          },
          "false":{
             "textures":{
-               "front":"crystek:blocks/machine/fluidizer_front"
+               "front":"crystek:blocks/machine/fluidgenerator_front",
+         "side":"crystek:blocks/machine/generator_side"
             }
          }
       },
@@ -48,9 +50,9 @@
          "textures": {
             "particle": "crystek:blocks/machine/machine_top",
             "top": "crystek:blocks/machine/machine_top",
-            "bottom": "crystek:blocks/machine/machine_bottom",
-            "side": "crystek:blocks/machine/machine_side",
-            "front": "crystek:blocks/machine/fluidizer_front"
+            "down": "crystek:blocks/machine/machine_bottom",
+            "side": "crystek:blocks/machine/generator_side",
+            "front": "crystek:blocks/machine/fluidgenerator_front"
          }
       }
    }

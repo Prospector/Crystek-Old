@@ -61,6 +61,7 @@ tile.crystek.fluid.fluidtesla.name=Fluid Tesla
 
 //Generators
 tile.crystek.coalgenerator.name=Generator
+tile.crystek.fluidgenerator.name=Fluid Generator
 tile.crystek.solarpanel.name=Solar Panel
 
 //Power Storage
