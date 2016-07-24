@@ -3,6 +3,7 @@ package crystekteam.crystek;
 import crystekteam.crystek.client.gui.*;
 import crystekteam.crystek.container.*;
 import crystekteam.crystek.tiles.TileTeslaCell;
+import crystekteam.crystek.tiles.TileTinkerTable;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
@@ -26,6 +27,7 @@ public class GuiHandler implements IGuiHandler
     public static int fluidGenerator = 6;
     public static int fluidizer = 7;
     public static int book = 8;
+    public static int tinkertable = 9;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -65,6 +67,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == book)
         {
             return null;
+        }
+        if(ID == tinkertable)
+        {
+            return new ContainerTinkerTable((TileTinkerTable) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
         return null;
     }
@@ -107,6 +113,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == book)
         {
             return new GuiBook(player);
+        }
+        if(ID == tinkertable)
+        {
+            return new GuiTinkerTable(player, (TileTinkerTable) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }

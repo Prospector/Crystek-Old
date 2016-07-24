@@ -3,6 +3,7 @@ package crystekteam.crystek.init;
 import crystekteam.crystek.blocks.BlockMachineFrame;
 import crystekteam.crystek.blocks.BlockTank;
 import crystekteam.crystek.blocks.BlockTeslaCell;
+import crystekteam.crystek.blocks.BlockTinkerTable;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
@@ -13,6 +14,7 @@ import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.tiles.TileTank;
 import crystekteam.crystek.tiles.TileTeslaCell;
+import crystekteam.crystek.tiles.TileTinkerTable;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
@@ -30,6 +32,7 @@ public class ModBlocks
 {
     public static Block machineframe;
     public static Block tank;
+    public static Block tinkerTable;
     //Decor
     public static Block lamp;
     //Machines
@@ -37,7 +40,6 @@ public class ModBlocks
     public static Block grinder;
     public static Block crystallizer;
     public static Block fluidizer;
-    public static Block bucketer;
     public static Block accelerator;
     //Logic
     public static Block teslaReader;
@@ -103,6 +105,10 @@ public class ModBlocks
         accelerator = new BlockAccelerator();
         registerBlock(accelerator, ItemBlockMachine.class, "accelerator");
         GameRegistry.registerTileEntity(TileAccelerator.class, "accelerator");
+
+        tinkerTable = new BlockTinkerTable();
+        registerBlock(tinkerTable, "tinkertable");
+        GameRegistry.registerTileEntity(TileTinkerTable.class, "tinkertable");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

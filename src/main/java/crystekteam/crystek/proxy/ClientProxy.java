@@ -2,12 +2,14 @@ package crystekteam.crystek.proxy;
 
 import crystekteam.crystek.blocks.fluids.FluidBlockBase;
 import crystekteam.crystek.client.render.TileTankRender;
+import crystekteam.crystek.client.render.TileTinkerRender;
 import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.init.ModelHandler;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.laser.TileLaserRender;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.TileTank;
+import crystekteam.crystek.tiles.TileTinkerTable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -27,6 +29,8 @@ public class ClientProxy extends CommonProxy
 		registerFluidRenders();
         ClientRegistry.bindTileEntitySpecialRenderer(TileTank.class, new TileTankRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileLaser.class, new TileLaserRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileTinkerTable.class, new TileTinkerRender());
+
 	}
 
     private static void registerFluidRenders(){

@@ -123,10 +123,15 @@ public class RenderUtil
     @SideOnly(Side.CLIENT)
     public static void renderItemInWorld(ItemStack stack)
     {
+        Minecraft mc = Minecraft.getMinecraft();
+
         GlStateManager.pushMatrix();
+
         GlStateManager.disableLighting();
         GlStateManager.pushAttrib();
         RenderHelper.enableStandardItemLighting();
+        mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+
         Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
         RenderHelper.disableStandardItemLighting();
         GlStateManager.popAttrib();
