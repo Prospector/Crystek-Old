@@ -48,6 +48,8 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
+        super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+
         if(world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileBase)
         {
             TileBase tileBase = (TileBase) world.getTileEntity(pos);

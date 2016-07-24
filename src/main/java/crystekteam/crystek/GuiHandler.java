@@ -25,8 +25,7 @@ public class GuiHandler implements IGuiHandler
     public static int crystallizer = 5;
     public static int fluidGenerator = 6;
     public static int fluidizer = 7;
-    public static int bucketer = 8;
-    public static int book = 9;
+    public static int book = 8;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -62,10 +61,6 @@ public class GuiHandler implements IGuiHandler
         if(ID == fluidizer)
         {
             return new ContainerFluidizer((TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)), player);
-        }
-        if(ID == bucketer)
-        {
-            return new ContainerBucketer((TileBucketer) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
         if(ID == book)
         {
@@ -108,10 +103,6 @@ public class GuiHandler implements IGuiHandler
         if(ID == fluidizer)
         {
             return new GuiFluidizer(player, (TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)));
-        }
-        if(ID == bucketer)
-        {
-            return new GuiBucketer(player, (TileBucketer) world.getTileEntity(new BlockPos(x, y, z)));
         }
         if(ID == book)
         {

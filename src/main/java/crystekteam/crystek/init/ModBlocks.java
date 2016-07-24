@@ -92,10 +92,6 @@ public class ModBlocks
         registerBlock(fluidizer, ItemBlockMachine.class , "fluidizer");
         GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
 
-        bucketer = new BlockBucketer();
-        registerBlock(bucketer, ItemBlockMachine.class , "bucketer");
-        GameRegistry.registerTileEntity(TileBucketer.class, "bucketer");
-
         tank = new BlockTank();
         registerBlock(tank, ItemBlockMachine.class , "tank");
         GameRegistry.registerTileEntity(TileTank.class, "tank");
