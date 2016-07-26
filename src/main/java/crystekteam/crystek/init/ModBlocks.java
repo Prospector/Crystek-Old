@@ -1,9 +1,6 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.blocks.BlockMachineFrame;
-import crystekteam.crystek.blocks.BlockTank;
-import crystekteam.crystek.blocks.BlockTeslaCell;
-import crystekteam.crystek.blocks.BlockTinkerTable;
+import crystekteam.crystek.blocks.*;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
@@ -118,6 +115,9 @@ public class ModBlocks
         multiblocktank = new BlockMultiBlockTank();
         registerBlock(multiblocktank, "multiblocktank");
         GameRegistry.registerTileEntity(TileMultiBlockTank.class, "multiblocktank");
+
+        lamp = new BlockLamp();
+        registerBlock(lamp, "lamp");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)
