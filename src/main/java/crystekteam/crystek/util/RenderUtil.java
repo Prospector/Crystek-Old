@@ -128,13 +128,15 @@ public class RenderUtil
         GlStateManager.pushMatrix();
 
         GlStateManager.disableLighting();
-        GlStateManager.pushAttrib();
-        RenderHelper.enableStandardItemLighting();
-        mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+        GlStateManager.color(1.0F, 1.0F, 1.0F);
+//        GlStateManager.pushAttrib();
+//        RenderHelper.enableStandardItemLighting();
+//        mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 
         Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
-        RenderHelper.disableStandardItemLighting();
-        GlStateManager.popAttrib();
+//        RenderHelper.enableGUIStandardItemLighting();
+//        RenderHelper.disableStandardItemLighting();
+//        GlStateManager.popAttrib();
         GlStateManager.enableLighting();
         GlStateManager.popMatrix();
     }

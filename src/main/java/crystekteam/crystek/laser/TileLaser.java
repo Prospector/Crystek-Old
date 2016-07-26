@@ -1,5 +1,6 @@
 package crystekteam.crystek.laser;
 
+import crystekteam.crystek.init.ModBlocks;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.tileentity.TileEntity;
@@ -33,23 +34,23 @@ public class TileLaser extends TileTeslaStorage
 //            requestPower(1000);
 //        }
 //
-//        int radius = 10;
+        int radius = 10;
 //
 //        //Todo remove
-//        for (int x = -radius; x < radius; x++) {
-//            for (int y = -radius; y < radius; y++) {
-//                for (int z = -radius; z < radius; z++) {
-//                    BlockPos pos = getPos().add(x, y, z);
-//                    if(!pos.equals(getPos())){
-//                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.poweredFurnace) {
-//                            if(connectedTile == null)
-//                                connectedTile = worldObj.getTileEntity(pos);
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
+        for (int x = -radius; x < radius; x++) {
+            for (int y = -radius; y < radius; y++) {
+                for (int z = -radius; z < radius; z++) {
+                    BlockPos pos = getPos().add(x, y, z);
+                    if(!pos.equals(getPos())){
+                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.poweredFurnace) {
+                            if(connectedTile == null)
+                                connectedTile = worldObj.getTileEntity(pos);
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     public void findConnections()

@@ -37,7 +37,7 @@ public class TileLaserRender extends TileEntitySpecialRenderer<TileLaser>
             double doubleY = p.lastTickPosY + (p.posY - p.lastTickPosY);
             double doubleZ = p.lastTickPosZ + (p.posZ - p.lastTickPosZ);
 
-            Vector start = new Vector(te.getPos().getX() + .5f, te.getPos().getY() + .5f, te.getPos().getZ() + .5f);
+            Vector start = new Vector(te.getPos().getX() + .5f, te.getPos().getY() + 0.9f, te.getPos().getZ() + .5f);
             Vector player = new Vector((float) doubleX, (float) doubleY + p.getEyeHeight(), (float) doubleZ);
 
             GlStateManager.translate(-doubleX, -doubleY, -doubleZ);

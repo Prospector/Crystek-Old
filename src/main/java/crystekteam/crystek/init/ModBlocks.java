@@ -12,6 +12,8 @@ import crystekteam.crystek.blocks.machines.*;
 import crystekteam.crystek.items.Itemblocks.ItemBlockMachine;
 import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
+import crystekteam.crystek.multiblock.block.BlockMultiBlockTank;
+import crystekteam.crystek.multiblock.tile.TileMultiBlockTank;
 import crystekteam.crystek.tiles.TileTank;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.TileTinkerTable;
@@ -52,6 +54,9 @@ public class ModBlocks
     public static Block fluidGen;
 
     public static Block laser;
+
+    //multiblock blocks
+    public static Block multiblocktank;
 
     public static void init()
     {
@@ -109,6 +114,10 @@ public class ModBlocks
         tinkerTable = new BlockTinkerTable();
         registerBlock(tinkerTable, "tinkertable");
         GameRegistry.registerTileEntity(TileTinkerTable.class, "tinkertable");
+
+        multiblocktank = new BlockMultiBlockTank();
+        registerBlock(multiblocktank, "multiblocktank");
+        GameRegistry.registerTileEntity(TileMultiBlockTank.class, "multiblocktank");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

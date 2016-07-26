@@ -46,6 +46,7 @@ public class ModelHandler
         registerItemModel(ModItems.powerArmourBoots, 0);
 
         registerItemModel(ModBlocks.tinkerTable, 0);
+        registerItemModel(ModBlocks.multiblocktank, 0);
 
         int i;
         //Register all crafting items textures
