@@ -14,6 +14,9 @@ public class TileSolarPanel extends TileGenerator
     public TileSolarPanel()
     {
         super(3, "solar", ConfigAE.solarPanelMaxUpgrades, 10000, 100, 100, 0, 0);
+        this.hasInv = true;
+        this.hasTank = false;
+        this.hasTesla = true;
     }
 
     @Override

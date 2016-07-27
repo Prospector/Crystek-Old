@@ -81,7 +81,9 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-        dropInventory(worldIn, pos);
+        if(worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof TileBase)
+            if(((TileBase) worldIn.getTileEntity(pos)).hasInv())
+                dropInventory(worldIn, pos);
         super.breakBlock(worldIn, pos, state);
     }
 

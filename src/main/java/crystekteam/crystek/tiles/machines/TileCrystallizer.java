@@ -21,6 +21,9 @@ public class TileCrystallizer extends TileMachine
     public TileCrystallizer()
     {
         super(6, "crystallizer", 64, 10000, 500, 500, 4000, 100);
+        this.hasInv = true;
+        this.hasTank = true;
+        this.hasTesla = true;
     }
 
     @Override

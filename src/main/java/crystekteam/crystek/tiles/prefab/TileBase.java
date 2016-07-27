@@ -42,21 +42,31 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     public boolean isActive;
     public int maxProgress;
 
-    public TileBase(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity, int maxProgress)
+    //test
+    public boolean hasTank;
+    public boolean hasInv;
+    public boolean hasTesla;
+
+    public TileBase(@Nullable int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankCapacity, int maxProgress)
     {
-        if(invSize != 0)
+        //defaults
+        this.hasInv = true;
+        this.hasTank = true;
+        this.hasTesla = true;
+
+        if(hasInv)
         {
             this.inv = new Inventory(invSize, invName, invStackLimit, this);
         }
-        if(maxCapacity != 0)
+        if(hasTesla)
         {
             this.container = new BaseTeslaContainer(maxCapacity, input, output);
         }
-        if(tankCapacity != 0)
+        if(hasTank)
         {
             this.tank = new Tank(tankCapacity, this);
         }
-        this.maxProgress=maxProgress;
+        this.maxProgress = maxProgress;
     }
 
     public void generatePower(long amount)
@@ -201,22 +211,24 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound tagCompound)
     {
-        if(tank != null)
-         tank.writeToNBT(tagCompound);
-        if(inv != null)
+        if(hasTank())
+            tank.writeToNBT(tagCompound);
+        if(hasInv())
             inv.writeToNBT(tagCompound);
-        tagCompound.setTag("TeslaContainer", this.container.serializeNBT());
+        if(hasTesla())
+            tagCompound.setTag("TeslaContainer", this.container.serializeNBT());
         return tagCompound;
     }
 
 
     public void readFromNBTWithoutCoords(NBTTagCompound tagCompound)
     {
-        if(tank != null)
+        if(hasTank())
             tank.readFromNBT(tagCompound);
-        if(inv != null)
+        if(hasInv())
             inv.readFromNBT(tagCompound);
-        this.container = new BaseTeslaContainer(tagCompound.getCompoundTag("TeslaContainer"));
+        if(hasTesla())
+            this.container = new BaseTeslaContainer(tagCompound.getCompoundTag("TeslaContainer"));
     }
 
     @Override
@@ -228,7 +240,9 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public long getPowerScaled (int scale)
     {
-        return (this.getStoredPower() * scale) / this.getMaxCapacity();
+        if(hasTesla())
+            return (this.getStoredPower() * scale) / this.getMaxCapacity();
+        return 0;
     }
 
     public int getProgress()
@@ -412,5 +426,20 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     public ItemStack returnStack()
     {
         return getDropWithNBT();//new ItemStack(this.getBlockType());
+    }
+
+    public boolean hasTank()
+    {
+        return this.hasTank;
+    }
+
+    public boolean hasInv()
+    {
+        return this.hasInv;
+    }
+
+    public boolean hasTesla()
+    {
+        return this.hasTesla;
     }
 }

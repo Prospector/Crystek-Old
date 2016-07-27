@@ -23,6 +23,9 @@ public class TileGrinder extends TileMachine
 	public TileGrinder()
 	{
 		super(3, "grinder", 64, 10000, 50, 50, 0, 600);
+		this.hasInv = true;
+		this.hasTank = false;
+		this.hasTesla = true;
 	}
 
 	@Override public void update()

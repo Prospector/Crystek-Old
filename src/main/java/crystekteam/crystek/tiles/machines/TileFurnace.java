@@ -18,6 +18,9 @@ public class TileFurnace extends TileMachine
     {
         super(6, "furnace", 64, 10000, 50, 50, 0, 100);
         fuelScale = 100;
+        this.hasInv = true;
+        this.hasTank = false;
+        this.hasTesla = true;
     }
 
     @Override

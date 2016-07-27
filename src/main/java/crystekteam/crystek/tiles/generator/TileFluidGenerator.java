@@ -18,6 +18,9 @@ public class TileFluidGenerator extends TileGenerator
     public TileFluidGenerator()
     {
         super(3, "fluidgen", 16, 10000, 50, 50, 8000, 0);
+        this.hasInv = true;
+        this.hasTank = true;
+        this.hasTesla = true;
     }
 
     @Override

@@ -13,6 +13,9 @@ public class TileTrashCan extends TileBase
     public TileTrashCan()
     {
         super(1, "trashcan", 64, 0, 0, 0, 8000, 0);
+        this.hasInv = true;
+        this.hasTank = true;
+        this.hasTesla = false;
     }
 
     @Override
@@ -33,7 +36,6 @@ public class TileTrashCan extends TileBase
         {
             return (T) tank;
         }
-
         return super.getCapability(capability, facing);
     }
 

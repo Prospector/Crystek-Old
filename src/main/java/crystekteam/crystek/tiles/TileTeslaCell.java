@@ -16,6 +16,9 @@ public class TileTeslaCell extends TileTeslaStorage
     public TileTeslaCell()
     {
         super(6, "teslacell", 16, ConfigAE.teslacellBaseStorage, 50, 50, 0, 0);
+        this.hasInv = true;
+        this.hasTank = false;
+        this.hasTesla = true;
     }
 
     @Override

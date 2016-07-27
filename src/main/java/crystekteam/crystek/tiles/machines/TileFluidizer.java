@@ -15,6 +15,9 @@ public class TileFluidizer extends TileMachine
     public TileFluidizer()
     {
         super(4, "fluidizer", 64, 10000, 500, 500, 4000, 100);
+        this.hasInv = true;
+        this.hasTank = true;
+        this.hasTesla = true;
     }
 
     @Override

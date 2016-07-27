@@ -13,6 +13,9 @@ public class TileTank extends TileBase
     public TileTank()
     {
         super(0, "", 0, 0, 0, 0, 8000, 0);
+        this.hasInv = false;
+        this.hasTank = true;
+        this.hasTesla = false;
     }
 
     @Override

@@ -22,6 +22,9 @@ public class TileAccelerator extends TileMachine
 	public TileAccelerator()
 	{
 		super(0, "", 0, 100000, 500, 500, 0, 0);
+		this.hasInv = false;
+		this.hasTank = false;
+		this.hasTesla = true;
 	}
 
 	@Override public void update()
