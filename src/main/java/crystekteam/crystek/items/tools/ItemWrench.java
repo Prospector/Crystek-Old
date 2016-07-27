@@ -46,25 +46,25 @@ public class ItemWrench extends ItemBase
             }
         }
         //Todo clean this up
-        if(!worldIn.isRemote && !playerIn.isSneaking())
+        if(!playerIn.isSneaking())
         {
             if(worldIn.getTileEntity(pos) instanceof TileLaser)
             {
                 TileLaser laser = (TileLaser) worldIn.getTileEntity(pos);
-                if(ItemNBTHelper.detectNBT(stack))
+                if(!ItemNBTHelper.verifyExistance(stack, "xPos"))
                 {
                     ItemNBTHelper.setInt(stack, "xPos", pos.getX());
                     ItemNBTHelper.setInt(stack, "yPos", pos.getY());
                     ItemNBTHelper.setInt(stack, "zPos", pos.getZ());
                 }
-                else if(ItemNBTHelper.getInt(stack, "xPos", 0) != pos.getX() && ItemNBTHelper.getInt(stack, "zPos", 0)!= pos.getZ())
+                else if(ItemNBTHelper.verifyExistance(stack, "xPos"))
                 {
                     int x = ItemNBTHelper.getInt(stack, "xPos", 0);
                     int y = ItemNBTHelper.getInt(stack, "yPos", 0);
                     int z = ItemNBTHelper.getInt(stack, "zPos", 0);
-                    if(laser.getConnectedTile() == null)
+                    if(laser.getConnectedLaser() == null)
                     {
-                        laser.setConnectedTile(worldIn.getTileEntity(new BlockPos(x, y, z)));
+                        laser.setConnectedLaser(new BlockPos(x, y, z));
                         System.out.print("fafasf");
 
                         stack.getTagCompound().removeTag("xPos");

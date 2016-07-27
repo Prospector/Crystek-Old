@@ -23,7 +23,7 @@ public class TileLaserRender extends TileEntitySpecialRenderer<TileLaser>
     @Override
     public void renderTileEntityAt(TileLaser te, double x, double y, double z, float partialTicks, int destroyStage)
     {
-        if (te.connectedTile != null)
+        if (te.getConnectedLaser() != null)
         {
             GlStateManager.pushMatrix();
 
@@ -49,8 +49,8 @@ public class TileLaserRender extends TileEntitySpecialRenderer<TileLaser>
 
             buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_LMAP_COLOR);
 
-            BlockPos destination = new BlockPos(te.connectedTile.getPos());
-            Vector end = new Vector(destination.getX() + .5f, destination.getY() + .5f, destination.getZ() + .5f);
+            BlockPos destination = new BlockPos(te.getConnectedLaser().getPos());
+            Vector end = new Vector(destination.getX() + .5f, destination.getY() + .9f, destination.getZ() + .5f);
 
             drawBeam(start, end, player, .1f);
 
