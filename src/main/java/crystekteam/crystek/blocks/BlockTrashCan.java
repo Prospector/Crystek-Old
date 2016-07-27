@@ -8,6 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -24,6 +25,7 @@ public class BlockTrashCan extends BlockBase
     public BlockTrashCan()
     {
         setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".trashcan");
+        setLightLevel(1F);
     }
 
     @Override
@@ -52,6 +54,11 @@ public class BlockTrashCan extends BlockBase
     public boolean isFullCube(IBlockState state)
     {
         return false;
+    }
+
+    @Override public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.CUTOUT;
     }
 
     @Override
