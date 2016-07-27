@@ -17,7 +17,6 @@ public class CompatModuleWaila
 
     public static void callbackRegister(IWailaRegistrar registar)
     {
-//        registar.registerBodyProvider(new WailaProviderAE(), TileMachineFrame.class);
         registar.registerBodyProvider(new WailaProviderAE(), TileBase.class);
     }
 }

@@ -397,13 +397,18 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         }
     }
 
+    //Todo sync getPower to client
     //Adds info to waila
     public void addWailaInfo(List<String> info)
     {
-//        if(container != null)
-//        {
-//            info.add(this.container.getStoredPower() + " / " + getMaxCapacity());
-//        }
+        if(container != null && hasTesla())
+        {
+            info.add(this.container.getStoredPower() + " / " + getMaxCapacity());
+        }
+        if(tank != null && tank.getFluid() != null)
+        {
+            info.add(tank.getFluid().getLocalizedName() + " " + tank.getFluidAmount() + " / " + tank.getCapacity());
+        }
     }
 
     public ItemStack getDropWithNBT()
