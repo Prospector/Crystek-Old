@@ -157,4 +157,9 @@ public class TeslaUtils
     {
         getContainer(tileEntity).givePower(amount, false);
     }
+
+    public static void removePower(TileEntity tileEntity, long amount)
+    {
+        getContainer(tileEntity).takePower(amount, false);
+    }
 }

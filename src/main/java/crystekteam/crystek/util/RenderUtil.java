@@ -135,14 +135,7 @@ public class RenderUtil
 			GlStateManager.scale(.5, .5, .5);
 		}
 
-		//        GlStateManager.pushAttrib();
-		//        RenderHelper.enableStandardItemLighting();
-		//        mc.renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-
 		Minecraft.getMinecraft().getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
-		//        RenderHelper.enableGUIStandardItemLighting();
-		//        RenderHelper.disableStandardItemLighting();
-		//        GlStateManager.popAttrib();
 		GlStateManager.enableLighting();
 		GlStateManager.popMatrix();
 	}

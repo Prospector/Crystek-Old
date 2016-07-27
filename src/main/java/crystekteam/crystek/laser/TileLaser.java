@@ -1,121 +1,109 @@
 package crystekteam.crystek.laser;
 
-import crystekteam.crystek.init.ModBlocks;
-import crystekteam.crystek.tiles.prefab.TileBase;
+import crystekteam.crystek.tesla.TeslaUtils;
+import crystekteam.crystek.tiles.prefab.TileGenerator;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Gigabit101 on 02/06/2016.
  */
 public class TileLaser extends TileTeslaStorage
 {
-    BlockPos connectedPos;
-    TileEntity connectedTile;
-    public static final float[] COLORS = new float[]{93F/255F, 43F/255F, 181F/955F};
+    TileEntity connectedMachine;
+    TileLaser connectedLaser;
 
     public TileLaser()
     {
-        super(0, "", 0, 1000, 1000, 1000, 0, 0);
+        super(0, "", 0, 10000, 1000, 1000, 0, 0);
     }
 
-    //Todo rewrite all of this
     @Override
     public void update()
     {
-//        if(!hasConnectedTile())
-//        {
-////            findConnections();
-//        }
-//        if(hasConnectedTile() && getStoredPower() != 1000)
-//        {
-//            requestPower(1000);
-//        }
-//
-        int radius = 10;
-//
-//        //Todo remove
-        for (int x = -radius; x < radius; x++) {
-            for (int y = -radius; y < radius; y++) {
-                for (int z = -radius; z < radius; z++) {
-                    BlockPos pos = getPos().add(x, y, z);
-                    if(!pos.equals(getPos())){
-                        if(worldObj.getBlockState(pos).getBlock() == ModBlocks.poweredFurnace) {
-                            if(connectedTile == null)
-                                connectedTile = worldObj.getTileEntity(pos);
-                        }
-                    }
+        //Connect to machine under laser
+        if(getConnectedMachine() == null)
+        {
+            setConnectedMachine();
+        }
 
-                }
-            }
+        if(getConnectedLaser() != null)
+        {
+            //request power from connected coil
+            requestPower();
+            //transfers power to connected machine
+            transferPowerTo(EnumFacing.DOWN);
         }
     }
 
-    public void findConnections()
+    public void setConnectedMachine()
     {
-        for (final EnumFacing side : EnumFacing.values())
+        BlockPos tilePos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
+        if(worldObj.getTileEntity(tilePos) != null && TeslaUtils.isTelsaBlock(worldObj.getTileEntity(tilePos)))
         {
-            int i;
-            for (i = 0; i < 15; ++i)
+            connectedMachine = worldObj.getTileEntity(pos);
+        }
+        else
+        {
+            connectedMachine = null;
+        }
+    }
+
+    public TileLaser getConnectedLaser()
+    {
+        return connectedLaser;
+    }
+
+    public TileEntity getConnectedMachine()
+    {
+        return connectedMachine;
+    }
+
+    public void setConnectedLaser(BlockPos pos)
+    {
+        if(worldObj.getTileEntity(pos) != null && worldObj.getTileEntity(pos) instanceof TileLaser)
+        {
+            connectedLaser = (TileLaser) worldObj.getTileEntity(pos);
+        }
+    }
+
+    public void requestPower()
+    {
+        if(getConnectedMachine() != null && TeslaUtils.isConsumer(getConnectedMachine()))
+        {
+            if(TeslaUtils.getMissingPower(worldObj.getTileEntity(pos)) >= container.getInputRate())
             {
-                final TileEntity tile = worldObj.getTileEntity(pos.offset(side).add(i, i, i));
-                if (tile != null && !tile.isInvalid() && tile instanceof TileBase)
+
+                if (TeslaUtils.getStoredPower(connectedLaser) >= container.getInputRate())
                 {
-                    setConnectedTile(tile);
-                    break;
+                    TeslaUtils.removePower(getConnectedLaser(), container.getInputRate());
+                    TeslaUtils.addPower(worldObj.getTileEntity(pos), container.getInputRate());
                 }
             }
         }
     }
 
-    public boolean hasConnectedTile()
+
+    public void transferPowerTo(EnumFacing facing)
     {
-        if(getConnectedTile() != null)
+        TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
+        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
         {
-            return true;
-        }
-        return false;
-    }
-
-    public BlockPos getConnectedPos()
-    {
-        return connectedPos;
-    }
-
-    public TileEntity getConnectedTile()
-    {
-        return connectedTile;
-    }
-
-    public void setConnectedTile(TileEntity tile)
-    {
-        connectedTile = tile;
-    }
-
-    public void removeConnection()
-    {
-        this.connectedTile = null;
-    }
-
-    public void requestPower(long amount)
-    {
-        if(connectedTile != null)
-        {
-            if (connectedTile instanceof TileBase)
+            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
             {
-                TileBase tile = (TileBase) connectedTile;
-                if (tile.getStoredPower() >= amount)
-                {
-                    tile.usePower(amount);
-                    generatePower(amount);
-                }
+                TeslaUtils.addPower(tileEntity, this.container.getOutputRate());
+                this.container.takePower(this.container.getOutputRate(), false);
             }
-        }
-        if(worldObj.getTileEntity(connectedTile.getPos()) == null)
-        {
-            removeConnection();
+            else if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
+            {
+                TeslaUtils.addPower(tileEntity, this.container.getStoredPower());
+                this.container.takePower(this.container.getStoredPower(), false);
+            }
         }
     }
 }
