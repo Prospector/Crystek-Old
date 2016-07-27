@@ -15,7 +15,7 @@ public class ContainerTrashCan extends ContainerBase
         addPlayersHotbar();
         addPlayersInventory();
 
-        this.addSlotToContainer(new Slot(tile.inv, 0, 84, 44));
+        this.addSlotToContainer(new Slot(tile.inv, 0, 80, 35));
     }
 
     @Override

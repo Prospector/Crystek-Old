@@ -4,6 +4,7 @@
       "transform":"forge:default-block",
       "model":"crystek:trashcan",
          "textures":{
+			
          }
    },
    "variants":{
@@ -30,7 +31,7 @@
       "active":{
          "true":{
             "textures":{
-		       "front": "crystek:blocks/trash_can_side"
+				
             }
          },
          "false":{
