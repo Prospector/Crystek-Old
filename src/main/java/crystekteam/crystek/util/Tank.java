@@ -2,16 +2,17 @@ package crystekteam.crystek.util;
 
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tiles.prefab.TileBase;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
 public class Tank extends FluidTank
 {
-	public TileBase tile;
+	public TileEntity tile;
 	private FluidStack lastBeforeUpdate = null;
 
-	public Tank(int capacity, TileBase tile)
+	public Tank(int capacity, TileEntity tile)
 	{
 		super(capacity);
 		this.tile = tile;

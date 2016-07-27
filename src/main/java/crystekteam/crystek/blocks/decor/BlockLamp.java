@@ -1,5 +1,6 @@
-package crystekteam.crystek.blocks;
+package crystekteam.crystek.blocks.decor;
 
+import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.lib.ModInfo;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.BlockRenderLayer;

@@ -73,6 +73,7 @@ tile.crystek.grinder.name=Grinder
 tile.crystek.crystallizer.name=Crystallizer
 tile.crystek.fluidizer.name=Fluidizer
 tile.crystek.accelerator.name=Crop Accelerator
+tile.crystek.trashcan.name=Trash Can
 
 //Misc
 tile.crystek.machineframe.name=Machine Frame

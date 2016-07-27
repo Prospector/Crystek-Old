@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.blocks.*;
+import crystekteam.crystek.blocks.decor.BlockLamp;
 import crystekteam.crystek.blocks.generator.BlockCoalGenerator;
 import crystekteam.crystek.blocks.generator.BlockFluidGenerator;
 import crystekteam.crystek.blocks.generator.BlockSolarPanel;
@@ -14,6 +15,7 @@ import crystekteam.crystek.multiblock.tile.TileMultiBlockTank;
 import crystekteam.crystek.tiles.TileTank;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.TileTinkerTable;
+import crystekteam.crystek.tiles.TileTrashCan;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
@@ -51,6 +53,7 @@ public class ModBlocks
     public static Block fluidGen;
 
     public static Block laser;
+    public static Block trashCan;
 
     //multiblock blocks
     public static Block multiblocktank;
@@ -118,6 +121,10 @@ public class ModBlocks
 
         lamp = new BlockLamp();
         registerBlock(lamp, "lamp");
+
+        trashCan = new BlockTrashCan();
+        registerBlock(trashCan, "trashcan");
+        GameRegistry.registerTileEntity(TileTrashCan.class, "trashcan");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

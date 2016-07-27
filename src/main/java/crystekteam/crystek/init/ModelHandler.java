@@ -49,6 +49,8 @@ public class ModelHandler
         registerItemModel(ModBlocks.multiblocktank, 0);
         registerItemModel(ModBlocks.lamp, 0);
 
+        registerItemModel(ModBlocks.trashCan, 0);
+
         int i;
         //Register all crafting items textures
         for (i = 0; i < ItemCrafting.types.length; ++i)
