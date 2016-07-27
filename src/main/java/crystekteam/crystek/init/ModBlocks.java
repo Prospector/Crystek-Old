@@ -12,10 +12,7 @@ import crystekteam.crystek.laser.BlockLaser;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.multiblock.block.BlockMultiBlockTank;
 import crystekteam.crystek.multiblock.tile.TileMultiBlockTank;
-import crystekteam.crystek.tiles.TileTank;
-import crystekteam.crystek.tiles.TileTeslaCell;
-import crystekteam.crystek.tiles.TileTinkerTable;
-import crystekteam.crystek.tiles.TileTrashCan;
+import crystekteam.crystek.tiles.*;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
@@ -54,6 +51,7 @@ public class ModBlocks
 
     public static Block laser;
     public static Block trashCan;
+    public static Block crate;
 
     //multiblock blocks
     public static Block multiblocktank;
@@ -112,7 +110,7 @@ public class ModBlocks
         GameRegistry.registerTileEntity(TileAccelerator.class, "accelerator");
 
         tinkerTable = new BlockTinkerTable();
-        registerBlock(tinkerTable, "tinkertable");
+        registerBlock(tinkerTable, ItemBlockMachine.class, "tinkertable");
         GameRegistry.registerTileEntity(TileTinkerTable.class, "tinkertable");
 
         multiblocktank = new BlockMultiBlockTank();
@@ -125,6 +123,10 @@ public class ModBlocks
         trashCan = new BlockTrashCan();
         registerBlock(trashCan, "trashcan");
         GameRegistry.registerTileEntity(TileTrashCan.class, "trashcan");
+
+        crate = new BlockCrate();
+        registerBlock(crate, ItemBlockMachine.class, "crate");
+        GameRegistry.registerTileEntity(TileCrate.class, "crate");
     }
 
     static void registerOreDictValues(Block item, int meta, String value)

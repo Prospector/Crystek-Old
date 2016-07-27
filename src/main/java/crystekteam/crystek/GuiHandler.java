@@ -2,6 +2,7 @@ package crystekteam.crystek;
 
 import crystekteam.crystek.client.gui.*;
 import crystekteam.crystek.container.*;
+import crystekteam.crystek.tiles.TileCrate;
 import crystekteam.crystek.tiles.TileTeslaCell;
 import crystekteam.crystek.tiles.TileTinkerTable;
 import crystekteam.crystek.tiles.TileTrashCan;
@@ -30,6 +31,7 @@ public class GuiHandler implements IGuiHandler
     public static int book = 8;
     public static int tinkertable = 9;
     public static int trashcan = 10;
+    public static int crate = 11;
 
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -77,6 +79,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == trashcan)
         {
             return new ContainerTrashCan((TileTrashCan) world.getTileEntity(new BlockPos(x, y, z)), player);
+        }
+        if(ID == crate)
+        {
+            return new ContainerCrate((TileCrate) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
         return null;
     }
@@ -127,6 +133,10 @@ public class GuiHandler implements IGuiHandler
         if(ID == trashcan)
         {
             return new GuiTrashcan(player, (TileTrashCan) world.getTileEntity(new BlockPos(x, y, z)));
+        }
+        if(ID == crate)
+        {
+            return new GuiCrate(player, (TileCrate) world.getTileEntity(new BlockPos(x, y, z)));
         }
         return null;
     }
