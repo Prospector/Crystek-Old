@@ -1,9 +1,9 @@
 package crystekteam.crystek.items.armour;
 
 import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.tesla.BaseTeslaContainerProvider;
 import crystekteam.crystek.tesla.TeslaUtils;
-import net.darkhax.tesla.api.BaseTeslaContainer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainerProvider;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -67,7 +67,7 @@ public class ItemTeslaArmour extends ItemArmor// implements ISpecialArmor
 
 	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
 	{
-		return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
+		return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
 	}
 
 //	@Override public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)

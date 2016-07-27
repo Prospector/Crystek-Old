@@ -82,7 +82,7 @@ repositories {
 dependencies {
 	deobfCompile "mezz.jei:jei_1.9.4:+"
 	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.4-14"
-    compile "net.darkhax.tesla:Tesla:1.9.4-1.1.0.24"
+    compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.41"
 	compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
 }
 

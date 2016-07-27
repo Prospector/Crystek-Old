@@ -5,12 +5,5 @@ public class ModInfo
     public static final String MOD_NAME = "Crystek";
     public static final String MOD_ID = "crystek";
     public static final String MOD_VERSION = "1.0.0";
-    public static final String MOD_DRPENDENCES = "required-after:Tesla;";
-
-
-    public static final class Keys
-    {
-        public static final String CATEGORY = "keys.advanced.category";
-        public static final String CRAFTER = "keys.advanced.config";
-    }
+    public static final String MOD_DRPENDENCES = "required-after:tesla;";
 }

@@ -6,7 +6,7 @@ import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.util.Inventory;
 import crystekteam.crystek.util.Tank;
-import net.darkhax.tesla.api.BaseTeslaContainer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

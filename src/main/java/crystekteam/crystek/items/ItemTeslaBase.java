@@ -1,8 +1,8 @@
 package crystekteam.crystek.items;
 
-import crystekteam.crystek.tesla.BaseTeslaContainerProvider;
 import crystekteam.crystek.tesla.TeslaUtils;
-import net.darkhax.tesla.api.BaseTeslaContainer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainerProvider;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,6 +62,6 @@ public class ItemTeslaBase extends ItemBase
 
 	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
 	{
-		return new BaseTeslaContainerProvider(new BaseTeslaContainer(), maxCapacity, output, input);
+		return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
 	}
 }
