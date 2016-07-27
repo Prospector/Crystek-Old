@@ -28,32 +28,41 @@ public class TileFurnace extends TileMachine
     {
         boolean burning = isBurning();
         boolean updateInventory = false;
-        if (isBurning() && canSmelt())
+        if(!worldObj.isRemote)
         {
-            this.addProgress();
-            if(this.getProgress() % 10 == 0)
+            if (isBurning() && canSmelt())
             {
-                this.usePower(cost);
-            }
-            if (getProgress() >= fuelScale)
-            {
-                resetProgress();
-                updateState();
-                cookItems();
-                updateInventory = true;
+                this.addProgress();
                 syncWithAll();
+                if(getProgress() == 1)
+                {
+                    updateState();
+                }
+                if (this.getProgress() % 10 == 0)
+                {
+                    this.usePower(cost);
+//                    updateState();
+                }
+                if (getProgress() >= fuelScale)
+                {
+                    resetProgress();
+                    updateState();
+                    cookItems();
+                    updateInventory = true;
+                    syncWithAll();
+                }
             }
+            if (burning != isBurning())
+            {
+                updateInventory = true;
+                resetProgress();
+            }
+            if (updateInventory)
+            {
+                markDirty();
+            }
+            handleChargeSlots(0, false, 5, true);
         }
-        if (burning != isBurning())
-        {
-            updateInventory = true;
-            resetProgress();
-        }
-        if (updateInventory)
-        {
-            markDirty();
-        }
-        handleChargeSlots(0, false, 5, true);
     }
 
     public void cookItems()
