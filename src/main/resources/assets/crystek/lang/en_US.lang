@@ -76,7 +76,7 @@ tile.crystek.accelerator.name=Crop Accelerator
 tile.crystek.trashcan.name=Incinerator
 
 //Misc
-tile.crystek.machineframe.name=Machine Frame
+tile.crystek.crate.name=Crate
 tile.crystek.laser.name=Tesla Coil
 
 //Descriptions

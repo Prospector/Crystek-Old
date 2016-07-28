@@ -28,133 +28,127 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ModBlocks
 {
-    public static Block machineframe;
-    public static Block tank;
-    public static Block tinkerTable;
-    //Decor
-    public static Block lamp;
-    //Machines
-    public static Block poweredFurnace;
-    public static Block grinder;
-    public static Block crystallizer;
-    public static Block fluidizer;
-    public static Block accelerator;
-    //Logic
-    public static Block teslaReader;
+	public static Block tank;
+	public static Block tinkerTable;
+	//Decor
+	public static Block lamp;
+	//Machines
+	public static Block poweredFurnace;
+	public static Block grinder;
+	public static Block crystallizer;
+	public static Block fluidizer;
+	public static Block accelerator;
+	//Logic
+	public static Block teslaReader;
 
-    //Power Storage
-    public static Block teslaCell;
-    //Power gen
-    public static Block coalGen;
-    public static Block solarGen;
-    public static Block fluidGen;
+	//Power Storage
+	public static Block teslaCell;
+	//Power gen
+	public static Block coalGen;
+	public static Block solarGen;
+	public static Block fluidGen;
 
-    public static Block laser;
-    public static Block trashCan;
-    public static Block crate;
+	public static Block laser;
+	public static Block trashCan;
+	public static Block crate;
 
-    //multiblock blocks
-    public static Block multiblocktank;
+	//multiblock blocks
+	public static Block multiblocktank;
 
-    public static void init()
-    {
-        machineframe = new BlockMachineFrame();
-        registerBlock(machineframe, "machineframe");
+	public static void init()
+	{
+		coalGen = new BlockCoalGenerator();
+		registerBlock(coalGen, ItemBlockMachine.class, "coalgenerator");
+		GameRegistry.registerTileEntity(TileCoalGenerator.class, "coalgenerator");
 
-        coalGen = new BlockCoalGenerator();
-        registerBlock(coalGen, ItemBlockMachine.class, "coalgenerator");
-        GameRegistry.registerTileEntity(TileCoalGenerator.class, "coalgenerator");
+		teslaCell = new BlockTeslaCell();
+		registerBlock(teslaCell, ItemBlockMachine.class, "teslacell");
+		GameRegistry.registerTileEntity(TileTeslaCell.class, "teslacell");
 
-        teslaCell = new BlockTeslaCell();
-        registerBlock(teslaCell, ItemBlockMachine.class , "teslacell");
-        GameRegistry.registerTileEntity(TileTeslaCell.class, "teslacell");
+		poweredFurnace = new BlockFurnace();
+		registerBlock(poweredFurnace, ItemBlockMachine.class, "poweredfurnace");
+		GameRegistry.registerTileEntity(TileFurnace.class, "poweredfurnace");
 
-        poweredFurnace = new BlockFurnace();
-        registerBlock(poweredFurnace, ItemBlockMachine.class , "poweredfurnace");
-        GameRegistry.registerTileEntity(TileFurnace.class, "poweredfurnace");
+		laser = new BlockLaser();
+		registerBlock(laser, "laser");
+		GameRegistry.registerTileEntity(TileLaser.class, "lasertile");
 
-        laser = new BlockLaser();
-        registerBlock(laser, "laser");
-        GameRegistry.registerTileEntity(TileLaser.class, "lasertile");
+		grinder = new BlockGrinder();
+		registerBlock(grinder, ItemBlockMachine.class, "grinder");
+		GameRegistry.registerTileEntity(TileGrinder.class, "oresmasher");
 
-        grinder = new BlockGrinder();
-        registerBlock(grinder, ItemBlockMachine.class , "grinder");
-        GameRegistry.registerTileEntity(TileGrinder.class, "oresmasher");
+		solarGen = new BlockSolarPanel();
+		registerBlock(solarGen, ItemBlockMachine.class, "solarpanel");
+		GameRegistry.registerTileEntity(TileSolarPanel.class, "solarpanel");
 
-        solarGen = new BlockSolarPanel();
-        registerBlock(solarGen, ItemBlockMachine.class , "solarpanel");
-        GameRegistry.registerTileEntity(TileSolarPanel.class, "solarpanel");
+		crystallizer = new BlockCrystallizer();
+		registerBlock(crystallizer, ItemBlockMachine.class, "crystallizer");
+		GameRegistry.registerTileEntity(TileCrystallizer.class, "crystallizer");
 
-        crystallizer = new BlockCrystallizer();
-        registerBlock(crystallizer, ItemBlockMachine.class , "crystallizer");
-        GameRegistry.registerTileEntity(TileCrystallizer.class, "crystallizer");
+		fluidGen = new BlockFluidGenerator();
+		registerBlock(fluidGen, ItemBlockMachine.class, "fluidgen");
+		GameRegistry.registerTileEntity(TileFluidGenerator.class, "fluidgen");
 
-        fluidGen = new BlockFluidGenerator();
-        registerBlock(fluidGen, ItemBlockMachine.class , "fluidgen");
-        GameRegistry.registerTileEntity(TileFluidGenerator.class, "fluidgen");
+		fluidizer = new BlockFluidizer();
+		registerBlock(fluidizer, ItemBlockMachine.class, "fluidizer");
+		GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
 
-        fluidizer = new BlockFluidizer();
-        registerBlock(fluidizer, ItemBlockMachine.class , "fluidizer");
-        GameRegistry.registerTileEntity(TileFluidizer.class, "fluidizer");
+		tank = new BlockTank();
+		registerBlock(tank, ItemBlockMachine.class, "tank");
+		GameRegistry.registerTileEntity(TileTank.class, "tank");
 
-        tank = new BlockTank();
-        registerBlock(tank, ItemBlockMachine.class , "tank");
-        GameRegistry.registerTileEntity(TileTank.class, "tank");
+		teslaReader = new BlockTeslaReader();
+		registerBlock(teslaReader, "teslareader");
+		GameRegistry.registerTileEntity(TileTeslaReader.class, "teslareader");
 
-        teslaReader = new BlockTeslaReader();
-        registerBlock(teslaReader, "teslareader");
-        GameRegistry.registerTileEntity(TileTeslaReader.class, "teslareader");
+		accelerator = new BlockAccelerator();
+		registerBlock(accelerator, ItemBlockMachine.class, "accelerator");
+		GameRegistry.registerTileEntity(TileAccelerator.class, "accelerator");
 
-        accelerator = new BlockAccelerator();
-        registerBlock(accelerator, ItemBlockMachine.class, "accelerator");
-        GameRegistry.registerTileEntity(TileAccelerator.class, "accelerator");
+		tinkerTable = new BlockTinkerTable();
+		registerBlock(tinkerTable, ItemBlockMachine.class, "tinkertable");
+		GameRegistry.registerTileEntity(TileTinkerTable.class, "tinkertable");
 
-        tinkerTable = new BlockTinkerTable();
-        registerBlock(tinkerTable, ItemBlockMachine.class, "tinkertable");
-        GameRegistry.registerTileEntity(TileTinkerTable.class, "tinkertable");
+		multiblocktank = new BlockMultiBlockTank();
+		registerBlock(multiblocktank, "multiblocktank");
+		GameRegistry.registerTileEntity(TileMultiBlockTank.class, "multiblocktank");
 
-        multiblocktank = new BlockMultiBlockTank();
-        registerBlock(multiblocktank, "multiblocktank");
-        GameRegistry.registerTileEntity(TileMultiBlockTank.class, "multiblocktank");
+		lamp = new BlockLamp();
+		registerBlock(lamp, "lamp");
 
-        lamp = new BlockLamp();
-        registerBlock(lamp, "lamp");
+		trashCan = new BlockTrashCan();
+		registerBlock(trashCan, "trashcan");
+		GameRegistry.registerTileEntity(TileTrashCan.class, "trashcan");
 
-        trashCan = new BlockTrashCan();
-        registerBlock(trashCan, "trashcan");
-        GameRegistry.registerTileEntity(TileTrashCan.class, "trashcan");
+		crate = new BlockCrate();
+		registerBlock(crate, ItemBlockMachine.class, "crate");
+		GameRegistry.registerTileEntity(TileCrate.class, "crate");
+	}
 
-        crate = new BlockCrate();
-        registerBlock(crate, ItemBlockMachine.class, "crate");
-        GameRegistry.registerTileEntity(TileCrate.class, "crate");
-    }
+	static void registerOreDictValues(Block item, int meta, String value)
+	{
+		OreDictionary.registerOre(value, new ItemStack(item, 1, meta));
+	}
 
-    static void registerOreDictValues(Block item, int meta, String value)
-    {
-        OreDictionary.registerOre(value, new ItemStack(item, 1, meta));
-    }
+	public static void registerBlock(Block block, String name)
+	{
+		block.setRegistryName(name);
+		GameRegistry.register(block);
+		GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+	}
 
-
-    public static void registerBlock(Block block, String name)
-    {
-        block.setRegistryName(name);
-        GameRegistry.register(block);
-        GameRegistry.register(new ItemBlock(block), block.getRegistryName());
-    }
-
-    public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass, String name)
-    {
-        block.setRegistryName(name);
-        GameRegistry.register(block);
-        try
-        {
-            ItemBlock itemBlock = itemclass.getConstructor(Block.class).newInstance(block);
-            itemBlock.setRegistryName(name);
-            GameRegistry.register(itemBlock);
-        }
-        catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e)
-        {
-            e.printStackTrace();
-        }
-    }
+	public static void registerBlock(Block block, Class<? extends ItemBlock> itemclass, String name)
+	{
+		block.setRegistryName(name);
+		GameRegistry.register(block);
+		try
+		{
+			ItemBlock itemBlock = itemclass.getConstructor(Block.class).newInstance(block);
+			itemBlock.setRegistryName(name);
+			GameRegistry.register(itemBlock);
+		} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
