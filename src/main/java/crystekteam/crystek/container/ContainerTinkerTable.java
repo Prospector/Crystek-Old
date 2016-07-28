@@ -19,19 +19,19 @@ public class ContainerTinkerTable extends ContainerBase
         this.addSlotToContainer(new SlotCharge(tile.inv, 0, 8, 62));
 
         //Tools slot
-        this.addSlotToContainer(new Slot(tile.getInv(), 1, 80, 37));
+        this.addSlotToContainer(new Slot(tile.getInv(), 1, 88, 35));
 
         //Inv slots
-        this.addSlotToContainer(new Slot(tile.getInv(), 2, 80, 8));
-        this.addSlotToContainer(new Slot(tile.getInv(), 3, 80, 62));
+        this.addSlotToContainer(new Slot(tile.getInv(), 2, 88, 9));
+        this.addSlotToContainer(new Slot(tile.getInv(), 3, 88, 61));
 
-        this.addSlotToContainer(new Slot(tile.getInv(), 4, 50, 62));
-        this.addSlotToContainer(new Slot(tile.getInv(), 5, 110, 62));
+        this.addSlotToContainer(new Slot(tile.getInv(), 4, 64, 59));
+        this.addSlotToContainer(new Slot(tile.getInv(), 5, 112, 59));
 
-        this.addSlotToContainer(new Slot(tile.getInv(), 6, 110, 37));
-        this.addSlotToContainer(new Slot(tile.getInv(), 7, 50, 37));
+        this.addSlotToContainer(new Slot(tile.getInv(), 6, 114, 35));
+        this.addSlotToContainer(new Slot(tile.getInv(), 7, 62, 35));
 
-        this.addSlotToContainer(new Slot(tile.getInv(), 8, 50, 8));
-        this.addSlotToContainer(new Slot(tile.getInv(), 9, 110, 8));
+        this.addSlotToContainer(new Slot(tile.getInv(), 8, 64, 11));
+        this.addSlotToContainer(new Slot(tile.getInv(), 9, 112, 11));
     }
 }

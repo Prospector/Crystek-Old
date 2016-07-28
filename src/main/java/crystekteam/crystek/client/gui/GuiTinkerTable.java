@@ -28,7 +28,7 @@ public class GuiTinkerTable extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawTank(table, guiLeft + 152, guiTop + 10, zLevel, 14, 64);
+        drawTank(table, guiLeft + 38, guiTop + 11, zLevel, 14, 64);
         drawPowerBar(tile);
     }
 }

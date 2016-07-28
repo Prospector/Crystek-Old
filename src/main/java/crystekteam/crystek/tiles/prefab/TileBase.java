@@ -4,8 +4,8 @@ import crystekteam.crystek.api.IWrenchable;
 import crystekteam.crystek.blocks.BlockBase;
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
-import crystekteam.crystek.util.Inventory;
-import crystekteam.crystek.util.Tank;
+import crystekteam.crystek.core.Inventory;
+import crystekteam.crystek.core.Tank;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,6 +41,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     public int totalBurnTime;
     public boolean isActive;
     public int maxProgress;
+    public boolean canRun;
 
     //test
     public boolean hasTank;

@@ -1,4 +1,4 @@
-package crystekteam.crystek.util;
+package crystekteam.crystek.core;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

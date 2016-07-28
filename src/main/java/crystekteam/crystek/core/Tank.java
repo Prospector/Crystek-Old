@@ -1,4 +1,4 @@
-package crystekteam.crystek.util;
+package crystekteam.crystek.core;
 
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tiles.prefab.TileBase;
