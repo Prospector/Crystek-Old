@@ -18,7 +18,6 @@ public class ModelHandler
 		registerItemModel(ModBlocks.coalGen, 0);
 		registerItemModel(ModBlocks.fluidGen, 0);
 		registerItemModel(ModBlocks.solarGen, 0);
-        registerItemModel(ModBlocks.machineframe, 0);
         registerItemModel(ModBlocks.poweredFurnace, 0);
         registerItemModel(ModItems.powerScanner, 0);
         registerItemModel(ModBlocks.grinder, 0);
