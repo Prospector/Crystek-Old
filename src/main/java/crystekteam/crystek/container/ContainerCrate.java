@@ -20,7 +20,7 @@ public class ContainerCrate extends ContainerBase
         {
             for (int j = 0; j < 9; ++j)
             {
-                this.addSlotToContainer(new Slot(tile.inv, j + i * 9, 8 + j * 18, 15 + i * 18));
+                this.addSlotToContainer(new Slot(tile.inv, j + i * 9, 8 + j * 18, 17 + i * 18));
             }
         }
     }
