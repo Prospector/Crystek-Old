@@ -14,7 +14,6 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiTrashcan extends GuiBase
 {
-
     public TileTrashCan table;
     public GuiTrashcan(EntityPlayer player, TileBase tile)
     {

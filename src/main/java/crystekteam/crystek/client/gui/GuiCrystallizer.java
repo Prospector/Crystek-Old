@@ -12,21 +12,27 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiCrystallizer extends GuiBase
 {
-//    public static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/crystallizer.png");
     TileCrystallizer tileCrystallizer;
-
     public GuiCrystallizer(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerCrystallizer(tile, player), "crystek.crystallizer");//, textureloc);
+        super(player, tile, new ContainerCrystallizer(tile, player), "crystek.crystallizer");
         this.tileCrystallizer = (TileCrystallizer) tile;
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
+    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY)
     {
-        super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tileCrystallizer);
-        drawProgressbar(tile, 85, 41);
-        drawTank(tile);
+        super.drawGuiContainerBackgroundLayer(p_146976_1_, mouseX, mouseY);
+        drawTankOverlay(tileCrystallizer, 30, 8);
+        builder.drawSlot(this, guiLeft + 60, guiTop + 34);
+        builder.drawSlot(this, guiLeft + 120, guiTop + 34);
+        builder.drawProgressBar(this, container.progress, guiLeft + 90, guiTop + 34);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+        builder.drawTank(this, tile.tank, 31, 9, zLevel, 14, 64, mouseX - guiLeft, mouseY - guiTop);
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
     }
 }

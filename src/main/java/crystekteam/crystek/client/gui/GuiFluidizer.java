@@ -12,12 +12,10 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiFluidizer extends GuiBase
 {
-//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/fluidizer.png");
     TileFluidizer tileCrystallizer;
-
     public GuiFluidizer(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerFluidizer(tile, player), "crystek.fluidizer");//, textureloc);
+        super(player, tile, new ContainerFluidizer(tile, player), "crystek.fluidizer");
         this.tileCrystallizer = (TileFluidizer) tile;
     }
 
@@ -25,8 +23,13 @@ public class GuiFluidizer extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tileCrystallizer);
-        drawProgressbar(tile, 56, 41);
-        drawTank(tile, guiLeft + 102, guiTop + 11, zLevel, 14,64);
+        drawTankOverlay(tileCrystallizer, 30, 8);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+        builder.drawTank(this, tile.tank, 31, 9, zLevel, 14, 64, mouseX - guiLeft, mouseY - guiTop);
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
     }
 }

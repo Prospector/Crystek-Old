@@ -23,6 +23,7 @@ import org.lwjgl.opengl.GL11;
 /**
  * Copied from EnderIO https://github.com/SleepyTrousers/EnderCore/blob/1.9/src/main/java/com/enderio/core/client/render/RenderUtil.java
  */
+@Deprecated
 public class RenderUtil
 {
 	public static final ResourceLocation BLOCK_TEX = TextureMap.LOCATION_BLOCKS_TEXTURE;

@@ -12,11 +12,10 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiFluidGenerator extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/generator.png");
     TileFluidGenerator tile;
     public GuiFluidGenerator(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerFluidGenerator(tile, player), "crystek.fluidgenerator");//, textureloc);
+        super(player, tile, new ContainerFluidGenerator(tile, player), "crystek.fluidgenerator");
         this.tile = (TileFluidGenerator) tile;
     }
 
@@ -24,7 +23,13 @@ public class GuiFluidGenerator extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tile);
-        drawTank(tile);
+        drawTankOverlay(tile, 30, 8);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+        builder.drawTank(this, tile.tank, 31, 9, zLevel, 14, 64, mouseX - guiLeft, mouseY - guiTop);
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
     }
 }
