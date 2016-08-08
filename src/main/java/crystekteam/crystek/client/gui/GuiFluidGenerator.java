@@ -16,7 +16,7 @@ public class GuiFluidGenerator extends GuiBase
     TileFluidGenerator tile;
     public GuiFluidGenerator(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerFluidGenerator(tile, player), "crystek.fluidgenerator", textureloc);
+        super(player, tile, new ContainerFluidGenerator(tile, player), "crystek.fluidgenerator");//, textureloc);
         this.tile = (TileFluidGenerator) tile;
     }
 

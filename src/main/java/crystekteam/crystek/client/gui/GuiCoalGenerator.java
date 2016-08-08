@@ -13,11 +13,11 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiCoalGenerator extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/generator.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/generator.png");
     TileCoalGenerator tile;
     public GuiCoalGenerator(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerCoalGenerator(tile, player), "crystek.coalgenerator", textureloc);
+        super(player, tile, new ContainerCoalGenerator(tile, player), "crystek.coalgenerator");//, textur);
         this.tile = (TileCoalGenerator) tile;
     }
 
@@ -25,7 +25,8 @@ public class GuiCoalGenerator extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tile);
-        drawBurn(tile, 80, 39);
+        builder.drawSlot(this, guiLeft + 79, guiTop + 54);
+//        drawPowerBar(tile);
+//        drawBurn(tile, 80, 39);
     }
 }

@@ -14,12 +14,12 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiTrashcan extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/trashcan.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/trashcan.png");
 
     public TileTrashCan table;
     public GuiTrashcan(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerTrashCan(tile, player), "crystek.trashcan", textureloc);
+        super(player, tile, new ContainerTrashCan(tile, player), "crystek.trashcan");//, textureloc);
         this.table = (TileTrashCan) tile;
     }
 }

@@ -14,12 +14,12 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiCrate extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/crate.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/crate.png");
 
     public TileCrate table;
     public GuiCrate(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerCrate(tile, player), "crate", textureloc);
+        super(player, tile, new ContainerCrate(tile, player), "crate");//, textureloc);
         this.table = (TileCrate) tile;
     }
 

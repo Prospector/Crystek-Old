@@ -12,12 +12,12 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiFluidizer extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/fluidizer.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/fluidizer.png");
     TileFluidizer tileCrystallizer;
 
     public GuiFluidizer(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerFluidizer(tile, player), "crystek.fluidizer", textureloc);
+        super(player, tile, new ContainerFluidizer(tile, player), "crystek.fluidizer");//, textureloc);
         this.tileCrystallizer = (TileFluidizer) tile;
     }
 

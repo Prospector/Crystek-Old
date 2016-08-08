@@ -12,12 +12,12 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiSolarPanel extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/solarpanel.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/solarpanel.png");
     TileSolarPanel tile;
 
     public GuiSolarPanel(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerSolarPanel(tile, player), "crystek.solarpanel", textureloc);
+        super(player, tile, new ContainerSolarPanel(tile, player), "crystek.solarpanel");//, textureloc);
         this.tile = (TileSolarPanel) tile;
     }
 

@@ -70,9 +70,9 @@ public class ContainerBase extends Container
         for (int i = 0; i < this.listeners.size(); i++)
         {
             IContainerListener IContainerListener = this.listeners.get(i);
-            if (this.power != tile.getPowerScaled(47)) {
+            if (this.power != tile.getStoredPower()) {
 
-                IContainerListener.sendProgressBarUpdate(this, 0, (int) tile.getPowerScaled(47));
+                IContainerListener.sendProgressBarUpdate(this, 0, (int) tile.getStoredPower());
             }
             if (this.progress != tile.getProgress())
             {
@@ -89,7 +89,7 @@ public class ContainerBase extends Container
     public void addListener(IContainerListener crafting)
     {
         super.addListener(crafting);
-        crafting.sendProgressBarUpdate(this, 0, (int) tile.getPowerScaled(47));
+        crafting.sendProgressBarUpdate(this, 0, (int) tile.getStoredPower());
         crafting.sendProgressBarUpdate(this, 1, tile.getProgress());
         crafting.sendProgressBarUpdate(this, 2, tile.getScaledBurnTime(13));
     }

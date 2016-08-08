@@ -33,7 +33,8 @@ public class ItemJetArmour extends ItemTeslaArmour
 		setCreativeTab(CreativeTabCrystek.instance);
 	}
 
-	@Override public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
+	@Override
+	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
 		if (player.inventory.armorItemInSlot(3) != null
 				&& player.inventory.armorItemInSlot(3).getItem() == ModItems.jetSuitHelmet
@@ -44,8 +45,8 @@ public class ItemJetArmour extends ItemTeslaArmour
 				&& player.inventory.armorItemInSlot(0) != null
 				&& player.inventory.armorItemInSlot(0).getItem() == ModItems.jetSuitBoots)
 		{
-			if(Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
-			player.motionY = 0.3;
+//			if(Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode()))
+//			player.motionY = 0.3;
 		}
 	}
 

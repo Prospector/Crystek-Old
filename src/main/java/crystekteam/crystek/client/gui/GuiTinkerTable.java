@@ -12,12 +12,12 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiTinkerTable extends GuiBase
 {
-    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/tinker.png");
+//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/tinker.png");
 
     public TileTinkerTable table;
     public GuiTinkerTable(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerTinkerTable(tile, player), "tinkertable", textureloc);
+        super(player, tile, new ContainerTinkerTable(tile, player), "tinkertable");//, textureloc);
         this.table = (TileTinkerTable) tile;
     }
 
