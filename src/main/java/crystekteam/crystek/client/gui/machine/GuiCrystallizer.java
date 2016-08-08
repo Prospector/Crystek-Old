@@ -1,11 +1,10 @@
-package crystekteam.crystek.client.gui;
+package crystekteam.crystek.client.gui.machine;
 
+import crystekteam.crystek.client.gui.GuiBase;
 import crystekteam.crystek.container.ContainerCrystallizer;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileCrystallizer;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Gigabit101 on 02/06/2016.

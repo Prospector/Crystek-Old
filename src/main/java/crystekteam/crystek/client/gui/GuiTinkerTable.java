@@ -1,11 +1,9 @@
 package crystekteam.crystek.client.gui;
 
 import crystekteam.crystek.container.ContainerTinkerTable;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.TileTinkerTable;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Gigabit101 on 24/07/2016.

@@ -1,9 +1,9 @@
 package crystekteam.crystek.compat.jei;
 
 import crystekteam.crystek.api.CrystekApi;
-import crystekteam.crystek.client.gui.GuiCrystallizer;
-import crystekteam.crystek.client.gui.GuiGrinder;
-import crystekteam.crystek.client.gui.GuiPoweredFurnace;
+import crystekteam.crystek.client.gui.machine.GuiCrystallizer;
+import crystekteam.crystek.client.gui.machine.GuiGrinder;
+import crystekteam.crystek.client.gui.machine.GuiPoweredFurnace;
 import crystekteam.crystek.compat.jei.crystallizer.CrystallizerRecipeCategory;
 import crystekteam.crystek.compat.jei.crystallizer.CrystallizerRecipeHandler;
 import crystekteam.crystek.compat.jei.grinder.GrinderRecipeCategory;

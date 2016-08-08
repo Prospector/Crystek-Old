@@ -3,14 +3,12 @@ package crystekteam.crystek.items.armour;
 import crystekteam.crystek.CreativeTabCrystek;
 import crystekteam.crystek.init.ModItems;
 import crystekteam.crystek.lib.ModInfo;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import org.lwjgl.input.Keyboard;
 
 import java.util.List;
 

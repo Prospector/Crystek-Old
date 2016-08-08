@@ -1,6 +1,13 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.client.gui.*;
+import crystekteam.crystek.client.gui.generator.GuiCoalGenerator;
+import crystekteam.crystek.client.gui.generator.GuiFluidGenerator;
+import crystekteam.crystek.client.gui.generator.GuiSolarPanel;
+import crystekteam.crystek.client.gui.machine.GuiCrystallizer;
+import crystekteam.crystek.client.gui.machine.GuiFluidizer;
+import crystekteam.crystek.client.gui.machine.GuiGrinder;
+import crystekteam.crystek.client.gui.machine.GuiPoweredFurnace;
 import crystekteam.crystek.container.*;
 import crystekteam.crystek.tiles.TileCrate;
 import crystekteam.crystek.tiles.TileTeslaCell;
@@ -9,7 +16,10 @@ import crystekteam.crystek.tiles.TileTrashCan;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.generator.TileFluidGenerator;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
-import crystekteam.crystek.tiles.machines.*;
+import crystekteam.crystek.tiles.machines.TileCrystallizer;
+import crystekteam.crystek.tiles.machines.TileFluidizer;
+import crystekteam.crystek.tiles.machines.TileFurnace;
+import crystekteam.crystek.tiles.machines.TileGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

@@ -1,11 +1,9 @@
 package crystekteam.crystek.client.gui;
 
 import crystekteam.crystek.container.ContainerTeslaCell;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Travis on 24/06/2016.

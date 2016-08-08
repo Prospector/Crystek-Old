@@ -3,7 +3,6 @@ package crystekteam.crystek.client.gui;
 import crystekteam.crystek.container.ContainerBase;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.prefab.TileBase;
-import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +19,7 @@ public class GuiBase extends GuiContainer
     public String name;
     public TileBase tile;
     public ContainerBase container;
-	GuiBuilder builder = new GuiBuilder(overlays);
+	public GuiBuilder builder = new GuiBuilder(overlays);
 
 	public GuiBase(EntityPlayer player, TileBase tile, ContainerBase container, String name)
 	{

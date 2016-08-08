@@ -5,8 +5,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 
-import javax.annotation.Nullable;
-
 /**
  * Created by Gigabit101 on 22/06/2016.
  */

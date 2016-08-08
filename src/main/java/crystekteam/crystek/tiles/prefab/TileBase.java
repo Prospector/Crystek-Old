@@ -2,10 +2,10 @@ package crystekteam.crystek.tiles.prefab;
 
 import crystekteam.crystek.api.IWrenchable;
 import crystekteam.crystek.blocks.BlockBase;
-import crystekteam.crystek.network.PacketHandler;
-import crystekteam.crystek.tesla.TeslaUtils;
 import crystekteam.crystek.core.Inventory;
 import crystekteam.crystek.core.Tank;
+import crystekteam.crystek.network.PacketHandler;
+import crystekteam.crystek.tesla.TeslaUtils;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

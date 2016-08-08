@@ -1,20 +1,13 @@
 package crystekteam.crystek.util;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import java.awt.*;
-import java.util.Iterator;
-import java.util.List;
 
 public class GuiButtonItemTexture extends GuiButtonExt
 {

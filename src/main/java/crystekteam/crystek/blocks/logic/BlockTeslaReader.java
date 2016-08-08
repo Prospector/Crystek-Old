@@ -1,7 +1,6 @@
 package crystekteam.crystek.blocks.logic;
 
 import crystekteam.crystek.blocks.BlockBase;
-import crystekteam.crystek.blocks.BlockTrashCan;
 import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.logic.TileTeslaReader;
 import net.minecraft.tileentity.TileEntity;

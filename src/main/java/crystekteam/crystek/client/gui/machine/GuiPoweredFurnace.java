@@ -1,17 +1,10 @@
-package crystekteam.crystek.client.gui;
+package crystekteam.crystek.client.gui.machine;
 
+import crystekteam.crystek.client.gui.GuiBase;
 import crystekteam.crystek.container.ContainerPoweredFurnace;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.machines.TileFurnace;
 import crystekteam.crystek.tiles.prefab.TileBase;
-import crystekteam.crystek.util.GuiButtonItemTexture;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
-import java.io.IOException;
 
 /**
  * Created by Gigabit101 on 02/06/2016.

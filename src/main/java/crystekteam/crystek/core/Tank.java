@@ -1,7 +1,6 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.network.PacketHandler;
-import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;

@@ -1,14 +1,10 @@
 package crystekteam.crystek.laser;
 
 import crystekteam.crystek.tesla.TeslaUtils;
-import crystekteam.crystek.tiles.prefab.TileGenerator;
 import crystekteam.crystek.tiles.prefab.TileTeslaStorage;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Gigabit101 on 02/06/2016.

@@ -1,11 +1,10 @@
-package crystekteam.crystek.client.gui;
+package crystekteam.crystek.client.gui.generator;
 
+import crystekteam.crystek.client.gui.GuiBase;
 import crystekteam.crystek.container.ContainerSolarPanel;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.generator.TileSolarPanel;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Travis on 24/06/2016.

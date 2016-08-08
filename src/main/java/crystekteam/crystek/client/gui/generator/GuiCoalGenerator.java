@@ -1,12 +1,10 @@
-package crystekteam.crystek.client.gui;
+package crystekteam.crystek.client.gui.generator;
 
+import crystekteam.crystek.client.gui.GuiBase;
 import crystekteam.crystek.container.ContainerCoalGenerator;
-import crystekteam.crystek.lib.ModInfo;
 import crystekteam.crystek.tiles.generator.TileCoalGenerator;
 import crystekteam.crystek.tiles.prefab.TileBase;
-import crystekteam.crystek.util.tooltip.TooltipRenderer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Created by Gigabit101 on 01/06/2016.
