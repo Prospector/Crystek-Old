@@ -12,12 +12,11 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiTeslaCell extends GuiBase
 {
-//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/teslacell.png");
     TileTeslaStorage tile;
 
     public GuiTeslaCell(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerTeslaCell(tile, player), "crystek.teslacell");//, textureloc);
+        super(player, tile, new ContainerTeslaCell(tile, player), "crystek.teslacell");
         this.tile = (TileTeslaStorage) tile;
     }
 
@@ -25,6 +24,7 @@ public class GuiTeslaCell extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tile, 81, 54);
+        builder.drawSlot(this, guiLeft + 43, guiTop + 34);
+        builder.drawSlot(this, guiLeft + 115, guiTop + 34);
     }
 }

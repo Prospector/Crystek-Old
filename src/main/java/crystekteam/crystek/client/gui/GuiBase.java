@@ -17,18 +17,15 @@ public class GuiBase extends GuiContainer
 {
     public static final ResourceLocation overlays = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/builder.png");
 
-//    public ResourceLocation location;
     public String name;
     public TileBase tile;
     public ContainerBase container;
 	GuiBuilder builder = new GuiBuilder(overlays);
 
-
-	public GuiBase(EntityPlayer player, TileBase tile, ContainerBase container, String name)//, ResourceLocation texture)
+	public GuiBase(EntityPlayer player, TileBase tile, ContainerBase container, String name)
 	{
 		super(container);
 		this.container = container;
-//		this.location = texture;
 		this.name = name;
 		this.tile = tile;
 	}
@@ -43,29 +40,15 @@ public class GuiBase extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY)
     {
         builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
+        builder.drawString(this, I18n.translateToLocal("tile." + name + ".name"), guiLeft + 65, guiTop + 10);
         builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 83, true);
     }
 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
         builder.drawEnergyBar(this, 5, 5, 70, (int) container.power, (int) tile.getMaxCapacity(), mouseX - guiLeft, mouseY - guiTop, "Tesla");
-
-//		String name = I18n.translateToLocal("tile." + this.name + ".name");
-//		this.fontRendererObj
-//				.drawString(name, this.xSize / 2 + 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 16777215);
 	}
 
-//	@Override
-//    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
-//	{
-////		this.mc.getTextureManager().bindTexture(location);
-////		int k = (this.width - this.xSize) / 2;
-////		int l = (this.height - this.ySize) / 2;
-////		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
-////		//TODO Remove this later
-////		this.mc.getTextureManager().bindTexture(overlays);
-//////		this.drawTexturedModalRect(k + 151, l + 7, 31, 5, 18, 18);
-//	}
 
     @Deprecated
 	public void drawProgressbar(TileBase tile, int x, int y)

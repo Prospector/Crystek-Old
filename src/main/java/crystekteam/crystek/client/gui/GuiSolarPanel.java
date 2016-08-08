@@ -12,12 +12,11 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiSolarPanel extends GuiBase
 {
-//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/solarpanel.png");
     TileSolarPanel tile;
 
     public GuiSolarPanel(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerSolarPanel(tile, player), "crystek.solarpanel");//, textureloc);
+        super(player, tile, new ContainerSolarPanel(tile, player), "crystek.solarpanel");
         this.tile = (TileSolarPanel) tile;
     }
 
@@ -25,6 +24,5 @@ public class GuiSolarPanel extends GuiBase
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawPowerBar(tile, 81, 54);
     }
 }

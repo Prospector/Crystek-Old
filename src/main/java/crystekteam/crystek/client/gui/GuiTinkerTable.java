@@ -12,23 +12,22 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GuiTinkerTable extends GuiBase
 {
-//    private static final ResourceLocation textureloc = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/tinker.png");
-
     public TileTinkerTable table;
     public GuiTinkerTable(EntityPlayer player, TileBase tile)
     {
-        super(player, tile, new ContainerTinkerTable(tile, player), "tinkertable");//, textureloc);
+        super(player, tile, new ContainerTinkerTable(tile, player), "tinkertable");
         this.table = (TileTinkerTable) tile;
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {}
+    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
+    {
+        super.drawGuiContainerForegroundLayer(p_146979_1_, p_146979_2_);
+    }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)
     {
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
-        drawTank(table, guiLeft + 38, guiTop + 11, zLevel, 14, 64);
-        drawPowerBar(tile);
     }
 }
