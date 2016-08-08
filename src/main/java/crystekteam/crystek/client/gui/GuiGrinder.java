@@ -26,6 +26,8 @@ public class GuiGrinder extends GuiBase
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         builder.drawSlot(this, guiLeft + 47, guiTop + 34);
         builder.drawSlot(this, guiLeft + 107, guiTop + 34);
+        builder.drawSlot(this, guiLeft + 75, guiTop + 47);
+
         builder.drawProgressBar(this, container.progress, guiLeft + 76, guiTop + 34);
     }
 }
