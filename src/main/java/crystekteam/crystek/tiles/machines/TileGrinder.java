@@ -4,9 +4,9 @@ import crystekteam.crystek.api.CrystekApi;
 import crystekteam.crystek.api.recipe.RecipeGrinder;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
 import crystekteam.crystek.tiles.prefab.TileMachine;
-import crystekteam.crystek.util.ItemUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import reborncore.common.util.ItemUtils;
 
 import java.util.Random;
 

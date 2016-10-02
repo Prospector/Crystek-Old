@@ -4,7 +4,6 @@ import crystekteam.crystek.api.IWrenchable;
 import crystekteam.crystek.items.ItemBase;
 import crystekteam.crystek.laser.TileLaser;
 import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.util.ItemNBTHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -14,6 +13,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import reborncore.common.util.ItemNBTHelper;
 
 import java.util.List;
 

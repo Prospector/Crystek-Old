@@ -13,8 +13,7 @@ public class ContainerTinkerTable extends ContainerBase
     public ContainerTinkerTable(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         //Charge slot
         this.addSlotToContainer(new SlotCharge(tile.inv, 0, 8, 62));
 

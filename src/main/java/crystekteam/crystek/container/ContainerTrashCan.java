@@ -12,8 +12,7 @@ public class ContainerTrashCan extends ContainerBase
     public ContainerTrashCan(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
 
         this.addSlotToContainer(new Slot(tile.inv, 0, 80, 35));
     }

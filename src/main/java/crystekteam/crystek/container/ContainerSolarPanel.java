@@ -8,8 +8,7 @@ public class ContainerSolarPanel extends ContainerBase
     public ContainerSolarPanel(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 0);
 //        this.addSlotToContainer(new SlotCircuit(tile.getInv(), 0, 152, 15));
 //        this.addSlotToContainer(new SlotCircuit(tile.getInv(), 1, 152, 35));

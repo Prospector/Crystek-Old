@@ -12,8 +12,7 @@ public class ContainerFluidizer extends ContainerBase
     public ContainerFluidizer(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 0);
         this.addSlotToContainer(new SlotCharge(tile.inv, 3, 8, 62));
     }

@@ -3,10 +3,10 @@ package crystekteam.crystek.book.pages;
 import crystekteam.crystek.book.PageCollection;
 import crystekteam.crystek.book.Reference;
 import crystekteam.crystek.init.ModBlocks;
-import crystekteam.crystek.util.GuiButtonItemTexture;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import reborncore.client.gui.GuiButtonItemTexture;
 
 import java.awt.*;
 

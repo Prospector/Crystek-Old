@@ -10,11 +10,12 @@ import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import reborncore.common.container.RebornContainer;
 
 /**
  * Created by Gigabit101 on 01/06/2016.
  */
-public class ContainerBase extends Container
+public class ContainerBase extends RebornContainer
 {
     EntityPlayer player;
     TileBase tile;
@@ -35,26 +36,6 @@ public class ContainerBase extends Container
         return true;
     }
 
-    public void addPlayersHotbar()
-    {
-        int i;
-        for (i = 0; i < 9; ++i)
-        {
-            this.addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
-        }
-    }
-
-    public void addPlayersInventory()
-    {
-        int i;
-        for (i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 9; ++j)
-            {
-                this.addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-            }
-        }
-    }
 
     public void addUpgradeSlots(TileBase tile, int upgradeslotStart)
     {
@@ -112,43 +93,43 @@ public class ContainerBase extends Container
         }
     }
 
-    /*
-    * Handles shift clicking for all machines
-    */
-
-    @Override
-    public ItemStack transferStackInSlot(EntityPlayer p, int i)
-    {
-        ItemStack itemstack = null;
-        Slot slot = this.inventorySlots.get(i);
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-            int playerInv = 30;
-            if (i < this.tile.getSizeInventory() + playerInv)
-            {
-                if(!(slot instanceof SlotFurnaceOutput))
-                {
-                    if (!this.mergeItemStack(itemstack1, this.tile.getSizeInventory() + playerInv, this.inventorySlots.size(), true))
-                    {
-                        return null;
-                    }
-                }
-            }
-            else if (!this.mergeItemStack(itemstack1, 0, this.tile.getSizeInventory() + playerInv, false))
-            {
-                return null;
-            }
-            if (itemstack1.stackSize == 0)
-            {
-                slot.putStack(null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-        }
-        return itemstack;
-    }
+//    /*
+//    * Handles shift clicking for all machines
+//    */
+//
+//    @Override
+//    public ItemStack transferStackInSlot(EntityPlayer p, int i)
+//    {
+//        ItemStack itemstack = null;
+//        Slot slot = this.inventorySlots.get(i);
+//        if (slot != null && slot.getHasStack())
+//        {
+//            ItemStack itemstack1 = slot.getStack();
+//            itemstack = itemstack1.copy();
+//            int playerInv = 30;
+//            if (i < this.tile.getSizeInventory() + playerInv)
+//            {
+//                if(!(slot instanceof SlotFurnaceOutput))
+//                {
+//                    if (!this.mergeItemStack(itemstack1, this.tile.getSizeInventory() + playerInv, this.inventorySlots.size(), true))
+//                    {
+//                        return null;
+//                    }
+//                }
+//            }
+//            else if (!this.mergeItemStack(itemstack1, 0, this.tile.getSizeInventory() + playerInv, false))
+//            {
+//                return null;
+//            }
+//            if (itemstack1.stackSize == 0)
+//            {
+//                slot.putStack(null);
+//            }
+//            else
+//            {
+//                slot.onSlotChanged();
+//            }
+//        }
+//        return itemstack;
+//    }
 }

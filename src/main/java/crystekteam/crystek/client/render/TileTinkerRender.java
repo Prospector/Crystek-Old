@@ -1,20 +1,20 @@
 package crystekteam.crystek.client.render;
 
 import crystekteam.crystek.tiles.TileTinkerTable;
-import crystekteam.crystek.util.RenderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import reborncore.client.RenderUtil;
 
 /**
  * Created by Gigabit101 on 24/07/2016.
  */
 public class TileTinkerRender extends TileEntitySpecialRenderer<TileTinkerTable>
 {
-	@Override public void renderTileEntityAt(TileTinkerTable te, double x, double y, double z, float partialTicks,
-			int destroyStage)
+	@Override
+	public void renderTileEntityAt(TileTinkerTable te, double x, double y, double z, float partialTicks, int destroyStage)
 	{
 		if (te != null)
 		{

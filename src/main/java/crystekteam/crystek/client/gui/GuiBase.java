@@ -6,7 +6,6 @@ import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import reborncore.client.guibuilder.GuiBuilder;
 
 /**
@@ -27,6 +26,8 @@ public class GuiBase extends GuiContainer
 		this.container = container;
 		this.name = name;
 		this.tile = tile;
+		this.xSize = 176;
+		this.ySize = 167;
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class GuiBase extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int mouseX, int mouseY)
     {
         builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
-        builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 83, true);
+        builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 80, true);
     }
 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)

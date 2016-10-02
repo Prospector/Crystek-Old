@@ -14,8 +14,7 @@ public class ContainerCrystallizer extends ContainerBase
     public ContainerCrystallizer(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 2);
         this.addSlotToContainer(new Slot(tile.getInv(), 0, 61, 35));
         this.addSlotToContainer(new SlotOutput(tile.getInv(), 1, 121, 35));

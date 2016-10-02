@@ -25,7 +25,7 @@ public class TileSolarPanel extends TileGenerator
         if (this.hasWorldObj() && !this.worldObj.provider.getHasNoSky() && this.worldObj.canBlockSeeSky(this.pos.offset(EnumFacing.UP)) && !this.worldObj.isRaining() && this.worldObj.getSkylightSubtracted() == 0 && this.container.getStoredPower() != this.container.getCapacity())
         {
             generatePower(baseoutput);
-            handleUpgrades(0, baseoutput);
+//            handleUpgrades(0, baseoutput);
             updateState();
         }
         transferPowerTo(EnumFacing.DOWN);

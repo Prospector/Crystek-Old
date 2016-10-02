@@ -44,7 +44,8 @@ public class ItemTeslaBase extends ItemBase
 		return false;
 	}
 
-	@Override public double getDurabilityForDisplay(ItemStack stack)
+	@Override
+	public double getDurabilityForDisplay(ItemStack stack)
 	{
 		return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
 	}
@@ -54,13 +55,15 @@ public class ItemTeslaBase extends ItemBase
 		return true;
 	}
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
 	{
 		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
 				.getMaxCapacity(stack) + " Tesla"));
 	}
 
-	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
 	{
 		return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
 	}

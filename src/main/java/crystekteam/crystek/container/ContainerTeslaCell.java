@@ -9,8 +9,7 @@ public class ContainerTeslaCell extends ContainerBase
     public ContainerTeslaCell(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 2);
         this.addSlotToContainer(new SlotCharge(tile.getInv(), 0, 44, 35));
         this.addSlotToContainer(new SlotCharge(tile.getInv(), 1, 116, 35));

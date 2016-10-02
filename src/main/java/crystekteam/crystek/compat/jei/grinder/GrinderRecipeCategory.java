@@ -5,6 +5,7 @@ import crystekteam.crystek.lib.ModInfo;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -75,5 +76,11 @@ public class GrinderRecipeCategory implements IRecipeCategory
             recipeLayout.getItemStacks().set(OUTPUT_SLOT, wrapper.getOutputs());
             recipeLayout.getItemStacks().set(GRINDER_SLOT, OreDictionary.getOres("crystekGrindingBlade"));
         }
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayout iRecipeLayout, IRecipeWrapper iRecipeWrapper, IIngredients iIngredients)
+    {
+
     }
 }

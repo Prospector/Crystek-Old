@@ -10,8 +10,7 @@ public class ContainerCoalGenerator extends ContainerBase
     public ContainerCoalGenerator(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         this.addSlotToContainer(new SlotFurnaceFuel(tile.getInv(), 0, 80, 55));
         this.addSlotToContainer(new SlotCharge(tile.getInv(), 1, 8, 62));
     }

@@ -8,8 +8,7 @@ public class ContainerFluidGenerator extends ContainerBase
     public ContainerFluidGenerator(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 0);
     }
 }

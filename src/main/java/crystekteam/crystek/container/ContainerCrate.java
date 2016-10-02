@@ -12,15 +12,14 @@ public class ContainerCrate extends ContainerBase
     public ContainerCrate(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
 
         int i;
         for (i = 0; i < 3; ++i)
         {
             for (int j = 0; j < 9; ++j)
             {
-                this.addSlotToContainer(new Slot(tile.inv, j + i * 9, 8 + j * 18, 17 + i * 18));
+                this.addSlotToContainer(new Slot(tile.getInv(), j + i * 9, 8 + j * 18, 17 + i * 18));
             }
         }
     }

@@ -2,8 +2,6 @@ package crystekteam.crystek.tiles.prefab;
 
 import crystekteam.crystek.api.IWrenchable;
 import crystekteam.crystek.blocks.BlockBase;
-import crystekteam.crystek.core.Inventory;
-import crystekteam.crystek.core.Tank;
 import crystekteam.crystek.network.PacketHandler;
 import crystekteam.crystek.tesla.TeslaUtils;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
@@ -22,6 +20,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
+import reborncore.common.util.Inventory;
+import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         }
         if(hasTank)
         {
-            this.tank = new Tank(tankCapacity, this);
+            this.tank = new Tank("tank", tankCapacity, this);
         }
         this.maxProgress = maxProgress;
     }

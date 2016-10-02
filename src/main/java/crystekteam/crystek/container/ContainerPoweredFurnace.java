@@ -14,8 +14,7 @@ public class ContainerPoweredFurnace extends ContainerBase
     public ContainerPoweredFurnace(TileBase tile, EntityPlayer player)
     {
         super(tile, player);
-        addPlayersHotbar();
-        addPlayersInventory();
+        drawPlayersInvAndHotbar(player);
         addUpgradeSlots(tile, 2);
         this.addSlotToContainer(new Slot(tile.getInv(), 0, 48, 35));
         this.addSlotToContainer(new SlotFurnaceOutput(player, tile.getInv(), 1, 108, 35));
