@@ -15,9 +15,9 @@ public class ModelHandler
 {
     public static void init()
     {
-		registerItemModel(ModBlocks.coalGen, 0);
-		registerItemModel(ModBlocks.fluidGen, 0);
-		registerItemModel(ModBlocks.solarGen, 0);
+        registerItemModel(ModBlocks.coalGen, 0);
+        registerItemModel(ModBlocks.fluidGen, 0);
+        registerItemModel(ModBlocks.solarGen, 0);
         registerItemModel(ModBlocks.poweredFurnace, 0);
         registerItemModel(ModItems.powerScanner, 0);
         registerItemModel(ModBlocks.grinder, 0);
@@ -48,8 +48,8 @@ public class ModelHandler
         registerItemModel(ModBlocks.multiblocktank, 0);
         registerItemModel(ModBlocks.lamp, 0);
 
-		registerItemModel(ModBlocks.trashCan, 0);
-		registerItemModel(ModBlocks.crate, 0);
+        registerItemModel(ModBlocks.trashCan, 0);
+        registerItemModel(ModBlocks.crate, 0);
 
         int i;
         //Register all crafting items textures

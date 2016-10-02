@@ -19,7 +19,7 @@ public class SlotCircuit extends SlotBase
     @Override
     public boolean isItemValid(@Nullable ItemStack stack)
     {
-        if(stack.getItem() instanceof ItemCircuit)
+        if (stack.getItem() instanceof ItemCircuit)
             return true;
         return false;
     }

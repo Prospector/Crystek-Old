@@ -24,7 +24,7 @@ public class GrinderRecipeCategory implements IRecipeCategory
     private static final int OUTPUT_SLOT = 1;
     private static final int GRINDER_SLOT = 2;
 
-    public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/jei/grinder.png");
+    public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/jei/grinder.png");
     private final IDrawable background;
     private final String title;
 
@@ -56,10 +56,14 @@ public class GrinderRecipeCategory implements IRecipeCategory
     }
 
     @Override
-    public void drawExtras(@Nonnull Minecraft minecraft) {}
+    public void drawExtras(@Nonnull Minecraft minecraft)
+    {
+    }
 
     @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft) {}
+    public void drawAnimations(@Nonnull Minecraft minecraft)
+    {
+    }
 
     @SuppressWarnings("unchecked")
     @Override

@@ -15,64 +15,65 @@ import net.minecraftforge.common.IPlantable;
  */
 public class TileAccelerator extends TileMachine
 {
-	int range = ConfigAE.acceleratorRange;
-	int secondsBetweenGrowthTicks = ConfigAE.acceleratorSecondsBetweenGrowthTicks;
-	long cost = ConfigAE.acceleratorCost;
+    int range = ConfigAE.acceleratorRange;
+    int secondsBetweenGrowthTicks = ConfigAE.acceleratorSecondsBetweenGrowthTicks;
+    long cost = ConfigAE.acceleratorCost;
 
-	public TileAccelerator()
-	{
-		super(0, "", 0, 100000, 500, 500, 0, 0);
-		this.hasInv = false;
-		this.hasTank = false;
-		this.hasTesla = true;
-	}
+    public TileAccelerator()
+    {
+        super(0, "", 0, 100000, 500, 500, 0, 0);
+        this.hasInv = false;
+        this.hasTank = false;
+        this.hasTesla = true;
+    }
 
-	@Override public void update()
-	{
-		if (getStoredPower() >= cost)
-		{
-			growCropsNearby(worldObj, pos, worldObj.getBlockState(pos));
-		}
-	}
+    @Override
+    public void update()
+    {
+        if (getStoredPower() >= cost)
+        {
+            growCropsNearby(worldObj, pos, worldObj.getBlockState(pos));
+        }
+    }
 
-	public void growCropsNearby(World world, BlockPos pos, IBlockState state)
-	{
-		if (!world.isRemote)
-		{
-			int xO = pos.getX();
-			int yO = pos.getY();
-			int zO = pos.getZ();
+    public void growCropsNearby(World world, BlockPos pos, IBlockState state)
+    {
+        if (!world.isRemote)
+        {
+            int xO = pos.getX();
+            int yO = pos.getY();
+            int zO = pos.getZ();
 
-			for (int xD = -range; xD <= range; xD++)
-			{
-				for (int yD = -1; yD <= range; yD++)
-				{
-					for (int zD = -range; zD <= range; zD++)
-					{
-						int x = xO + xD;
-						int y = yO + yD;
-						int z = zO + zD;
-						double distance = Math.sqrt(Math.pow(x - xO, 2) + Math.pow(y - yO, 2) + Math.pow(z - zO, 2));
-						distance -= range;
-						distance = Math.min(1D, distance);
-						double distanceCoefficient = 1D - (distance / range);
+            for (int xD = -range; xD <= range; xD++)
+            {
+                for (int yD = -1; yD <= range; yD++)
+                {
+                    for (int zD = -range; zD <= range; zD++)
+                    {
+                        int x = xO + xD;
+                        int y = yO + yD;
+                        int z = zO + zD;
+                        double distance = Math.sqrt(Math.pow(x - xO, 2) + Math.pow(y - yO, 2) + Math.pow(z - zO, 2));
+                        distance -= range;
+                        distance = Math.min(1D, distance);
+                        double distanceCoefficient = 1D - (distance / range);
 
-						IBlockState cropState = world.getBlockState(new BlockPos(x, y, z));
-						Block cropBlock = cropState.getBlock();
+                        IBlockState cropState = world.getBlockState(new BlockPos(x, y, z));
+                        Block cropBlock = cropState.getBlock();
 
-						if (cropBlock instanceof IPlantable || cropBlock instanceof IGrowable)
-						{
-							if (!(cropBlock instanceof BlockAccelerator))
-							{
-								world.scheduleBlockUpdate(new BlockPos(x, y, z), cropBlock, (int) (distanceCoefficient * (float) secondsBetweenGrowthTicks * 20F), 1);
-								cropBlock.updateTick(world, new BlockPos(x, y, z), cropState, world.rand);
-								usePower(cost);
-							}
-						}
-					}
-				}
-			}
-		}
-		world.scheduleBlockUpdate(pos, state.getBlock(), secondsBetweenGrowthTicks * 20, 1);
-	}
+                        if (cropBlock instanceof IPlantable || cropBlock instanceof IGrowable)
+                        {
+                            if (!(cropBlock instanceof BlockAccelerator))
+                            {
+                                world.scheduleBlockUpdate(new BlockPos(x, y, z), cropBlock, (int) (distanceCoefficient * (float) secondsBetweenGrowthTicks * 20F), 1);
+                                cropBlock.updateTick(world, new BlockPos(x, y, z), cropState, world.rand);
+                                usePower(cost);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        world.scheduleBlockUpdate(pos, state.getBlock(), secondsBetweenGrowthTicks * 20, 1);
+    }
 }

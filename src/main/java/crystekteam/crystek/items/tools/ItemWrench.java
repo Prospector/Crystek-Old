@@ -32,12 +32,12 @@ public class ItemWrench extends ItemBase
     @Override
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if(!worldIn.isRemote && playerIn.isSneaking() && worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof IWrenchable)
+        if (!worldIn.isRemote && playerIn.isSneaking() && worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof IWrenchable)
         {
             TileEntity tileEntity = worldIn.getTileEntity(pos);
             IWrenchable wrenchable = (IWrenchable) tileEntity;
             ItemStack returnstack = wrenchable.returnStack();
-            if(wrenchable.isWrenchable() && returnstack != null)
+            if (wrenchable.isWrenchable() && returnstack != null)
             {
                 worldIn.spawnEntityInWorld(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), returnstack));
                 worldIn.removeTileEntity(pos);
@@ -46,23 +46,22 @@ public class ItemWrench extends ItemBase
             }
         }
         //Todo clean this up
-        if(!playerIn.isSneaking())
+        if (!playerIn.isSneaking())
         {
-            if(worldIn.getTileEntity(pos) instanceof TileLaser)
+            if (worldIn.getTileEntity(pos) instanceof TileLaser)
             {
                 TileLaser laser = (TileLaser) worldIn.getTileEntity(pos);
-                if(!ItemNBTHelper.verifyExistance(stack, "xPos"))
+                if (!ItemNBTHelper.verifyExistance(stack, "xPos"))
                 {
                     ItemNBTHelper.setInt(stack, "xPos", pos.getX());
                     ItemNBTHelper.setInt(stack, "yPos", pos.getY());
                     ItemNBTHelper.setInt(stack, "zPos", pos.getZ());
-                }
-                else if(ItemNBTHelper.verifyExistance(stack, "xPos"))
+                } else if (ItemNBTHelper.verifyExistance(stack, "xPos"))
                 {
                     int x = ItemNBTHelper.getInt(stack, "xPos", 0);
                     int y = ItemNBTHelper.getInt(stack, "yPos", 0);
                     int z = ItemNBTHelper.getInt(stack, "zPos", 0);
-                    if(laser.getConnectedLaser() == null)
+                    if (laser.getConnectedLaser() == null)
                     {
                         laser.setConnectedLaser(new BlockPos(x, y, z));
                         System.out.print("fafasf");
@@ -81,7 +80,7 @@ public class ItemWrench extends ItemBase
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        if(ItemNBTHelper.verifyExistance(stack, "xPos"))
+        if (ItemNBTHelper.verifyExistance(stack, "xPos"))
         {
             tooltip.add("X= " + ItemNBTHelper.getInt(stack, "xPos", 0) + " Y= " + ItemNBTHelper.getInt(stack, "yPos", 0) + " Z= " + ItemNBTHelper.getInt(stack, "zPos", 0));
         }

@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiCrystallizer extends GuiBase
 {
     TileCrystallizer tileCrystallizer;
+
     public GuiCrystallizer(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerCrystallizer(tile, player), "crystek.crystallizer");

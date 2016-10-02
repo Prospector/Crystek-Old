@@ -39,14 +39,15 @@ public class ItemPowerScanner extends ItemBase
             if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, side))
             {
                 final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
-                playerIn.addChatMessage(new TextComponentString(tile.getBlockType().getLocalizedName() +  " " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
+                playerIn.addChatMessage(new TextComponentString(tile.getBlockType().getLocalizedName() + " " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
             }
         }
         return EnumActionResult.SUCCESS;
     }
 
-    @Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
-        tooltip.add(TextFormatting.GRAY+""+TextFormatting.ITALIC+I18n.translateToLocal("desc.teslometer"));
+        tooltip.add(TextFormatting.GRAY + "" + TextFormatting.ITALIC + I18n.translateToLocal("desc.teslometer"));
     }
 }

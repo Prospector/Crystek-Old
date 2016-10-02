@@ -18,5 +18,7 @@ public class ContainerTrashCan extends ContainerBase
     }
 
     @Override
-    public void detectAndSendChanges() {}
+    public void detectAndSendChanges()
+    {
+    }
 }

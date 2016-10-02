@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiFluidizer extends GuiBase
 {
     TileFluidizer tileCrystallizer;
+
     public GuiFluidizer(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerFluidizer(tile, player), "crystek.fluidizer");

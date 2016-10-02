@@ -8,30 +8,34 @@ import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockLamp extends BlockBase
 {
-	public BlockLamp()
-	{
-		setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".lamp");
-		setLightLevel(1F);
-	}
+    public BlockLamp()
+    {
+        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".lamp");
+        setLightLevel(1F);
+    }
 
 
-	@Override
-	public boolean isBlockNormalCube(IBlockState blockState) {
-		return false;
-	}
+    @Override
+    public boolean isBlockNormalCube(IBlockState blockState)
+    {
+        return false;
+    }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState blockState) {
-		return false;
-	}
+    @Override
+    public boolean isOpaqueCube(IBlockState blockState)
+    {
+        return false;
+    }
 
-	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
-	}
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.MODEL;
+    }
 
-	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
-	}
+    @Override
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
 }

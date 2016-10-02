@@ -50,7 +50,7 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     {
         super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 
-        if(world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileBase)
+        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileBase)
         {
             TileBase tileBase = (TileBase) world.getTileEntity(pos);
             tileBase.syncWithAll();
@@ -81,8 +81,8 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-        if(worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof TileBase)
-            if(((TileBase) worldIn.getTileEntity(pos)).hasInv())
+        if (worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof TileBase)
+            if (((TileBase) worldIn.getTileEntity(pos)).hasInv())
                 dropInventory(worldIn, pos);
         super.breakBlock(worldIn, pos, state);
     }
@@ -104,7 +104,8 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
-        if(hasCustomStaes){
+        if (hasCustomStaes)
+        {
             return;
         }
         if (!worldIn.isRemote)
@@ -177,7 +178,8 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
 
     public void setFacing(EnumFacing facing, World world, BlockPos pos)
     {
-        if(hasCustomStaes){
+        if (hasCustomStaes)
+        {
             return;
         }
         world.setBlockState(pos, world.getBlockState(pos).withProperty(FACING, facing));
@@ -188,16 +190,13 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
         if (i == 0)
         {
             return EnumFacing.NORTH;
-        }
-        else if (i == 1)
+        } else if (i == 1)
         {
             return EnumFacing.SOUTH;
-        }
-        else if (i == 2)
+        } else if (i == 2)
         {
             return EnumFacing.EAST;
-        }
-        else if (i == 3)
+        } else if (i == 3)
         {
             return EnumFacing.WEST;
         }
@@ -209,16 +208,13 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
         if (facing == EnumFacing.NORTH)
         {
             return 0;
-        }
-        else if (facing == EnumFacing.SOUTH)
+        } else if (facing == EnumFacing.SOUTH)
         {
             return 1;
-        }
-        else if (facing == EnumFacing.EAST)
+        } else if (facing == EnumFacing.EAST)
         {
             return 2;
-        }
-        else if (facing == EnumFacing.WEST)
+        } else if (facing == EnumFacing.WEST)
         {
             return 3;
         }
@@ -229,11 +225,17 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     {
         TileEntity tileEntity = world.getTileEntity(pos);
 
-        if (tileEntity == null) { return; }
-        if (!(tileEntity instanceof IInventory)) { return; }
+        if (tileEntity == null)
+        {
+            return;
+        }
+        if (!(tileEntity instanceof IInventory))
+        {
+            return;
+        }
 
         IInventory inventory = (IInventory) tileEntity;
-        if(inventory.getSizeInventory() != 0)
+        if (inventory.getSizeInventory() != 0)
         {
             List<ItemStack> items = new ArrayList<ItemStack>();
 
@@ -268,7 +270,8 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
                 float dZ = rand.nextFloat() * 0.8F + 0.1F;
 
                 EntityItem entityItem = new EntityItem(world, pos.getX() + dX, pos.getY() + dY, pos.getZ() + dZ, itemStack.copy());
-                if (itemStack.hasTagCompound()) {
+                if (itemStack.hasTagCompound())
+                {
                     entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
                 }
                 float factor = 0.05F;
@@ -283,7 +286,7 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
 
     public void setActive(Boolean active, World world, BlockPos pos)
     {
-        if(hasCustomStaes)
+        if (hasCustomStaes)
         {
             return;
         }
@@ -295,7 +298,7 @@ public class BlockBase extends BlockContainer implements ITileEntityProvider
     public boolean fillBlockWithFluid(World worldIn, BlockPos pos, EntityPlayer playerIn, ItemStack heldItem, EnumFacing side)
     {
         TileEntity tile = worldIn.getTileEntity(pos);
-        if(tile == null || !tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
+        if (tile == null || !tile.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
         {
             return false;
         }

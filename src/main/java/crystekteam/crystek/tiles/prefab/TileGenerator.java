@@ -23,21 +23,21 @@ public class TileGenerator extends TileBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-        if(capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+        if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return (T) this.container;
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
             return (T) tank;
         return super.getCapability(capability, facing);
     }
 
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return true;
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
             return true;
         return super.hasCapability(capability, facing);
     }
@@ -45,14 +45,14 @@ public class TileGenerator extends TileBase
     public void transferPowerTo(EnumFacing facing)
     {
         TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
-        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
+        if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
         {
-            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
+            if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
             {
                 TeslaUtils.addPower(tileEntity, this.container.getOutputRate());
                 this.container.takePower(this.container.getOutputRate(), false);
             }
-            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
+            if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
             {
                 TeslaUtils.addPower(tileEntity, this.container.getStoredPower());
                 this.container.takePower(this.container.getStoredPower(), false);
@@ -66,20 +66,20 @@ public class TileGenerator extends TileBase
         int i;
         for (i = upgradeslotstart; i < upgradeslotstart + 3; ++i)
         {
-            if(getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
+            if (getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
             {
                 int stacksize = getStackInSlot(i).stackSize;
-                if(getStackInSlot(i).getMetadata() == 0)
+                if (getStackInSlot(i).getMetadata() == 0)
                 {
                     //TODO handle speed upgrades
                 }
-                if(getStackInSlot(i).getMetadata() == 1)
+                if (getStackInSlot(i).getMetadata() == 1)
                 {
                     //TODO handle capacity upgrades
                 }
-                if(getStackInSlot(i).getMetadata() == 2)
+                if (getStackInSlot(i).getMetadata() == 2)
                 {
-                    if(getStoredPower() != getMaxCapacity())
+                    if (getStoredPower() != getMaxCapacity())
                     {
                         generatePower((stacksize - 1) * baseoutput);
                     }

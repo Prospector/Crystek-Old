@@ -25,17 +25,17 @@ public class ItemBlockMachine extends ItemBlock
         super(block);
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
     {
         if (stack != null && stack.hasTagCompound())
         {
-            if(stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer") != null)
+            if (stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer") != null)
             {
-                list.add("" + TextFormatting.DARK_AQUA  + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaPower") + "/"
-                        + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaCapacity")+" Tesla");
+                list.add("" + TextFormatting.DARK_AQUA + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaPower") + "/"
+                        + stack.getTagCompound().getCompoundTag("tileEntity").getCompoundTag("TeslaContainer").getLong("TeslaCapacity") + " Tesla");
             }
         }
     }

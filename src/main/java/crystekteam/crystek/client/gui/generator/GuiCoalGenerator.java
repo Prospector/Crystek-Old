@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiCoalGenerator extends GuiBase
 {
     TileCoalGenerator tile;
+
     public GuiCoalGenerator(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerCoalGenerator(tile, player), "crystek.coalgenerator");

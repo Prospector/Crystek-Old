@@ -40,8 +40,7 @@ public class ConfigAE
         if (instance == null)
         {
             instance = new ConfigAE(configFile);
-        }
-        else
+        } else
         {
             throw new IllegalStateException("Cannot initialize Crystek config twice");
         }
@@ -94,7 +93,7 @@ public class ConfigAE
                 .getInt();
 
 
-        if(config.hasChanged())
+        if (config.hasChanged())
         {
             config.save();
         }

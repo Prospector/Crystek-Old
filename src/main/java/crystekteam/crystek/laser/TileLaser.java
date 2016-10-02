@@ -23,12 +23,12 @@ public class TileLaser extends TileTeslaStorage
     public void update()
     {
         //Connect to machine under laser
-        if(getConnectedMachine() == null)
+        if (getConnectedMachine() == null)
         {
             setConnectedMachine();
         }
 
-        if(getConnectedLaser() != null)
+        if (getConnectedLaser() != null)
         {
             //request power from connected coil
             requestPower();
@@ -40,11 +40,10 @@ public class TileLaser extends TileTeslaStorage
     public void setConnectedMachine()
     {
         BlockPos tilePos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
-        if(worldObj.getTileEntity(tilePos) != null && TeslaUtils.isTelsaBlock(worldObj.getTileEntity(tilePos)))
+        if (worldObj.getTileEntity(tilePos) != null && TeslaUtils.isTelsaBlock(worldObj.getTileEntity(tilePos)))
         {
             connectedMachine = worldObj.getTileEntity(pos);
-        }
-        else
+        } else
         {
             connectedMachine = null;
         }
@@ -62,7 +61,7 @@ public class TileLaser extends TileTeslaStorage
 
     public void setConnectedLaser(BlockPos pos)
     {
-        if(worldObj.getTileEntity(pos) != null && worldObj.getTileEntity(pos) instanceof TileLaser)
+        if (worldObj.getTileEntity(pos) != null && worldObj.getTileEntity(pos) instanceof TileLaser)
         {
             connectedLaser = (TileLaser) worldObj.getTileEntity(pos);
         }
@@ -70,9 +69,9 @@ public class TileLaser extends TileTeslaStorage
 
     public void requestPower()
     {
-        if(getConnectedMachine() != null && TeslaUtils.isConsumer(getConnectedMachine()))
+        if (getConnectedMachine() != null && TeslaUtils.isConsumer(getConnectedMachine()))
         {
-            if(TeslaUtils.getMissingPower(worldObj.getTileEntity(pos)) >= container.getInputRate())
+            if (TeslaUtils.getMissingPower(worldObj.getTileEntity(pos)) >= container.getInputRate())
             {
 
                 if (TeslaUtils.getStoredPower(connectedLaser) >= container.getInputRate())
@@ -88,14 +87,13 @@ public class TileLaser extends TileTeslaStorage
     public void transferPowerTo(EnumFacing facing)
     {
         TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
-        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
+        if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
         {
-            if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
+            if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
             {
                 TeslaUtils.addPower(tileEntity, this.container.getOutputRate());
                 this.container.takePower(this.container.getOutputRate(), false);
-            }
-            else if(TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
+            } else if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() < this.container.getOutputRate())
             {
                 TeslaUtils.addPower(tileEntity, this.container.getStoredPower());
                 this.container.takePower(this.container.getStoredPower(), false);

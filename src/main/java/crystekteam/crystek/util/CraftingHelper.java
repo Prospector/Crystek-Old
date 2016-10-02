@@ -20,15 +20,15 @@ public class CraftingHelper
     public static void addShapedOreRecipe(ItemStack outputItemStack, Object... objectInputs)
     {
         ShapedOreRecipe recipe = new ShapedOreRecipe(outputItemStack, objectInputs);
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(outputItemStack);
             Validate.notNull(outputItemStack.getItem());
-            if(objectInputs.length == 0)
+            if (objectInputs.length == 0)
             {
                 Validate.notNull(null);
             }
-            if(recipe.getInput().length == 0)
+            if (recipe.getInput().length == 0)
             {
                 Validate.notNull(null);
             }
@@ -38,11 +38,11 @@ public class CraftingHelper
 
     public static void addShapelessOreRecipe(ItemStack outputItemStack, Object... objectInputs)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(outputItemStack);
             Validate.notNull(outputItemStack.getItem());
-            if(objectInputs.length == 0)
+            if (objectInputs.length == 0)
             {
                 Validate.notNull(null);
             }
@@ -52,17 +52,17 @@ public class CraftingHelper
 
     public static void addShapelessRecipe(ItemStack output, Object... params)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(output);
             Validate.notNull(output.getItem());
-            if(params.length == 0)
+            if (params.length == 0)
             {
                 Validate.notNull(null);
             }
-            for(Object obj : params)
+            for (Object obj : params)
             {
-                if(obj instanceof ItemStack)
+                if (obj instanceof ItemStack)
                 {
                     ItemStack stack = (ItemStack) obj;
                     Validate.notNull(stack);
@@ -75,17 +75,17 @@ public class CraftingHelper
 
     public static IRecipe addShapedRecipe(ItemStack output, Object... params)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(output);
             Validate.notNull(output.getItem());
-            if(params.length == 0)
+            if (params.length == 0)
             {
                 Validate.notNull(null);
             }
-            for(Object obj : params)
+            for (Object obj : params)
             {
-                if(obj instanceof ItemStack)
+                if (obj instanceof ItemStack)
                 {
                     ItemStack stack = (ItemStack) obj;
                     Validate.notNull(stack);
@@ -98,7 +98,7 @@ public class CraftingHelper
 
     public static void addSmelting(Block input, ItemStack output, float xp)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(input);
             Validate.notNull(output);
@@ -109,7 +109,7 @@ public class CraftingHelper
 
     public static void addSmelting(Item input, ItemStack output, float xp)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(input);
             Validate.notNull(output);
@@ -120,7 +120,7 @@ public class CraftingHelper
 
     public static void addSmelting(ItemStack input, ItemStack output, float xp)
     {
-        if(validateRecipes)
+        if (validateRecipes)
         {
             Validate.notNull(input);
             Validate.notNull(input.getItem());

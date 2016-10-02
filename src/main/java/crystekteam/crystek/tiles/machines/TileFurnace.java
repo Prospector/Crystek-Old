@@ -28,13 +28,13 @@ public class TileFurnace extends TileMachine
     {
         boolean burning = isBurning();
         boolean updateInventory = false;
-        if(!worldObj.isRemote)
+        if (!worldObj.isRemote)
         {
             if (isBurning() && canSmelt())
             {
                 this.addProgress();
                 syncWithAll();
-                if(getProgress() == 1)
+                if (getProgress() == 1)
                 {
                     updateState();
                 }
@@ -67,7 +67,7 @@ public class TileFurnace extends TileMachine
 
     public void cookItems()
     {
-        if(!worldObj.isRemote)
+        if (!worldObj.isRemote)
         {
             if (this.canSmelt())
             {
@@ -76,16 +76,14 @@ public class TileFurnace extends TileMachine
                 if (getStackInSlot(output) == null)
                 {
                     setInventorySlotContents(output, itemstack.copy());
-                }
-                else if (getStackInSlot(output).isItemEqual(itemstack))
+                } else if (getStackInSlot(output).isItemEqual(itemstack))
                 {
                     getStackInSlot(output).stackSize += itemstack.stackSize;
                 }
                 if (getStackInSlot(input1).stackSize > 1)
                 {
                     this.decrStackSize(input1, 1);
-                }
-                else
+                } else
                 {
                     setInventorySlotContents(input1, null);
                 }
@@ -99,8 +97,7 @@ public class TileFurnace extends TileMachine
         if (getStackInSlot(input1) == null)
         {
             return false;
-        }
-        else
+        } else
         {
             ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
             if (itemstack == null)

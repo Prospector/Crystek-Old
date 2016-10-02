@@ -22,28 +22,28 @@ public class RecipeGrinder
 
     public boolean matches(ItemStack stack)
     {
-        if(input instanceof ItemStack)
+        if (input instanceof ItemStack)
         {
             ItemStack inputCopy = ((ItemStack) input).copy();
-            if(inputCopy.getItemDamage() == Short.MAX_VALUE)
+            if (inputCopy.getItemDamage() == Short.MAX_VALUE)
             {
                 inputCopy.setItemDamage(stack.getItemDamage());
             }
             return stack.isItemEqual(inputCopy);
         }
 
-        if(input instanceof String)
+        if (input instanceof String)
         {
             List<ItemStack> validStacks = OreDictionary.getOres((String) input);
 
-            for(ItemStack ostack : validStacks)
+            for (ItemStack ostack : validStacks)
             {
                 ItemStack cstack = ostack.copy();
-                if(cstack.getItemDamage() == Short.MAX_VALUE)
+                if (cstack.getItemDamage() == Short.MAX_VALUE)
                 {
                     cstack.setItemDamage(stack.getItemDamage());
                 }
-                if(stack.isItemEqual(cstack))
+                if (stack.isItemEqual(cstack))
                 {
                     return true;
                 }
@@ -54,7 +54,7 @@ public class RecipeGrinder
 
     public static ItemStack getOutputFrom(ItemStack input)
     {
-        if(input != null)
+        if (input != null)
         {
             for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
             {

@@ -15,12 +15,12 @@ public final class VanillaPacketDispatcher
 {
     public static void dispatchTEToNearbyPlayers(TileEntity tile)
     {
-        if(tile.getWorld() instanceof WorldServer)
+        if (tile.getWorld() instanceof WorldServer)
         {
             WorldServer ws = ((WorldServer) tile.getWorld());
             SPacketUpdateTileEntity packet = tile.getUpdatePacket();
 
-            if(packet == null)
+            if (packet == null)
                 return;
 
             for (EntityPlayer player : ws.playerEntities)
@@ -38,7 +38,7 @@ public final class VanillaPacketDispatcher
     public static void dispatchTEToNearbyPlayers(World world, BlockPos pos)
     {
         TileEntity tile = world.getTileEntity(pos);
-        if(tile != null)
+        if (tile != null)
             dispatchTEToNearbyPlayers(tile);
     }
 

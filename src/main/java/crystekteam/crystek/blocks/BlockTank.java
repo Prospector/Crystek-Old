@@ -27,7 +27,7 @@ public class BlockTank extends BlockBase
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!fillBlockWithFluid(world, pos, playerIn, heldItem, side))
+        if (!fillBlockWithFluid(world, pos, playerIn, heldItem, side))
         {
             super.onBlockActivated(world, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
         }
@@ -41,17 +41,20 @@ public class BlockTank extends BlockBase
     }
 
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
         return EnumBlockRenderType.MODEL;
     }
 
 
     @Override
-    public boolean isOpaqueCube(IBlockState state) {
+    public boolean isOpaqueCube(IBlockState state)
+    {
         return false;
     }
 
-    public boolean renderAsNormalBlock() {
+    public boolean renderAsNormalBlock()
+    {
         return false;
     }
 }

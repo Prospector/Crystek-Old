@@ -21,18 +21,18 @@ public class TileTrashCan extends TileBase
     @Override
     public void update()
     {
-        if(inv.getStackInSlot(0) != null)
+        if (inv.getStackInSlot(0) != null)
             inv.setInventorySlotContents(0, null);
-        if(tank.getFluid() != null)
+        if (tank.getFluid() != null)
             tank.setFluid(null);
 
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return (T) tank;
         }
@@ -40,9 +40,9 @@ public class TileTrashCan extends TileBase
     }
 
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return true;
         }

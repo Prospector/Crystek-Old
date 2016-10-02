@@ -20,7 +20,7 @@ public class SlotCharge extends SlotBase
     @Override
     public boolean isItemValid(@Nullable ItemStack stack)
     {
-        if(stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
+        if (stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
             return true;
         return false;
     }

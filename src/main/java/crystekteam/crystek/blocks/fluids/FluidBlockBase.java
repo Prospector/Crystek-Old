@@ -11,10 +11,10 @@ import net.minecraftforge.fluids.Fluid;
  */
 public class FluidBlockBase extends BlockFluidClassic
 {
-	public FluidBlockBase(Fluid fluid, Material material)
-	{
-		super(fluid, material);
-		setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".fluid."+fluid.getName());
-		setRegistryName(new ResourceLocation(ModInfo.MOD_ID.toLowerCase(), "fluid"+fluid.getName()));
-	}
+    public FluidBlockBase(Fluid fluid, Material material)
+    {
+        super(fluid, material);
+        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".fluid." + fluid.getName());
+        setRegistryName(new ResourceLocation(ModInfo.MOD_ID.toLowerCase(), "fluid" + fluid.getName()));
+    }
 }

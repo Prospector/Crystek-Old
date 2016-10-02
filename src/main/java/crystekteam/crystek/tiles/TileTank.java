@@ -20,9 +20,9 @@ public class TileTank extends TileBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return (T) tank;
         }
@@ -31,9 +31,9 @@ public class TileTank extends TileBase
     }
 
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return true;
         }

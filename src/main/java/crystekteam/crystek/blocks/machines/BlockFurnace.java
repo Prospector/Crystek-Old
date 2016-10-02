@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  */
 public class BlockFurnace extends BlockBase
 {
-    public BlockFurnace(){ setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".poweredfurnace");}
+    public BlockFurnace()
+    {
+        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".poweredfurnace");
+    }
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta)

@@ -37,7 +37,7 @@ public class BlockTrashCan extends BlockBase
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        if(!fillBlockWithFluid(world, pos, playerIn, heldItem, side))
+        if (!fillBlockWithFluid(world, pos, playerIn, heldItem, side))
         {
             playerIn.openGui(Crystek.instance, GuiHandler.trashcan, world, pos.getX(), pos.getY(), pos.getZ());
         }
@@ -56,7 +56,8 @@ public class BlockTrashCan extends BlockBase
         return false;
     }
 
-    @Override public BlockRenderLayer getBlockLayer()
+    @Override
+    public BlockRenderLayer getBlockLayer()
     {
         return BlockRenderLayer.CUTOUT;
     }

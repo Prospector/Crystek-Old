@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiTrashcan extends GuiBase
 {
     public TileTrashCan table;
+
     public GuiTrashcan(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerTrashCan(tile, player), "crystek.trashcan");

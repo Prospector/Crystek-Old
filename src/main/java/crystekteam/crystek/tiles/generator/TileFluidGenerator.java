@@ -38,8 +38,7 @@ public class TileFluidGenerator extends TileGenerator
                 generatePower(getOutput());
                 isBurning = true;
             }
-        }
-        else
+        } else
         {
             isBurning = false;
         }
@@ -62,7 +61,7 @@ public class TileFluidGenerator extends TileGenerator
 
     public long getOutput()
     {
-        if(tank.getFluid() != null)
+        if (tank.getFluid() != null)
         {
             FluidStack fluid = tank.getFluid();
             for (FluidFuelHandler recipe : CrystekApi.fluidFuelHandlers)
@@ -78,7 +77,7 @@ public class TileFluidGenerator extends TileGenerator
 
     public long getAmount()
     {
-        if(tank.getFluid() != null)
+        if (tank.getFluid() != null)
         {
             FluidStack fluid = tank.getFluid();
             for (FluidFuelHandler recipe : CrystekApi.fluidFuelHandlers)

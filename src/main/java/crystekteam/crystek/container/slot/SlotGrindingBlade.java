@@ -19,7 +19,7 @@ public class SlotGrindingBlade extends SlotBase
     @Override
     public boolean isItemValid(@Nullable ItemStack stack)
     {
-        if(stack.getItem() instanceof ItemGrindingBlade)
+        if (stack.getItem() instanceof ItemGrindingBlade)
             return true;
         return false;
     }

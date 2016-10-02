@@ -83,9 +83,9 @@ public class TileLaserRender extends TileEntitySpecialRenderer<TileLaser>
 
     private static Vector Cross(Vector a, Vector b)
     {
-        float x = a.y*b.z - a.z*b.y;
-        float y = a.z*b.x - a.x*b.z;
-        float z = a.x*b.y - a.y*b.x;
+        float x = a.y * b.z - a.z * b.y;
+        float y = a.z * b.x - a.x * b.z;
+        float z = a.x * b.y - a.y * b.x;
         return new Vector(x, y, z);
     }
 
@@ -144,12 +144,12 @@ public class TileLaserRender extends TileEntitySpecialRenderer<TileLaser>
 
     private static Vector Sub(Vector a, Vector b)
     {
-        return new Vector(a.x-b.x, a.y-b.y, a.z-b.z);
+        return new Vector(a.x - b.x, a.y - b.y, a.z - b.z);
     }
 
     private static Vector Add(Vector a, Vector b)
     {
-        return new Vector(a.x+b.x, a.y+b.y, a.z+b.z);
+        return new Vector(a.x + b.x, a.y + b.y, a.z + b.z);
     }
 
     private static Vector Mul(Vector a, float f)

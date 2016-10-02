@@ -46,51 +46,51 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(ID == coalGenerator)
+        if (ID == coalGenerator)
         {
             return new ContainerCoalGenerator((TileCoalGenerator) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == poweredFurnace)
+        if (ID == poweredFurnace)
         {
             return new ContainerPoweredFurnace((TileFurnace) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == grinder)
+        if (ID == grinder)
         {
             return new ContainerGrinder((TileGrinder) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == powerCube)
+        if (ID == powerCube)
         {
             return new ContainerTeslaCell((TileTeslaCell) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == solarPanel)
+        if (ID == solarPanel)
         {
             return new ContainerSolarPanel((TileSolarPanel) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == crystallizer)
+        if (ID == crystallizer)
         {
             return new ContainerCrystallizer((TileCrystallizer) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == fluidGenerator)
+        if (ID == fluidGenerator)
         {
             return new ContainerFluidGenerator((TileFluidGenerator) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == fluidizer)
+        if (ID == fluidizer)
         {
             return new ContainerFluidizer((TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == book)
+        if (ID == book)
         {
             return null;
         }
-        if(ID == tinkertable)
+        if (ID == tinkertable)
         {
             return new ContainerTinkerTable((TileTinkerTable) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == trashcan)
+        if (ID == trashcan)
         {
             return new ContainerTrashCan((TileTrashCan) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
-        if(ID == crate)
+        if (ID == crate)
         {
             return new ContainerCrate((TileCrate) world.getTileEntity(new BlockPos(x, y, z)), player);
         }
@@ -100,51 +100,51 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(ID == coalGenerator)
+        if (ID == coalGenerator)
         {
             return new GuiCoalGenerator(player, (TileCoalGenerator) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == poweredFurnace)
+        if (ID == poweredFurnace)
         {
             return new GuiPoweredFurnace(player, (TileFurnace) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == grinder)
+        if (ID == grinder)
         {
             return new GuiGrinder(player, (TileGrinder) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == powerCube)
+        if (ID == powerCube)
         {
             return new GuiTeslaCell(player, (TileTeslaCell) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == solarPanel)
+        if (ID == solarPanel)
         {
             return new GuiSolarPanel(player, (TileSolarPanel) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == crystallizer)
+        if (ID == crystallizer)
         {
             return new GuiCrystallizer(player, (TileCrystallizer) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == fluidGenerator)
+        if (ID == fluidGenerator)
         {
             return new GuiFluidGenerator(player, (TileFluidGenerator) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == fluidizer)
+        if (ID == fluidizer)
         {
             return new GuiFluidizer(player, (TileFluidizer) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == book)
+        if (ID == book)
         {
             return new GuiBook(player);
         }
-        if(ID == tinkertable)
+        if (ID == tinkertable)
         {
             return new GuiTinkerTable(player, (TileTinkerTable) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == trashcan)
+        if (ID == trashcan)
         {
             return new GuiTrashcan(player, (TileTrashCan) world.getTileEntity(new BlockPos(x, y, z)));
         }
-        if(ID == crate)
+        if (ID == crate)
         {
             return new GuiCrate(player, (TileCrate) world.getTileEntity(new BlockPos(x, y, z)));
         }

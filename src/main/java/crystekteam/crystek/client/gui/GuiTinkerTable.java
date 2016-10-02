@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiTinkerTable extends GuiBase
 {
     public TileTinkerTable table;
+
     public GuiTinkerTable(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerTinkerTable(tile, player), "tinkertable");

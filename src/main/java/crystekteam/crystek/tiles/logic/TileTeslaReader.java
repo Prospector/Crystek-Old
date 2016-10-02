@@ -19,7 +19,7 @@ public class TileTeslaReader extends TileEntity implements ITickable
     public long getStoredPower(EnumFacing facing)
     {
         TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
-        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity))
+        if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity))
         {
             return TeslaUtils.getStoredPower(tileEntity);
         }
@@ -29,7 +29,7 @@ public class TileTeslaReader extends TileEntity implements ITickable
     public long getMaxPower(EnumFacing facing)
     {
         TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
-        if(tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity))
+        if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity))
         {
             return TeslaUtils.getMaxCapacity(tileEntity);
         }

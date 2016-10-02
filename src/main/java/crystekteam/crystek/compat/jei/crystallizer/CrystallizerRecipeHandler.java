@@ -13,36 +13,45 @@ import javax.annotation.Nonnull;
  */
 public class CrystallizerRecipeHandler implements IRecipeHandler<RecipeCrystallizer>
 {
-	@Nonnull private final IJeiHelpers jeiHelpers;
+    @Nonnull
+    private final IJeiHelpers jeiHelpers;
 
-	public CrystallizerRecipeHandler(@Nonnull IJeiHelpers jeiHelpers)
-	{
-		this.jeiHelpers = jeiHelpers;
-	}
+    public CrystallizerRecipeHandler(@Nonnull IJeiHelpers jeiHelpers)
+    {
+        this.jeiHelpers = jeiHelpers;
+    }
 
-	@Nonnull
-	@Override public String getRecipeCategoryUid(@Nonnull RecipeCrystallizer recipe)
-	{
-		return CrystekRecipeCategoryUids.CRYSTALLIZER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid(@Nonnull RecipeCrystallizer recipe)
+    {
+        return CrystekRecipeCategoryUids.CRYSTALLIZER;
+    }
 
-	@Nonnull @Override public Class<RecipeCrystallizer> getRecipeClass()
-	{
-		return RecipeCrystallizer.class;
-	}
+    @Nonnull
+    @Override
+    public Class<RecipeCrystallizer> getRecipeClass()
+    {
+        return RecipeCrystallizer.class;
+    }
 
-	@Nonnull @Override public String getRecipeCategoryUid()
-	{
-		return CrystekRecipeCategoryUids.CRYSTALLIZER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid()
+    {
+        return CrystekRecipeCategoryUids.CRYSTALLIZER;
+    }
 
-	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeCrystallizer recipe)
-	{
-		return new CrystallizerRecipeWrapper(recipe);
-	}
+    @Nonnull
+    @Override
+    public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeCrystallizer recipe)
+    {
+        return new CrystallizerRecipeWrapper(recipe);
+    }
 
-	@Override public boolean isRecipeValid(@Nonnull RecipeCrystallizer recipe)
-	{
-		return true;
-	}
+    @Override
+    public boolean isRecipeValid(@Nonnull RecipeCrystallizer recipe)
+    {
+        return true;
+    }
 }

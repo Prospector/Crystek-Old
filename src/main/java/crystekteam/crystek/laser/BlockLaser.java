@@ -42,7 +42,7 @@ public class BlockLaser extends BlockBase
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         TileLaser tileLaser = (TileLaser) world.getTileEntity(pos);
-        if(heldItem == null)
+        if (heldItem == null)
         {
             if (!world.isRemote && tileLaser.getConnectedLaser() != null)
             {
@@ -64,7 +64,8 @@ public class BlockLaser extends BlockBase
     }
 
     @Override
-    public boolean isOpaqueCube(IBlockState state) {
+    public boolean isOpaqueCube(IBlockState state)
+    {
         return false;
     }
 

@@ -10,9 +10,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
  */
 public class CompatHandler
 {
-    public static  void init(FMLInitializationEvent event)
+    public static void init(FMLInitializationEvent event)
     {
-        if(Loader.isModLoaded("Waila"))
+        if (Loader.isModLoaded("Waila"))
         {
             new CompatModuleWaila().init(event);
         }

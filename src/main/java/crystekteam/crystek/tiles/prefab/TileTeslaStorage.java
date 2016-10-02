@@ -21,7 +21,7 @@ public class TileTeslaStorage extends TileBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
             return (T) this.container;
@@ -30,7 +30,7 @@ public class TileTeslaStorage extends TileBase
     }
 
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
             return true;
@@ -44,9 +44,9 @@ public class TileTeslaStorage extends TileBase
         int i;
         for (i = upgradeslotstart; i < upgradeslotstart + 3; ++i)
         {
-            if(getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
+            if (getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
             {
-                if(getStackInSlot(i).getMetadata() == 1)
+                if (getStackInSlot(i).getMetadata() == 1)
                 {
                     long upgradeamount = 100000;
                     long base = ConfigAE.teslacellBaseStorage;
@@ -55,7 +55,7 @@ public class TileTeslaStorage extends TileBase
                 }
             }
             //reset
-            else if(getStackInSlot(i) == null && getMaxCapacity() != maxcapcity)
+            else if (getStackInSlot(i) == null && getMaxCapacity() != maxcapcity)
             {
                 container.setCapacity(maxcapcity);
             }

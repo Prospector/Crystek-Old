@@ -23,131 +23,131 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class ModItems
 {
-	public static Item powerScanner;
-	public static Item crafting;
-	public static Item circuit;
-	public static Item battery;
-	public static Item drill;
-	public static Item wrench;
-	public static Item book;
-	public static Item teslabonemeal;
-	public static ItemGrindingBlade ironGrindingBlade;
-	public static ItemGrindingBlade goldGrindingBlade;
-	public static ItemGrindingBlade diamondGrindingBlade;
-	public static ItemGrindingBlade obsidianGrindingBlade;
-	public static ItemGrindingBlade teslaAlloyGrindingBlade;
+    public static Item powerScanner;
+    public static Item crafting;
+    public static Item circuit;
+    public static Item battery;
+    public static Item drill;
+    public static Item wrench;
+    public static Item book;
+    public static Item teslabonemeal;
+    public static ItemGrindingBlade ironGrindingBlade;
+    public static ItemGrindingBlade goldGrindingBlade;
+    public static ItemGrindingBlade diamondGrindingBlade;
+    public static ItemGrindingBlade obsidianGrindingBlade;
+    public static ItemGrindingBlade teslaAlloyGrindingBlade;
 
-	//armor
-	public static Item powerArmourHelmet;
-	public static Item powerArmourChestplate;
-	public static Item powerArmourLeggings;
-	public static Item powerArmourBoots;
+    //armor
+    public static Item powerArmourHelmet;
+    public static Item powerArmourChestplate;
+    public static Item powerArmourLeggings;
+    public static Item powerArmourBoots;
 
-	public static Item jetSuitHelmet;
-	public static Item jetSuitChestplate;
-	public static Item jetSuitLeggings;
-	public static Item jetSuitBoots;
+    public static Item jetSuitHelmet;
+    public static Item jetSuitChestplate;
+    public static Item jetSuitLeggings;
+    public static Item jetSuitBoots;
 
-	public static void init()
-	{
+    public static void init()
+    {
 
-		powerScanner = new ItemPowerScanner();
-		GameRegistry.register(powerScanner);
+        powerScanner = new ItemPowerScanner();
+        GameRegistry.register(powerScanner);
 
-		crafting = new ItemCrafting();
-		GameRegistry.register(crafting);
+        crafting = new ItemCrafting();
+        GameRegistry.register(crafting);
 
-		circuit = new ItemCircuit();
-		GameRegistry.register(circuit);
+        circuit = new ItemCircuit();
+        GameRegistry.register(circuit);
 
-		battery = new ItemBattery();
-		GameRegistry.register(battery);
+        battery = new ItemBattery();
+        GameRegistry.register(battery);
 
-		drill = new ItemDrill();
-		GameRegistry.register(drill);
+        drill = new ItemDrill();
+        GameRegistry.register(drill);
 
-		wrench = new ItemWrench();
-		GameRegistry.register(wrench);
+        wrench = new ItemWrench();
+        GameRegistry.register(wrench);
 
-		teslabonemeal = new ItemTeslaBonemeal();
-		GameRegistry.register(teslabonemeal);
+        teslabonemeal = new ItemTeslaBonemeal();
+        GameRegistry.register(teslabonemeal);
 
-		ironGrindingBlade = new ItemGrindingBlade("grindingbladeIron", 2, 63, new ItemStack(Items.IRON_INGOT));
-		GameRegistry.register(ironGrindingBlade);
+        ironGrindingBlade = new ItemGrindingBlade("grindingbladeIron", 2, 63, new ItemStack(Items.IRON_INGOT));
+        GameRegistry.register(ironGrindingBlade);
 
-		goldGrindingBlade = new ItemGrindingBlade("grindingbladeGold", 4, 31, new ItemStack(Items.GOLD_INGOT));
-		GameRegistry.register(goldGrindingBlade);
+        goldGrindingBlade = new ItemGrindingBlade("grindingbladeGold", 4, 31, new ItemStack(Items.GOLD_INGOT));
+        GameRegistry.register(goldGrindingBlade);
 
-		diamondGrindingBlade = new ItemGrindingBlade("grindingbladeDiamond", 3, 1023, new ItemStack(Items.DIAMOND));
-		GameRegistry.register(diamondGrindingBlade);
+        diamondGrindingBlade = new ItemGrindingBlade("grindingbladeDiamond", 3, 1023, new ItemStack(Items.DIAMOND));
+        GameRegistry.register(diamondGrindingBlade);
 
-		obsidianGrindingBlade = new ItemGrindingBlade("grindingbladeObsidian", 1, -1, new ItemStack(Blocks.OBSIDIAN));
-		GameRegistry.register(obsidianGrindingBlade);
+        obsidianGrindingBlade = new ItemGrindingBlade("grindingbladeObsidian", 1, -1, new ItemStack(Blocks.OBSIDIAN));
+        GameRegistry.register(obsidianGrindingBlade);
 
-		teslaAlloyGrindingBlade = new ItemGrindingBlade("grindingbladeTeslaAlloy", 3, -1, ItemBank.teslaIngot);
-		GameRegistry.register(teslaAlloyGrindingBlade);
+        teslaAlloyGrindingBlade = new ItemGrindingBlade("grindingbladeTeslaAlloy", 3, -1, ItemBank.teslaIngot);
+        GameRegistry.register(teslaAlloyGrindingBlade);
 
-		powerArmourHelmet = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200,
-				200).setRegistryName("infusedarmour.helmet");
-		GameRegistry.register(powerArmourHelmet);
+        powerArmourHelmet = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.HEAD, 1000, 200,
+                200).setRegistryName("infusedarmour.helmet");
+        GameRegistry.register(powerArmourHelmet);
 
-		powerArmourChestplate = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000,
-				200, 200).setRegistryName("infusedarmour.chestplate");
-		GameRegistry.register(powerArmourChestplate);
+        powerArmourChestplate = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.CHEST, 1000,
+                200, 200).setRegistryName("infusedarmour.chestplate");
+        GameRegistry.register(powerArmourChestplate);
 
-		powerArmourLeggings = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000,
-				200, 200).setRegistryName("infusedarmour.leggings");
-		GameRegistry.register(powerArmourLeggings);
+        powerArmourLeggings = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.LEGS, 1000,
+                200, 200).setRegistryName("infusedarmour.leggings");
+        GameRegistry.register(powerArmourLeggings);
 
-		powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200,
-				200).setRegistryName("infusedarmour.boots");
-		GameRegistry.register(powerArmourBoots);
+        powerArmourBoots = new ItemInfusedArmour(ItemArmor.ArmorMaterial.DIAMOND, EntityEquipmentSlot.FEET, 1000, 200,
+                200).setRegistryName("infusedarmour.boots");
+        GameRegistry.register(powerArmourBoots);
 
-		jetSuitHelmet = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.HEAD, 5000, 200, 200)
-				.setRegistryName("jetsuit.helmet");
-		GameRegistry.register(jetSuitHelmet);
+        jetSuitHelmet = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.HEAD, 5000, 200, 200)
+                .setRegistryName("jetsuit.helmet");
+        GameRegistry.register(jetSuitHelmet);
 
-		jetSuitChestplate = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.CHEST, 5000, 200, 200)
-				.setRegistryName("jetsuit.chestplate");
-		GameRegistry.register(jetSuitChestplate);
+        jetSuitChestplate = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.CHEST, 5000, 200, 200)
+                .setRegistryName("jetsuit.chestplate");
+        GameRegistry.register(jetSuitChestplate);
 
-		jetSuitLeggings = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.LEGS, 5000, 200, 200)
-				.setRegistryName("jetsuit.leggings");
-		GameRegistry.register(jetSuitLeggings);
+        jetSuitLeggings = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.LEGS, 5000, 200, 200)
+                .setRegistryName("jetsuit.leggings");
+        GameRegistry.register(jetSuitLeggings);
 
-		jetSuitBoots = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.FEET, 5000, 200, 200)
-				.setRegistryName("jetsuit.boots");
-		GameRegistry.register(jetSuitBoots);
+        jetSuitBoots = new ItemJetArmour(ItemArmor.ArmorMaterial.CHAIN, EntityEquipmentSlot.FEET, 5000, 200, 200)
+                .setRegistryName("jetsuit.boots");
+        GameRegistry.register(jetSuitBoots);
 
-		book = new ItemBook();
-		GameRegistry.register(book);
+        book = new ItemBook();
+        GameRegistry.register(book);
 
-		OreDictionary.registerOre("dyeCyan", teslabonemeal);
-		OreDictionary.registerOre("cropBeetroot", Items.BEETROOT);
+        OreDictionary.registerOre("dyeCyan", teslabonemeal);
+        OreDictionary.registerOre("cropBeetroot", Items.BEETROOT);
 
-		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
-		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);
-		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalYellow);
-		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalPurple);
-		OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalBlue);
+        OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystal);
+        OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalRed);
+        OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalYellow);
+        OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalPurple);
+        OreDictionary.registerOre("crystalTesla", ItemBank.teslaCrystalBlue);
 
-		OreDictionary.registerOre("crystekGrindingBlade", ironGrindingBlade);
-		OreDictionary.registerOre("crystekGrindingBlade", goldGrindingBlade);
-		OreDictionary.registerOre("crystekGrindingBlade", diamondGrindingBlade);
-		OreDictionary.registerOre("crystekGrindingBlade", obsidianGrindingBlade);
-		OreDictionary.registerOre("crystekGrindingBlade", teslaAlloyGrindingBlade);
+        OreDictionary.registerOre("crystekGrindingBlade", ironGrindingBlade);
+        OreDictionary.registerOre("crystekGrindingBlade", goldGrindingBlade);
+        OreDictionary.registerOre("crystekGrindingBlade", diamondGrindingBlade);
+        OreDictionary.registerOre("crystekGrindingBlade", obsidianGrindingBlade);
+        OreDictionary.registerOre("crystekGrindingBlade", teslaAlloyGrindingBlade);
 
-		int i;
-		//Register ore dict values for all crafting items
-		for (i = 0; i < ItemCrafting.types.length; ++i)
-		{
-			String[] name = ItemCrafting.types.clone();
-			registerOreDictValues(crafting, i, name[i]);
-		}
-	}
+        int i;
+        //Register ore dict values for all crafting items
+        for (i = 0; i < ItemCrafting.types.length; ++i)
+        {
+            String[] name = ItemCrafting.types.clone();
+            registerOreDictValues(crafting, i, name[i]);
+        }
+    }
 
-	static void registerOreDictValues(Item item, int meta, String value)
-	{
-		OreDictionary.registerOre(value, new ItemStack(item, 1, meta));
-	}
+    static void registerOreDictValues(Item item, int meta, String value)
+    {
+        OreDictionary.registerOre(value, new ItemStack(item, 1, meta));
+    }
 }

@@ -9,5 +9,6 @@ import net.minecraft.item.ItemStack;
 public interface IWrenchable
 {
     boolean isWrenchable();
+
     ItemStack returnStack();
 }

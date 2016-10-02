@@ -13,33 +13,31 @@ public class TeslaUtils
 {
     public static boolean isPoweredItem(ItemStack stack)
     {
-        if(stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
+        if (stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
             return true;
         return false;
     }
 
     public static long getStoredPower(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             BaseTeslaContainer container = getContainer(stack);
             return getContainer(stack).getStoredPower();
-        }
-        else return 0;
+        } else return 0;
     }
 
     public static long getMaxCapacity(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             return getContainer(stack).getCapacity();
-        }
-        else return 0;
+        } else return 0;
     }
 
     public static void addPower(ItemStack stack, long amount)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             getContainer(stack).givePower(amount, false);
         }
@@ -47,7 +45,7 @@ public class TeslaUtils
 
     public static BaseTeslaContainer getContainer(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             BaseTeslaContainer container = (BaseTeslaContainer) stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
             return container;
@@ -57,7 +55,7 @@ public class TeslaUtils
 
     public static void setMaxCapacity(ItemStack stack, long amount)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             getContainer(stack).setCapacity(amount);
         }
@@ -65,7 +63,7 @@ public class TeslaUtils
 
     public static void usePower(ItemStack stack, long amount)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             getContainer(stack).takePower(amount, false);
         }
@@ -73,7 +71,7 @@ public class TeslaUtils
 
     public static long getMaxInput(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             return getContainer(stack).getInputRate();
         }
@@ -82,7 +80,7 @@ public class TeslaUtils
 
     public static long getMaxOutput(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             return getContainer(stack).getOutputRate();
         }
@@ -91,7 +89,7 @@ public class TeslaUtils
 
     public static ItemStack createChargedStack(ItemStack stack)
     {
-        if(isPoweredItem(stack))
+        if (isPoweredItem(stack))
         {
             ItemStack chargedstack = stack.copy();
             getContainer(chargedstack).setInputRate(TeslaUtils.getMaxCapacity(stack));
@@ -107,14 +105,14 @@ public class TeslaUtils
      */
     public static boolean isTelsaBlock(TileEntity tileEntity)
     {
-        if(tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
+        if (tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN))
             return true;
         return false;
     }
 
     public static BaseTeslaContainer getContainer(TileEntity tileEntity)
     {
-        if(isTelsaBlock(tileEntity))
+        if (isTelsaBlock(tileEntity))
         {
             BaseTeslaContainer container = (BaseTeslaContainer) tileEntity.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
             return container;
@@ -124,7 +122,7 @@ public class TeslaUtils
 
     public static boolean isConsumer(TileEntity tileEntity)
     {
-        if(tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, EnumFacing.DOWN))
+        if (tileEntity.hasCapability(TeslaCapabilities.CAPABILITY_CONSUMER, EnumFacing.DOWN))
             return true;
         return false;
     }
@@ -146,7 +144,7 @@ public class TeslaUtils
 
     public static boolean canAcceptPower(TileEntity tile, long amount)
     {
-        if(getMissingPower(tile) >= amount)
+        if (getMissingPower(tile) >= amount)
         {
             return true;
         }

@@ -23,7 +23,7 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
     private static final int FLUID_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;
 
-    public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" +"textures/gui/jei/crystallizer.png");
+    public static final ResourceLocation texture = new ResourceLocation(ModInfo.MOD_NAME.toLowerCase() + ":" + "textures/gui/jei/crystallizer.png");
     private final IDrawable background;
     private final String title;
 
@@ -55,10 +55,14 @@ public class CrystallizerRecipeCategory implements IRecipeCategory
     }
 
     @Override
-    public void drawExtras(@Nonnull Minecraft minecraft) {}
+    public void drawExtras(@Nonnull Minecraft minecraft)
+    {
+    }
 
     @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft) {}
+    public void drawAnimations(@Nonnull Minecraft minecraft)
+    {
+    }
 
     @SuppressWarnings("unchecked")
     @Override

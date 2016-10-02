@@ -22,52 +22,58 @@ import java.util.Set;
  */
 public class ItemTeslaTool extends ItemTool
 {
-	private long maxCapacity;
-	private long output;
-	private long input;
+    private long maxCapacity;
+    private long output;
+    private long input;
 
-	public ItemTeslaTool(float attackDamageIn, float attackSpeedIn, ToolMaterial materialIn,
-			Set<Block> effectiveBlocksIn, long maxCapacity, long input, long output)
-	{
-		super(attackDamageIn, attackSpeedIn, materialIn, effectiveBlocksIn);
-		setMaxStackSize(1);
-		setMaxDamage(240);
-		this.maxCapacity = maxCapacity;
-		this.output = output;
-		this.input = input;
-	}
+    public ItemTeslaTool(float attackDamageIn, float attackSpeedIn, ToolMaterial materialIn,
+                         Set<Block> effectiveBlocksIn, long maxCapacity, long input, long output)
+    {
+        super(attackDamageIn, attackSpeedIn, materialIn, effectiveBlocksIn);
+        setMaxStackSize(1);
+        setMaxDamage(240);
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
+    }
 
-	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
-	{
-		ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
-		ItemStack unpowered = new ItemStack(itemIn);
-		subItems.add(powered);
-		subItems.add(unpowered);
-	}
+    @Override
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    {
+        ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack unpowered = new ItemStack(itemIn);
+        subItems.add(powered);
+        subItems.add(unpowered);
+    }
 
-	@Override public boolean isRepairable()
-	{
-		return false;
-	}
+    @Override
+    public boolean isRepairable()
+    {
+        return false;
+    }
 
-	@Override public double getDurabilityForDisplay(ItemStack stack)
-	{
-		return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
-	}
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack)
+    {
+        return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
+    }
 
-	@Override public boolean showDurabilityBar(ItemStack stack)
-	{
-		return true;
-	}
+    @Override
+    public boolean showDurabilityBar(ItemStack stack)
+    {
+        return true;
+    }
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-	{
-		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
-				.getMaxCapacity(stack) + " Tesla"));
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    {
+        tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
+                .getMaxCapacity(stack) + " Tesla"));
+    }
 
-	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
-	{
-		return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
-	}
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
+    {
+        return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
+    }
 }

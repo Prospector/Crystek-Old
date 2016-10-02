@@ -26,35 +26,36 @@ public class ClientProxy extends CommonProxy
     public void registerRenders()
     {
         ModelHandler.init();
-		registerFluidRenders();
+        registerFluidRenders();
         ClientRegistry.bindTileEntitySpecialRenderer(TileTank.class, new TileTankRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileLaser.class, new TileLaserRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileTinkerTable.class, new TileTinkerRender());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileLaser.class, new TileLaserRender());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileTinkerTable.class, new TileTinkerRender());
 
-	}
-
-    private static void registerFluidRenders(){
-		registerFluid(ModFluids.fluidTeslaBlock);
     }
 
-	private static void registerFluid(FluidBlockBase fluid)
+    private static void registerFluidRenders()
     {
-		Item fluidTeslaItem = Item.getItemFromBlock(fluid);
-		final ModelResourceLocation fluidTeslaLocation = new ModelResourceLocation(ModInfo.MOD_ID.toLowerCase()+":fluids", fluid.getFluid().getName().toLowerCase());
-		ModelBakery.registerItemVariants(fluidTeslaItem);
-		ModelLoader.setCustomMeshDefinition(fluidTeslaItem, new ItemMeshDefinition()
-		{
-			public ModelResourceLocation getModelLocation(ItemStack stack)
-			{
-				return fluidTeslaLocation;
-			}
-		});
-		ModelLoader.setCustomStateMapper(fluid, new StateMapperBase()
-		{
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state)
-			{
-				return fluidTeslaLocation;
-			}
-		});
-	}
+        registerFluid(ModFluids.fluidTeslaBlock);
+    }
+
+    private static void registerFluid(FluidBlockBase fluid)
+    {
+        Item fluidTeslaItem = Item.getItemFromBlock(fluid);
+        final ModelResourceLocation fluidTeslaLocation = new ModelResourceLocation(ModInfo.MOD_ID.toLowerCase() + ":fluids", fluid.getFluid().getName().toLowerCase());
+        ModelBakery.registerItemVariants(fluidTeslaItem);
+        ModelLoader.setCustomMeshDefinition(fluidTeslaItem, new ItemMeshDefinition()
+        {
+            public ModelResourceLocation getModelLocation(ItemStack stack)
+            {
+                return fluidTeslaLocation;
+            }
+        });
+        ModelLoader.setCustomStateMapper(fluid, new StateMapperBase()
+        {
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
+            {
+                return fluidTeslaLocation;
+            }
+        });
+    }
 }

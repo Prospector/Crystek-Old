@@ -13,7 +13,7 @@ public class BlockAccelerator extends BlockBase
 {
     public BlockAccelerator()
     {
-        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase()  + ".accelerator");
+        setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".accelerator");
     }
 
     @Override

@@ -39,12 +39,14 @@ public class BlockTinkerTable extends BlockBase
     }
 
     @Override
-    public boolean isOpaqueCube(IBlockState state) {
+    public boolean isOpaqueCube(IBlockState state)
+    {
         return false;
     }
 
     @Override
-    public boolean isFullCube(IBlockState state) {
+    public boolean isFullCube(IBlockState state)
+    {
         return false;
     }
 //

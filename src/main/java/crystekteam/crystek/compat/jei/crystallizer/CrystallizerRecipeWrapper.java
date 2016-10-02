@@ -26,11 +26,11 @@ public class CrystallizerRecipeWrapper implements IRecipeWrapper
     public CrystallizerRecipeWrapper(RecipeCrystallizer recipe)
     {
         ImmutableList.Builder builder = ImmutableList.builder();
-        if(recipe.getInput() instanceof ItemStack)
+        if (recipe.getInput() instanceof ItemStack)
         {
             builder.add(recipe.getInput());
         }
-        if(recipe.getInput() instanceof String)
+        if (recipe.getInput() instanceof String)
         {
             builder.add(OreDictionary.getOres(((String) recipe.getInput())));
         }
@@ -53,8 +53,12 @@ public class CrystallizerRecipeWrapper implements IRecipeWrapper
 
     @SuppressWarnings("null")
     @Override
-    public @Nonnull List<FluidStack> getFluidInputs() {
-        if (fluidStack != null) {
+    public
+    @Nonnull
+    List<FluidStack> getFluidInputs()
+    {
+        if (fluidStack != null)
+        {
             return Collections.singletonList(fluidStack);
         }
         return Collections.emptyList();
@@ -67,10 +71,14 @@ public class CrystallizerRecipeWrapper implements IRecipeWrapper
     }
 
     @Override
-    public void drawInfo(@Nonnull Minecraft minecraft, int i, int i1, int i2, int i3) {}
+    public void drawInfo(@Nonnull Minecraft minecraft, int i, int i1, int i2, int i3)
+    {
+    }
 
     @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft, int i, int i1) {}
+    public void drawAnimations(@Nonnull Minecraft minecraft, int i, int i1)
+    {
+    }
 
     @Nullable
     @Override

@@ -13,36 +13,45 @@ import javax.annotation.Nonnull;
  */
 public class GrinderRecipeHandler implements IRecipeHandler<RecipeGrinder>
 {
-	@Nonnull private final IJeiHelpers jeiHelpers;
+    @Nonnull
+    private final IJeiHelpers jeiHelpers;
 
-	public GrinderRecipeHandler(@Nonnull IJeiHelpers jeiHelpers)
-	{
-		this.jeiHelpers = jeiHelpers;
-	}
+    public GrinderRecipeHandler(@Nonnull IJeiHelpers jeiHelpers)
+    {
+        this.jeiHelpers = jeiHelpers;
+    }
 
-	@Nonnull
-	@Override public String getRecipeCategoryUid(@Nonnull RecipeGrinder recipe)
-	{
-		return CrystekRecipeCategoryUids.GRINDER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid(@Nonnull RecipeGrinder recipe)
+    {
+        return CrystekRecipeCategoryUids.GRINDER;
+    }
 
-	@Nonnull @Override public Class<RecipeGrinder> getRecipeClass()
-	{
-		return RecipeGrinder.class;
-	}
+    @Nonnull
+    @Override
+    public Class<RecipeGrinder> getRecipeClass()
+    {
+        return RecipeGrinder.class;
+    }
 
-	@Nonnull @Override public String getRecipeCategoryUid()
-	{
-		return CrystekRecipeCategoryUids.GRINDER;
-	}
+    @Nonnull
+    @Override
+    public String getRecipeCategoryUid()
+    {
+        return CrystekRecipeCategoryUids.GRINDER;
+    }
 
-	@Nonnull @Override public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeGrinder recipe)
-	{
-		return new GrinderRecipeWrapper(recipe);
-	}
+    @Nonnull
+    @Override
+    public IRecipeWrapper getRecipeWrapper(@Nonnull RecipeGrinder recipe)
+    {
+        return new GrinderRecipeWrapper(recipe);
+    }
 
-	@Override public boolean isRecipeValid(@Nonnull RecipeGrinder recipe)
-	{
-		return true;
-	}
+    @Override
+    public boolean isRecipeValid(@Nonnull RecipeGrinder recipe)
+    {
+        return true;
+    }
 }

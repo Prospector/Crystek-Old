@@ -3,11 +3,7 @@ package crystekteam.crystek.container;
 import crystekteam.crystek.container.slot.SlotCircuit;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceOutput;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import reborncore.common.container.RebornContainer;
@@ -51,7 +47,8 @@ public class ContainerBase extends RebornContainer
         for (int i = 0; i < this.listeners.size(); i++)
         {
             IContainerListener IContainerListener = this.listeners.get(i);
-            if (this.power != tile.getStoredPower()) {
+            if (this.power != tile.getStoredPower())
+            {
 
                 IContainerListener.sendProgressBarUpdate(this, 0, (int) tile.getStoredPower());
             }
@@ -82,12 +79,10 @@ public class ContainerBase extends RebornContainer
         if (id == 0)
         {
             this.power = value;
-        }
-        else if (id == 1)
+        } else if (id == 1)
         {
             this.progress = value;
-        }
-        else if (id == 2)
+        } else if (id == 2)
         {
             this.burnTime = value;
         }

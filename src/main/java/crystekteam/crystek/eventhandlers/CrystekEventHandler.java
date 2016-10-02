@@ -8,9 +8,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 public class CrystekEventHandler
 {
-	@SubscribeEvent
-	public void worldEventLoad(WorldEvent.Load event){
-		event.getWorld().addEventListener(new CrystekWorldEventListener(event.getWorld()));
-	}
+    @SubscribeEvent
+    public void worldEventLoad(WorldEvent.Load event)
+    {
+        event.getWorld().addEventListener(new CrystekWorldEventListener(event.getWorld()));
+    }
 
 }

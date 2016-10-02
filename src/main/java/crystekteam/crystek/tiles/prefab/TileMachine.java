@@ -20,13 +20,13 @@ public class TileMachine extends TileBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability (Capability<T> capability, EnumFacing facing)
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
         if (capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
         {
             return (T) this.container;
         }
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return (T) tank;
         }
@@ -34,13 +34,13 @@ public class TileMachine extends TileBase
     }
 
     @Override
-    public boolean hasCapability (Capability<?> capability, EnumFacing facing)
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
         if (capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
         {
             return true;
         }
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return true;
         }

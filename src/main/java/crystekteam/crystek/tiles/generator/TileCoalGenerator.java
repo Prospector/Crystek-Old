@@ -42,8 +42,7 @@ public class TileCoalGenerator extends TileGenerator
                 generatePower(baseoutput);
                 isBurning = true;
             }
-        }
-        else
+        } else
         {
             isBurning = false;
         }
@@ -58,8 +57,7 @@ public class TileCoalGenerator extends TileGenerator
                 if (getStackInSlot(fuelSlot).stackSize == 1)
                 {
                     setInventorySlotContents(fuelSlot, null);
-                }
-                else
+                } else
                 {
                     decrStackSize(fuelSlot, 1);
                 }
@@ -71,6 +69,7 @@ public class TileCoalGenerator extends TileGenerator
             transferPowerTo(side);
         }
     }
+
     public static int getItemBurnTime(ItemStack stack)
     {
         return TileEntityFurnace.getItemBurnTime(stack) / 4;

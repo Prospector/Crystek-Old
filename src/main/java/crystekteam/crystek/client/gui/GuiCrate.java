@@ -4,7 +4,6 @@ import crystekteam.crystek.container.ContainerCrate;
 import crystekteam.crystek.tiles.TileCrate;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Slot;
 
 /**
  * Created by Gigabit101 on 24/07/2016.
@@ -12,6 +11,7 @@ import net.minecraft.inventory.Slot;
 public class GuiCrate extends GuiBase
 {
     public TileCrate table;
+
     public GuiCrate(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerCrate(tile, player), "crate");
@@ -19,7 +19,9 @@ public class GuiCrate extends GuiBase
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {}
+    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
+    {
+    }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_)

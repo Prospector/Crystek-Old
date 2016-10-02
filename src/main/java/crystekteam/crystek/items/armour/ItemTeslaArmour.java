@@ -23,52 +23,58 @@ import java.util.List;
  */
 public class ItemTeslaArmour extends ItemArmor// implements ISpecialArmor
 {
-	long cost = 20;
-	private long maxCapacity;
-	private long output;
-	private long input;
+    long cost = 20;
+    private long maxCapacity;
+    private long output;
+    private long input;
 
-	public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, long maxCapacity, long input, long output)
-	{
-		super(materialIn, renderIndexIn, equipmentSlotIn);
-		this.maxCapacity = maxCapacity;
-		this.output = output;
-		this.input = input;
-	}
+    public ItemTeslaArmour(ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn, long maxCapacity, long input, long output)
+    {
+        super(materialIn, renderIndexIn, equipmentSlotIn);
+        this.maxCapacity = maxCapacity;
+        this.output = output;
+        this.input = input;
+    }
 
-	@Override public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
-	{
-		ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
-		ItemStack unpowered = new ItemStack(itemIn);
-		subItems.add(powered);
-		subItems.add(unpowered);
-	}
+    @Override
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    {
+        ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
+        ItemStack unpowered = new ItemStack(itemIn);
+        subItems.add(powered);
+        subItems.add(unpowered);
+    }
 
-	@Override public boolean isRepairable()
-	{
-		return false;
-	}
+    @Override
+    public boolean isRepairable()
+    {
+        return false;
+    }
 
-	@Override public double getDurabilityForDisplay(ItemStack stack)
-	{
-		return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
-	}
+    @Override
+    public double getDurabilityForDisplay(ItemStack stack)
+    {
+        return (1 - (double) TeslaUtils.getStoredPower(stack) / (double) TeslaUtils.getMaxCapacity(stack));
+    }
 
-	@Override public boolean showDurabilityBar(ItemStack stack)
-	{
-		return true;
-	}
+    @Override
+    public boolean showDurabilityBar(ItemStack stack)
+    {
+        return true;
+    }
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-	{
-		tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
-				.getMaxCapacity(stack) + " Tesla"));
-	}
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
+    {
+        tooltip.add(I18n.format(TextFormatting.DARK_AQUA + "" + TeslaUtils.getStoredPower(stack) + "/" + TeslaUtils
+                .getMaxCapacity(stack) + " Tesla"));
+    }
 
-	@Override public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
-	{
-		return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
-	}
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt)
+    {
+        return new BaseTeslaContainerProvider(new BaseTeslaContainer(maxCapacity, output, input));
+    }
 
 //	@Override public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
 //	{
@@ -86,13 +92,15 @@ public class ItemTeslaArmour extends ItemArmor// implements ISpecialArmor
 //		TeslaUtils.usePower(stack, damage * cost);
 //	}
 
-	@Override public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
-		return false;
-	}
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
+    {
+        return false;
+    }
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
-	{
-		return ModInfo.MOD_ID+":textures/armour/infused";
-	}
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
+    {
+        return ModInfo.MOD_ID + ":textures/armour/infused";
+    }
 }

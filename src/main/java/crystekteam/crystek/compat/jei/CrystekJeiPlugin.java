@@ -47,5 +47,7 @@ public class CrystekJeiPlugin extends BlankModPlugin
     }
 
     @Override
-    public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime) {}
+    public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime)
+    {
+    }
 }

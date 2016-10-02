@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class GuiFluidGenerator extends GuiBase
 {
     TileFluidGenerator tile;
+
     public GuiFluidGenerator(EntityPlayer player, TileBase tile)
     {
         super(player, tile, new ContainerFluidGenerator(tile, player), "crystek.fluidgenerator");

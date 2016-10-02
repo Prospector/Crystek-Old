@@ -24,14 +24,14 @@ public class GrinderRecipeWrapper implements IRecipeWrapper
     public GrinderRecipeWrapper(RecipeGrinder recipe)
     {
         ImmutableList.Builder builder = ImmutableList.builder();
-            if(recipe.getInput() instanceof ItemStack)
-            {
-                builder.add(recipe.getInput());
-            }
-            if(recipe.getInput() instanceof String)
-            {
-                builder.add(OreDictionary.getOres(((String) recipe.getInput())));
-            }
+        if (recipe.getInput() instanceof ItemStack)
+        {
+            builder.add(recipe.getInput());
+        }
+        if (recipe.getInput() instanceof String)
+        {
+            builder.add(OreDictionary.getOres(((String) recipe.getInput())));
+        }
         input = builder.build();
         output = recipe.getOutput();
     }
@@ -61,10 +61,14 @@ public class GrinderRecipeWrapper implements IRecipeWrapper
     }
 
     @Override
-    public void drawInfo(@Nonnull Minecraft minecraft, int i, int i1, int i2, int i3) {}
+    public void drawInfo(@Nonnull Minecraft minecraft, int i, int i1, int i2, int i3)
+    {
+    }
 
     @Override
-    public void drawAnimations(@Nonnull Minecraft minecraft, int i, int i1) {}
+    public void drawAnimations(@Nonnull Minecraft minecraft, int i, int i1)
+    {
+    }
 
     @Nullable
     @Override

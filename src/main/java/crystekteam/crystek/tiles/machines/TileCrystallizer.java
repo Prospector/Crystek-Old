@@ -29,19 +29,19 @@ public class TileCrystallizer extends TileMachine
     @Override
     public void update()
     {
-        if(canWork())
+        if (canWork())
         {
             addProgress();
-            if(getProgress() >= getMaxProgress())
+            if (getProgress() >= getMaxProgress())
                 work();
 
-            if(this.getProgress() == 1)
+            if (this.getProgress() == 1)
                 this.updateState();
-            else if(this.getProgress() == 0)
+            else if (this.getProgress() == 0)
                 this.updateState();
 
         }
-        if(getStackInSlot(INPUT_SLOT) == null)
+        if (getStackInSlot(INPUT_SLOT) == null)
         {
             resetProgress();
             this.updateState();
@@ -52,19 +52,18 @@ public class TileCrystallizer extends TileMachine
     public void work()
     {
         usePower(cost);
-        if(getStackInSlot(OUTPUT_SLOT) == null)
+        if (getStackInSlot(OUTPUT_SLOT) == null)
         {
             setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
             decrStackSize(INPUT_SLOT, 1);
             tank.drain(getDrainAmount(), true);
-        }
-        else if(ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
+        } else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true) && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
         {
             getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
             decrStackSize(INPUT_SLOT, 1);
             tank.drain(getDrainAmount(), true);
         }
-        if(inv.hasChanged)
+        if (inv.hasChanged)
         {
             resetProgress();
         }
@@ -73,7 +72,7 @@ public class TileCrystallizer extends TileMachine
 
     public boolean canWork()
     {
-        if(getOutput() != null && getStoredPower() >= cost)
+        if (getOutput() != null && getStoredPower() >= cost)
         {
             return true;
         }
@@ -83,7 +82,7 @@ public class TileCrystallizer extends TileMachine
     //Gets the ItemStack the recipe will craft
     public ItemStack getOutput()
     {
-        if(getStackInSlot(INPUT_SLOT) != null && tank.getFluid() != null)
+        if (getStackInSlot(INPUT_SLOT) != null && tank.getFluid() != null)
         {
             ItemStack input = getStackInSlot(this.INPUT_SLOT);
             FluidStack fluid = tank.getFluid();
@@ -101,7 +100,7 @@ public class TileCrystallizer extends TileMachine
 
     public int getDrainAmount()
     {
-        if(getStackInSlot(INPUT_SLOT) != null && tank.getFluid() != null)
+        if (getStackInSlot(INPUT_SLOT) != null && tank.getFluid() != null)
         {
             ItemStack input = getStackInSlot(this.INPUT_SLOT);
             FluidStack fluid = tank.getFluid();

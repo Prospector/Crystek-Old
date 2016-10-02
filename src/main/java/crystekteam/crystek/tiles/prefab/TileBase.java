@@ -55,15 +55,15 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         this.hasTank = true;
         this.hasTesla = true;
 
-        if(hasInv)
+        if (hasInv)
         {
             this.inv = new Inventory(invSize, invName, invStackLimit, this);
         }
-        if(hasTesla)
+        if (hasTesla)
         {
             this.container = new BaseTeslaContainer(maxCapacity, input, output);
         }
-        if(hasTank)
+        if (hasTank)
         {
             this.tank = new Tank("tank", tankCapacity, this);
         }
@@ -80,7 +80,10 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         return this.container.getStoredPower();
     }
 
-    public long getMaxCapacity(){ return this.container.getCapacity(); }
+    public long getMaxCapacity()
+    {
+        return this.container.getCapacity();
+    }
 
     public void usePower(long amount)
     {
@@ -138,10 +141,14 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     }
 
     @Override
-    public void openInventory(EntityPlayer player) {}
+    public void openInventory(EntityPlayer player)
+    {
+    }
 
     @Override
-    public void closeInventory(EntityPlayer player) {}
+    public void closeInventory(EntityPlayer player)
+    {
+    }
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack)
@@ -150,16 +157,26 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     }
 
     @Override
-    public int getField(int id) {return 0;}
+    public int getField(int id)
+    {
+        return 0;
+    }
 
     @Override
-    public void setField(int id, int value) {}
+    public void setField(int id, int value)
+    {
+    }
 
     @Override
-    public int getFieldCount() {return 0;}
+    public int getFieldCount()
+    {
+        return 0;
+    }
 
     @Override
-    public void clear() {}
+    public void clear()
+    {
+    }
 
     @Override
     public String getName()
@@ -201,7 +218,9 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     }
 
     @Override
-    public void update() {}
+    public void update()
+    {
+    }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -212,11 +231,11 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound tagCompound)
     {
-        if(hasTank())
+        if (hasTank())
             tank.writeToNBT(tagCompound);
-        if(hasInv())
+        if (hasInv())
             inv.writeToNBT(tagCompound);
-        if(hasTesla())
+        if (hasTesla())
             tagCompound.setTag("TeslaContainer", this.container.serializeNBT());
         return tagCompound;
     }
@@ -224,11 +243,11 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public void readFromNBTWithoutCoords(NBTTagCompound tagCompound)
     {
-        if(hasTank())
+        if (hasTank())
             tank.readFromNBT(tagCompound);
-        if(hasInv())
+        if (hasInv())
             inv.readFromNBT(tagCompound);
-        if(hasTesla())
+        if (hasTesla())
             this.container = new BaseTeslaContainer(tagCompound.getCompoundTag("TeslaContainer"));
     }
 
@@ -239,9 +258,9 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         readFromNBTWithoutCoords(compound);
     }
 
-    public long getPowerScaled (int scale)
+    public long getPowerScaled(int scale)
     {
-        if(hasTesla())
+        if (hasTesla())
             return (this.getStoredPower() * scale) / this.getMaxCapacity();
         return 0;
     }
@@ -266,7 +285,10 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         this.progress = 0;
     }
 
-    public int getBurnTime(){ return this.burnTime; }
+    public int getBurnTime()
+    {
+        return this.burnTime;
+    }
 
     public int getFuelScale()
     {
@@ -288,9 +310,15 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         return (int) (((float) burnTime / (float) totalBurnTime) * i);
     }
 
-    public int getMaxProgress() {return maxProgress;}
+    public int getMaxProgress()
+    {
+        return maxProgress;
+    }
 
-    public void setMaxProgress(int amount) {maxProgress = amount;}
+    public void setMaxProgress(int amount)
+    {
+        maxProgress = amount;
+    }
 
     //Tank
     public int getFluidAmount()
@@ -303,7 +331,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         tank.setFluid(fluidStack);
     }
 
-    public static <T> List<T> getConnectedCapabilities (Capability<T> capability, World world, BlockPos pos)
+    public static <T> List<T> getConnectedCapabilities(Capability<T> capability, World world, BlockPos pos)
     {
         final List<T> capabilities = new ArrayList<T>();
 
@@ -329,7 +357,7 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
                 blockBase.setActive(burnTime > 0, worldObj, pos);
 
 
-           else if (BlockStateContainer.getValue(BlockBase.ACTIVE) != progress > 0)
+            else if (BlockStateContainer.getValue(BlockBase.ACTIVE) != progress > 0)
                 blockBase.setActive(progress > 0, worldObj, pos);
         }
     }
@@ -345,26 +373,27 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
         return false;
     }
 
-    public void handleUpgrades(int upgradeslotstart, long baseoutput){}
+    public void handleUpgrades(int upgradeslotstart, long baseoutput)
+    {
+    }
 
     public void handleChargeSlots(int chargeSlotID, boolean hasChargeSlot, int dischargeSlotID, boolean hasDischargeSlot)
     {
-        if(hasChargeSlot)
+        if (hasChargeSlot)
         {
-            if(getStackInSlot(chargeSlotID) != null)
+            if (getStackInSlot(chargeSlotID) != null)
             {
-                if(TeslaUtils.isPoweredItem(getStackInSlot(chargeSlotID)))
+                if (TeslaUtils.isPoweredItem(getStackInSlot(chargeSlotID)))
                 {
                     ItemStack stack = getStackInSlot(chargeSlotID);
-                    if(TeslaUtils.getStoredPower(stack) != TeslaUtils.getMaxCapacity(stack))
+                    if (TeslaUtils.getStoredPower(stack) != TeslaUtils.getMaxCapacity(stack))
                     {
                         long neededPower = TeslaUtils.getMaxCapacity(stack) - TeslaUtils.getStoredPower(stack);
                         if (getStoredPower() >= TeslaUtils.getMaxInput(stack))
                         {
                             TeslaUtils.addPower(stack, TeslaUtils.getMaxInput(stack));
                             usePower(TeslaUtils.getMaxInput(stack));
-                        }
-                        else if(getStoredPower() >= TeslaUtils.getMaxInput(stack) && neededPower > TeslaUtils.getMaxInput(stack))
+                        } else if (getStoredPower() >= TeslaUtils.getMaxInput(stack) && neededPower > TeslaUtils.getMaxInput(stack))
                         {
                             TeslaUtils.addPower(stack, neededPower);
                             usePower(neededPower);
@@ -373,11 +402,11 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
                 }
             }
         }
-        if(hasDischargeSlot)
+        if (hasDischargeSlot)
         {
-            if(getStackInSlot(dischargeSlotID) != null)
+            if (getStackInSlot(dischargeSlotID) != null)
             {
-                if(TeslaUtils.isPoweredItem(getStackInSlot(dischargeSlotID)))
+                if (TeslaUtils.isPoweredItem(getStackInSlot(dischargeSlotID)))
                 {
                     ItemStack stack = getStackInSlot(dischargeSlotID);
                     long missingPower = getMaxCapacity() - getStoredPower();
@@ -402,11 +431,11 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     //Adds info to waila
     public void addWailaInfo(List<String> info)
     {
-        if(container != null && hasTesla())
+        if (container != null && hasTesla())
         {
             info.add(this.container.getStoredPower() + " / " + getMaxCapacity());
         }
-        if(tank != null && tank.getFluid() != null)
+        if (tank != null && tank.getFluid() != null)
         {
             info.add(tank.getFluid().getLocalizedName() + " " + tank.getFluidAmount() + " / " + tank.getCapacity());
         }
