@@ -45,7 +45,7 @@ if (ENV.BUILD_NUMBER) {
 }
 
 minecraft {
-    version = "1.10.2-12.18.0.2099-1.10.0"
+    version = "1.10.2-12.18.0.2099"
 	
     if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
 	    version = "1.10-12.18.0.2000-1.10.0"
