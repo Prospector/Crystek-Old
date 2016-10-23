@@ -1,5 +1,6 @@
 package crystekteam.crystek.container;
 
+import crystekteam.crystek.container.slot.SlotCharge;
 import crystekteam.crystek.container.slot.SlotCircuit;
 import crystekteam.crystek.tiles.prefab.TileBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +25,7 @@ public class ContainerBase extends RebornContainer
         super();
         this.player = player;
         this.tile = tile;
+        this.addSlotToContainer(new SlotCharge(tile.getInv(), 1, 8, 58));
     }
 
     @Override

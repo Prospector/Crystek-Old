@@ -25,4 +25,10 @@ public class GuiCoalGenerator extends GuiBase
         super.drawGuiContainerBackgroundLayer(p_146976_1_, p_146976_2_, p_146976_3_);
         builder.drawSlot(this, guiLeft + 79, guiTop + 54);
     }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+        builder.drawBurnBar(this, 10, 81, 24);
+    }
 }
