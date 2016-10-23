@@ -28,13 +28,7 @@ def ENV = System.getenv()
 
 version = "-1.0.0"
 
-if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
-    version = "1.10.2" + version
-} else if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
-    version = "1.10" + version
-} else if(ENV.JOB_BASE_NAME == "Crystek-1.10.2"){
-    version = "1.9.4" + version
-}
+version = "1.10.2" + version
 
 group= "com.crytekteam.crystek"
 archivesBaseName = "Crystek"
@@ -46,43 +40,43 @@ if (ENV.BUILD_NUMBER) {
 
 minecraft {
     version = "1.10.2-12.18.2.2099"
-    runDir = "run"
     mappings = "snapshot_20160913"
+    runDir = "run"
 }
 
 repositories {
-    maven {
-		name = "Dankhax"
+    maven {// Tesla
+	name = "Dankhax"
         url = "http://maven.epoxide.xyz"
     }
 
-    maven {
+    maven {// JEI
         name = "prog"
         url = "http://dvs1.progwml6.com/files/maven"
     }
 
-    maven {
+    maven {// TheOneProbe
 		name = "tterrag"
         url = "http://maven.tterrag.com/"
     }
 	
-    maven { // The repo from which to get waila
+    maven {// WAILA
         name "Mobius Repo"
         url "http://mobiusstrip.eu/maven"
     }
 
-    maven {
+    maven {// RebornCore
         name = "Modmuss50"
         url = "http://maven.modmuss50.me/"
     }
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.9.4:+"
+	deobfCompile "mezz.jei:jei_1.10.2:+"
 	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.4-14"
-    compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.41"
+    	compile "net.darkhax.tesla:Tesla:1.10.2:+"
 	compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
-    compile 'RebornCore:RebornCore-1.10.2:+:dev'
+    	compile 'RebornCore:RebornCore-1.10.2:+:dev'
 }
 
 processResources
@@ -151,6 +145,11 @@ uploadArchives {
                         developer {
                             id 'Gigabit101'
                             name 'Gigabit101'
+                            roles { role 'developer' }
+                        }
+                        developer {
+                            id 'Prospector'
+                            name 'Prospector'
                             roles { role 'developer' }
                         }
                     }
