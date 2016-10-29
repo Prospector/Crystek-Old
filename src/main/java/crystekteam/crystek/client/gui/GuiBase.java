@@ -39,8 +39,8 @@ public class GuiBase extends GuiContainer {
     }
 
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        builder.drawTeslaEnergyBar(this, 9, 5, (int) container.power, (int) tile.getMaxCapacity(), mouseX - guiLeft, mouseY - guiTop);
         builder.drawExperienceBar(this, 7, 77, 100, mouseX - guiLeft, mouseY - guiTop);
+        builder.drawTeslaEnergyBar(this, 9, 5, (int) container.power, (int) tile.getMaxCapacity(), mouseX - guiLeft, mouseY - guiTop);
         //builder.drawEnergyBar(this, 5, 5, 50, (int) container.power, (int) tile.getMaxCapacity(), mouseX - guiLeft, mouseY - guiTop, "Tesla");
     }
 
