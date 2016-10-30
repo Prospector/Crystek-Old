@@ -3,6 +3,7 @@ package crystekteam.crystek;
 import crystekteam.crystek.compat.CompatHandler;
 import crystekteam.crystek.config.ConfigAE;
 import crystekteam.crystek.eventhandlers.CrystekEventHandler;
+import crystekteam.crystek.eventhandlers.CrystekTooltipHandler;
 import crystekteam.crystek.init.ModBlocks;
 import crystekteam.crystek.init.ModFluids;
 import crystekteam.crystek.init.ModItems;
@@ -22,13 +23,11 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import java.io.File;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION, dependencies = ModInfo.MOD_DEPENDENCIES)
-public class Crystek
-{
+public class Crystek {
     @Mod.Instance(ModInfo.MOD_ID)
     public static Crystek instance;
 
-    public Crystek()
-    {
+    public Crystek() {
         FluidRegistry.enableUniversalBucket();
     }
 
@@ -38,8 +37,7 @@ public class Crystek
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void preinit(FMLPreInitializationEvent event)
-    {
+    public void preinit(FMLPreInitializationEvent event) {
         instance = this;
         //Config stuff
         String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(ModInfo.MOD_ID, "Crystek");
@@ -57,18 +55,17 @@ public class Crystek
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         //Register Gui handler
         NetworkRegistry.INSTANCE.registerGuiHandler(ModInfo.MOD_ID, new GuiHandler());
         //Register Compat Handler
         CompatHandler.init(event);
         MinecraftForge.EVENT_BUS.register(new CrystekEventHandler());
+        MinecraftForge.EVENT_BUS.register(new CrystekTooltipHandler());
     }
 
     @Mod.EventHandler
-    public void postinit(FMLPostInitializationEvent event)
-    {
+    public void postinit(FMLPostInitializationEvent event) {
         //Register Recipes
         ModRecipes.init();
     }

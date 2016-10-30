@@ -2,6 +2,7 @@ package crystekteam.crystek.compat.jei.grinder;
 
 import com.google.common.collect.ImmutableList;
 import crystekteam.crystek.api.recipe.RecipeGrinder;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,12 @@ import java.util.List;
  */
 public class GrinderRecipeWrapper implements IRecipeWrapper
 {
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+        ingredients.setInputs(ItemStack.class, input);
+        ingredients.setOutput(ItemStack.class, output);
+    }
+
     private final List input;
     private final ItemStack output;
 

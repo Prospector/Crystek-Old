@@ -5,6 +5,7 @@ import crystekteam.crystek.lib.ModInfo;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -18,6 +19,20 @@ import javax.annotation.Nonnull;
  * Created by Gigabit101 on 26/06/2016.
  */
 public class GrinderRecipeCategory implements IRecipeCategory {
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+        recipeLayout.getItemStacks().init(INPUT_SLOT, true, 2, 6);
+        recipeLayout.getItemStacks().init(OUTPUT_SLOT, false, 62, 6);
+        recipeLayout.getItemStacks().init(GRINDER_SLOT, true, 30, 19);
+
+        if (recipeWrapper instanceof GrinderRecipeWrapper) {
+            GrinderRecipeWrapper wrapper = (GrinderRecipeWrapper) recipeWrapper;
+            recipeLayout.getItemStacks().set(INPUT_SLOT, wrapper.getInputs());
+            recipeLayout.getItemStacks().set(OUTPUT_SLOT, wrapper.getOutputs());
+            recipeLayout.getItemStacks().set(GRINDER_SLOT, OreDictionary.getOres("crystekGrindingBlade"));
+        }
+    }
+
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
     private static final int GRINDER_SLOT = 2;

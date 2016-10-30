@@ -6,6 +6,7 @@ import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiFluidStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -19,6 +20,22 @@ import javax.annotation.Nonnull;
  */
 public class CrystallizerRecipeCategory implements IRecipeCategory
 {
+    @Override
+    public void setRecipe(IRecipeLayout recipeLayout, IRecipeWrapper recipeWrapper, IIngredients ingredients) {
+        recipeLayout.getItemStacks().init(INPUT_SLOT, true, 26, 28);
+        recipeLayout.getItemStacks().init(OUTPUT_SLOT, false, 86, 28);
+        IGuiFluidStackGroup guiFluidStacks = recipeLayout.getFluidStacks();
+        guiFluidStacks.init(FLUID_SLOT, true, 5, 5, 14, 64, 4000, true, null);
+
+        if (recipeWrapper instanceof CrystallizerRecipeWrapper)
+        {
+            CrystallizerRecipeWrapper wrapper = (CrystallizerRecipeWrapper) recipeWrapper;
+            recipeLayout.getItemStacks().set(INPUT_SLOT, wrapper.getInputs());
+            recipeLayout.getItemStacks().set(OUTPUT_SLOT, wrapper.getOutputs());
+            guiFluidStacks.set(FLUID_SLOT, wrapper.getFluidInputs());
+        }
+    }
+
     private static final int INPUT_SLOT = 0;
     private static final int FLUID_SLOT = 1;
     private static final int OUTPUT_SLOT = 2;

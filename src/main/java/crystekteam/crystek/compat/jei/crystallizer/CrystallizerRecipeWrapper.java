@@ -2,6 +2,7 @@ package crystekteam.crystek.compat.jei.crystallizer;
 
 import com.google.common.collect.ImmutableList;
 import crystekteam.crystek.api.recipe.RecipeCrystallizer;
+import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -62,6 +63,13 @@ public class CrystallizerRecipeWrapper implements IRecipeWrapper
             return Collections.singletonList(fluidStack);
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public void getIngredients(IIngredients ingredients) {
+        ingredients.setInputLists(ItemStack.class, input);
+        ingredients.setInput(FluidStack.class, fluidStack);
+        ingredients.setOutput(ItemStack.class, output);
     }
 
     @Override

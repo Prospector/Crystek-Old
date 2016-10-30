@@ -56,13 +56,13 @@ repositories {
     }
 
     maven {// TheOneProbe
-		name = "tterrag"
+	name = "tterrag"
         url = "http://maven.tterrag.com/"
     }
 	
-    maven {// WAILA
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
+    maven {// HWYLA
+        name "TehNut"
+        url "http://tehnut.info/maven/"
     }
 
     maven {// RebornCore
@@ -72,10 +72,10 @@ repositories {
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.9.4:+"
-	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.4-14"
+	deobfCompile "mezz.jei:jei_1.10.2:+"
+	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.2.0-40"
     	compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.41"
-	compile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
+	compile "mcp.mobius.waila:Waila:+"
     	compile 'RebornCore:RebornCore-1.10.2:+:dev'
 }
 
