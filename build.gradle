@@ -68,8 +68,8 @@ repositories {
 
 dependencies {
 	deobfCompile "mezz.jei:jei_1.11:+"
-    	compile "net.darkhax.tesla:Tesla:1.11:+"
-	compile "mcp.mobius.waila:Hwyla:+1.11"
+    	compile "net.darkhax.tesla:Tesla:+"
+	compile "mcp.mobius.waila:Hwyla:+"
     	compile 'RebornCore:RebornCore-1.11:+:dev'
 }
 
