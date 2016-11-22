@@ -23,7 +23,7 @@ public class TileFluidizer extends TileMachine
     @Override
     public void update()
     {
-        if (!worldObj.isRemote)
+        if (!world.isRemote)
         {
             tank.compareAndUpdate();
             if (canWork())

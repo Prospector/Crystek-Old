@@ -44,7 +44,7 @@ public class TileGenerator extends TileBase
 
     public void transferPowerTo(EnumFacing facing)
     {
-        TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
+        TileEntity tileEntity = world.getTileEntity(getPos().offset(facing));
         if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
         {
             if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())
@@ -68,7 +68,7 @@ public class TileGenerator extends TileBase
         {
             if (getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
             {
-                int stacksize = getStackInSlot(i).stackSize;
+                int stacksize = getStackInSlot(i).getCount();
                 if (getStackInSlot(i).getMetadata() == 0)
                 {
                     //TODO handle speed upgrades

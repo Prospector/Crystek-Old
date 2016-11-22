@@ -50,7 +50,7 @@ public class ItemTeslaBonemeal extends ItemBase
                         igrowable.grow(worldIn, worldIn.rand, target, iblockstate);
                     }
 
-                    --stack.stackSize;
+                    stack.setCount(stack.getCount()-1);
                 }
 
                 return true;

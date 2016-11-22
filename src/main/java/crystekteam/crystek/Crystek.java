@@ -1,6 +1,5 @@
 package crystekteam.crystek;
 
-import crystekteam.crystek.compat.CompatHandler;
 import crystekteam.crystek.config.ConfigAE;
 import crystekteam.crystek.eventhandlers.CrystekEventHandler;
 import crystekteam.crystek.eventhandlers.CrystekTooltipHandler;
@@ -26,15 +25,13 @@ import java.io.File;
 public class Crystek {
     @Mod.Instance(ModInfo.MOD_ID)
     public static Crystek instance;
+    public static ConfigAE config;
+    @SidedProxy(clientSide = "crystekteam.crystek.proxy.ClientProxy", serverSide = "crystekteam.crystek.proxy.CommonProxy")
+    public static CommonProxy proxy;
 
     public Crystek() {
         FluidRegistry.enableUniversalBucket();
     }
-
-    public static ConfigAE config;
-
-    @SidedProxy(clientSide = "crystekteam.crystek.proxy.ClientProxy", serverSide = "crystekteam.crystek.proxy.CommonProxy")
-    public static CommonProxy proxy;
 
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event) {
@@ -59,7 +56,7 @@ public class Crystek {
         //Register Gui handler
         NetworkRegistry.INSTANCE.registerGuiHandler(ModInfo.MOD_ID, new GuiHandler());
         //Register Compat Handler
-        CompatHandler.init(event);
+        //CompatHandler.init(event);
         MinecraftForge.EVENT_BUS.register(new CrystekEventHandler());
         MinecraftForge.EVENT_BUS.register(new CrystekTooltipHandler());
     }

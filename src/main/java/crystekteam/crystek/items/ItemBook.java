@@ -26,10 +26,9 @@ public class ItemBook extends ItemBase
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
-    {
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         playerIn.openGui(Crystek.instance, GuiHandler.book, worldIn, 0, 0, 0);
-        return new ActionResult<ItemStack>(EnumActionResult.FAIL, itemStackIn);
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 
     @Override

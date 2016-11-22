@@ -22,7 +22,7 @@ public class TileSolarPanel extends TileGenerator
     @Override
     public void update()
     {
-        if (this.hasWorldObj() && !this.worldObj.provider.getHasNoSky() && this.worldObj.canBlockSeeSky(this.pos.offset(EnumFacing.UP)) && !this.worldObj.isRaining() && this.worldObj.getSkylightSubtracted() == 0 && this.container.getStoredPower() != this.container.getCapacity())
+        if (this.hasWorld() && !this.world.provider.hasNoSky() && this.world.canBlockSeeSky(this.pos.offset(EnumFacing.UP)) && !this.world.isRaining() && this.world.getSkylightSubtracted() == 0 && this.container.getStoredPower() != this.container.getCapacity())
         {
             generatePower(baseoutput);
 //            handleUpgrades(0, baseoutput);

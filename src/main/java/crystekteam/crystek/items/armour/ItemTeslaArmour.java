@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
@@ -37,7 +38,7 @@ public class ItemTeslaArmour extends ItemArmor// implements ISpecialArmor
     }
 
     @Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
         ItemStack powered = TeslaUtils.createChargedStack(new ItemStack(itemIn));
         ItemStack unpowered = new ItemStack(itemIn);

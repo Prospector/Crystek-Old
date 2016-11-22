@@ -13,15 +13,13 @@ import java.util.Random;
 /**
  * Created by Gigabit101 on 16/06/2016.
  */
-public class TileGrinder extends TileMachine
-{
+public class TileGrinder extends TileMachine {
     int ORE_SLOT = 0;
     int OUTPUT_SLOT = 1;
     int GRINDING_BLADE_SLOT = 2;
     long cost = 40;
 
-    public TileGrinder()
-    {
+    public TileGrinder() {
         super(3, "grinder", 64, 10000, 50, 50, 0, 600);
         this.hasInv = true;
         this.hasTank = false;
@@ -29,17 +27,14 @@ public class TileGrinder extends TileMachine
     }
 
     @Override
-    public void update()
-    {
+    public void update() {
         if (getStackInSlot(GRINDING_BLADE_SLOT) != null && getStackInSlot(GRINDING_BLADE_SLOT)
-                .getItem() instanceof ItemGrindingBlade)
-        {
+                .getItem() instanceof ItemGrindingBlade) {
             ItemGrindingBlade grindingBladeItem = (ItemGrindingBlade) getStackInSlot(GRINDING_BLADE_SLOT).getItem();
             maxProgress = maxProgress - grindingBladeItem.speed * 100;
         }
 
-        if (canWork())
-        {
+        if (canWork()) {
             addProgress();
             if (getProgress() >= 100)
                 work();
@@ -50,40 +45,32 @@ public class TileGrinder extends TileMachine
                 this.updateState();
 
         }
-        if (getStackInSlot(ORE_SLOT) == null)
-        {
+        if (getStackInSlot(ORE_SLOT) == null) {
             resetProgress();
             this.updateState();
         }
         syncWithAll();
     }
 
-    public void work()
-    {
-        if (!worldObj.isRemote)
-        {
+    public void work() {
+        if (!world.isRemote) {
             usePower(cost);
             ItemStack grindingBlade = getStackInSlot(GRINDING_BLADE_SLOT);
 
-            if (getStackInSlot(OUTPUT_SLOT) == null)
-            {
+            if (getStackInSlot(OUTPUT_SLOT) == null) {
                 setInventorySlotContents(this.OUTPUT_SLOT, getOutput());
                 decrStackSize(ORE_SLOT, 1);
                 resetProgress();
             } else if (ItemUtils.isItemEqual(getStackInSlot(this.OUTPUT_SLOT), getOutput(), true, true)
-                    && getStackInSlot(OUTPUT_SLOT).stackSize != 64)
-            {
-                getStackInSlot(OUTPUT_SLOT).stackSize += getOutput().stackSize;
+                    && getStackInSlot(OUTPUT_SLOT).getCount() != 64) {
+                getStackInSlot(OUTPUT_SLOT).setCount(getStackInSlot(OUTPUT_SLOT).getCount() + getOutput().getCount());
                 decrStackSize(ORE_SLOT, 1);
                 resetProgress();
             }
-            if (grindingBlade.getMaxDamage() != 0)
-            {
-                if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage())
-                {
+            if (grindingBlade.getMaxDamage() != 0) {
+                if (grindingBlade.getMetadata() == grindingBlade.getMaxDamage()) {
                     removeStackFromSlot(GRINDING_BLADE_SLOT);
-                } else
-                {
+                } else {
                     getStackInSlot(GRINDING_BLADE_SLOT).attemptDamageItem(1, new Random());
                 }
             }
@@ -91,27 +78,21 @@ public class TileGrinder extends TileMachine
         }
     }
 
-    public boolean canWork()
-    {
+    public boolean canWork() {
         syncWithAll();
         if (getOutput() != null && getStoredPower() >= cost && getStackInSlot(GRINDING_BLADE_SLOT) != null
-                && getStackInSlot(GRINDING_BLADE_SLOT).getItem() instanceof ItemGrindingBlade)
-        {
+                && getStackInSlot(GRINDING_BLADE_SLOT).getItem() instanceof ItemGrindingBlade) {
             return true;
         }
         return false;
     }
 
     //Gets the ItemStack the recipe will craft
-    public ItemStack getOutput()
-    {
-        if (getStackInSlot(ORE_SLOT) != null)
-        {
+    public ItemStack getOutput() {
+        if (getStackInSlot(ORE_SLOT) != null) {
             ItemStack input = getStackInSlot(this.ORE_SLOT);
-            for (RecipeGrinder recipe : CrystekApi.grinderRecipes)
-            {
-                if (recipe.matches(input) || recipe.getOutput().getItem() == Item.getItemFromBlock(getBlockType()))
-                {
+            for (RecipeGrinder recipe : CrystekApi.grinderRecipes) {
+                if (recipe.matches(input) || recipe.getOutput().getItem() == Item.getItemFromBlock(getBlockType())) {
                     ItemStack output = recipe.getOutput().copy();
                     return output;
                 }

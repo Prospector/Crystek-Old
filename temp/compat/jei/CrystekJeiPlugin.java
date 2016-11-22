@@ -21,12 +21,10 @@ import javax.annotation.Nonnull;
 /**
  * Created by Gigabit101 on 26/06/2016.
  */
-@mezz.jei.api.JEIPlugin
-public class CrystekJeiPlugin extends BlankModPlugin
-{
+//@mezz.jei.api.JEIPlugin
+public class CrystekJeiPlugin extends BlankModPlugin {
     @Override
-    public void register(@Nonnull IModRegistry registry)
-    {
+    public void register(@Nonnull IModRegistry registry) {
         IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 
         registry.addRecipeCategories(new GrinderRecipeCategory(jeiHelpers.getGuiHelper()), new CrystallizerRecipeCategory(jeiHelpers.getGuiHelper()));
@@ -47,7 +45,6 @@ public class CrystekJeiPlugin extends BlankModPlugin
     }
 
     @Override
-    public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime)
-    {
+    public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime) {
     }
 }

@@ -32,7 +32,7 @@ public class TileAccelerator extends TileMachine
     {
         if (getStoredPower() >= cost)
         {
-            growCropsNearby(worldObj, pos, worldObj.getBlockState(pos));
+            growCropsNearby(world, pos, world.getBlockState(pos));
         }
     }
 

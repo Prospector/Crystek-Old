@@ -12,10 +12,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-public class ModRecipes
-{
-    public static void init()
-    {
+public class ModRecipes {
+    public static void init() {
         registerCraftingRecipes();
         registerSmeltingRecipes();
         registerGrinderRecipes();
@@ -23,8 +21,7 @@ public class ModRecipes
         CrystekApi.registerFuel(new FluidStack(FluidRegistry.LAVA, 1000), 1000, 50);
     }
 
-    static void registerCraftingRecipes()
-    {
+    static void registerCraftingRecipes() {
         GameRegistry.addRecipe(
                 new ShapedOreRecipe(new ItemStack(ModItems.drill), " ii", "oci", "rt ", 'i', "ingotIron", 'o',
                         "ingotObsidian", 'c', "crystalTesla", 'r', "dustRedstone", 't', "ingotTeslaAlloy"));
@@ -111,8 +108,7 @@ public class ModRecipes
                 new ShapedOreRecipe(new ItemStack(ModItems.wrench), "o o", " o ", " o ", 'o', "ingotObsidian"));
     }
 
-    static void registerCrystallizerRecipes()
-    {
+    static void registerCrystallizerRecipes() {
         CrystekApi.registerCrystallizerRecipes("dustIron", new FluidStack(ModFluids.fluidTesla, 1000),
                 ItemBank.teslaCrystal);
         CrystekApi.registerCrystallizerRecipes("ingotIron", new FluidStack(ModFluids.fluidTesla, 10),
@@ -127,16 +123,14 @@ public class ModRecipes
                 ItemBank.teslaCrystalBlue);
     }
 
-    static void registerSmeltingRecipes()
-    {
+    static void registerSmeltingRecipes() {
         //Dusts
         GameRegistry.addSmelting(ItemBank.ironDust, new ItemStack(Items.IRON_INGOT), 0.5F);
         GameRegistry.addSmelting(ItemBank.goldDust, new ItemStack(Items.GOLD_INGOT), 0.5F);
         GameRegistry.addSmelting(ItemBank.obsidianDust, ItemBank.obsidianIngot, 0.5F);
     }
 
-    static void registerGrinderRecipes()
-    {
+    static void registerGrinderRecipes() {
         //General
         CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.GRAVEL), new ItemStack(Blocks.COBBLESTONE));
         CrystekApi.registerGrinderRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.GRAVEL));
@@ -174,32 +168,26 @@ public class ModRecipes
         //		addOreGrinderRecipe("Platinum");
     }
 
-    public static void addOreGrinderRecipe(String name)
-    {
+    public static void addOreGrinderRecipe(String name) {
         addGrinderOreDictRecipe("dust" + name, "ingot" + name);
         addGrinderOreDictRecipe("dust" + name, "gem" + name);
         addGrinderOreDictRecipe("dust" + name, 2, "ore" + name);
         addGrinderOreDictRecipe("dust" + name, 9, "block" + name);
     }
 
-    public static void addGrinderOreDictRecipe(String oreDictOutput, int outputAmount, String oreDictInput)
-    {
-        if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput))
-        {
-            try
-            {
+    public static void addGrinderOreDictRecipe(String oreDictOutput, int outputAmount, String oreDictInput) {
+        if (OreDictionary.doesOreNameExist(oreDictOutput) && OreDictionary.doesOreNameExist(oreDictInput)) {
+            try {
                 ItemStack output = OreDictionary.getOres(oreDictOutput).get(0).copy();
-                output.stackSize = outputAmount;
+                output.setCount(outputAmount);
                 CrystekApi.registerGrinderRecipe(output, oreDictInput);
-            } catch (NullPointerException e)
-            {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void addGrinderOreDictRecipe(String oreDictOutput, String oreDictInput)
-    {
+    public static void addGrinderOreDictRecipe(String oreDictOutput, String oreDictInput) {
         addGrinderOreDictRecipe(oreDictOutput, 1, oreDictInput);
     }
 }

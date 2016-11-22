@@ -40,9 +40,9 @@ public class TileLaser extends TileTeslaStorage
     public void setConnectedMachine()
     {
         BlockPos tilePos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
-        if (worldObj.getTileEntity(tilePos) != null && TeslaUtils.isTelsaBlock(worldObj.getTileEntity(tilePos)))
+        if (world.getTileEntity(tilePos) != null && TeslaUtils.isTelsaBlock(world.getTileEntity(tilePos)))
         {
-            connectedMachine = worldObj.getTileEntity(pos);
+            connectedMachine = world.getTileEntity(pos);
         } else
         {
             connectedMachine = null;
@@ -61,9 +61,9 @@ public class TileLaser extends TileTeslaStorage
 
     public void setConnectedLaser(BlockPos pos)
     {
-        if (worldObj.getTileEntity(pos) != null && worldObj.getTileEntity(pos) instanceof TileLaser)
+        if (world.getTileEntity(pos) != null && world.getTileEntity(pos) instanceof TileLaser)
         {
-            connectedLaser = (TileLaser) worldObj.getTileEntity(pos);
+            connectedLaser = (TileLaser) world.getTileEntity(pos);
         }
     }
 
@@ -71,13 +71,13 @@ public class TileLaser extends TileTeslaStorage
     {
         if (getConnectedMachine() != null && TeslaUtils.isConsumer(getConnectedMachine()))
         {
-            if (TeslaUtils.getMissingPower(worldObj.getTileEntity(pos)) >= container.getInputRate())
+            if (TeslaUtils.getMissingPower(world.getTileEntity(pos)) >= container.getInputRate())
             {
 
                 if (TeslaUtils.getStoredPower(connectedLaser) >= container.getInputRate())
                 {
                     TeslaUtils.removePower(getConnectedLaser(), container.getInputRate());
-                    TeslaUtils.addPower(worldObj.getTileEntity(pos), container.getInputRate());
+                    TeslaUtils.addPower(world.getTileEntity(pos), container.getInputRate());
                 }
             }
         }
@@ -86,7 +86,7 @@ public class TileLaser extends TileTeslaStorage
 
     public void transferPowerTo(EnumFacing facing)
     {
-        TileEntity tileEntity = worldObj.getTileEntity(getPos().offset(facing));
+        TileEntity tileEntity = world.getTileEntity(getPos().offset(facing));
         if (tileEntity != null && TeslaUtils.isTelsaBlock(tileEntity) && TeslaUtils.isConsumer(tileEntity))
         {
             if (TeslaUtils.canAcceptPower(tileEntity, this.container.getOutputRate()) && this.container.getStoredPower() >= this.container.getOutputRate())

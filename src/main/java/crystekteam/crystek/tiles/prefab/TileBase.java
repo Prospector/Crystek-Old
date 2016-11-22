@@ -135,9 +135,8 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     }
 
     @Override
-    public boolean isUseableByPlayer(EntityPlayer player)
-    {
-        return inv.isUseableByPlayer(player);
+    public boolean isUsableByPlayer(EntityPlayer player) {
+        return inv.isUsableByPlayer(player);
     }
 
     @Override
@@ -198,9 +197,9 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public void syncWithAll()
     {
-        if (!worldObj.isRemote)
+        if (!world.isRemote)
         {
-            PacketHandler.sendPacketToAllPlayers(getUpdatePacket(), worldObj);
+            PacketHandler.sendPacketToAllPlayers(getUpdatePacket(), world);
         }
     }
 
@@ -349,16 +348,16 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
     //Sets the block to active
     public void updateState()
     {
-        IBlockState BlockStateContainer = worldObj.getBlockState(pos);
+        IBlockState BlockStateContainer = world.getBlockState(pos);
         if (BlockStateContainer.getBlock() instanceof BlockBase)
         {
             BlockBase blockBase = (BlockBase) BlockStateContainer.getBlock();
             if (BlockStateContainer.getValue(BlockBase.ACTIVE) != burnTime > 0)
-                blockBase.setActive(burnTime > 0, worldObj, pos);
+                blockBase.setActive(burnTime > 0, world, pos);
 
 
             else if (BlockStateContainer.getValue(BlockBase.ACTIVE) != progress > 0)
-                blockBase.setActive(progress > 0, worldObj, pos);
+                blockBase.setActive(progress > 0, world, pos);
         }
     }
 
@@ -375,6 +374,11 @@ public class TileBase extends TileEntity implements IInventory, ITickable, IWren
 
     public void handleUpgrades(int upgradeslotstart, long baseoutput)
     {
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
     }
 
     public void handleChargeSlots(int chargeSlotID, boolean hasChargeSlot, int dischargeSlotID, boolean hasDischargeSlot)

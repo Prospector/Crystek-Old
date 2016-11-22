@@ -7,15 +7,13 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 /**
  * Created by Gigabit101 on 02/06/2016.
  */
-public class TileFurnace extends TileMachine
-{
+public class TileFurnace extends TileMachine {
     public int power;
     public int cost = 10;
     int input1 = 0;
     int output = 1;
 
-    public TileFurnace()
-    {
+    public TileFurnace() {
         super(6, "furnace", 64, 10000, 50, 50, 0, 100);
         fuelScale = 100;
         this.hasInv = true;
@@ -24,27 +22,21 @@ public class TileFurnace extends TileMachine
     }
 
     @Override
-    public void update()
-    {
+    public void update() {
         boolean burning = isBurning();
         boolean updateInventory = false;
-        if (!worldObj.isRemote)
-        {
-            if (isBurning() && canSmelt())
-            {
+        if (!world.isRemote) {
+            if (isBurning() && canSmelt()) {
                 this.addProgress();
                 syncWithAll();
-                if (getProgress() == 1)
-                {
+                if (getProgress() == 1) {
                     updateState();
                 }
-                if (this.getProgress() % 10 == 0)
-                {
+                if (this.getProgress() % 10 == 0) {
                     this.usePower(cost);
 //                    updateState();
                 }
-                if (getProgress() >= fuelScale)
-                {
+                if (getProgress() >= fuelScale) {
                     resetProgress();
                     updateState();
                     cookItems();
@@ -52,39 +44,30 @@ public class TileFurnace extends TileMachine
                     syncWithAll();
                 }
             }
-            if (burning != isBurning())
-            {
+            if (burning != isBurning()) {
                 updateInventory = true;
                 resetProgress();
             }
-            if (updateInventory)
-            {
+            if (updateInventory) {
                 markDirty();
             }
             handleChargeSlots(0, false, 5, true);
         }
     }
 
-    public void cookItems()
-    {
-        if (!worldObj.isRemote)
-        {
-            if (this.canSmelt())
-            {
+    public void cookItems() {
+        if (!world.isRemote) {
+            if (this.canSmelt()) {
                 ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
 
-                if (getStackInSlot(output) == null)
-                {
+                if (getStackInSlot(output) == null) {
                     setInventorySlotContents(output, itemstack.copy());
-                } else if (getStackInSlot(output).isItemEqual(itemstack))
-                {
-                    getStackInSlot(output).stackSize += itemstack.stackSize;
+                } else if (getStackInSlot(output).isItemEqual(itemstack)) {
+                    getStackInSlot(output).setCount(getStackInSlot(output).getCount() + itemstack.getCount());
                 }
-                if (getStackInSlot(input1).stackSize > 1)
-                {
+                if (getStackInSlot(input1).getCount() > 1) {
                     this.decrStackSize(input1, 1);
-                } else
-                {
+                } else {
                     setInventorySlotContents(input1, null);
                 }
                 syncWithAll();
@@ -92,13 +75,10 @@ public class TileFurnace extends TileMachine
         }
     }
 
-    public boolean canSmelt()
-    {
-        if (getStackInSlot(input1) == null)
-        {
+    public boolean canSmelt() {
+        if (getStackInSlot(input1) == null) {
             return false;
-        } else
-        {
+        } else {
             ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getStackInSlot(input1));
             if (itemstack == null)
                 return false;
@@ -106,13 +86,12 @@ public class TileFurnace extends TileMachine
                 return true;
             if (!getStackInSlot(output).isItemEqual(itemstack))
                 return false;
-            int result = getStackInSlot(output).stackSize + itemstack.stackSize;
+            int result = getStackInSlot(output).getCount() + itemstack.getCount();
             return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }
     }
 
-    public boolean isBurning()
-    {
+    public boolean isBurning() {
         return getStoredPower() > cost;
     }
 }

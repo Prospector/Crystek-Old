@@ -15,97 +15,81 @@ import java.io.IOException;
 /**
  * Created by Gigabit101 on 28/06/2016.
  */
-public abstract class SimplePacket
-{
+public abstract class SimplePacket {
     protected EntityPlayer player;
     protected byte mode;
 
-    public SimplePacket(EntityPlayer _player)
-    {
+    public SimplePacket(EntityPlayer _player) {
         player = _player;
     }
 
     @SuppressWarnings("unused")
-    public SimplePacket()
-    {
+    public SimplePacket() {
         player = null;
     }
 
-    public static String readString(ByteBuf in) throws IOException
-    {
+    public static String readString(ByteBuf in) throws IOException {
         byte[] stringBytes = new byte[in.readInt()];
         in.readBytes(stringBytes);
         return new String(stringBytes, Charsets.UTF_8);
     }
 
-    public static void writeString(String string, ByteBuf out) throws IOException
-    {
+    public static void writeString(String string, ByteBuf out) throws IOException {
         byte[] stringBytes;
         stringBytes = string.getBytes(Charsets.UTF_8);
         out.writeInt(stringBytes.length);
         out.writeBytes(stringBytes);
     }
 
-    public static World readWorld(ByteBuf in) throws IOException
-    {
+    public static World readWorld(ByteBuf in) throws IOException {
         return DimensionManager.getWorld(in.readInt());
     }
 
-    public static void writeWorld(World world, ByteBuf out) throws IOException
-    {
+    public static void writeWorld(World world, ByteBuf out) throws IOException {
         out.writeInt(world.provider.getDimension());
     }
 
-    public static EntityPlayer readPlayer(ByteBuf in) throws IOException
-    {
+    public static EntityPlayer readPlayer(ByteBuf in) throws IOException {
         if (!in.readBoolean())
             return null;
         World playerWorld = readWorld(in);
         return playerWorld.getPlayerEntityByName(readString(in));
     }
 
-    public static void writePlayer(EntityPlayer player, ByteBuf out) throws IOException
-    {
-        if (player == null)
-        {
+    public static void writePlayer(EntityPlayer player, ByteBuf out) throws IOException {
+        if (player == null) {
             out.writeBoolean(false);
             return;
         }
         out.writeBoolean(true);
-        writeWorld(player.worldObj, out);
+        writeWorld(player.world, out);
         writeString(player.getName(), out);
     }
 
-    public static TileEntity readTileEntity(ByteBuf in) throws IOException
-    {
+    public static TileEntity readTileEntity(ByteBuf in) throws IOException {
         return readWorld(in).getTileEntity(new BlockPos(in.readInt(), in.readInt(), in.readInt()));
     }
 
-    public static void writeTileEntity(TileEntity tileEntity, ByteBuf out) throws IOException
-    {
+    public static void writeTileEntity(TileEntity tileEntity, ByteBuf out) throws IOException {
         writeWorld(tileEntity.getWorld(), out);
         out.writeInt(tileEntity.getPos().getX());
         out.writeInt(tileEntity.getPos().getY());
         out.writeInt(tileEntity.getPos().getZ());
     }
 
-    public static Fluid readFluid(ByteBuf in) throws IOException
-    {
+    public static Fluid readFluid(ByteBuf in) throws IOException {
         return FluidRegistry.getFluid(readString(in));
     }
 
-    public static void writeFluid(Fluid fluid, ByteBuf out) throws IOException
-    {
-        if (fluid == null)
-        {
+    public static void writeFluid(Fluid fluid, ByteBuf out) throws IOException {
+        if (fluid == null) {
             writeString("", out);
             return;
         }
         writeString(fluid.getName(), out);
     }
 
-    public void writePacketData(ByteBuf out) throws IOException
-    {
+    public void writePacketData(ByteBuf out) throws IOException {
         out.writeByte(mode);
         writePlayer(player, out);
         writeData(out);
@@ -113,8 +97,7 @@ public abstract class SimplePacket
 
     public abstract void writeData(ByteBuf out) throws IOException;
 
-    public void readPacketData(ByteBuf in) throws IOException
-    {
+    public void readPacketData(ByteBuf in) throws IOException {
         mode = in.readByte();
         player = readPlayer(in);
         readData(in);
@@ -124,18 +107,15 @@ public abstract class SimplePacket
 
     public abstract void execute();
 
-    public void sendPacketToServer()
-    {
+    public void sendPacketToServer() {
         PacketHandler.sendPacketToServer(this);
     }
 
-    public void sendPacketToPlayer(EntityPlayer player)
-    {
+    public void sendPacketToPlayer(EntityPlayer player) {
         PacketHandler.sendPacketToPlayer(this, player);
     }
 
-    public void sendPacketToAllPlayers()
-    {
+    public void sendPacketToAllPlayers() {
         PacketHandler.sendPacketToAllPlayers(this);
     }
 }

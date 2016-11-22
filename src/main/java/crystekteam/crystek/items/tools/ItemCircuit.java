@@ -7,6 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 
@@ -28,7 +29,7 @@ public class ItemCircuit extends ItemBase
     }
 
     @Override
-    public void getSubItems(Item item, CreativeTabs tab, List<ItemStack> list)
+    public void getSubItems(Item item, CreativeTabs tab, NonNullList<ItemStack> list)
     {
         for (int meta = 0; meta < types.length; meta++)
         {

@@ -33,7 +33,7 @@ public class BlockGrinder extends BlockBase
     }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         playerIn.openGui(Crystek.instance, GuiHandler.grinder, worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;

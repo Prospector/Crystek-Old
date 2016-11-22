@@ -21,33 +21,27 @@ import java.util.List;
 /**
  * Created by Gigabit101 on 02/06/2016.
  */
-public class ItemPowerScanner extends ItemBase
-{
-    public ItemPowerScanner()
-    {
+public class ItemPowerScanner extends ItemBase {
+    public ItemPowerScanner() {
         setMaxStackSize(1);
         setRegistryName("powerscanner");
         setUnlocalizedName(ModInfo.MOD_ID.toLowerCase() + ".powerscanner");
     }
 
     @Override
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-        if (!worldIn.isRemote && playerIn.isSneaking())
-        {
-            final TileEntity tile = worldIn.getTileEntity(pos);
-            if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, side))
-            {
-                final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
-                playerIn.addChatMessage(new TextComponentString(tile.getBlockType().getLocalizedName() + " " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
+    public EnumActionResult onItemUse(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) {
+        if (!playerIn.isRemote && stack.isSneaking()) {
+            final TileEntity tile = playerIn.getTileEntity(worldIn);
+            if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, hand)) {
+                final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, hand);
+                stack.sendMessage(new TextComponentString(tile.getBlockType().getLocalizedName() + " " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
             }
         }
         return EnumActionResult.SUCCESS;
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
-    {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         tooltip.add(TextFormatting.GRAY + "" + TextFormatting.ITALIC + I18n.translateToLocal("desc.teslometer"));
     }
 }

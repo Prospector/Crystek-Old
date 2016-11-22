@@ -26,7 +26,7 @@ public class TileFluidGenerator extends TileGenerator
     @Override
     public void update()
     {
-        if (worldObj.isRemote)
+        if (world.isRemote)
         {
             return;
         }

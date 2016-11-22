@@ -31,7 +31,7 @@ public class TileCoalGenerator extends TileGenerator {
 
     @Override
     public void update() {
-        if (worldObj.isRemote) {
+        if (world.isRemote) {
             return;
         }
         if (getStoredPower() < getMaxCapacity()) {
@@ -49,7 +49,7 @@ public class TileCoalGenerator extends TileGenerator {
             if (burnTime > 0) {
                 this.updateState();
                 burnItem = getStackInSlot(fuelSlot);
-                if (getStackInSlot(fuelSlot).stackSize == 1) {
+                if (getStackInSlot(fuelSlot).getCount() == 1) {
                     setInventorySlotContents(fuelSlot, null);
                 } else {
                     decrStackSize(fuelSlot, 1);

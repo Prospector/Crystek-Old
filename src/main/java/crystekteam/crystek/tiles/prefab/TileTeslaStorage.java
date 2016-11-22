@@ -9,10 +9,8 @@ import net.minecraftforge.common.capabilities.Capability;
 /**
  * Created by Gigabit101 on 22/06/2016.
  */
-public class TileTeslaStorage extends TileBase
-{
-    public TileTeslaStorage(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, int maxProgress)
-    {
+public class TileTeslaStorage extends TileBase {
+    public TileTeslaStorage(int invSize, String invName, int invStackLimit, long maxCapacity, long input, long output, int tankamount, int maxProgress) {
         super(invSize, invName, invStackLimit, maxCapacity, input, output, tankamount, maxProgress);
         this.hasInv = true;
         this.hasTank = false;
@@ -21,8 +19,7 @@ public class TileTeslaStorage extends TileBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing)
-    {
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
             return (T) this.container;
 
@@ -30,8 +27,7 @@ public class TileTeslaStorage extends TileBase
     }
 
     @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing)
-    {
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
         if (capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER)
             return true;
 
@@ -39,24 +35,19 @@ public class TileTeslaStorage extends TileBase
     }
 
     @Override
-    public void handleUpgrades(int upgradeslotstart, long maxcapcity)
-    {
+    public void handleUpgrades(int upgradeslotstart, long maxcapcity) {
         int i;
-        for (i = upgradeslotstart; i < upgradeslotstart + 3; ++i)
-        {
-            if (getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit)
-            {
-                if (getStackInSlot(i).getMetadata() == 1)
-                {
+        for (i = upgradeslotstart; i < upgradeslotstart + 3; ++i) {
+            if (getStackInSlot(i) != null && getStackInSlot(i).getItem() instanceof ItemCircuit) {
+                if (getStackInSlot(i).getMetadata() == 1) {
                     long upgradeamount = 100000;
                     long base = ConfigAE.teslacellBaseStorage;
-                    container.setCapacity(base + (getStackInSlot(i).stackSize * upgradeamount));
+                    container.setCapacity(base + (getStackInSlot(i).getCount() * upgradeamount));
                     break;
                 }
             }
             //reset
-            else if (getStackInSlot(i) == null && getMaxCapacity() != maxcapcity)
-            {
+            else if (getStackInSlot(i) == null && getMaxCapacity() != maxcapcity) {
                 container.setCapacity(maxcapcity);
             }
         }
