@@ -1,0 +1,37 @@
+package crystekteam.crystekold.api;
+
+import crystekteam.crystekold.api.recipe.RecipeCrystallizer;
+import crystekteam.crystekold.api.recipe.RecipeGrinder;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CrystekApi
+{
+    public static List<RecipeGrinder> grinderRecipes = new ArrayList<RecipeGrinder>();
+    public static List<RecipeCrystallizer> crystallizerRecipes = new ArrayList<RecipeCrystallizer>();
+    public static List<FluidFuelHandler> fluidFuelHandlers = new ArrayList<FluidFuelHandler>();
+
+    public static RecipeGrinder registerGrinderRecipe(ItemStack output, Object input)
+    {
+        RecipeGrinder recipe = new RecipeGrinder(output, input);
+        grinderRecipes.add(recipe);
+        return recipe;
+    }
+
+    public static RecipeCrystallizer registerCrystallizerRecipes(Object input, FluidStack fluidStack, ItemStack output)
+    {
+        RecipeCrystallizer recipe = new RecipeCrystallizer(input, fluidStack, output);
+        crystallizerRecipes.add(recipe);
+        return recipe;
+    }
+
+    public static FluidFuelHandler registerFuel(FluidStack fluidStack, long amount, long output)
+    {
+        FluidFuelHandler fuelHandler = new FluidFuelHandler(fluidStack, amount, output);
+        fluidFuelHandlers.add(fuelHandler);
+        return fuelHandler;
+    }
+}

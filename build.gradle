@@ -1,166 +1,103 @@
-
-// For those who want the bleeding edge
 buildscript {
-    repositories {
-        jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-
-            name = "Modmuss50"
-            url = "http://maven.modmuss50.me/"
-        }
-    }
-    dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT"
-
-    }
+	repositories {
+		jcenter()
+		maven {url = "http://files.minecraftforge.net/maven"}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+	}
 }
-apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+version = mcver + "-" + modver
 
 def ENV = System.getenv()
-
-version = "-1.0.0"
-
-version = "1.10.2" + version
-
-group= "com.crytekteam.crystek"
-archivesBaseName = "Crystek"
-
-
 if (ENV.BUILD_NUMBER) {
-    version = version + "." + "${System.getenv().BUILD_NUMBER}"
+	version = "-" + "${System.getenv().BUILD_NUMBER}"
+}
+
+def ver = version
+
+group = prefix + "." + id
+archivesBaseName = jarname
+
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava {
+	sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = "1.10.2-12.18.2.2099"
-    mappings = "snapshot_20160913"
-    runDir = "run"
+	version = mcver + "-" + forgever
+	runDir = "run"
+	mappings = mcp
+
+	replace '%version%', ver
 }
 
+
 repositories {
-    maven {// Tesla
-	name = "Dankhax"
-        url = "http://maven.epoxide.xyz"
-    }
+	maven {
+		// RebornCore
+		name = "Modmuss50"
+		url = "http://maven.modmuss50.me/"
+	}
 
-    maven {// JEI
-        name = "prog"
-        url = "http://dvs1.progwml6.com/files/maven"
-    }
+	maven {
+		// JEI
+		name = "prog"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
 
-    maven {// TheOneProbe
-	name = "tterrag"
-        url = "http://maven.tterrag.com/"
-    }
-	
-    maven {// HWYLA
-        name "TehNut"
-        url "http://tehnut.info/maven/"
-    }
+	maven {
+		// TheOneProbe
+		name = "tterrag"
+		url = "http://maven.tterrag.com/"
+	}
 
-    maven {// RebornCore
-        name = "Modmuss50"
-        url = "http://maven.modmuss50.me/"
-    }
+	maven {
+		// HWYLA
+		name "TehNut"
+		url "http://tehnut.info/maven/"
+	}
+
+	maven {
+		// Tesla
+		name = "Dankhax"
+		url = "http://maven.epoxide.xyz"
+	}
 }
 
 dependencies {
-	deobfCompile "mezz.jei:jei_1.10.2:+"
-	deobfCompile "mcjty.theoneprobe:TheOneProbe:1.10-1.2.0-40"
-    	compile "net.darkhax.tesla:Tesla:1.10.2-1.2.1.41"
-	compile "mcp.mobius.waila:Waila:+"
-    	compile 'RebornCore:RebornCore-1.10.2:+:dev'
+	compile "RebornCore:RebornCore-1.11:+:dev"
+	compile jeiver
+	compile hwylaver
+	compile topver
+	compile teslaver
 }
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+	{
+		inputs.property "modid", id
+		inputs.property "modname", displayname
+		inputs.property "desc", moddesc
+		inputs.property "version", ver
+		inputs.property "forgeversion", mcver + "-" + forgever
+		inputs.property "url", modurl
+		inputs.property "authors", modauthors
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+		from(sourceSets.main.resources.srcDirs) {
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            //This is used when the build is done on a slave node
-		if (project.hasProperty('mavenPass'))
-        {
-			println 'Uploading to remote Maven Repo'
-            repository(url: "http://mavenupload.modmuss50.me/") {
-                authentication(userName: "buildslave", password: project.getProperty('mavenPass'))
-            }
-        }
-        else
-        { 
-			//this is when the build is executed on the master node
-			println 'Uploading to local Maven Repo'
-           repository(url: "file:///var/www/maven/")
-        }
-            pom {
-                groupId = "CrystekTeam"
-                version = project.version
-                artifactId = project.archivesBaseName
-                project {
-                    name project.archivesBaseName
-                    packaging 'jar'
-                    description 'CrystekTeam'
-                    url 'https://github.com/CrystekTeam/Crystek'
-                    scm {
-                        url 'https://github.com/CrystekTeam/Crystek/'
-                        connection 'scm:git:git@github.com:CrystekTeam/Crystek.git'
-                        developerConnection 'scm:git:git@github.com:CrystekTeam/Crystek.git'
-                    }
-                    issueManagement {
-                        system 'github'
-                        url 'https://github.com/CrystekTeam/Crystek/issues'
-                    }
-                    licenses {
-                        license {
-                            name 'License'
-                            url 'https://github.com/CrystekTeam/Crystek/blob/master/LICENSE-Code'
-                            distribution 'repo'
-                        }
-                    }
-                    developers {
-                        developer {
-                            id 'Gigabit101'
-                            name 'Gigabit101'
-                            roles { role 'developer' }
-                        }
-                        developer {
-                            id 'Prospector'
-                            name 'Prospector'
-                            roles { role 'developer' }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+			include 'mcmod.info'
 
-idea {
-    module {
-        inheritOutputDirs = true
-    }
-}
+			expand 'modid': id,
+				'modname': displayname,
+				'desc': moddesc,
+				'version': modver,
+				'forgeversion': mcver + "-" + forgever,
+				'url': modurl,
+				'authors': modauthors
+		}
+
+		from(sourceSets.main.resources.srcDirs) {exclude 'mcmod.info'}
+
+	}

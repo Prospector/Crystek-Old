@@ -1,72 +1,54 @@
 package crystekteam.crystek;
 
-import crystekteam.crystek.compat.CompatHandler;
-import crystekteam.crystek.config.ConfigAE;
-import crystekteam.crystek.eventhandlers.CrystekEventHandler;
-import crystekteam.crystek.eventhandlers.CrystekTooltipHandler;
-import crystekteam.crystek.init.ModBlocks;
-import crystekteam.crystek.init.ModFluids;
-import crystekteam.crystek.init.ModItems;
-import crystekteam.crystek.init.ModRecipes;
-import crystekteam.crystek.lib.ModInfo;
-import crystekteam.crystek.network.PacketHandler;
-import crystekteam.crystek.proxy.CommonProxy;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fluids.FluidRegistry;
+import crystekteam.crystek.lib.InfoCrystek;
+import crystekteam.crystek.proxy.CrystekServer;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.io.File;
-
-@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.MOD_VERSION, dependencies = ModInfo.MOD_DEPENDENCIES)
+/**
+ * Created by McKeever on 02-Nov-16.
+ */
+@Mod(modid = InfoCrystek.MOD_ID, name = InfoCrystek.MOD_NAME, version = InfoCrystek.MOD_VERSION, dependencies = InfoCrystek.MOD_DEPENDENCIES, acceptedMinecraftVersions = "[1.11]")
 public class Crystek {
-    @Mod.Instance(ModInfo.MOD_ID)
-    public static Crystek instance;
 
-    public Crystek() {
-        FluidRegistry.enableUniversalBucket();
-    }
+	@Mod.Instance(InfoCrystek.MOD_ID)
+	public static Crystek instance;
 
-    public static ConfigAE config;
+	@SidedProxy(clientSide = InfoCrystek.CLIENT_PROXY_CLASS, serverSide = InfoCrystek.SERVER_PROXY_CLASS)
+	public static CrystekServer proxy;
+	public static CreativeTabs tab = new CreativeTabs("crystek") {
+		@Override
+		public String getTabLabel() {
+			return "crystek";
+		}
 
-    @SidedProxy(clientSide = "crystekteam.crystek.proxy.ClientProxy", serverSide = "crystekteam.crystek.proxy.CommonProxy")
-    public static CommonProxy proxy;
+		@Override
+		@SideOnly(Side.CLIENT)
+		public ItemStack getTabIconItem() {
+			return new ItemStack(Blocks.BEDROCK);
+		}
+	};
 
-    @Mod.EventHandler
-    public void preinit(FMLPreInitializationEvent event) {
-        instance = this;
-        //Config stuff
-        String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(ModInfo.MOD_ID, "Crystek");
-        config = ConfigAE.initialize(new File(path));
-        //Register fluids
-        ModFluids.init();
-        //Register Items
-        ModItems.init();
-        //Register Blocks
-        ModBlocks.init();
-        //Packets
-        PacketHandler.setChannels(NetworkRegistry.INSTANCE.newChannel(ModInfo.MOD_ID + "_packets", new PacketHandler()));
-        //Register Item/Block textures (Client side only)
-        proxy.registerRenders();
-    }
+	@Mod.EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
 
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        //Register Gui handler
-        NetworkRegistry.INSTANCE.registerGuiHandler(ModInfo.MOD_ID, new GuiHandler());
-        //Register Compat Handler
-        CompatHandler.init(event);
-        MinecraftForge.EVENT_BUS.register(new CrystekEventHandler());
-        MinecraftForge.EVENT_BUS.register(new CrystekTooltipHandler());
-    }
+	}
 
-    @Mod.EventHandler
-    public void postinit(FMLPostInitializationEvent event) {
-        //Register Recipes
-        ModRecipes.init();
-    }
+	@Mod.EventHandler
+	public void init(FMLInitializationEvent event) {
+
+	}
+
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+
+	}
 }
