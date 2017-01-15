@@ -1,5 +1,7 @@
 package crystekteam.crystek;
 
+import crystekteam.crystek.init.CrystekBlocks;
+import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.lib.InfoCrystek;
 import crystekteam.crystek.proxy.CrystekServer;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,6 +12,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -39,12 +42,12 @@ public class Crystek {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-
+        MachinesInit.init();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 	}
 
 	@Mod.EventHandler
