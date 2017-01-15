@@ -133,7 +133,7 @@ public class TileCrystek extends TileEntity
 
     public void openGui(EntityPlayer player)
     {
-        player.openGui(Crystek.instance, getGUI_ID(), this.world, this.getPos().getX(), this.getPos().getY(), this.getPos().getZ());
+        player.openGui(Crystek.modcl, getGUI_ID(), this.world, this.getPos().getX(), this.getPos().getY(), this.getPos().getZ());
     }
 
     //TODO move

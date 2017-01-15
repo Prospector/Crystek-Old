@@ -30,7 +30,7 @@ public class BlockCrystek extends BlockDirectional {
 
 	public BlockCrystek() {
 		super(Material.IRON);
-		setCreativeTab(Crystek.instance.getTab());
+		setCreativeTab(Crystek.modcl.getTab());
 		setUnlocalizedName("machine");
 		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
 	}
@@ -44,7 +44,7 @@ public class BlockCrystek extends BlockDirectional {
 				playerIn.sendMessage(new TextComponentString("Has Gui =" + tileCrystek.isHasGui()));
 			} else if (tileCrystek.getGuiContainer() != null) {
 				tileCrystek.openGui(playerIn);
-				//                playerIn.openGui(Crystek.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				//                playerIn.openGui(Crystek.modcl, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			}
 		}
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
