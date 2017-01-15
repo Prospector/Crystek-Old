@@ -4,13 +4,16 @@ import crystekteam.crystek.init.CrystekItems;
 import crystekteam.crystek.init.CrystekOreDict;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.proxy.CrystekServer;
-import reborncore.modcl.ModCL;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import reborncore.modcl.ModCL;
+
+import java.util.Random;
 
 /**
  * Created by Prospector
@@ -78,5 +81,23 @@ public class Crystek extends ModCL {
 	@Override
 	public String CLIENT_PROXY() {
 		return CLIENT_PROXY_CLASS;
+	}
+
+	@Override
+	public ItemStack getTabStack() {
+		Random rand = new Random();
+		int number = rand.nextInt(6);
+		if (number == 1)
+			return CrystekItems.MATERIALS.getStack("blue_crystal");
+		else if (number == 2)
+			return CrystekItems.MATERIALS.getStack("purple_crystal");
+		else if (number == 3)
+			return CrystekItems.MATERIALS.getStack("red_crystal");
+		else if (number == 4)
+			return CrystekItems.MATERIALS.getStack("yellow_crystal");
+		else if (number == 5)
+			return CrystekItems.MATERIALS.getStack("green_crystal");
+		else
+			return CrystekItems.MATERIALS.getStack("crystal");
 	}
 }
