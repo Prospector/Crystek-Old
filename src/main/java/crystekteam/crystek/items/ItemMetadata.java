@@ -16,12 +16,9 @@ import java.util.List;
  */
 public class ItemMetadata extends ItemCrystek {
 	public List<String> types = new ArrayList<>();
-	public String name;
 
 	public ItemMetadata(String name) {
-		this.name = name;
-		setUnlocalizedName(Crystek.PREFIX + name);
-		setRegistryName(Crystek.MOD_ID, name);
+		super(name);
 		setHasSubtypes(true);
 	}
 

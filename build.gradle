@@ -68,7 +68,7 @@ repositories {
 }
 
 dependencies {
-	compile "RebornCore:RebornCore-1.11:+:dev"
+	compile "RebornCore:RebornCore-1.11.2:+:dev"
 	compile jeiver
 	compile hwylaver
 	compile topver
