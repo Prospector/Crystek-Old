@@ -1,6 +1,7 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.init.CrystekItems;
+import crystekteam.crystek.init.CrystekOreDict;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.proxy.CrystekServer;
 import crystekteam.crysteklib.ModCL;
@@ -35,6 +36,8 @@ public class Crystek extends ModCL {
 		CrystekItems.init();
 		MachinesInit.init();
 		proxy.registerRenders();
+
+		CrystekOreDict.init();
 	}
 
 	@Mod.EventHandler

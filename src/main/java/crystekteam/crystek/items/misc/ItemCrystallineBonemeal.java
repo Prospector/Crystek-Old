@@ -50,13 +50,14 @@ public class ItemCrystallineBonemeal extends ItemCrystek {
 		return false;
 	}
 
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!playerIn.canPlayerEdit(pos.offset(facing), facing, stack)) {
+	@Override
+	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (!playerIn.canPlayerEdit(pos.offset(facing), facing, playerIn.getHeldItem(hand))) {
 			return EnumActionResult.FAIL;
 		} else {
-			if (applyBonemeal(stack, worldIn, pos, playerIn)) {
+			if (applyBonemeal(playerIn.getHeldItem(hand), worldIn, pos, playerIn)) {
 				for (int i = 0; i < 20; i++) {
-					applyBonemeal(stack, worldIn, pos, playerIn);
+					applyBonemeal(playerIn.getHeldItem(hand), worldIn, pos, playerIn);
 				}
 
 				if (!worldIn.isRemote) {

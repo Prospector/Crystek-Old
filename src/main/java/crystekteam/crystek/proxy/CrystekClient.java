@@ -1,6 +1,5 @@
 package crystekteam.crystek.proxy;
 
-import crystekteam.crystek.Crystek;
 import crystekteam.crystek.init.CrystekItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -15,24 +14,24 @@ import net.minecraftforge.client.model.ModelLoader;
  */
 public class CrystekClient extends CrystekServer {
 
+	static void registerItemModel(Item i, int meta) {
+		ResourceLocation loc = i.getRegistryName();
+		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "inventory"));
+	}
+
+	static void registerItemModel(Item i, int meta, String variant) {
+		ResourceLocation loc = i.getRegistryName();
+		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "type=" + variant));
+	}
+
 	@Override
 	public void registerRenders() {
 		int i;
 		for (i = 0; i < CrystekItems.MATERIALS.types.size(); ++i) {
 			registerItemModel(CrystekItems.MATERIALS, i, CrystekItems.MATERIALS.types.get(i));
 		}
-	}
 
-	static void registerItemModel(Item i, int meta)
-	{
-		ResourceLocation loc = i.getRegistryName();
-		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "inventory"));
-	}
-
-	static void registerItemModel(Item i, int meta, String variant)
-	{
-		ResourceLocation loc = i.getRegistryName();
-		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "type=" + variant));
+		registerItemModel(CrystekItems.CRYSTALLINE_BONEMEAL, 0);
 	}
 
 	@Override
