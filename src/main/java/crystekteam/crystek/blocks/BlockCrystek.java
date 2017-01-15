@@ -32,7 +32,7 @@ public class BlockCrystek extends BlockDirectional {
 
 	public BlockCrystek() {
 		super(Material.IRON);
-		setCreativeTab(Crystek.instance.getTab());
+		setCreativeTab(Crystek.modcl.getTab());
 		setUnlocalizedName("machine");
 		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
 	}
@@ -50,7 +50,7 @@ public class BlockCrystek extends BlockDirectional {
             }
             else
             {
-                playerIn.openGui(Crystek.instance, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+                playerIn.openGui(Crystek.modcl, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return true;
             }
 		}
