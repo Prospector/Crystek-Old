@@ -1,0 +1,114 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "builtin/generated",
+    "textures": {
+      "layer0": "blocks/dirt"
+    },
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "type": {
+      "crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/crystal"
+        }
+      },
+      "blue_crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/blue_crystal"
+        }
+      },
+      "purple_crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/purple_crystal"
+        }
+      },
+      "red_crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/red_crystal"
+        }
+      },
+      "yellow_crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/yellow_crystal"
+        }
+      },
+      "green_crystal": {
+        "textures": {
+          "layer0": "crystek:items/crystal/green_crystal"
+        }
+      },
+      "crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/crystal_dust"
+        }
+      },
+      "blue_crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/blue_crystal_dust"
+        }
+      },
+      "purple_crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/purple_crystal_dust"
+        }
+      },
+      "red_crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/red_crystal_dust"
+        }
+      },
+      "yellow_crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/yellow_crystal_dust"
+        }
+      },
+      "green_crystal_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/green_crystal_dust"
+        }
+      },
+      "iron_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/iron_dust"
+        }
+      },
+      "gold_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/gold_dust"
+        }
+      },
+      "diamond_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/diamond_dust"
+        }
+      },
+      "emerald_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/emerald_dust"
+        }
+      },
+      "obsidian_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/obsidian_dust"
+        }
+      },
+      "crystalline_iron_ingot": {
+        "textures": {
+          "layer0": "crystek:items/ingot/crystalline_iron_ingot"
+        }
+      },
+      "obsidian_ingot": {
+        "textures": {
+          "layer0": "crystek:items/ingot/obsidian_ingot"
+        }
+      },
+      "rubrium_ingot": {
+        "textures": {
+          "layer0": "crystek:items/ingot/rubrium_ingot"
+        }
+      }
+    }
+  }
+}

@@ -7,7 +7,12 @@ import net.minecraft.item.Item;
  * Created by McKeever on 09-Nov-16.
  */
 public class CrystekServer {
+	public void registerRenders(){
+
+	}
+
     public void registerItemModel(String modid, Item item, int meta, String id) {
+
     }
 
     public void registerCustomBlockStateLocation(Block block, String name) {

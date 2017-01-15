@@ -1,94 +1,23 @@
 itemGroup.crystek=Crystek
 
 //Items
-item.crystek.powerscanner.name=Teslometer
-item.crystek.battery.name=Battery
-item.crystek.drill.name=Drill
-item.crystek.wrench.name=Wrench
-item.crystek.teslabonemeal.name=Tesla-Infused Bone Meal
-
-//Dusts
-item.crystek.crafting.dustIron.name=Iron Dust
-item.crystek.crafting.dustGold.name=Gold Dust
-item.crystek.crafting.dustDiamond.name=Diamond Dust
-item.crystek.crafting.dustEmerald.name=Emerald Dust
-item.crystek.crafting.dustTesla.name=Tesla Dust
-item.crystek.crafting.dustObsidian.name=Obsidian Dust
-
-item.crystek.crafting.dustNature.name=Nature Dust
-item.crystek.crafting.dustDemonic.name=Demonic Dust
-item.crystek.crafting.dustVoid.name=Void Dust
-item.crystek.crafting.dustDimensional.name=Dimensional Dust
-
-//Ingots
-item.crystek.crafting.ingotTeslaAlloy.name=Tesla-Iron Alloy Ingot
-item.crystek.crafting.ingotObsidian.name=Obsidian Ingot
-
-//Crystals
-item.crystek.crafting.crystalTesla.name=Tesla Crystal
-item.crystek.crafting.crystalTeslaRed.name=Tesla Crystal
-item.crystek.crafting.crystalTeslaYellow.name=Tesla Crystal
-item.crystek.crafting.crystalTeslaPurple.name=Tesla Crystal
-item.crystek.crafting.crystalTeslaBlue.name=Tesla Crystal
-
-//Catalyst
-item.crystek.crafting.catalystRed.name=Catalyst
-item.crystek.crafting.catalystYellow.name=Catalyst
-item.crystek.crafting.catalystPurple.name=Catalyst
-item.crystek.crafting.catalystBlue.name=Catalyst
-
-//Circuits
-item.crystek.circuit.circuitEfficiency.name=Fuel Efficiency Circuit
-item.crystek.circuit.circuitSpeed.name=Processing Speed Circuit
-item.crystek.circuit.circuitStorage.name=Tesla Storage Circuit
-
-//Grinding Blades
-item.crystek.grindingbladeIron.name=Iron Grinding Blade
-item.crystek.grindingbladeGold.name=Gold Grinding Blade
-item.crystek.grindingbladeDiamond.name=Diamond Grinding Blade
-item.crystek.grindingbladeObsidian.name=Obsidian Grinding Blade
-item.crystek.grindingbladeTeslaAlloy.name=Tesla-Iron Alloy Grinding Blade
-
-//Infused Armour
-item.crystek.infusedarmour.helmet.name=Tesla-Infused Helmet
-item.crystek.infusedarmour.chestplate.name=Tesla-Infused Chestplate
-item.crystek.infusedarmour.leggings.name=Tesla-Infused Leggings
-item.crystek.infusedarmour.boots.name=Tesla-Infused Boots
-
-//Fluids
-fluid.fluidTesla=Fluid Tesla
-tile.crystek.fluid.fluidtesla.name=Fluid Tesla
-
-//Generators
-tile.crystek.coalgenerator.name=Generator
-tile.crystek.fluidgenerator.name=Fluid Generator
-tile.crystek.solarpanel.name=Solar Panel
-
-//Power Storage
-tile.crystek.teslacell.name=Tesla Cell
-
-//Machines
-tile.crystek.poweredfurnace.name=Powered Furnace
-tile.crystek.grinder.name=Grinder
-tile.crystek.crystallizer.name=Crystallizer
-tile.crystek.fluidizer.name=Fluidizer
-tile.crystek.accelerator.name=Crop Accelerator
-tile.crystek.trashcan.name=Incinerator
-
-//Misc
-tile.crystek.crate.name=Crate
-tile.crystek.laser.name=Tesla Coil
-
-//Descriptions
-desc.teslometer=Measures Tesla
-desc.circuit=Machine Upgrade
-desc.circuit.speed.1=Speeds up processing speed
-desc.circuit.storage.1=Increases the max tesla
-desc.circuit.storage.2=a machine can store
-desc.circuit.efficiency.1=Creates more power with
-desc.circuit.efficiency.2=the same amount of fuel
-desc.grindingblade=Can be repaired with
-
-//JEI
-crystek.jei.category.grinder=Grinding
-crystek.jei.category.crystallizer=Crystallizing
+item.crystek:material.crystal.name=Crystal
+item.crystek:material.blue_crystal.name=Blue Crystal
+item.crystek:material.purple_crystal.name=Purple Crystal
+item.crystek:material.red_crystal.name=Red Crystal
+item.crystek:material.yellow_crystal.name=Yellow Crystal
+item.crystek:material.green_crystal.name=Green Crystal
+item.crystek:material.crystal_dust.name=Crystal Dust
+item.crystek:material.blue_crystal_dust.name=Blue Crystal Dust
+item.crystek:material.purple_crystal_dust.name=Purple Crystal Dust
+item.crystek:material.red_crystal_dust.name=Red Crystal Dust
+item.crystek:material.yellow_crystal_dust.name=Yellow Crystal Dust
+item.crystek:material.green_crystal_dust.name=Green Crystal Dust
+item.crystek:material.iron_dust.name=Iron Dust
+item.crystek:material.gold_dust.name=Gold Dust
+item.crystek:material.diamond_dust.name=Diamond Dust
+item.crystek:material.emerald_dust.name=Emerald Dust
+item.crystek:material.obsidian_dust.name=Obsidian Dust
+item.crystek:material.crystalline_iron_ingot.name=Crystalline Iron Ingot
+item.crystek:material.obsidian_ingot.name=Obsidian Ingot
+item.crystek:material.rubrium_ingot.name=Rubrium Ingot
