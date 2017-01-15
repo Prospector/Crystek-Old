@@ -7,16 +7,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import reborncore.modcl.ItemCL;
 import reborncore.modcl.ItemMetadataCL;
 import reborncore.modcl.ModCL;
-import reborncore.modcl.RegistryCL;
 
 import java.util.HashMap;
 
 /**
  * Created by Prospector
  */
-public class CrystekItems extends RegistryCL {
+public class CrystekItems {
 
 	public static HashMap<ItemStack, String> ORE_DICT = new HashMap<>();
+	public static HashMap<String, ItemCL> REGISTRY = new HashMap<>();
 	public static ItemMetadataCL MATERIALS = new ItemMetadataCrystek("material");
 	public static ItemCL CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
@@ -45,15 +45,15 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
-		mod.getRegistry().REGISTRY.put("material", MATERIALS);
-		mod.getRegistry().REGISTRY.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
+		REGISTRY.put("material", MATERIALS);
+		REGISTRY.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
 
-		for (ItemCL item : mod.getRegistry().REGISTRY.values()) {
+		for (ItemCL item : REGISTRY.values()) {
 			register(item);
 		}
 
 		for (String material : MATERIALS_DICT.keySet()) {
-			ORE_DICT.put(MATERIALS.getStack(material), MATERIALS_DICT.get(material));
+			//			ORE_DICT.put(MATERIALS.getStack(material), MATERIALS_DICT.get(material));
 		}
 
 	}

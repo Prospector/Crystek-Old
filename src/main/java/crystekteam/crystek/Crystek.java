@@ -12,7 +12,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.modcl.ModCL;
-import reborncore.modcl.RegistryCL;
 
 import java.util.Random;
 
@@ -84,7 +83,7 @@ public class Crystek extends ModCL {
 		return CLIENT_PROXY_CLASS;
 	}
 
-	@Override
+/*	@Override
 	public ItemStack getTabStack() {
 		Random rand = new Random();
 		int number = rand.nextInt(6);
@@ -100,10 +99,5 @@ public class Crystek extends ModCL {
 			return CrystekItems.MATERIALS.getStack("green_crystal");
 		else
 			return CrystekItems.MATERIALS.getStack("crystal");
-	}
-
-	@Override
-	public RegistryCL getRegistry() {
-		return new CrystekItems();
-	}
+	}*/
 }
