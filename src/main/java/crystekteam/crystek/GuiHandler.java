@@ -1,6 +1,7 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.tiles.TileCrystek;
+import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -17,12 +18,13 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileCrystek)
+        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
-            TileCrystek tileCrystek = (TileCrystek) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getGUI_ID() != -1)
+            System.out.print("nfasfoaks");
+            TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
+            if(tileCrystek.getMachine().getGuiID() == ID)
             {
-                return tileCrystek.getContainer();
+                return tileCrystek.getMachine().getContainer();
             }
         }
         return null;
@@ -32,12 +34,13 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileCrystek)
+        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
-            TileCrystek tileCrystek = (TileCrystek) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getGUI_ID() != -1)
+            System.out.print("nfasfoaks");
+            TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
+            if(tileCrystek.getMachine().getGuiID() == ID)
             {
-                return tileCrystek.getGuiContainer();
+                return tileCrystek.getMachine().getGuiContainer();
             }
         }
         return null;

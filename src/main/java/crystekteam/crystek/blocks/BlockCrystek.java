@@ -1,8 +1,10 @@
 package crystekteam.crystek.blocks;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.tiles.TileCrystek;
+import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
@@ -37,17 +39,22 @@ public class BlockCrystek extends BlockDirectional {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (worldIn.getTileEntity(pos) != null) {
-			TileCrystek tileCrystek = (TileCrystek) worldIn.getTileEntity(pos);
-			if (playerIn.isSneaking()) {
-				playerIn.sendMessage(new TextComponentString("Tile =" + tileCrystek.getDisplayName()));
-				playerIn.sendMessage(new TextComponentString("Has Gui =" + tileCrystek.isHasGui()));
-			} else if (tileCrystek.getGuiContainer() != null) {
-				tileCrystek.openGui(playerIn);
-				//                playerIn.openGui(Crystek.instance, 0, worldIn, pos.getX(), pos.getY(), pos.getZ());
-			}
+		if (worldIn.getTileEntity(pos) != null && !worldIn.isRemote)
+        {
+            TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
+            Machine machine = tileMachine.getMachine();
+            if(playerIn.isSneaking())
+            {
+                playerIn.sendMessage(new TextComponentString("" + machine.getName()));
+				return true;
+            }
+            else
+            {
+                playerIn.openGui(Crystek.instance, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+				return true;
+            }
 		}
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+		return false;
 	}
 
 	@Override
@@ -77,10 +84,7 @@ public class BlockCrystek extends BlockDirectional {
 
 	@Override
 	public boolean hasTileEntity(IBlockState state) {
-		if (MachinesInit.getMachineList().get(getMetaFromState(state)).getTileEntity() != null) {
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 	@Nullable

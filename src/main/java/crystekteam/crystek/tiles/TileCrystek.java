@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Gigabit101 on 06/12/2016.
  */
+@Deprecated
 public class TileCrystek extends TileEntity
 {
     @Nonnull boolean hasInventory = false;
@@ -77,64 +78,11 @@ public class TileCrystek extends TileEntity
         return inv;
     }
 
-    @Nullable
-    public int getGUI_ID()
-    {
-        return GUI_ID;
-    }
 
-    public void setGUI_ID(@Nullable int GUI_ID)
-    {
-        this.GUI_ID = GUI_ID;
-    }
-
-    //Gui
-    public boolean isHasGui()
-    {
-        return this.hasGui;
-    }
-
-    public void setHasGui(boolean hasGui)
-    {
-        this.hasGui = hasGui;
-    }
-
-    @Nullable
-    public GuiContainer getGuiContainer()
-    {
-        return guiContainer;
-    }
-
-    public void setGuiContainer(GuiContainer guiContainer)
-    {
-        this.guiContainer = guiContainer;
-    }
-
-    //Container
-    @Nullable
-    public Container getContainer()
-    {
-        return container;
-    }
-
-    public void setContainer(Container container)
-    {
-        this.container = container;
-    }
-
-    public boolean hasContainer()
-    {
-        if(getContainer() != null)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void openGui(EntityPlayer player)
-    {
-        player.openGui(Crystek.instance, getGUI_ID(), this.world, this.getPos().getX(), this.getPos().getY(), this.getPos().getZ());
-    }
+//    public void openGui(EntityPlayer player)
+//    {
+//        player.openGui(Crystek.instance, getGUI_ID(), this.world, this.getPos().getX(), this.getPos().getY(), this.getPos().getZ());
+//    }
 
     //TODO move
     class StackHandler extends ItemStackHandler

@@ -1,8 +1,8 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileCrystek;
-import crystekteam.crystek.tiles.TileTest;
+import crystekteam.crystek.machines.MachineGenerator;
+import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -40,13 +40,8 @@ public class MachinesInit
         return MACHINE_LIST;
     }
 
-    //DEBUG
-    static Machine m1 = new Machine("1", new TileCrystek());
-    static Machine m2 = new Machine("2", new TileTest());
-
     static void inittest()
     {
-        registerMachine(m1);
-        registerMachine(m2);
+        registerMachine(new MachineGenerator());
     }
 }
