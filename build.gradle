@@ -9,14 +9,12 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-def version
+version = mcver + "-" + modver + "-unknownbuild"
 
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
-	version = "-" + "${System.getenv().BUILD_NUMBER}"
+	version = mcver + "-" + modver + "-" + "${System.getenv().BUILD_NUMBER}"
 }
-
-def ver = mcver + "-" + modver + version
 
 group = prefix + "." + id
 archivesBaseName = jarname
@@ -31,7 +29,7 @@ minecraft {
 	runDir = "run"
 	mappings = mcp
 
-	replace '%version%', ver
+	replace '%version%', modver
 }
 
 
@@ -80,7 +78,7 @@ processResources
 		inputs.property "modid", id
 		inputs.property "modname", displayname
 		inputs.property "desc", moddesc
-		inputs.property "version", ver
+		inputs.property "version", modver
 		inputs.property "forgeversion", mcver + "-" + forgever
 		inputs.property "url", modurl
 		inputs.property "authors", modauthors
