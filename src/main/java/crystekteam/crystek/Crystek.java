@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.modcl.ModCL;
+import reborncore.modcl.RegistryCL;
 
 import java.util.Random;
 
@@ -36,7 +37,7 @@ public class Crystek extends ModCL {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		CrystekItems.init();
+		CrystekItems.init(modcl);
 		MachinesInit.init();
 		proxy.registerRenders();
 
@@ -99,5 +100,10 @@ public class Crystek extends ModCL {
 			return CrystekItems.MATERIALS.getStack("green_crystal");
 		else
 			return CrystekItems.MATERIALS.getStack("crystal");
+	}
+
+	@Override
+	public RegistryCL getRegistry() {
+		return new CrystekItems();
 	}
 }
