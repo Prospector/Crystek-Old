@@ -9,14 +9,12 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = mcver + "-" + modver
-
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
 	version = "-" + "${System.getenv().BUILD_NUMBER}"
 }
 
-def ver = version
+def ver = mcver + "-" + modver + version
 
 group = prefix + "." + id
 archivesBaseName = jarname

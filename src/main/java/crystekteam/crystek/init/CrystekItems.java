@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.items.ItemMetadata;
+import crystekteam.crystek.items.misc.ItemCrystallineBonemeal;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -14,6 +15,7 @@ public class CrystekItems {
 	public static HashMap<String, String> MATERIAL_ORES = new HashMap<>();
 	public static HashMap<String, Item> REGISTRY = new HashMap<>();
 	public static ItemMetadata MATERIALS = new ItemMetadata("material");
+	public static Item CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
 
 	public static void init() {
 		addMaterial("crystal", "crystalTesla");
@@ -40,6 +42,7 @@ public class CrystekItems {
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
 		REGISTRY.put("material", MATERIALS);
+		REGISTRY.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
 
 		for (Item item : REGISTRY.values()) {
 			register(item);
