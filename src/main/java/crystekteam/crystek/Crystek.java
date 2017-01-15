@@ -1,9 +1,10 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.init.CrystekItems;
+import crystekteam.crystek.init.CrystekOreDict;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.proxy.CrystekServer;
-import crystekteam.crysteklib.ModCL;
+import reborncore.modcl.ModCL;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,7 +27,7 @@ public class Crystek extends ModCL {
 	public static final String CLIENT_PROXY_CLASS = "crystekteam.crystek.proxy.CrystekClient";
 
 	@Mod.Instance(MOD_ID)
-	public static Crystek instance;
+	public static Crystek modcl;
 	@SidedProxy(clientSide = CLIENT_PROXY_CLASS, serverSide = SERVER_PROXY_CLASS)
 	public static CrystekServer proxy;
 
@@ -35,11 +36,13 @@ public class Crystek extends ModCL {
 		CrystekItems.init();
 		MachinesInit.init();
 		proxy.registerRenders();
+
+		CrystekOreDict.init();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(modcl, new GuiHandler());
 	}
 
 	@Mod.EventHandler

@@ -1,14 +1,14 @@
 package crystekteam.crystek.items;
 
 import crystekteam.crystek.Crystek;
-import reborncore.modcl.ItemCL;
+import reborncore.modcl.ItemMetadataCL;
 
 /**
  * Created by Prospector
  */
-public class ItemCrystek extends ItemCL {
+public class ItemMetadataCrystek extends ItemMetadataCL {
 
-	public ItemCrystek(String name) {
+	public ItemMetadataCrystek(String name) {
 		super(Crystek.modcl, name);
 	}
 }
