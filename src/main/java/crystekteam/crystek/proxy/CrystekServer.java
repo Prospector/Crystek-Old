@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 /**
- * Created by McKeever on 09-Nov-16.
+ * Created by Prospector
  */
 public class CrystekServer {
 	public void registerRenders(){

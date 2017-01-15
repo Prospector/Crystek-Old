@@ -3,6 +3,9 @@ package crystekteam.crystek.items;
 import crystekteam.crystek.Crystek;
 import net.minecraft.item.Item;
 
+/**
+ * Created by Prospector
+ */
 public class ItemCrystek extends Item {
 	public String name;
 

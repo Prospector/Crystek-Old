@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 
 /**
- * Created by McKeever on 09-Nov-16.
+ * Created by Prospector
  */
 public class CrystekClient extends CrystekServer {
 

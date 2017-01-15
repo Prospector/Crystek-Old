@@ -1,6 +1,5 @@
 package crystekteam.crystek.items;
 
-import crystekteam.crystek.Crystek;
 import crystekteam.crystek.init.CrystekItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gigabit101 on 02/06/2016.
+ * Created by Prospector
  */
 public class ItemMetadata extends ItemCrystek {
 	public List<String> types = new ArrayList<>();

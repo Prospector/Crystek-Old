@@ -9,6 +9,8 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+def version
+
 def ENV = System.getenv()
 if (ENV.BUILD_NUMBER) {
 	version = "-" + "${System.getenv().BUILD_NUMBER}"
