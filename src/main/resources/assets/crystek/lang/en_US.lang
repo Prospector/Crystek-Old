@@ -23,3 +23,9 @@ item.crystek:material.obsidian_ingot.name=Obsidian Ingot
 item.crystek:material.rubrium_ingot.name=Rubrium Ingot
 
 item.crystek:crystalline_bonemeal.name=Crystalline Bone Meal
+
+item.crystek:iron_grinding_blade.name=Iron Grinding Blade
+item.crystek:gold_grinding_blade.name=Gold Grinding Blade
+item.crystek:diamond_grinding_blade.name=Diamond Grinding Blade
+item.crystek:obsidian_grinding_blade.name=Obsidian Grinding Blade
+item.crystek:crystalline_grinding_blade.name=Crystal Grinding Blade

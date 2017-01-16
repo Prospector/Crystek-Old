@@ -67,11 +67,6 @@ public class CrystekClient extends CrystekServer {
 
 	@Override
 	public void registerRenders() {
-		//		int i;
-		//		for (i = 0; i < CrystekItems.MATERIALS.types.size(); ++i) {
-		//			registerItemModel(CrystekItems.MATERIALS, i, CrystekItems.MATERIALS.types.get(i));
-		//		}
-
 		for (Item item : Crystek.MOD_CL.modelsToRegister) {
 			registerItemModel(item, 0);
 		}
