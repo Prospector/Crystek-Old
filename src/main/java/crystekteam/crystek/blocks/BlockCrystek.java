@@ -5,6 +5,7 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.tiles.TileCrystek;
 import crystekteam.crystek.tiles.TileMachine;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
@@ -15,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
@@ -27,7 +29,7 @@ import javax.annotation.Nullable;
 /**
  * Created by Gigabit101 on 06/12/2016.
  */
-public class BlockCrystek extends BlockDirectional {
+public class BlockCrystek extends BlockContainer {
 	public PropertyInteger METADATA;
 
 	public BlockCrystek() {
@@ -39,6 +41,7 @@ public class BlockCrystek extends BlockDirectional {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        //TODO this is being called twice for some reason....
 		if (worldIn.getTileEntity(pos) != null && !worldIn.isRemote)
         {
             TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
@@ -82,17 +85,25 @@ public class BlockCrystek extends BlockDirectional {
 		return new BlockStateContainer(this, METADATA);
 	}
 
-	@Override
-	public boolean hasTileEntity(IBlockState state) {
-		return true;
-	}
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        worldIn.removeTileEntity(pos);
+        super.breakBlock(worldIn, pos, state);
+    }
 
-	@Nullable
-	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		if (MachinesInit.getMachineList().get(getMetaFromState(state)).getTileEntity() != null) {
-			return MachinesInit.getMachineList().get(getMetaFromState(state)).getTileEntity();
-		}
-		return super.createTileEntity(world, state);
-	}
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        if (MachinesInit.getMachineList().get(meta).getTileEntity() != null) {
+            return MachinesInit.getMachineList().get(meta).getTileEntity();
+        }
+        return null;
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.MODEL;
+    }
 }

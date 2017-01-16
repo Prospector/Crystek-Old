@@ -1,6 +1,7 @@
 package crystekteam.crystek.container;
 
-import crystekteam.crystek.tiles.TileCrystek;
+import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import reborncore.common.container.RebornContainer;
 
@@ -9,14 +10,13 @@ import reborncore.common.container.RebornContainer;
  */
 public class ContainerCrystek extends RebornContainer
 {
-    public ContainerCrystek(EntityPlayer player, TileCrystek tile)
+    public Machine machine;
+
+    public ContainerCrystek(EntityPlayer player, Machine machine)
     {
         drawPlayersInv(player);
-    }
-
-    public ContainerCrystek()
-    {
-
+        drawPlayersHotBar(player);
+        this.machine = machine;
     }
 
     @Override

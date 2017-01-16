@@ -13,8 +13,8 @@ public class MachineGenerator extends Machine
     public MachineGenerator()
     {
         super("coalgenerator");
-        setContainer(new ContainerCrystek());
-        setGuiContainer(new GuiCrystek(getContainer()));
+//        setContainer(new ContainerCrystek(this));
+//        setGuiContainer(new GuiCrystek(getContainer()));
         setGuiID(0);
         setTileEntity(new TileMachine(this));
     }

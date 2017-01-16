@@ -1,6 +1,9 @@
 package crystekteam.crystek.guis;
 
+import crystekteam.crystek.container.ContainerCrystek;
+import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import reborncore.client.guibuilder.GuiBuilder;
 
@@ -9,21 +12,25 @@ import reborncore.client.guibuilder.GuiBuilder;
  */
 public class GuiCrystek extends GuiContainer
 {
-    public GuiBuilder builder = new GuiBuilder(GuiBuilder.defaultTextureSheet);
+    public Machine machine;
+    public EntityPlayer player;
 
-    public GuiCrystek(Container inventorySlotsIn)
+    public GuiCrystek(EntityPlayer player, Machine machine)
     {
-        super(inventorySlotsIn);
+        super(new ContainerCrystek(player, machine));
+        this.machine = machine;
+        this.player = player;
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
-        builder.drawDefaultBackground(this, guiLeft, guiTop, xSize, ySize);
+        machine.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY, guiLeft, guiTop, xSize, ySize, this);
+    }
 
-        builder.drawSlot(this, guiLeft + 40, guiTop + 30);
-        builder.drawSlot(this, guiLeft + 120, guiTop + 30);
-
-        builder.drawPlayerSlots(this, guiLeft + xSize / 2, guiTop + 80, true);
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+        machine.drawGuiContainerForegroundLayer(mouseX, mouseY, this);
     }
 }

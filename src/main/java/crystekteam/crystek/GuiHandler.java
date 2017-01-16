@@ -1,6 +1,7 @@
 package crystekteam.crystek;
 
-import crystekteam.crystek.tiles.TileCrystek;
+import crystekteam.crystek.container.ContainerCrystek;
+import crystekteam.crystek.guis.GuiCrystek;
 import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -20,11 +21,10 @@ public class GuiHandler implements IGuiHandler
     {
         if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
-            System.out.print("nfasfoaks");
             TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
             if(tileCrystek.getMachine().getGuiID() == ID)
             {
-                return tileCrystek.getMachine().getContainer();
+                return new ContainerCrystek(player, tileCrystek.getMachine());
             }
         }
         return null;
@@ -36,11 +36,10 @@ public class GuiHandler implements IGuiHandler
     {
         if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
-            System.out.print("nfasfoaks");
             TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
             if(tileCrystek.getMachine().getGuiID() == ID)
             {
-                return tileCrystek.getMachine().getGuiContainer();
+                return new GuiCrystek(player, tileCrystek.getMachine());
             }
         }
         return null;

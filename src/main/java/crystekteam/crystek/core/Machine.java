@@ -4,6 +4,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import reborncore.client.guibuilder.GuiBuilder;
 
 import javax.annotation.Nullable;
 
@@ -12,11 +13,15 @@ import javax.annotation.Nullable;
  */
 public class Machine
 {
+    @Deprecated
+    @Nullable GuiContainer guiContainer;
+    @Deprecated
+    @Nullable Container container;
+
+
+    @Nullable int guiID;
     String name;
     @Nullable TileEntity tileEntity;
-    @Nullable GuiContainer guiContainer;
-    @Nullable Container container;
-    @Nullable int guiID;
 
     public Machine(String name)
     {
@@ -53,11 +58,13 @@ public class Machine
         this.tileEntity = tileEntity;
     }
 
+    @Deprecated
     public void setContainer(@Nullable Container container)
     {
         this.container = container;
     }
 
+    @Deprecated
     public void setGuiContainer(@Nullable GuiContainer guiContainer)
     {
         this.guiContainer = guiContainer;
@@ -73,6 +80,7 @@ public class Machine
         this.name = name;
     }
 
+    //TILE
     public void update(){}
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
@@ -84,4 +92,33 @@ public class Machine
     {
 
     }
+
+    //GUI
+    public GuiBuilder builder = new GuiBuilder(GuiBuilder.defaultTextureSheet);
+
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiContainer gui)
+    {
+        builder.drawDefaultBackground(gui, guiLeft, guiTop, xSize, ySize);
+        builder.drawPlayerSlots(gui, guiLeft + xSize / 2, guiTop + 80, true);
+    }
+
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui)
+    {
+
+    }
+
+
+    //Container
+
+
+
+    //Inv
+
+
+
+    //Tank
+
+
+
+    //Power
 }
