@@ -3,6 +3,7 @@ package crystekteam.crystek.init;
 import crystekteam.crystek.items.ItemMetadataCrystek;
 import crystekteam.crystek.items.misc.ItemCrystallineBonemeal;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
+import crystekteam.crystek.items.misc.ItemObsidianWrench;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -19,12 +20,13 @@ import java.util.HashMap;
 public class CrystekItems extends RegistryCL {
 
 	public static ItemMetadataCL MATERIALS;
-	public static ItemCrystallineBonemeal CRYSTALLINE_BONEMEAL;
-	public static ItemGrindingBlade GOLD_GRINDING_BLADE;
-	public static ItemGrindingBlade IRON_GRINDING_BLADE;
-	public static ItemGrindingBlade DIAMOND_GRINDING_BLADE;
-	public static ItemGrindingBlade OBSIDIAN_GRINDING_BLADE;
-	public static ItemGrindingBlade CRYSTALLINE_GRINDING_BLADE;
+	public static ItemCL CRYSTALLINE_BONEMEAL;
+	public static ItemCL GOLD_GRINDING_BLADE;
+	public static ItemCL IRON_GRINDING_BLADE;
+	public static ItemCL DIAMOND_GRINDING_BLADE;
+	public static ItemCL OBSIDIAN_GRINDING_BLADE;
+	public static ItemCL CRYSTALLINE_GRINDING_BLADE;
+	public static ItemCL OBSIDIAN_WRENCH;
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
 
 	private static void addMaterial(String name, String... oreDictNames) {
@@ -45,6 +47,7 @@ public class CrystekItems extends RegistryCL {
 		DIAMOND_GRINDING_BLADE = new ItemGrindingBlade("diamond", 3, 1023, new ItemStack(Items.DIAMOND));
 		OBSIDIAN_GRINDING_BLADE = new ItemGrindingBlade("obsidian", 1, -1, ItemStack.EMPTY);
 		CRYSTALLINE_GRINDING_BLADE = new ItemGrindingBlade("crystalline", 3, -1, ItemStack.EMPTY);
+		OBSIDIAN_WRENCH = new ItemObsidianWrench();
 
 		addMaterial("crystal", "crystalTesla");
 		addMaterial("blue_crystal", "crystalTeslaBlue");
@@ -76,6 +79,7 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(DIAMOND_GRINDING_BLADE);
 		addToRegistry(OBSIDIAN_GRINDING_BLADE);
 		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
+		addToRegistry(OBSIDIAN_WRENCH);
 
 		for (ItemCL item : registry.values()) {
 			register(item);
