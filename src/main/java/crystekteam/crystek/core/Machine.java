@@ -3,7 +3,6 @@ package crystekteam.crystek.core;
 import crystekteam.crystek.Crystek;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -85,7 +84,7 @@ public class Machine
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        if(inv.getSlots() != 0)
+        if(hasInv())
         {
             compound.merge(inv.serializeNBT());
         }
@@ -94,13 +93,15 @@ public class Machine
 
     public void readFromNBT(NBTTagCompound compound)
     {
-        inv.deserializeNBT(compound);
+        if(hasInv())
+        {
+            inv.deserializeNBT(compound);
+        }
     }
 
     /**
      * GUI
      */
-    @SideOnly(Side.CLIENT)
     public GuiBuilder builder = new GuiBuilder(GuiBuilder.defaultTextureSheet);
 
     @SideOnly(Side.CLIENT)

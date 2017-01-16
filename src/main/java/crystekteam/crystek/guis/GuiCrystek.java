@@ -1,6 +1,7 @@
 package crystekteam.crystek.guis;
 
 import crystekteam.crystek.container.ContainerCrystek;
+import crystekteam.crystek.container.ContainerDummy;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
