@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "crystek:items/teslabonemeal"
+    "layer0": "crystek:items/crystalline_bonemeal"
   }
 }

@@ -1,15 +1,20 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.init.CrystekItems;
+import crystekteam.crystek.init.CrystekOreDict;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.proxy.CrystekServer;
-import crystekteam.crysteklib.ModCL;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import reborncore.modcl.ModCL;
+import reborncore.modcl.RegistryCL;
+
+import java.util.Random;
 
 /**
  * Created by Prospector
@@ -24,22 +29,25 @@ public class Crystek extends ModCL {
 	public static final String MOD_DEPENDENCIES = "required-after:reborncore;after:JEI@[4.0,);";
 	public static final String SERVER_PROXY_CLASS = "crystekteam.crystek.proxy.CrystekServer";
 	public static final String CLIENT_PROXY_CLASS = "crystekteam.crystek.proxy.CrystekClient";
+	public static RegistryCL ITEM_REGISTRY = new CrystekItems();
 
 	@Mod.Instance(MOD_ID)
-	public static Crystek instance;
+	public static Crystek MOD_CL;
 	@SidedProxy(clientSide = CLIENT_PROXY_CLASS, serverSide = SERVER_PROXY_CLASS)
-	public static CrystekServer proxy;
+	public static CrystekServer PROXY;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		CrystekItems.init();
+		getItemRegistry().init(MOD_CL);
 		MachinesInit.init();
-		proxy.registerRenders();
+		PROXY.registerRenders();
+
+		CrystekOreDict.init();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(MOD_CL, new GuiHandler());
 	}
 
 	@Mod.EventHandler
@@ -48,32 +56,55 @@ public class Crystek extends ModCL {
 	}
 
 	@Override
-	public String MOD_NAME() {
+	public String getModName() {
 		return MOD_NAME;
 	}
 
 	@Override
-	public String MOD_ID() {
+	public String getModID() {
 		return MOD_ID;
 	}
 
 	@Override
-	public String MOD_VERSION() {
+	public String getModVersion() {
 		return MOD_VERSION;
 	}
 
 	@Override
-	public String MOD_DEPENDENCIES() {
+	public String getModDependencies() {
 		return MOD_DEPENDENCIES;
 	}
 
 	@Override
-	public String SERVER_PROXY() {
+	public String getServerProxy() {
 		return SERVER_PROXY_CLASS;
 	}
 
 	@Override
-	public String CLIENT_PROXY() {
+	public String getClientProxy() {
 		return CLIENT_PROXY_CLASS;
+	}
+
+	@Override
+	public RegistryCL getItemRegistry() {
+		return ITEM_REGISTRY;
+	}
+
+	@Override
+	public ItemStack getTabStack() {
+		Random rand = new Random();
+		int number = rand.nextInt(6);
+		if (number == 1)
+			return CrystekItems.MATERIALS.getStack("blue_crystal");
+		else if (number == 2)
+			return CrystekItems.MATERIALS.getStack("purple_crystal");
+		else if (number == 3)
+			return CrystekItems.MATERIALS.getStack("red_crystal");
+		else if (number == 4)
+			return CrystekItems.MATERIALS.getStack("yellow_crystal");
+		else if (number == 5)
+			return CrystekItems.MATERIALS.getStack("green_crystal");
+		else
+			return CrystekItems.MATERIALS.getStack("crystal");
 	}
 }

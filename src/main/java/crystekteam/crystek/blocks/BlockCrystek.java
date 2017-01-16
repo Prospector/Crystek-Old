@@ -3,7 +3,6 @@ package crystekteam.crystek.blocks;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
-import crystekteam.crystek.tiles.TileCrystek;
 import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockDirectional;
@@ -34,7 +33,7 @@ public class BlockCrystek extends BlockContainer {
 
 	public BlockCrystek() {
 		super(Material.IRON);
-		setCreativeTab(Crystek.instance.getTab());
+		setCreativeTab(Crystek.MOD_CL.getTab());
 		setUnlocalizedName("machine");
 		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
 	}
@@ -53,7 +52,7 @@ public class BlockCrystek extends BlockContainer {
             }
             else
             {
-                playerIn.openGui(Crystek.instance, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+                playerIn.openGui(Crystek.MOD_CL, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return true;
             }
 		}
