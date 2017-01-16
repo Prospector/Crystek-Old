@@ -155,7 +155,7 @@ public class Machine
      * Inv
      */
     ItemStackHandler inv = new StackHandler(getInvSize());
-    int invSize = 1;
+    int invSize = 0;
 
     public boolean hasInv()
     {

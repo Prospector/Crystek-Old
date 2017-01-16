@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.machines.MachineGenerator;
 import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.tileentity.TileEntity;
@@ -18,16 +19,11 @@ public class MachinesInit
 
     public static void init()
     {
-        inittest();
-        for(Machine m : MACHINE_LIST)
-        {
-            TileEntity tileEntity = m.getTileEntity();
-            if(tileEntity != null)
-            {
-                GameRegistry.registerTileEntity(tileEntity.getClass(), m.getName() + "Tile");
-            }
-        }
+        registerMachine(new MachineGenerator());
+        registerMachine(new MachineFurnace());
+
         CrystekBlocks.init();
+        GameRegistry.registerTileEntity(TileMachine.class, "MachineTile");
     }
 
     public static void registerMachine(Machine machine)
@@ -38,10 +34,5 @@ public class MachinesInit
     public static List<Machine> getMachineList()
     {
         return MACHINE_LIST;
-    }
-
-    static void inittest()
-    {
-        registerMachine(new MachineGenerator());
     }
 }
