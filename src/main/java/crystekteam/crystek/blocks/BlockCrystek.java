@@ -57,7 +57,7 @@ public class BlockCrystek extends BlockContainer {
             }
             if(!playerIn.isSneaking())
             {
-                playerIn.openGui(Crystek.MOD_CL, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+                machine.openGui(playerIn);
 				return true;
             }
 		}

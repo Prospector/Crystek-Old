@@ -1,10 +1,14 @@
 package crystekteam.crystek.core;
 
+import crystekteam.crystek.Crystek;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
@@ -20,11 +24,6 @@ import java.util.List;
  */
 public class Machine
 {
-    @Deprecated
-    @Nullable GuiContainer guiContainer;
-    @Deprecated
-    @Nullable Container container;
-
     @Nullable int guiID;
     String name;
     @Nullable TileEntity tileEntity;
@@ -44,16 +43,6 @@ public class Machine
         return this.tileEntity;
     }
 
-    public GuiContainer getGuiContainer()
-    {
-        return this.guiContainer;
-    }
-
-    public Container getContainer()
-    {
-        return container;
-    }
-
     public int getGuiID()
     {
         return guiID;
@@ -64,18 +53,6 @@ public class Machine
         this.tileEntity = tileEntity;
     }
 
-    @Deprecated
-    public void setContainer(@Nullable Container container)
-    {
-        this.container = container;
-    }
-
-    @Deprecated
-    public void setGuiContainer(@Nullable GuiContainer guiContainer)
-    {
-        this.guiContainer = guiContainer;
-    }
-
     public void setGuiID(@Nullable int guiID)
     {
         this.guiID = guiID;
@@ -84,6 +61,21 @@ public class Machine
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public void openGui(EntityPlayer player)
+    {
+        player.openGui(Crystek.MOD_CL, getGuiID(), getWorld(), getPos().getX(), getPos().getY(), getPos().getZ());
+    }
+
+    public World getWorld()
+    {
+        return getTileEntity().getWorld();
+    }
+
+    public BlockPos getPos()
+    {
+        return getTileEntity().getPos();
     }
 
     /**
