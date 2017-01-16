@@ -35,22 +35,27 @@ public class BlockCrystek extends BlockContainer {
 		setCreativeTab(Crystek.MOD_CL.getTab());
 		setUnlocalizedName("machine");
 		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
+        setHardness(2.0F);
 	}
 
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
 		if (worldIn.getTileEntity(pos) != null)
         {
             TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
             Machine machine = tileMachine.getMachine();
-            if(playerIn.isSneaking() && !worldIn.isRemote)
+            if(playerIn.isSneaking() && worldIn.isRemote)
             {
-                playerIn.sendMessage(new TextComponentString("" + machine.getName()));
+                playerIn.sendMessage(new TextComponentString("Machine Name = " + machine.getName()));
                 playerIn.sendMessage(new TextComponentString("Has Inv = " + machine.hasInv()));
                 playerIn.sendMessage(new TextComponentString("Inv Size = " + machine.getInvSize()));
-				return true;
+                playerIn.sendMessage(new TextComponentString("Machine Class = " + tileMachine.getMachine().getClass().getName()));
+                playerIn.sendMessage(new TextComponentString("Slots = " + machine.getSlots().size()));
+                playerIn.sendMessage(new TextComponentString("Gui ID = " + machine.getGuiID()));
+                return true;
             }
-            else if(!playerIn.isSneaking())
+            if(!playerIn.isSneaking())
             {
                 playerIn.openGui(Crystek.MOD_CL, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return true;

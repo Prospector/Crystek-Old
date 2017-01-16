@@ -17,6 +17,7 @@ public class ContainerCrystek extends RebornContainer
 
     public ContainerCrystek(EntityPlayer player, Machine machine)
     {
+        super();
         this.machine = machine;
         IItemHandler inv = machine.getTileEntity().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         for(Slot s: machine.getSlots())
