@@ -2,6 +2,10 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.items.ItemMetadataCrystek;
 import crystekteam.crystek.items.misc.ItemCrystallineBonemeal;
+import crystekteam.crystek.items.misc.ItemGrindingBlade;
+import crystekteam.crystek.items.misc.ItemObsidianWrench;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import reborncore.modcl.ItemCL;
 import reborncore.modcl.ItemMetadataCL;
@@ -17,6 +21,12 @@ public class CrystekItems extends RegistryCL {
 
 	public static ItemMetadataCL MATERIALS;
 	public static ItemCL CRYSTALLINE_BONEMEAL;
+	public static ItemCL GOLD_GRINDING_BLADE;
+	public static ItemCL IRON_GRINDING_BLADE;
+	public static ItemCL DIAMOND_GRINDING_BLADE;
+	public static ItemCL OBSIDIAN_GRINDING_BLADE;
+	public static ItemCL CRYSTALLINE_GRINDING_BLADE;
+	public static ItemCL OBSIDIAN_WRENCH;
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
 
 	private static void addMaterial(String name, String... oreDictNames) {
@@ -32,6 +42,12 @@ public class CrystekItems extends RegistryCL {
 	public void init(ModCL mod) {
 		MATERIALS = new ItemMetadataCrystek("material");
 		CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
+		IRON_GRINDING_BLADE = new ItemGrindingBlade("iron", 2, 63, new ItemStack(Items.IRON_INGOT));
+		GOLD_GRINDING_BLADE = new ItemGrindingBlade("gold", 4, 31, new ItemStack(Items.GOLD_INGOT));
+		DIAMOND_GRINDING_BLADE = new ItemGrindingBlade("diamond", 3, 1023, new ItemStack(Items.DIAMOND));
+		OBSIDIAN_GRINDING_BLADE = new ItemGrindingBlade("obsidian", 1, -1, ItemStack.EMPTY);
+		CRYSTALLINE_GRINDING_BLADE = new ItemGrindingBlade("crystalline", 3, -1, ItemStack.EMPTY);
+		OBSIDIAN_WRENCH = new ItemObsidianWrench();
 
 		addMaterial("crystal", "crystalTesla");
 		addMaterial("blue_crystal", "crystalTeslaBlue");
@@ -56,8 +72,14 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
-		registry.put("material", MATERIALS);
-		registry.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
+		addToRegistry(MATERIALS);
+		addToRegistry(CRYSTALLINE_BONEMEAL);
+		addToRegistry(IRON_GRINDING_BLADE);
+		addToRegistry(GOLD_GRINDING_BLADE);
+		addToRegistry(DIAMOND_GRINDING_BLADE);
+		addToRegistry(OBSIDIAN_GRINDING_BLADE);
+		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
+		addToRegistry(OBSIDIAN_WRENCH);
 
 		for (ItemCL item : registry.values()) {
 			register(item);
@@ -66,7 +88,24 @@ public class CrystekItems extends RegistryCL {
 		for (String material : MATERIALS_DICT.keySet()) {
 			oreEntries.put(MATERIALS.getStack(material), MATERIALS_DICT.get(material));
 		}
+	}
 
+	private void addToRegistry(ItemCL item) {
+		addToRegistry(item.name.replaceFirst("^crystek:", ""), item);
+	}
+
+	private void addToRegistry(String name, ItemCL item) {
+		registry.put(name, item);
+	}
+
+	private void addToRegistry(ItemCL item, String... oreDictNames) {
+		addToRegistry(item.name.replaceFirst("^crystek:", ""), item, oreDictNames);
+	}
+
+	private void addToRegistry(String name, ItemCL item, String... oreDictNames) {
+		addToRegistry(name, item);
+		for (String oreName : oreDictNames)
+			MATERIALS_DICT.put(name, oreName);
 	}
 
 }
