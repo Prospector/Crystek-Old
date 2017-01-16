@@ -4,8 +4,6 @@ import crystekteam.crystek.container.ContainerCrystek;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import reborncore.client.guibuilder.GuiBuilder;
 
 /**
  * Created by Gigabit101 on 14/01/2017.

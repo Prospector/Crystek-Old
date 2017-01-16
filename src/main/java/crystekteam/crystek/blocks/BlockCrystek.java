@@ -5,7 +5,6 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;

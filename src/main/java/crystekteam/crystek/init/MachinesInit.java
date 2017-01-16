@@ -4,7 +4,6 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.machines.MachineGenerator;
 import crystekteam.crystek.tiles.TileMachine;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;

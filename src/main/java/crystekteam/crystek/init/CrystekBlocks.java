@@ -11,9 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class CrystekBlocks
 {
-    //TODO automate this
-    public static String[] names = new String[]{"TESTMACHINE1", "TESTMACHINE2", "TESTMACHINE3"};
-
     public static BlockCrystek blockCrystek;
 
     public static void init()

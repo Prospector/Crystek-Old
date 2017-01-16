@@ -1,7 +1,6 @@
 package crystekteam.crystek.container;
 
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.items.CapabilityItemHandler;
