@@ -72,6 +72,7 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
+		addToRegistry(OBSIDIAN_WRENCH);
 		addToRegistry(MATERIALS);
 		addToRegistry(CRYSTALLINE_BONEMEAL);
 		addToRegistry(IRON_GRINDING_BLADE);
@@ -79,7 +80,6 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(DIAMOND_GRINDING_BLADE);
 		addToRegistry(OBSIDIAN_GRINDING_BLADE);
 		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
-		addToRegistry(OBSIDIAN_WRENCH);
 
 		for (ItemCL item : registry.values()) {
 			register(item);
