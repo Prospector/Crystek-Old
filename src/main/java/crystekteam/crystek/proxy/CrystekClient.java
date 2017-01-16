@@ -72,14 +72,14 @@ public class CrystekClient extends CrystekServer {
 		//			registerItemModel(CrystekItems.MATERIALS, i, CrystekItems.MATERIALS.types.get(i));
 		//		}
 
-		for (Item item : Crystek.modcl.modelsToRegister) {
+		for (Item item : Crystek.MOD_CL.modelsToRegister) {
 			registerItemModel(item, 0);
 		}
 
-		for (ItemMetadataCL item : Crystek.modcl.customBlockStates.keySet()) {
+		for (ItemMetadataCL item : Crystek.MOD_CL.customBlockStates.keySet()) {
 			int i;
 			for (i = 0; i < CrystekItems.MATERIALS.types.size(); ++i) {
-				registerBlockstate(item, i, item.types.get(i), Crystek.modcl.customBlockStates.get(item));
+				registerBlockstate(item, i, item.types.get(i), Crystek.MOD_CL.customBlockStates.get(item));
 			}
 		}
 	}

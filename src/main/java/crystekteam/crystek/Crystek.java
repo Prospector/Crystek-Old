@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.modcl.ModCL;
+import reborncore.modcl.RegistryCL;
 
 import java.util.Random;
 
@@ -28,24 +29,25 @@ public class Crystek extends ModCL {
 	public static final String MOD_DEPENDENCIES = "required-after:reborncore;after:JEI@[4.0,);";
 	public static final String SERVER_PROXY_CLASS = "crystekteam.crystek.proxy.CrystekServer";
 	public static final String CLIENT_PROXY_CLASS = "crystekteam.crystek.proxy.CrystekClient";
+	public static RegistryCL ITEM_REGISTRY = new CrystekItems();
 
 	@Mod.Instance(MOD_ID)
-	public static Crystek modcl;
+	public static Crystek MOD_CL;
 	@SidedProxy(clientSide = CLIENT_PROXY_CLASS, serverSide = SERVER_PROXY_CLASS)
-	public static CrystekServer proxy;
+	public static CrystekServer PROXY;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		CrystekItems.init(modcl);
+		getItemRegistry().init(MOD_CL);
 		MachinesInit.init();
-		proxy.registerRenders();
+		PROXY.registerRenders();
 
 		CrystekOreDict.init();
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
-		NetworkRegistry.INSTANCE.registerGuiHandler(modcl, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(MOD_CL, new GuiHandler());
 	}
 
 	@Mod.EventHandler
@@ -54,36 +56,41 @@ public class Crystek extends ModCL {
 	}
 
 	@Override
-	public String MOD_NAME() {
+	public String getModName() {
 		return MOD_NAME;
 	}
 
 	@Override
-	public String MOD_ID() {
+	public String getModID() {
 		return MOD_ID;
 	}
 
 	@Override
-	public String MOD_VERSION() {
+	public String getModVersion() {
 		return MOD_VERSION;
 	}
 
 	@Override
-	public String MOD_DEPENDENCIES() {
+	public String getModDependencies() {
 		return MOD_DEPENDENCIES;
 	}
 
 	@Override
-	public String SERVER_PROXY() {
+	public String getServerProxy() {
 		return SERVER_PROXY_CLASS;
 	}
 
 	@Override
-	public String CLIENT_PROXY() {
+	public String getClientProxy() {
 		return CLIENT_PROXY_CLASS;
 	}
 
-/*	@Override
+	@Override
+	public RegistryCL getItemRegistry() {
+		return ITEM_REGISTRY;
+	}
+
+	@Override
 	public ItemStack getTabStack() {
 		Random rand = new Random();
 		int number = rand.nextInt(6);
@@ -99,5 +106,5 @@ public class Crystek extends ModCL {
 			return CrystekItems.MATERIALS.getStack("green_crystal");
 		else
 			return CrystekItems.MATERIALS.getStack("crystal");
-	}*/
+	}
 }

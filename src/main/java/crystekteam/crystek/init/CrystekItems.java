@@ -2,26 +2,37 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.items.ItemMetadataCrystek;
 import crystekteam.crystek.items.misc.ItemCrystallineBonemeal;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import reborncore.modcl.ItemCL;
 import reborncore.modcl.ItemMetadataCL;
 import reborncore.modcl.ModCL;
+import reborncore.modcl.RegistryCL;
 
 import java.util.HashMap;
 
 /**
  * Created by Prospector
  */
-public class CrystekItems {
+public class CrystekItems extends RegistryCL {
 
-	public static HashMap<ItemStack, String> ORE_DICT = new HashMap<>();
-	public static HashMap<String, ItemCL> REGISTRY = new HashMap<>();
-	public static ItemMetadataCL MATERIALS = new ItemMetadataCrystek("material");
-	public static ItemCL CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
+	public static ItemMetadataCL MATERIALS;
+	public static ItemCL CRYSTALLINE_BONEMEAL;
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
 
-	public static void init(ModCL mod) {
+	private static void addMaterial(String name, String... oreDictNames) {
+		MATERIALS.types.add(name);
+		for (String oreName : oreDictNames)
+			MATERIALS_DICT.put(name, oreName);
+	}
+
+	private static void register(ItemCL item) {
+		GameRegistry.register(item);
+	}
+
+	public void init(ModCL mod) {
+		MATERIALS = new ItemMetadataCrystek("material");
+		CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
+
 		addMaterial("crystal", "crystalTesla");
 		addMaterial("blue_crystal", "crystalTeslaBlue");
 		addMaterial("purple_crystal", "crystalTeslaPurple");
@@ -45,27 +56,17 @@ public class CrystekItems {
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
-		REGISTRY.put("material", MATERIALS);
-		REGISTRY.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
+		registry.put("material", MATERIALS);
+		registry.put("crystalline_bonemeal", CRYSTALLINE_BONEMEAL);
 
-		for (ItemCL item : REGISTRY.values()) {
+		for (ItemCL item : registry.values()) {
 			register(item);
 		}
 
 		for (String material : MATERIALS_DICT.keySet()) {
-			//			ORE_DICT.put(MATERIALS.getStack(material), MATERIALS_DICT.get(material));
+			oreEntries.put(MATERIALS.getStack(material), MATERIALS_DICT.get(material));
 		}
 
-	}
-
-	private static void addMaterial(String name, String... oreDictNames) {
-		MATERIALS.types.add(name);
-		for (String oreName : oreDictNames)
-			MATERIALS_DICT.put(name, oreName);
-	}
-
-	private static void register(ItemCL item) {
-		GameRegistry.register(item);
 	}
 
 }

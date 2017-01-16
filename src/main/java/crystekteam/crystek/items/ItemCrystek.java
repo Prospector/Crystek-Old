@@ -9,6 +9,6 @@ import reborncore.modcl.ItemCL;
 public class ItemCrystek extends ItemCL {
 
 	public ItemCrystek(String name) {
-		super(Crystek.modcl, name);
+		super(Crystek.MOD_CL, name);
 	}
 }
