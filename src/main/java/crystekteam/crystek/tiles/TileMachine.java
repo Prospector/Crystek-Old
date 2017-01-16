@@ -2,10 +2,16 @@ package crystekteam.crystek.tiles;
 
 import crystekteam.crystek.core.Machine;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
-import net.minecraftforge.items.ItemStackHandler;
-import reborncore.common.util.Tank;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by Gigabit101 on 15/01/2017.
@@ -13,9 +19,6 @@ import reborncore.common.util.Tank;
 public class TileMachine extends TileEntity implements ITickable
 {
     Machine machine;
-    //TODO
-    ItemStackHandler inv = new StackHandler(0);
-    Tank tank = new Tank("", 0, this);
 
     public TileMachine(Machine machine)
     {
@@ -51,12 +54,33 @@ public class TileMachine extends TileEntity implements ITickable
         machine.readFromNBT(compound);
     }
 
-    //TODO move
-    class StackHandler extends ItemStackHandler
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> cap, @Nonnull EnumFacing side)
     {
-        StackHandler(int size)
+        return machine.hasInv() && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(cap, side);
+    }
+
+    @Nonnull
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> cap, @Nonnull EnumFacing side)
+    {
+        if (machine.hasInv() && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
         {
-            super(size);
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(machine.getInv());
         }
+        return super.getCapability(cap, side);
+    }
+
+    @Nullable
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket()
+    {
+        return new SPacketUpdateTileEntity(getPos(), getBlockMetadata(), writeToNBT(new NBTTagCompound()));
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
+    {
+        readFromNBT(packet.getNbtCompound());
     }
 }

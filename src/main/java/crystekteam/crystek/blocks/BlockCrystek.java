@@ -40,17 +40,18 @@ public class BlockCrystek extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        //TODO this is being called twice for some reason....
-		if (worldIn.getTileEntity(pos) != null && !worldIn.isRemote)
+		if (worldIn.getTileEntity(pos) != null)
         {
             TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
             Machine machine = tileMachine.getMachine();
-            if(playerIn.isSneaking())
+            if(playerIn.isSneaking() && !worldIn.isRemote)
             {
                 playerIn.sendMessage(new TextComponentString("" + machine.getName()));
+                playerIn.sendMessage(new TextComponentString("Has Inv = " + machine.hasInv()));
+                playerIn.sendMessage(new TextComponentString("Inv Size = " + machine.getInvSize()));
 				return true;
             }
-            else
+            else if(!playerIn.isSneaking())
             {
                 playerIn.openGui(Crystek.MOD_CL, machine.getGuiID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 				return true;

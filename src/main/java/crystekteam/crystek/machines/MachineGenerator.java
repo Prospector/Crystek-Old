@@ -1,8 +1,6 @@
 package crystekteam.crystek.machines;
 
-import crystekteam.crystek.container.ContainerCrystek;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.guis.GuiCrystek;
 import crystekteam.crystek.tiles.TileMachine;
 
 /**
@@ -13,10 +11,16 @@ public class MachineGenerator extends Machine
     public MachineGenerator()
     {
         super("coalgenerator");
-//        setContainer(new ContainerCrystek(this));
-//        setGuiContainer(new GuiCrystek(getContainer()));
         setGuiID(0);
         setTileEntity(new TileMachine(this));
+        setInvSize(1);
+        addSlotToContainer(getInv(), 0, 80, 50);
+    }
+
+    @Override
+    public int getInvSize()
+    {
+        return 1;
     }
 
     @Override
