@@ -31,6 +31,12 @@ public class MachineGenerator extends Machine
         return "coalgenerator";
     }
 
+    @Override
+    public int getTankSize()
+    {
+        return 0;
+    }
+
     @Nullable
     @Override
     public List<Slot> getSlots()

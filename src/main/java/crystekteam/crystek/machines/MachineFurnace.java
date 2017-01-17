@@ -34,6 +34,12 @@ public class MachineFurnace extends Machine
         return "furnace";
     }
 
+    @Override
+    public int getTankSize()
+    {
+        return 0;
+    }
+
     @Nullable
     @Override
     public List<Slot> getSlots()

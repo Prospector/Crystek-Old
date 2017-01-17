@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import reborncore.client.guibuilder.GuiBuilder;
+import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -53,6 +54,27 @@ public abstract class Machine extends TileEntity implements ITickable
     }
 
     /**
+     * Tank
+     */
+    public Tank tank = new Tank(getName(), getTankSize(), this);
+
+    public abstract int getTankSize();
+
+    public Tank getTank()
+    {
+        return tank;
+    }
+
+    public boolean hasTank()
+    {
+        if(getTank().getCapacity() != 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * NBT
      */
     @Override
@@ -62,6 +84,12 @@ public abstract class Machine extends TileEntity implements ITickable
         {
             compound = super.writeToNBT(compound);
             compound.merge(inv.serializeNBT());
+            return compound;
+        }
+        if(hasTank())
+        {
+            compound = super.writeToNBT(compound);
+            tank.writeToNBT(compound);
             return compound;
         }
         return super.writeToNBT(compound);
@@ -74,6 +102,10 @@ public abstract class Machine extends TileEntity implements ITickable
         if(hasInv())
         {
             inv.deserializeNBT(compound);
+        }
+        if(hasTank())
+        {
+            tank.readFromNBT(compound);
         }
     }
 
@@ -99,15 +131,6 @@ public abstract class Machine extends TileEntity implements ITickable
     /**
      * Container
      */
-//    public Slot addSlotToContainer(int ID, int x, int y)
-//    {
-//        Slot s = new SlotItemHandler(null, ID, x, y);
-//        if(!getSlots().contains(s))
-//        {
-//            getSlots().add(s);
-//        }
-//        return s;
-//    }
 
     @Nullable
     public abstract List<Slot> getSlots();
