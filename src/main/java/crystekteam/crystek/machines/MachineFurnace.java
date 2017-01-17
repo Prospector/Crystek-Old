@@ -14,11 +14,11 @@ public class MachineFurnace extends Machine
     public MachineFurnace()
     {
         super("furnace");
-        setGuiID(1);
-        setTileEntity(new TileMachine(this));
-        setInvSize(2);
-        addSlotToContainer(getInv(), 0, 50, 35);
-        addSlotToContainer(getInv(), 1, 105, 35);
+        this.setGuiID(1);
+        this.setInvSize(2);
+        this.addSlotToContainer(0, 50, 35);
+        this.addSlotToContainer(1, 105, 35);
+        this.setTankSize(1000);
     }
 
     @Override

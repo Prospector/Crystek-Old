@@ -3,6 +3,7 @@ package crystekteam.crystek.blocks;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
+import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -10,6 +11,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,6 +23,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import org.lwjgl.Sys;
 
 import javax.annotation.Nullable;
 
@@ -28,13 +31,15 @@ import javax.annotation.Nullable;
  * Created by Gigabit101 on 06/12/2016.
  */
 public class BlockCrystek extends BlockContainer {
-	public PropertyInteger METADATA;
+//	public PropertyInteger METADATA;
+    static Machine machine;
 
-	public BlockCrystek() {
+	public BlockCrystek(Machine machine) {
 		super(Material.IRON);
 		setCreativeTab(Crystek.MOD_CL.getTab());
-		setUnlocalizedName("machine");
-		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
+		setUnlocalizedName(machine.getName());
+        this.machine = machine;
+//		this.setDefaultState(this.getDefaultState().withProperty(METADATA, 0));
         setHardness(2.0F);
 	}
 
@@ -44,50 +49,27 @@ public class BlockCrystek extends BlockContainer {
 		if (worldIn.getTileEntity(pos) != null)
         {
             TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
-            Machine machine = tileMachine.getMachine();
-            if(playerIn.isSneaking() && worldIn.isRemote)
-            {
-                playerIn.sendMessage(new TextComponentString("Machine Name = " + machine.getName()));
-                playerIn.sendMessage(new TextComponentString("Has Inv = " + machine.hasInv()));
-                playerIn.sendMessage(new TextComponentString("Inv Size = " + machine.getInvSize()));
-                playerIn.sendMessage(new TextComponentString("Machine Class = " + tileMachine.getMachine().getClass().getName()));
-                playerIn.sendMessage(new TextComponentString("Slots = " + machine.getSlots().size()));
-                playerIn.sendMessage(new TextComponentString("Gui ID = " + machine.getGuiID()));
-                return true;
-            }
+            Machine machine = tileMachine.getMachine(tileMachine);
             if(!playerIn.isSneaking())
             {
-                machine.openGui(playerIn);
+                try
+                {
+                    machine.openGui(playerIn, tileMachine);
+                }
+                catch (Exception e)
+                {
+                    System.out.print(e);
+                }
 				return true;
             }
 		}
 		return false;
 	}
 
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		if (meta > MachinesInit.getMachineList().size()) {
-			meta = 0;
-		}
-		return this.getDefaultState().withProperty(METADATA, meta);
-	}
-
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, NonNullList<ItemStack> list) {
-		for (int meta = 0; meta < MachinesInit.getMachineList().size(); meta++) {
-			list.add(new ItemStack(item, 1, meta));
-		}
-	}
-
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return state.getValue(METADATA);
-	}
-
-	protected BlockStateContainer createBlockState() {
-		METADATA = PropertyInteger.create("type", 0, MachinesInit.getMachineList().size());
-		return new BlockStateContainer(this, METADATA);
-	}
+    public static Machine getMachine()
+    {
+        return machine;
+    }
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
@@ -99,10 +81,8 @@ public class BlockCrystek extends BlockContainer {
     @Override
     public TileEntity createNewTileEntity(World world, int meta)
     {
-        if (MachinesInit.getMachineList().get(meta).getTileEntity() != null) {
-            return MachinesInit.getMachineList().get(meta).getTileEntity();
-        }
-        return null;
+//        Machine machine = MachinesInit.getMachineList().get(meta);
+        return new TileMachine(new MachineFurnace());
     }
 
     @Override

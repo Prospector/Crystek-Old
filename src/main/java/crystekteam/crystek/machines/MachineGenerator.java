@@ -2,6 +2,8 @@ package crystekteam.crystek.machines;
 
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.tiles.TileMachine;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Created by Gigabit101 on 14/01/2017.
@@ -12,9 +14,8 @@ public class MachineGenerator extends Machine
     {
         super("coalgenerator");
         setGuiID(0);
-        setTileEntity(new TileMachine(this));
         setInvSize(1);
-        addSlotToContainer(getInv(), 0, 80, 50);
+        addSlotToContainer(0, 80, 50);
     }
 
     @Override

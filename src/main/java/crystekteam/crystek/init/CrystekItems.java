@@ -1,5 +1,6 @@
 package crystekteam.crystek.init;
 
+import crystekteam.crystek.core.ItemMachineDebug;
 import crystekteam.crystek.items.ItemMetadataCrystek;
 import crystekteam.crystek.items.misc.ItemCrystallineBonemeal;
 import crystekteam.crystek.items.misc.ItemGrindingBlade;
@@ -27,6 +28,7 @@ public class CrystekItems extends RegistryCL {
 	public static ItemCL OBSIDIAN_GRINDING_BLADE;
 	public static ItemCL CRYSTALLINE_GRINDING_BLADE;
 	public static ItemCL OBSIDIAN_WRENCH;
+	public static ItemCL MACHINE_DEBUG;
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
 
 	private static void addMaterial(String name, String... oreDictNames) {
@@ -48,6 +50,7 @@ public class CrystekItems extends RegistryCL {
 		OBSIDIAN_GRINDING_BLADE = new ItemGrindingBlade("obsidian", 1, -1, ItemStack.EMPTY);
 		CRYSTALLINE_GRINDING_BLADE = new ItemGrindingBlade("crystalline", 3, -1, ItemStack.EMPTY);
 		OBSIDIAN_WRENCH = new ItemObsidianWrench();
+        MACHINE_DEBUG = new ItemMachineDebug();
 
 		addMaterial("crystal", "crystalTesla");
 		addMaterial("blue_crystal", "crystalTeslaBlue");
@@ -80,6 +83,7 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(OBSIDIAN_GRINDING_BLADE);
 		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
 		addToRegistry(OBSIDIAN_WRENCH);
+        addToRegistry(MACHINE_DEBUG);
 
 		for (ItemCL item : registry.values()) {
 			register(item);

@@ -1,16 +1,12 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import reborncore.client.guibuilder.GuiBuilder;
 
@@ -25,7 +21,6 @@ public class Machine
 {
     @Nullable int guiID;
     String name;
-    @Nullable TileEntity tileEntity;
 
     public Machine(String name)
     {
@@ -37,19 +32,9 @@ public class Machine
         return this.name;
     }
 
-    public TileEntity getTileEntity()
-    {
-        return this.tileEntity;
-    }
-
     public int getGuiID()
     {
         return guiID;
-    }
-
-    public void setTileEntity(@Nullable TileEntity tileEntity)
-    {
-        this.tileEntity = tileEntity;
     }
 
     public void setGuiID(@Nullable int guiID)
@@ -62,42 +47,15 @@ public class Machine
         this.name = name;
     }
 
-    public void openGui(EntityPlayer player)
+    public void openGui(EntityPlayer player, TileMachine tile)
     {
-        player.openGui(Crystek.MOD_CL, getGuiID(), getWorld(), getPos().getX(), getPos().getY(), getPos().getZ());
-    }
-
-    public World getWorld()
-    {
-        return getTileEntity().getWorld();
-    }
-
-    public BlockPos getPos()
-    {
-        return getTileEntity().getPos();
+        player.openGui(Crystek.MOD_CL, tile.getMachine(tile).getGuiID(), tile.getWorld(), tile.getPos().getX(), tile.getPos().getY(), tile.getPos().getZ());
     }
 
     /**
      * TILE
      */
     public void update(){}
-
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
-        if(hasInv())
-        {
-            compound.merge(inv.serializeNBT());
-        }
-        return compound;
-    }
-
-    public void readFromNBT(NBTTagCompound compound)
-    {
-        if(hasInv())
-        {
-            inv.deserializeNBT(compound);
-        }
-    }
 
     /**
      * GUI
@@ -129,9 +87,9 @@ public class Machine
      */
     public List<Slot> slots = new ArrayList<Slot>();
 
-    public Slot addSlotToContainer(ItemStackHandler inv, int ID, int x, int y)
+    public Slot addSlotToContainer(int ID, int x, int y)
     {
-        Slot s = new SlotItemHandler(inv, ID, x, y);
+        Slot s = new SlotItemHandler(null, ID, x, y);
         if(!getSlots().contains(s))
         {
             getSlots().add(s);
@@ -147,30 +105,7 @@ public class Machine
     /**
      * Inv
      */
-    ItemStackHandler inv = new StackHandler(getInvSize());
     int invSize = 0;
-
-    public boolean hasInv()
-    {
-        if(getInvSize() != 0)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public ItemStackHandler getInv()
-    {
-        return inv;
-    }
-
-    class StackHandler extends ItemStackHandler
-    {
-        StackHandler(int size)
-        {
-            super(size);
-        }
-    }
 
     public int getInvSize()
     {
@@ -186,7 +121,17 @@ public class Machine
      * Tank
      */
 
+    int tankSize = 0;
 
+    public int getTankSize()
+    {
+        return tankSize;
+    }
+
+    public void setTankSize(int tankSize)
+    {
+        this.tankSize = tankSize;
+    }
 
     /**
      * Power

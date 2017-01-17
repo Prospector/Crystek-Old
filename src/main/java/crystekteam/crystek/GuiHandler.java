@@ -22,9 +22,9 @@ public class GuiHandler implements IGuiHandler
         if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
             TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getMachine().getGuiID() == ID)
+            if(tileCrystek.getMachine(tileCrystek).getGuiID() == ID)
             {
-                return new ContainerCrystek(player, tileCrystek.getMachine());
+                return new ContainerCrystek(player, tileCrystek);
             }
         }
         return null;
@@ -37,9 +37,9 @@ public class GuiHandler implements IGuiHandler
         if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
         {
             TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getMachine().getGuiID() == ID)
+            if(tileCrystek.getMachine(tileCrystek).getGuiID() == ID)
             {
-                return new GuiCrystek(player, tileCrystek.getMachine());
+                return new GuiCrystek(player, tileCrystek);
             }
         }
         return null;

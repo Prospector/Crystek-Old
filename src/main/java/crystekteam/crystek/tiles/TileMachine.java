@@ -8,7 +8,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import reborncore.common.util.Tank;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,54 +22,95 @@ import javax.annotation.Nullable;
 public class TileMachine extends TileEntity implements ITickable
 {
     Machine machine;
+    ItemStackHandler inv = new StackHandler();
+    Tank tank = new Tank("", 0, this);
 
     public TileMachine(Machine machine)
     {
         this.machine = machine;
+        this.inv.setSize(machine.getInvSize());
+        this.tank.setCapacity(machine.getTankSize());
     }
 
-    public void setMachine(Machine machine)
+    public TileMachine(){}
+
+    public ItemStackHandler getInv()
     {
-        this.machine = machine;
+        return inv;
+    }
+
+    public Tank getTank()
+    {
+        return tank;
+    }
+
+    public boolean hasMachine(TileMachine tileMachine)
+    {
+        if(tileMachine.getMachine(tileMachine) != null)
+        {
+            return true;
+        }
+        return false;
     }
 
     @Override
     public void update()
     {
-        machine.update();
+        this.machine.update();
     }
 
-    public Machine getMachine()
+    @Nullable
+    public Machine getMachine(TileMachine tileMachine)
     {
-        return machine;
+        return tileMachine.machine;
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        machine.writeToNBT(compound);
+        compound = super.writeToNBT(compound);
+        compound.merge(getInv().serializeNBT());
+        compound.setInteger("machineInvSize", getInv().getSlots());
+        tank.writeToNBT(compound);
+        System.out.print("---------------Write to NBT----------");
         return compound;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
-        machine.readFromNBT(compound);
+        super.readFromNBT(compound);
+        this.inv.setSize(compound.getInteger("machineInvSize"));
+        tank.readFromNBT(compound);
+        getInv().deserializeNBT(compound);
+        System.out.print("---------------Read from NBT----------");
     }
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> cap, @Nonnull EnumFacing side)
     {
-        return machine.hasInv() && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(cap, side);
+        if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY )
+        {
+            return true;
+        }
+        if(cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return true;
+        }
+        return super.hasCapability(cap, side);
     }
 
     @Nonnull
     @Override
     public <T> T getCapability(@Nonnull Capability<T> cap, @Nonnull EnumFacing side)
     {
-        if (machine.hasInv() && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
         {
-            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(machine.getInv());
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
+        }
+        if (cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
         }
         return super.getCapability(cap, side);
     }
@@ -82,5 +126,13 @@ public class TileMachine extends TileEntity implements ITickable
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet)
     {
         readFromNBT(packet.getNbtCompound());
+    }
+
+    class StackHandler extends ItemStackHandler
+    {
+        StackHandler()
+        {
+            super(1);
+        }
     }
 }
