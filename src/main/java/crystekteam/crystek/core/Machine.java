@@ -6,9 +6,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import reborncore.client.guibuilder.GuiBuilder;
@@ -143,4 +147,36 @@ public abstract class Machine extends TileEntity implements ITickable
      */
     @Override
     public void update() {}
+
+    /**
+     * Capability
+     */
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
+    {
+        if(hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        {
+            return true;
+        }
+        if(hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
+    }
+
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
+    {
+        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        {
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
+        }
+        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
+        }
+        return super.getCapability(capability, facing);
+    }
 }
