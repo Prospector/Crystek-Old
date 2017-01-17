@@ -1,9 +1,7 @@
 package crystekteam.crystek.guis;
 
 import crystekteam.crystek.container.ContainerCrystek;
-import crystekteam.crystek.container.ContainerDummy;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -12,10 +10,10 @@ import net.minecraft.entity.player.EntityPlayer;
  */
 public class GuiCrystek extends GuiContainer
 {
-    public TileMachine machine;
+    public Machine machine;
     public EntityPlayer player;
 
-    public GuiCrystek(EntityPlayer player, TileMachine machine)
+    public GuiCrystek(EntityPlayer player, Machine machine)
     {
         super(new ContainerCrystek(player, machine));
         this.machine = machine;
@@ -25,12 +23,12 @@ public class GuiCrystek extends GuiContainer
     @Override
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
-        machine.getMachine(machine).drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY, guiLeft, guiTop, xSize, ySize, this);
+        machine.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY, guiLeft, guiTop, xSize, ySize, this);
     }
 
     @Override
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
-        machine.getMachine(machine).drawGuiContainerForegroundLayer(mouseX, mouseY, this);
+        machine.drawGuiContainerForegroundLayer(mouseX, mouseY, this);
     }
 }

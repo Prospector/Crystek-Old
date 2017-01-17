@@ -1,8 +1,5 @@
 package crystekteam.crystek.init;
 
-import crystekteam.crystek.blocks.BlockCrystek;
-import crystekteam.crystek.blocks.ItemBlockMachine;
-import crystekteam.crystek.machines.MachineFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -12,13 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class CrystekBlocks
 {
-    public static BlockCrystek blockCrystek;
-
-    public static void init()
-    {
-        blockCrystek = new BlockCrystek(new MachineFurnace());
-        registerBlock(blockCrystek, ItemBlockMachine.class, "machine");
-    }
+    public static void init() {}
 
     public static void registerBlock(Block block, String name)
     {

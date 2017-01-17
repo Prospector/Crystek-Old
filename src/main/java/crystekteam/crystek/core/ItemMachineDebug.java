@@ -1,7 +1,6 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.items.ItemCrystek;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -24,15 +23,13 @@ public class ItemMachineDebug extends ItemCrystek
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if(worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof TileMachine && !worldIn.isRemote)
+        if(worldIn.getTileEntity(pos) != null && worldIn.getTileEntity(pos) instanceof Machine && !worldIn.isRemote)
         {
-            TileMachine tileMachine = (TileMachine) worldIn.getTileEntity(pos);
-            Machine machine = tileMachine.getMachine(tileMachine);
+            Machine machine = (Machine) worldIn.getTileEntity(pos);
 
-            player.sendMessage(new TextComponentString("Machine Name = " + tileMachine.getDisplayName()));
-            player.sendMessage(new TextComponentString("Inv Size = " + tileMachine.getInv().getSlots()));
-            player.sendMessage(new TextComponentString("Machine Class = " + tileMachine.getMachine(tileMachine).getClass().getName()));
-            player.sendMessage(new TextComponentString("Gui ID = " + machine.getGuiID()));
+            player.sendMessage(new TextComponentString("Machine Name = " + machine.getName()));
+            player.sendMessage(new TextComponentString("Inv Size = " + machine.getInv().getSlots()));
+            player.sendMessage(new TextComponentString("Gui ID = " + machine.guiID()));
             return EnumActionResult.SUCCESS;
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);

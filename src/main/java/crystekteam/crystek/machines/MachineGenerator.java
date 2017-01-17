@@ -1,32 +1,42 @@
 package crystekteam.crystek.machines;
 
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileMachine;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.inventory.Slot;
+import net.minecraftforge.items.SlotItemHandler;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gigabit101 on 14/01/2017.
  */
 public class MachineGenerator extends Machine
 {
-    public MachineGenerator()
-    {
-        super("coalgenerator");
-        setGuiID(0);
-        setInvSize(1);
-        addSlotToContainer(0, 80, 50);
-    }
-
     @Override
-    public int getInvSize()
+    public int invSize()
     {
         return 1;
     }
 
     @Override
-    public void update()
+    public int guiID()
     {
-        super.update();
+        return 1;
+    }
+
+    @Override
+    public String getName()
+    {
+        return "coalgenerator";
+    }
+
+    @Nullable
+    @Override
+    public List<Slot> getSlots()
+    {
+        List<Slot> slots = new ArrayList<Slot>();
+        slots.add(new SlotItemHandler(null, 0, 80, 50));
+        return slots;
     }
 }

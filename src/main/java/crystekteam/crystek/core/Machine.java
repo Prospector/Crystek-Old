@@ -1,12 +1,15 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import reborncore.client.guibuilder.GuiBuilder;
 
@@ -15,47 +18,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gigabit101 on 06/12/2016.
+ * Created by Gigabit101 on 17/01/2017.
  */
-public class Machine
+public abstract class Machine extends TileEntity implements ITickable
 {
-    @Nullable int guiID;
-    String name;
+    /**
+     * Inv
+     */
+    public ItemStackHandler inv = new ItemStackHandler(invSize());
 
-    public Machine(String name)
+    public abstract int invSize();
+
+    public abstract int guiID();
+
+    public abstract String getName();
+
+    public boolean hasInv()
     {
-        this.name = name;
+        if(invSize() != 0)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public String getName()
+    public ItemStackHandler getInv()
     {
-        return this.name;
+        return inv;
     }
 
-    public int getGuiID()
+    public void openGui(EntityPlayer player, Machine machine)
     {
-        return guiID;
-    }
-
-    public void setGuiID(@Nullable int guiID)
-    {
-        this.guiID = guiID;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public void openGui(EntityPlayer player, TileMachine tile)
-    {
-        player.openGui(Crystek.MOD_CL, tile.getMachine(tile).getGuiID(), tile.getWorld(), tile.getPos().getX(), tile.getPos().getY(), tile.getPos().getZ());
+        player.openGui(Crystek.MOD_CL, machine.guiID(), machine.world, machine.pos.getX(), machine.pos.getY(), machine.pos.getZ());
     }
 
     /**
-     * TILE
+     * NBT
      */
-    public void update(){}
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        if(hasInv())
+        {
+            compound = super.writeToNBT(compound);
+            compound.merge(inv.serializeNBT());
+            return compound;
+        }
+        return super.writeToNBT(compound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound)
+    {
+        super.readFromNBT(compound);
+        if(hasInv())
+        {
+            inv.deserializeNBT(compound);
+        }
+    }
 
     /**
      * GUI
@@ -76,64 +96,28 @@ public class Machine
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui)
-    {
-
-    }
-
     /**
      * Container
      */
-    public List<Slot> slots = new ArrayList<Slot>();
+//    public Slot addSlotToContainer(int ID, int x, int y)
+//    {
+//        Slot s = new SlotItemHandler(null, ID, x, y);
+//        if(!getSlots().contains(s))
+//        {
+//            getSlots().add(s);
+//        }
+//        return s;
+//    }
 
-    public Slot addSlotToContainer(int ID, int x, int y)
-    {
-        Slot s = new SlotItemHandler(null, ID, x, y);
-        if(!getSlots().contains(s))
-        {
-            getSlots().add(s);
-        }
-        return s;
-    }
+    @Nullable
+    public abstract List<Slot> getSlots();
 
-    public List<Slot> getSlots()
-    {
-        return slots;
-    }
-
-    /**
-     * Inv
-     */
-    int invSize = 0;
-
-    public int getInvSize()
-    {
-        return invSize;
-    }
-
-    public void setInvSize(int invSize)
-    {
-        this.invSize = invSize;
-    }
+    @SideOnly(Side.CLIENT)
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui) {}
 
     /**
-     * Tank
+     * Tile
      */
-
-    int tankSize = 0;
-
-    public int getTankSize()
-    {
-        return tankSize;
-    }
-
-    public void setTankSize(int tankSize)
-    {
-        this.tankSize = tankSize;
-    }
-
-    /**
-     * Power
-     */
+    @Override
+    public void update() {}
 }

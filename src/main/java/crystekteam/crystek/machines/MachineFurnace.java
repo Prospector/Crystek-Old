@@ -1,30 +1,47 @@
 package crystekteam.crystek.machines;
 
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.inventory.Slot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.SlotItemHandler;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gigabit101 on 16/01/2017.
  */
 public class MachineFurnace extends Machine
 {
-    public MachineFurnace()
+    @Override
+    public int invSize()
     {
-        super("furnace");
-        this.setGuiID(1);
-        this.setInvSize(2);
-        this.addSlotToContainer(0, 50, 35);
-        this.addSlotToContainer(1, 105, 35);
-        this.setTankSize(1000);
+        return 2;
     }
 
     @Override
-    public int getInvSize()
+    public int guiID()
     {
-        return 2;
+        return 0;
+    }
+
+    @Override
+    public String getName()
+    {
+        return "furnace";
+    }
+
+    @Nullable
+    @Override
+    public List<Slot> getSlots()
+    {
+        List<Slot> slots = new ArrayList<Slot>();
+        slots.add(new SlotItemHandler(null, 0, 50, 35));
+        slots.add(new SlotItemHandler(null, 1, 105, 35));
+        return slots;
     }
 
     @Override @SideOnly(Side.CLIENT)

@@ -1,6 +1,6 @@
 package crystekteam.crystek.container;
 
-import crystekteam.crystek.tiles.TileMachine;
+import crystekteam.crystek.core.Machine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.items.SlotItemHandler;
@@ -11,13 +11,13 @@ import reborncore.common.container.RebornContainer;
  */
 public class ContainerCrystek extends RebornContainer
 {
-    public TileMachine machine;
+    public Machine machine;
 
-    public ContainerCrystek(EntityPlayer player, TileMachine machine)
+    public ContainerCrystek(EntityPlayer player, Machine machine)
     {
         super();
         this.machine = machine;
-        for (Slot s : machine.getMachine(machine).getSlots())
+        for (Slot s : machine.getSlots())
         {
             addSlotToContainer(new SlotItemHandler(machine.getInv(), s.getSlotIndex(), s.xPos, s.yPos));
         }
