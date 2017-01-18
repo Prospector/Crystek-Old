@@ -2,11 +2,15 @@ package crystekteam.crystek.machines;
 
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nullable;
@@ -60,7 +64,7 @@ public class MachineGenerator extends Machine
     @Override
     public long maxInput()
     {
-        return 0;
+        return 100;
     }
 
     @Override
@@ -84,11 +88,10 @@ public class MachineGenerator extends Machine
     @Override
     public void update()
     {
-        int fuelSlot = 0;
-//        if(getInv().getStackInSlot(fuelSlot) != ItemStack.EMPTY && getItemBurnTime(getInv().getStackInSlot(fuelSlot)) < 0)
-//        {
-            getTeslaContainer().givePower(100, false);
-//        }
+        if(getInv().getStackInSlot(0) != ItemStack.EMPTY)
+        {
+            getTeslaContainer().givePower(maxInput(), false);
+        }
     }
 
     public static int getItemBurnTime(ItemStack stack)

@@ -224,7 +224,7 @@ public abstract class Machine extends TileEntity implements ITickable
         {
             return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
         }
-        if(teslaType() != EnumTeslaType.NULL && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER)
+        if(teslaType() != EnumTeslaType.NULL)// && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER)
         {
             return (T) getTeslaContainer();
         }

@@ -1,5 +1,6 @@
 package crystekteam.crystek;
 
+import crystekteam.crystek.configs.ConfigCrystek;
 import crystekteam.crystek.event.CrystekEventHandler;
 import crystekteam.crystek.init.CrystekItems;
 import crystekteam.crystek.init.CrystekOreDict;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import reborncore.modcl.ModCL;
 import reborncore.modcl.RegistryCL;
 
+import java.io.File;
 import java.util.Random;
 
 /**
@@ -38,12 +40,15 @@ public class Crystek extends ModCL {
 	public static Crystek MOD_CL;
 	@SidedProxy(clientSide = CLIENT_PROXY_CLASS, serverSide = SERVER_PROXY_CLASS)
 	public static CrystekServer PROXY;
+	public static ConfigCrystek config;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		getItemRegistry().init(MOD_CL);
 		MachinesInit.init();
 		PROXY.registerRenders();
+        String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(MOD_ID, "Crystek");
+        config = ConfigCrystek.initialize(new File(path));
 
 		CrystekOreDict.init();
 	}

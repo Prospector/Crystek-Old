@@ -2,6 +2,7 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.blocks.BlockCrystek;
+import crystekteam.crystek.configs.ConfigRegistry;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.MachineCreativeTeslaCell;
 import crystekteam.crystek.machines.MachineFurnace;
@@ -30,6 +31,7 @@ public class MachinesInit {
 		registerMachine(new MachineCreativeTeslaCell());
 		for (Machine m : MACHINE_LIST) {
 			registerBlock(new BlockCrystek(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());
+			ConfigRegistry.registerNewMachineConfig(m);
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());
 		}
 	}

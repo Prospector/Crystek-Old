@@ -103,7 +103,7 @@ public class CrystekItems extends RegistryCL {
 	}
 
 	private void addToRegistry(String name, ItemCL item) {
-//		registry.put(name, item);
+		registry.put(name, item);
 	}
 
 	private void addToRegistry(ItemCL item, String... oreDictNames) {
