@@ -58,7 +58,7 @@ public class MachineFurnace extends Machine
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop)
     {
         builder.drawProgressBar(gui, 0, 75, 35);
-        builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getCapacity() / 2, (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
+        builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
     }
 
     @Override

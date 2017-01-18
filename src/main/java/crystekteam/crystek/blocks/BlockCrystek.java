@@ -2,6 +2,7 @@ package crystekteam.crystek.blocks;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.machines.MachineCreativeTeslaCell;
 import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.machines.MachineGenerator;
 import crystekteam.crystek.machines.MachineTank;
@@ -75,6 +76,10 @@ public class BlockCrystek extends BlockContainer {
         if(machine instanceof MachineTank)
         {
             return new MachineTank();
+        }
+        if(machine instanceof MachineCreativeTeslaCell)
+        {
+            return new MachineCreativeTeslaCell();
         }
         return null;
     }

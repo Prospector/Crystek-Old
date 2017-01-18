@@ -30,6 +30,7 @@ public class ItemMachineDebug extends ItemCrystek
             player.sendMessage(new TextComponentString("Machine Name = " + machine.getName()));
             player.sendMessage(new TextComponentString("Inv Size = " + machine.getInv().getSlots()));
             player.sendMessage(new TextComponentString("Gui ID = " + machine.guiID()));
+            player.sendMessage(new TextComponentString("Sored power = " + machine.getTeslaContainer().getStoredPower() + "   Capacity = " + machine.getTeslaContainer().getCapacity()));
             return EnumActionResult.SUCCESS;
         }
         return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
