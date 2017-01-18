@@ -20,7 +20,7 @@ public class SlotTeslaCharge extends SlotItemHandler
     @Override
     public boolean isItemValid(@Nonnull ItemStack stack)
     {
-        if(stack != ItemStack.EMPTY && stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, null))
+        if(stack != ItemStack.EMPTY && stack.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, null) || stack.hasCapability(TeslaCapabilities.CAPABILITY_PRODUCER, null) || stack.hasCapability(TeslaCapabilities.CAPABILITY_PRODUCER, null))
         {
             return true;
         }
