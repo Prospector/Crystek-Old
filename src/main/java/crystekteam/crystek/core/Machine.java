@@ -1,107 +1,125 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.guis.CrystekGuiBuilder;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import reborncore.client.guibuilder.GuiBuilder;
+import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gigabit101 on 06/12/2016.
+ * Created by Gigabit101 on 17/01/2017.
  */
-public class Machine
+public abstract class Machine extends TileEntity implements ITickable
 {
-    @Nullable int guiID;
-    String name;
-    @Nullable TileEntity tileEntity;
+    /**
+     * Inv
+     */
+    public ItemStackHandler inv = new ItemStackHandler(invSize());
 
-    public Machine(String name)
+    public abstract int invSize();
+
+    public abstract int guiID();
+
+    public abstract String getName();
+
+    public boolean hasInv()
     {
-        this.name = name;
+        if(invSize() != 0)
+        {
+            return true;
+        }
+        return false;
     }
 
-    public String getName()
+    public ItemStackHandler getInv()
     {
-        return this.name;
+        return inv;
     }
 
-    public TileEntity getTileEntity()
+    public void openGui(EntityPlayer player, Machine machine)
     {
-        return this.tileEntity;
-    }
-
-    public int getGuiID()
-    {
-        return guiID;
-    }
-
-    public void setTileEntity(@Nullable TileEntity tileEntity)
-    {
-        this.tileEntity = tileEntity;
-    }
-
-    public void setGuiID(@Nullable int guiID)
-    {
-        this.guiID = guiID;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public void openGui(EntityPlayer player)
-    {
-        player.openGui(Crystek.MOD_CL, getGuiID(), getWorld(), getPos().getX(), getPos().getY(), getPos().getZ());
-    }
-
-    public World getWorld()
-    {
-        return getTileEntity().getWorld();
-    }
-
-    public BlockPos getPos()
-    {
-        return getTileEntity().getPos();
+        player.openGui(Crystek.MOD_CL, machine.guiID(), machine.world, machine.pos.getX(), machine.pos.getY(), machine.pos.getZ());
     }
 
     /**
-     * TILE
+     * Tank
      */
-    public void update(){}
+    public Tank tank = new Tank(getName(), getTankSize(), this);
 
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    public abstract int getTankSize();
+
+    public Tank getTank()
     {
-        if(inv.getSlots() != 0)
-        {
-            compound.merge(inv.serializeNBT());
-        }
-        return compound;
+        return tank;
     }
 
+    public boolean hasTank()
+    {
+        if(getTank().getCapacity() != 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * NBT
+     */
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        if(hasInv())
+        {
+            compound = super.writeToNBT(compound);
+            compound.merge(inv.serializeNBT());
+            return compound;
+        }
+        if(hasTank())
+        {
+            compound = super.writeToNBT(compound);
+            tank.writeToNBT(compound);
+            return compound;
+        }
+        return super.writeToNBT(compound);
+    }
+
+    @Override
     public void readFromNBT(NBTTagCompound compound)
     {
-        inv.deserializeNBT(compound);
+        super.readFromNBT(compound);
+        if(hasInv())
+        {
+            inv.deserializeNBT(compound);
+        }
+        if(hasTank())
+        {
+            tank.readFromNBT(compound);
+        }
     }
 
     /**
      * GUI
      */
-    @SideOnly(Side.CLIENT)
-    public GuiBuilder builder = new GuiBuilder(GuiBuilder.defaultTextureSheet);
+    public CrystekGuiBuilder builder = new CrystekGuiBuilder();
 
     @SideOnly(Side.CLIENT)
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiContainer gui)
@@ -117,77 +135,81 @@ public class Machine
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui)
-    {
-
-    }
-
     /**
      * Container
      */
-    public List<Slot> slots = new ArrayList<Slot>();
 
-    public Slot addSlotToContainer(ItemStackHandler inv, int ID, int x, int y)
-    {
-        Slot s = new SlotItemHandler(inv, ID, x, y);
-        if(!getSlots().contains(s))
-        {
-            getSlots().add(s);
-        }
-        return s;
-    }
+    @Nullable
+    public abstract List<Slot> getSlots();
 
-    public List<Slot> getSlots()
+    @SideOnly(Side.CLIENT)
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop) {}
+
+    /**
+     * Tile
+     */
+    @Override
+    public void update() {}
+
+    /**
+     * Tesla
+     */
+    public BaseTeslaContainer teslaContainer = new BaseTeslaContainer(maxCapacity(), maxInput(), maxOutput());
+
+    public abstract long maxCapacity();
+
+    public abstract long maxInput();
+
+    public abstract long maxOutput();
+
+    public abstract EnumTeslaType teslaType();
+
+    public BaseTeslaContainer getTeslaContainer()
     {
-        return slots;
+        return teslaContainer;
     }
 
     /**
-     * Inv
+     * Capability
      */
-    ItemStackHandler inv = new StackHandler(getInvSize());
-    int invSize = 0;
-
-    public boolean hasInv()
+    @Override
+    public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing)
     {
-        if(getInvSize() != 0)
+        if(hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
         {
             return true;
         }
-        return false;
-    }
-
-    public ItemStackHandler getInv()
-    {
-        return inv;
-    }
-
-    class StackHandler extends ItemStackHandler
-    {
-        StackHandler(int size)
+        if(hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
-            super(size);
+            return true;
         }
+        if(teslaType() == EnumTeslaType.GENERATOR && capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+        {
+            return true;
+        }
+        if(teslaType() == EnumTeslaType.CONSUMER && capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+        {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
     }
 
-    public int getInvSize()
+    @Nullable
+    @Override
+    public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
     {
-        return invSize;
+        if(hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        {
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
+        }
+        if(hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        {
+            return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
+        }
+        if(teslaType() != EnumTeslaType.NULL && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER)
+        {
+            return (T) getTeslaContainer();
+        }
+        return super.getCapability(capability, facing);
     }
-
-    public void setInvSize(int invSize)
-    {
-        this.invSize = invSize;
-    }
-
-    /**
-     * Tank
-     */
-
-
-
-    /**
-     * Power
-     */
 }

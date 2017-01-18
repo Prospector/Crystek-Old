@@ -1,31 +1,73 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.tiles.TileMachine;
+import net.minecraft.inventory.Slot;
+import net.minecraftforge.items.SlotItemHandler;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gigabit101 on 14/01/2017.
  */
 public class MachineGenerator extends Machine
 {
-    public MachineGenerator()
-    {
-        super("coalgenerator");
-        setGuiID(0);
-        setTileEntity(new TileMachine(this));
-        setInvSize(1);
-        addSlotToContainer(getInv(), 0, 80, 50);
-    }
-
     @Override
-    public int getInvSize()
+    public int invSize()
     {
         return 1;
     }
 
     @Override
-    public void update()
+    public int guiID()
     {
-        super.update();
+        return 1;
+    }
+
+    @Override
+    public String getName()
+    {
+        return "coalgenerator";
+    }
+
+    @Override
+    public int getTankSize()
+    {
+        return 0;
+    }
+
+    @Nullable
+    @Override
+    public List<Slot> getSlots()
+    {
+        List<Slot> slots = new ArrayList<Slot>();
+        slots.add(new SlotItemHandler(null, 0, 80, 50));
+        return slots;
+    }
+
+    @Override
+    public long maxCapacity()
+    {
+        return 100000;
+    }
+
+    @Override
+    public long maxInput()
+    {
+        return 0;
+    }
+
+    @Override
+    public long maxOutput()
+    {
+        return 100;
+    }
+
+    @Override
+    public EnumTeslaType teslaType()
+    {
+        return EnumTeslaType.GENERATOR;
     }
 }

@@ -14,14 +14,14 @@ public class ItemBlockMachine extends ItemBlockBase
 {
     public ItemBlockMachine(Block block)
     {
-        super(CrystekBlocks.blockCrystek, CrystekBlocks.blockCrystek, new String[]{});
+        super(block, block, new String[]{});
     }
 
-    @Override
-    public String getUnlocalizedName(ItemStack stack)
-    {
-        int meta = stack.getItemDamage();
-        String name = "tile." + Crystek.MOD_ID.toLowerCase() + "." +  MachinesInit.getMachineList().get(meta).getName();
-        return name;
-    }
+//    @Override
+//    public String getUnlocalizedName(ItemStack stack)
+//    {
+//        int meta = stack.getItemDamage();
+//        String name = "tile." + Crystek.MOD_ID.toLowerCase() + "." +  MachinesInit.getMachineList().get(meta).getName();
+//        return name;
+//    }
 }

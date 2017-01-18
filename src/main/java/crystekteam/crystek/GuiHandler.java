@@ -1,8 +1,8 @@
 package crystekteam.crystek;
 
 import crystekteam.crystek.container.ContainerCrystek;
+import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
-import crystekteam.crystek.tiles.TileMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -19,12 +19,12 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
+        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof Machine)
         {
-            TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getMachine().getGuiID() == ID)
+            Machine tileCrystek = (Machine) world.getTileEntity(new BlockPos(x, y, z));
+            if(tileCrystek.guiID() == ID)
             {
-                return new ContainerCrystek(player, tileCrystek.getMachine());
+                return new ContainerCrystek(player, tileCrystek);
             }
         }
         return null;
@@ -34,12 +34,13 @@ public class GuiHandler implements IGuiHandler
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
-        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof TileMachine)
+        if(world.getTileEntity(new BlockPos(x, y, z)) != null && world.getTileEntity(new BlockPos(x, y, z)) instanceof Machine)
         {
-            TileMachine tileCrystek = (TileMachine) world.getTileEntity(new BlockPos(x, y, z));
-            if(tileCrystek.getMachine().getGuiID() == ID)
+            Machine tileCrystek = (Machine) world.getTileEntity(new BlockPos(x, y, z));
+
+            if(tileCrystek.guiID() == ID)
             {
-                return new GuiCrystek(player, tileCrystek.getMachine());
+                return new GuiCrystek(player, tileCrystek);
             }
         }
         return null;
