@@ -29,6 +29,6 @@ public class GuiCrystek extends GuiContainer
     @Override
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
-        machine.drawGuiContainerForegroundLayer(mouseX, mouseY, this);
+        machine.drawGuiContainerForegroundLayer(mouseX, mouseY, this, guiLeft, guiTop);
     }
 }

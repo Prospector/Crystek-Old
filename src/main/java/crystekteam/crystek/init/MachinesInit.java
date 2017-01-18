@@ -5,6 +5,7 @@ import crystekteam.crystek.blocks.BlockCrystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.machines.MachineGenerator;
+import crystekteam.crystek.machines.MachineTank;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -23,6 +24,7 @@ public class MachinesInit
     {
         registerMachine(new MachineGenerator());
         registerMachine(new MachineFurnace());
+        registerMachine(new MachineTank());
         for(Machine m: MACHINE_LIST)
         {
             registerBlock(new BlockCrystek(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());

@@ -17,9 +17,12 @@ public class ContainerCrystek extends RebornContainer
     {
         super();
         this.machine = machine;
-        for (Slot s : machine.getSlots())
+        if(machine.getSlots() != null)
         {
-            addSlotToContainer(new SlotItemHandler(machine.getInv(), s.getSlotIndex(), s.xPos, s.yPos));
+            for (Slot s : machine.getSlots())
+            {
+                addSlotToContainer(new SlotItemHandler(machine.getInv(), s.getSlotIndex(), s.xPos, s.yPos));
+            }
         }
         drawPlayersInv(player);
         drawPlayersHotBar(player);

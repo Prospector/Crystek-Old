@@ -3,56 +3,53 @@ package crystekteam.crystek.machines;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.SlotItemHandler;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gigabit101 on 16/01/2017.
+ * Created by Gigabit101 on 17/01/2017.
  */
-public class MachineFurnace extends Machine
+public class MachineTank extends Machine
 {
     @Override
     public int invSize()
     {
-        return 2;
+        return 0;
     }
 
     @Override
     public int guiID()
     {
-        return 0;
+        return 2;
     }
 
     @Override
     public String getName()
     {
-        return "furnace";
+        return "tank";
     }
 
     @Override
     public int getTankSize()
     {
-        return 0;
+        return 16000;
     }
 
     @Nullable
     @Override
     public List<Slot> getSlots()
     {
-        List<Slot> slots = new ArrayList<Slot>();
-        slots.add(new SlotItemHandler(null, 0, 50, 35));
-        slots.add(new SlotItemHandler(null, 1, 105, 35));
-        return slots;
+        return null;
     }
 
-    @Override @SideOnly(Side.CLIENT)
+    @Override
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop)
     {
-        builder.drawProgressBar(gui, 0, 75, 35);
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY, gui, guiLeft, guiTop);
+        getTank().setFluid(new FluidStack(FluidRegistry.LAVA, 16000));
+        builder.drawTankForground(gui, getTank(), 80, 12, 10, 16, 60, mouseX, mouseY, guiLeft, guiTop);
     }
 }

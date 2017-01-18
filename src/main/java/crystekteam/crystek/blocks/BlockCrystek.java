@@ -4,6 +4,7 @@ import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.MachineFurnace;
 import crystekteam.crystek.machines.MachineGenerator;
+import crystekteam.crystek.machines.MachineTank;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -70,6 +71,10 @@ public class BlockCrystek extends BlockContainer {
         if(machine instanceof MachineGenerator)
         {
             return new MachineGenerator();
+        }
+        if(machine instanceof MachineTank)
+        {
+            return new MachineTank();
         }
         return null;
     }

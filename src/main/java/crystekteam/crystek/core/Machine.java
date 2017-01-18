@@ -1,6 +1,7 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.guis.CrystekGuiBuilder;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -116,7 +117,7 @@ public abstract class Machine extends TileEntity implements ITickable
     /**
      * GUI
      */
-    public GuiBuilder builder = new GuiBuilder(GuiBuilder.defaultTextureSheet);
+    public CrystekGuiBuilder builder = new CrystekGuiBuilder();
 
     @SideOnly(Side.CLIENT)
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiContainer gui)
@@ -140,7 +141,7 @@ public abstract class Machine extends TileEntity implements ITickable
     public abstract List<Slot> getSlots();
 
     @SideOnly(Side.CLIENT)
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui) {}
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop) {}
 
     /**
      * Tile
