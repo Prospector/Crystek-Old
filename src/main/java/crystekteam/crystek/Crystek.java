@@ -1,10 +1,13 @@
 package crystekteam.crystek;
 
+import crystekteam.crystek.event.CrystekEventHandler;
 import crystekteam.crystek.init.CrystekItems;
 import crystekteam.crystek.init.CrystekOreDict;
+import crystekteam.crystek.init.CrystekRecipes;
 import crystekteam.crystek.init.MachinesInit;
 import crystekteam.crystek.proxy.CrystekServer;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -47,6 +50,9 @@ public class Crystek extends ModCL {
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+		CrystekRecipes.init();
+
+		MinecraftForge.EVENT_BUS.register(new CrystekEventHandler());
 		NetworkRegistry.INSTANCE.registerGuiHandler(MOD_CL, new GuiHandler());
 	}
 

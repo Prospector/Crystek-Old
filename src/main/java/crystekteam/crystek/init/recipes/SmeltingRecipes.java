@@ -5,7 +5,7 @@ import reborncore.common.recipes.RCRecipeMethods;
 /**
  * Created by Prospector
  */
-public class CraftingTableRecipes extends RCRecipeMethods {
+public class SmeltingRecipes extends RCRecipeMethods {
 	public static void init() {
 
 	}

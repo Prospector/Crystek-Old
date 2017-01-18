@@ -36,7 +36,6 @@ public class ItemGrindingBlade extends ItemCrystek {
 			tooltip.add(TextFormatting.DARK_GRAY + "Unbreakable");
 		if (stack.getMaxDamage() != 0)
 			tooltip.add(TextFormatting.GRAY + "Durability: " + (stack.getMaxDamage() - stack.getItemDamage() + 1) + "/" + (stack.getMaxDamage() + 1));
-
 	}
 
 	public int getSpeed() {
