@@ -42,6 +42,7 @@ public class CrystekItems extends RegistryCL {
 	}
 
 	public void init(ModCL mod) {
+		OBSIDIAN_WRENCH = new ItemObsidianWrench();
 		MATERIALS = new ItemMetadataCrystek("material");
 		CRYSTALLINE_BONEMEAL = new ItemCrystallineBonemeal();
 		IRON_GRINDING_BLADE = new ItemGrindingBlade("iron", 2, 63, new ItemStack(Items.IRON_INGOT));
@@ -49,7 +50,6 @@ public class CrystekItems extends RegistryCL {
 		DIAMOND_GRINDING_BLADE = new ItemGrindingBlade("diamond", 3, 1023, new ItemStack(Items.DIAMOND));
 		OBSIDIAN_GRINDING_BLADE = new ItemGrindingBlade("obsidian", 1, -1, ItemStack.EMPTY);
 		CRYSTALLINE_GRINDING_BLADE = new ItemGrindingBlade("crystalline", 3, -1, ItemStack.EMPTY);
-		OBSIDIAN_WRENCH = new ItemObsidianWrench();
         MACHINE_DEBUG = new ItemMachineDebug();
 
 		addMaterial("crystal", "crystalTesla");
@@ -75,6 +75,7 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
 
+		addToRegistry(OBSIDIAN_WRENCH);
 		addToRegistry(MATERIALS);
 		addToRegistry(CRYSTALLINE_BONEMEAL);
 		addToRegistry(IRON_GRINDING_BLADE);
@@ -82,7 +83,6 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(DIAMOND_GRINDING_BLADE);
 		addToRegistry(OBSIDIAN_GRINDING_BLADE);
 		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
-		addToRegistry(OBSIDIAN_WRENCH);
         addToRegistry(MACHINE_DEBUG);
 
 		for (ItemCL item : registry.values()) {
