@@ -1,5 +1,6 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
@@ -51,5 +52,29 @@ public class MachineTank extends Machine
         super.drawGuiContainerForegroundLayer(mouseX, mouseY, gui, guiLeft, guiTop);
         getTank().setFluid(new FluidStack(FluidRegistry.LAVA, 16000));
         builder.drawTankForground(gui, getTank(), 80, 12, 10, 16, 60, mouseX, mouseY, guiLeft, guiTop);
+    }
+
+    @Override
+    public long maxCapacity()
+    {
+        return 0;
+    }
+
+    @Override
+    public long maxInput()
+    {
+        return 0;
+    }
+
+    @Override
+    public long maxOutput()
+    {
+        return 0;
+    }
+
+    @Override
+    public EnumTeslaType teslaType()
+    {
+        return EnumTeslaType.NULL;
     }
 }

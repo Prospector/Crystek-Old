@@ -2,6 +2,8 @@ package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.guis.CrystekGuiBuilder;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
+import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -150,6 +152,24 @@ public abstract class Machine extends TileEntity implements ITickable
     public void update() {}
 
     /**
+     * Tesla
+     */
+    public BaseTeslaContainer teslaContainer = new BaseTeslaContainer(maxCapacity(), maxInput(), maxOutput());
+
+    public abstract long maxCapacity();
+
+    public abstract long maxInput();
+
+    public abstract long maxOutput();
+
+    public abstract EnumTeslaType teslaType();
+
+    public BaseTeslaContainer getTeslaContainer()
+    {
+        return teslaContainer;
+    }
+
+    /**
      * Capability
      */
     @Override
@@ -163,6 +183,14 @@ public abstract class Machine extends TileEntity implements ITickable
         {
             return true;
         }
+        if(teslaType() == EnumTeslaType.GENERATOR && capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+        {
+            return true;
+        }
+        if(teslaType() == EnumTeslaType.CONSUMER && capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
+        {
+            return true;
+        }
         return super.hasCapability(capability, facing);
     }
 
@@ -170,13 +198,17 @@ public abstract class Machine extends TileEntity implements ITickable
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
     {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+        if(hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
         {
             return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
         }
-        if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
+        if(hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
         {
             return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
+        }
+        if(teslaType() != EnumTeslaType.NULL && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER)
+        {
+            return (T) getTeslaContainer();
         }
         return super.getCapability(capability, facing);
     }

@@ -1,5 +1,6 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
@@ -54,5 +55,30 @@ public class MachineFurnace extends Machine
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop)
     {
         builder.drawProgressBar(gui, 0, 75, 35);
+        builder.drawTeslaEnergyBar(gui, 20, 20, (int) getTeslaContainer().getCapacity() / 2, (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
+    }
+
+    @Override
+    public long maxCapacity()
+    {
+        return 100000;
+    }
+
+    @Override
+    public long maxInput()
+    {
+        return 100;
+    }
+
+    @Override
+    public long maxOutput()
+    {
+        return 0;
+    }
+
+    @Override
+    public EnumTeslaType teslaType()
+    {
+        return EnumTeslaType.CONSUMER;
     }
 }

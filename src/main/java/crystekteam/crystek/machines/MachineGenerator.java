@@ -1,5 +1,6 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.items.SlotItemHandler;
@@ -44,5 +45,29 @@ public class MachineGenerator extends Machine
         List<Slot> slots = new ArrayList<Slot>();
         slots.add(new SlotItemHandler(null, 0, 80, 50));
         return slots;
+    }
+
+    @Override
+    public long maxCapacity()
+    {
+        return 100000;
+    }
+
+    @Override
+    public long maxInput()
+    {
+        return 0;
+    }
+
+    @Override
+    public long maxOutput()
+    {
+        return 100;
+    }
+
+    @Override
+    public EnumTeslaType teslaType()
+    {
+        return EnumTeslaType.GENERATOR;
     }
 }
