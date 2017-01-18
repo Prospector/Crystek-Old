@@ -4,11 +4,11 @@
     "transform": "forge:default-block",
     "model": "orientable",
     "textures": {
-      "particle": "crystek:blocks/machine/coal_generator_front",
+      "particle": "crystek:blocks/machine/tesla_furnace_front",
       "top": "crystek:blocks/machine/machine_top",
       "down": "crystek:blocks/machine/machine_bottom",
-      "side": "crystek:blocks/machine/generator_side",
-      "front": "crystek:blocks/machine/coal_generator_front"
+      "side": "crystek:blocks/machine/machine_side",
+      "front": "crystek:blocks/machine/tesla_furnace_front"
     }
   },
   "variants": {
@@ -24,11 +24,11 @@
     "inventory": {
       "model": "orientable",
       "textures": {
-        "particle": "crystek:blocks/machine/coal_generator_front",
+        "particle": "crystek:blocks/machine/tesla_furnace_front",
         "top": "crystek:blocks/machine/machine_top",
         "down": "crystek:blocks/machine/machine_bottom",
-        "side": "crystek:blocks/machine/generator_side",
-        "front": "crystek:blocks/machine/coal_generator_front"
+        "side": "crystek:blocks/machine/machine_side",
+        "front": "crystek:blocks/machine/tesla_furnace_front"
       }
     }
   }

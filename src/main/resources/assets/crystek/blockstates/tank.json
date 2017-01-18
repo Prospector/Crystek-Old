@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model":"orientable",
+    "textures": {
+    }
+  },
+  "variants": {
+    "inventory": {
+      "transform": "forge:default-block",
+      "textures": {
+      }
+    },
+    "normal": [
+      {
+      }
+    ],
+    "inventory": {
+      "model":"orientable",
+      "textures": {
+      }
+    }
+  }
+}

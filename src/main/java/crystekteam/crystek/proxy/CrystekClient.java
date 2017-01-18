@@ -31,6 +31,14 @@ public class CrystekClient extends CrystekServer {
 			new ModelResourceLocation(Crystek.PREFIX + name, "inventory"));
 	}
 
+	static void registerItemModel(Block b, int meta) {
+		registerItemModel(Item.getItemFromBlock(b), meta);
+	}
+
+	static void registerItemModel(Block b, int meta, String variant) {
+		registerItemModel(Item.getItemFromBlock(b), meta, variant);
+	}
+
 	private static void register(Item item, String name) {
 		register(item, 0, name);
 	}
@@ -67,8 +75,12 @@ public class CrystekClient extends CrystekServer {
 
 	@Override
 	public void registerRenders() {
-		for (Item item : Crystek.MOD_CL.modelsToRegister) {
+		for (Item item : Crystek.MOD_CL.itemModelsToRegister) {
 			registerItemModel(item, 0);
+		}
+
+		for (Block block : Crystek.MOD_CL.blockModelsToRegister) {
+			registerItemModel(block, 0);
 		}
 
 		for (ItemMetadataCL item : Crystek.MOD_CL.customBlockStates.keySet()) {

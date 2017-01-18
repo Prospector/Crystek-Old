@@ -31,3 +31,12 @@ item.crystek:obsidian_grinding_blade.name=Obsidian Grinding Blade
 item.crystek:crystalline_grinding_blade.name=Crystal Grinding Blade
 
 item.crystek:obsidian_wrench.name=Obsidian Wrench
+item.crystek:machine_debug.name=Machine Debug
+item.crystek:creative_battery.name=Creative Battery
+item.crystek:crystalline_battery.name=Crystalline Battery
+
+//Blocks
+tile.crystek.creative_cell.name=Creative Tesla Cell
+tile.crystek.furnace.name=Tesla Furnace
+tile.crystek.coalgenerator.name=Solid Fuel Generator
+tile.crystek.tank.name=Obsidian Tank
