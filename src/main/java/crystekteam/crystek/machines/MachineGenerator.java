@@ -2,7 +2,11 @@ package crystekteam.crystek.machines;
 
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
+import net.darkhax.tesla.lib.TeslaUtils;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nullable;
@@ -69,5 +73,26 @@ public class MachineGenerator extends Machine
     public EnumTeslaType teslaType()
     {
         return EnumTeslaType.GENERATOR;
+    }
+
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop)
+    {
+        builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
+    }
+
+    @Override
+    public void update()
+    {
+        int fuelSlot = 0;
+//        if(getInv().getStackInSlot(fuelSlot) != ItemStack.EMPTY && getItemBurnTime(getInv().getStackInSlot(fuelSlot)) < 0)
+//        {
+            getTeslaContainer().givePower(100, false);
+//        }
+    }
+
+    public static int getItemBurnTime(ItemStack stack)
+    {
+        return TileEntityFurnace.getItemBurnTime(stack) / 4;
     }
 }

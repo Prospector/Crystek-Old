@@ -101,6 +101,10 @@ public abstract class Machine extends TileEntity implements ITickable
             tank.writeToNBT(compound);
             return compound;
         }
+        if(teslaType() != EnumTeslaType.NULL)
+        {
+            compound.setTag("TeslaContainer", teslaContainer.serializeNBT());
+        }
         return super.writeToNBT(compound);
     }
 
@@ -115,6 +119,11 @@ public abstract class Machine extends TileEntity implements ITickable
         if(hasTank())
         {
             tank.readFromNBT(compound);
+        }
+        if(teslaType() != EnumTeslaType.NULL)
+        {
+            //TODO fix this :(
+            teslaContainer = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
         }
     }
 
