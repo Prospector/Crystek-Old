@@ -1,6 +1,7 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.guis.CrystekGuiBuilder;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
@@ -130,7 +131,14 @@ public abstract class Machine extends TileEntity implements ITickable
         {
             for(Slot s: getSlots())
             {
-                builder.drawSlot(gui, guiLeft + s.xPos -1, guiTop + s.yPos -1);
+                if(s instanceof SlotTeslaCharge)
+                {
+                    builder.drawChargeSlot(gui, guiLeft + s.xPos - 1, guiTop + s.yPos - 1);
+                }
+                else
+                {
+                    builder.drawSlot(gui, guiLeft + s.xPos - 1, guiTop + s.yPos - 1);
+                }
             }
         }
     }

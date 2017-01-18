@@ -1,5 +1,7 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.container.slots.SlotItemHandlerOutput;
+import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -20,7 +22,7 @@ public class MachineFurnace extends Machine
     @Override
     public int invSize()
     {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -46,8 +48,9 @@ public class MachineFurnace extends Machine
     public List<Slot> getSlots()
     {
         List<Slot> slots = new ArrayList<Slot>();
-        slots.add(new SlotItemHandler(null, 0, 50, 35));
-        slots.add(new SlotItemHandler(null, 1, 105, 35));
+        slots.add(new SlotItemHandler(getInv(), 0, 50, 35));
+        slots.add(new SlotItemHandlerOutput(getInv(), 1, 105, 35));
+        slots.add(new SlotTeslaCharge(getInv(), 2, 8, 60));
         return slots;
     }
 
@@ -55,7 +58,7 @@ public class MachineFurnace extends Machine
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiContainer gui, int guiLeft, int guiTop)
     {
         builder.drawProgressBar(gui, 0, 75, 35);
-        builder.drawTeslaEnergyBar(gui, 20, 20, (int) getTeslaContainer().getCapacity() / 2, (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
+        builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getCapacity() / 2, (int) getTeslaContainer().getCapacity(), mouseX - guiLeft, mouseY - guiTop);
     }
 
     @Override

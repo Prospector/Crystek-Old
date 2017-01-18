@@ -70,6 +70,12 @@ public class CrystekGuiBuilder extends GuiBuilder
         }
     }
 
+    public void drawChargeSlot(GuiScreen gui, int posX, int posY) {
+        drawSlot(gui, posX, posY);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(resourceLocation);
+        gui.drawTexturedModalRect(posX + 1, posY + 1, 169, 1, 16, 16);
+    }
+
     public int getScaledBurnTime(int scale, int burnTime, int totalBurnTime) {
         return (int) (((float) burnTime / (float) totalBurnTime) * scale);
     }

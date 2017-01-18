@@ -43,7 +43,7 @@ public class MachineGenerator extends Machine
     public List<Slot> getSlots()
     {
         List<Slot> slots = new ArrayList<Slot>();
-        slots.add(new SlotItemHandler(null, 0, 80, 50));
+        slots.add(new SlotItemHandler(getInv(), 0, 80, 50));
         return slots;
     }
 
