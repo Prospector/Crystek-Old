@@ -21,6 +21,11 @@ public class CrystekClient extends CrystekServer {
 		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "inventory"));
 	}
 
+	static void registerMachineModel(Block b, int meta) {
+		ResourceLocation loc = Item.getItemFromBlock(b).getRegistryName();
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(b), meta, new ModelResourceLocation(loc, "active=false,facing=north"));
+	}
+
 	static void registerItemModel(Item i, int meta, String variant) {
 		ResourceLocation loc = i.getRegistryName();
 		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "type=" + variant));
@@ -80,7 +85,7 @@ public class CrystekClient extends CrystekServer {
 		}
 
 		for (Block block : Crystek.MOD_CL.blockModelsToRegister) {
-			registerItemModel(block, 0);
+			registerMachineModel(block, 0);
 		}
 
 		for (ItemMetadataCL item : Crystek.MOD_CL.customBlockStates.keySet()) {

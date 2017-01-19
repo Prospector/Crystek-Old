@@ -29,11 +29,11 @@ import javax.annotation.Nullable;
 /**
  * Created by Gigabit101 on 06/12/2016.
  */
-public class BlockCrystek extends BlockMachineBase
+public class BlockCrystekMachine extends BlockMachineBase
 {
     Machine machine;
 
-    public BlockCrystek(Machine machine) {
+    public BlockCrystekMachine(Machine machine) {
 		super(false);
         this.machine = machine;
 		setCreativeTab(Crystek.MOD_CL.getTab());

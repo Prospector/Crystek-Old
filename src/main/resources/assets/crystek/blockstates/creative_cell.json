@@ -8,36 +8,31 @@
       "top": "crystek:blocks/machine/creative_cell_top",
       "down": "crystek:blocks/machine/creative_cell_bottom",
       "side": "crystek:blocks/machine/creative_cell_side",
-      "front": "crystek:blocks/machine/creative_cell_side"
+      "front": "crystek:blocks/machine/creative_cell_side",
+      "front-on": "crystek:blocks/machine/creative_cell_side"
     }
   },
   "variants": {
-    "inventory": {
-      "transform": "forge:default-block",
-      "textures": {
-      }
-    },
-    "normal": [
-      {
-      },
-      {
+    "facing": {
+      "north": {},
+      "east": {
         "y": 90
       },
-      {
+      "south": {
         "y": 180
       },
-      {
+      "west": {
         "y": 270
       }
-    ],
-    "inventory": {
-      "model": "orientable",
-      "textures": {
-        "particle": "crystek:blocks/machine/creative_cell_side",
-        "top": "crystek:blocks/machine/creative_cell_top",
-        "down": "crystek:blocks/machine/creative_cell_bottom",
-        "side": "crystek:blocks/machine/creative_cell_side",
-        "front": "crystek:blocks/machine/creative_cell_side"
+    },
+    "active": {
+      "true": {
+        "textures": {
+          "front": "#front-on"
+        }
+      },
+      "false": {
+        "textures": {}
       }
     }
   }

@@ -8,27 +8,31 @@
       "top": "crystek:blocks/machine/machine_top",
       "down": "crystek:blocks/machine/machine_bottom",
       "side": "crystek:blocks/machine/generator_side",
-      "front": "crystek:blocks/machine/coal_generator_front"
+      "front": "crystek:blocks/machine/coal_generator_front",
+      "front-on": "crystek:blocks/machine/coal_generator_front_on"
     }
   },
   "variants": {
-    "inventory": {
-      "transform": "forge:default-block",
-      "textures": {
+    "facing": {
+      "north": {},
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
       }
     },
-    "normal": [
-      {
-      }
-    ],
-    "inventory": {
-      "model": "orientable",
-      "textures": {
-        "particle": "crystek:blocks/machine/coal_generator_front",
-        "top": "crystek:blocks/machine/machine_top",
-        "down": "crystek:blocks/machine/machine_bottom",
-        "side": "crystek:blocks/machine/generator_side",
-        "front": "crystek:blocks/machine/coal_generator_front"
+    "active": {
+      "true": {
+        "textures": {
+          "front": "#front-on"
+        }
+      },
+      "false": {
+        "textures": {}
       }
     }
   }
