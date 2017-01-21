@@ -31,7 +31,6 @@ public class MachinesInit {
 		registerMachine(new MachineCreativeTeslaCell());
 		for (Machine m : MACHINE_LIST) {
 			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());
-			ConfigRegistry.registerNewMachineConfig(m);
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());
 		}
 	}

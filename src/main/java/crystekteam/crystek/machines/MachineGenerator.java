@@ -1,5 +1,6 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.configs.ConfigCrystek;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.CrystekBuilder;
@@ -53,17 +54,17 @@ public class MachineGenerator extends Machine {
 
 	@Override
 	public long maxCapacity() {
-		return 100000;
+		return ConfigCrystek.GENERATOR_MAX_CAPACITY;
 	}
 
 	@Override
 	public long maxInput() {
-		return 100;
+		return ConfigCrystek.GENERATOR_GENERATION;
 	}
 
 	@Override
 	public long maxOutput() {
-		return 100;
+		return ConfigCrystek.GENERATOR_MAX_OUTPUT;
 	}
 
 	@Override
@@ -79,7 +80,6 @@ public class MachineGenerator extends Machine {
 	}
 
     int burnTime = 0;
-    int powerGen = 50;
     boolean isBurning = false;
 
 	@Override
@@ -90,7 +90,7 @@ public class MachineGenerator extends Machine {
         if(getTeslaContainer().getStoredPower() < maxCapacity()) {
             if(burnTime > 0) {
                 burnTime--;
-                getTeslaContainer().givePower(powerGen, false);
+                getTeslaContainer().givePower(maxOutput(), false);
                 isBurning = true;
             }else {
                 isBurning = false;

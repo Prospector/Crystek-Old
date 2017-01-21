@@ -10,7 +10,10 @@ import java.io.File;
 public class ConfigCrystek
 {
     private static ConfigCrystek INSTANCE = null;
-    public static String CATEGORY_MACHINE = "machine";
+    public static String CATEGORY_POWER = "POWER";
+    public static long GENERATOR_MAX_OUTPUT;
+    public static long GENERATOR_MAX_CAPACITY;
+    public static long GENERATOR_GENERATION;
 
     public static Configuration config;
 
@@ -45,10 +48,9 @@ public class ConfigCrystek
 
     public static void Configs()
     {
-        for(MachineConfig c: ConfigRegistry.getConfigList())
-        {
-
-        }
+        GENERATOR_GENERATION = config.get(CATEGORY_POWER, "Generator Power Generation", 100).getLong();
+        GENERATOR_MAX_CAPACITY = config.get(CATEGORY_POWER, "Generator Max Capacity", 1000000).getLong();
+        GENERATOR_MAX_OUTPUT = config.get(CATEGORY_POWER, "Generator Max Output", 100).getLong();
 
         if (config.hasChanged())
         {
