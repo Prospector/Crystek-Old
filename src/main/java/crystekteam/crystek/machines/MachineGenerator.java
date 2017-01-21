@@ -83,6 +83,7 @@ public class MachineGenerator extends Machine {
 
 	@Override
 	public void update() {
+		super.update();
 		if (world.isRemote) {
 			return;
 		}
@@ -103,6 +104,6 @@ public class MachineGenerator extends Machine {
 				}
 			}
 		}
-		sync();
+//		sync();
 	}
 }

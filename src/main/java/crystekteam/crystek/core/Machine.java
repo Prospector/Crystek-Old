@@ -197,7 +197,12 @@ public abstract class Machine extends TileEntity implements ITickable {
 
     public void sync()
     {
-        VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+        if(requireUpdate || getTeslaContainer().shouldUpdate())
+        {
+            VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+            requireUpdate = false;
+            getTeslaContainer().setShouldUpdate(false);
+        }
     }
 
 	public abstract long maxCapacity();
@@ -253,6 +258,18 @@ public abstract class Machine extends TileEntity implements ITickable {
     public int progress = 0;
     public int maxProgress = 100;
 
+	public void addProgress()
+	{
+		progress++;
+        requireUpdate = true;
+    }
+
+	public void resetProgress()
+	{
+		progress = 0;
+        requireUpdate = true;
+	}
+
     public int getProgress()
     {
         return progress;
@@ -262,4 +279,6 @@ public abstract class Machine extends TileEntity implements ITickable {
     {
         return maxProgress;
     }
+
+    boolean requireUpdate = false;
 }

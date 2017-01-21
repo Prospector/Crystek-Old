@@ -78,13 +78,14 @@ public class MachineFurnace extends Machine {
 
     @Override
 	public void update() {
+		super.update();
 		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
 			if (getProgress() != getMaxProgress()) {
-				progress++;
+				addProgress();
 			} else {
-				progress = 0;
+				resetProgress();
 			}
 		}
-		sync();
+//		sync();
 	}
 }

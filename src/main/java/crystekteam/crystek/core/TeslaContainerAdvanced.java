@@ -14,6 +14,7 @@ public class TeslaContainerAdvanced implements ITeslaHolder, ITeslaProducer, ITe
     private long capacity = 0;
     private long maxInput = 0;
     private long maxOutput = 0;
+    private boolean shouldUpdate = false;
 
     public TeslaContainerAdvanced(long capacity, long maxInput, long maxOutput, long storedPower)
     {
@@ -50,6 +51,7 @@ public class TeslaContainerAdvanced implements ITeslaHolder, ITeslaProducer, ITe
         if (!simulated)
         {
             this.storedPower -= removedPower;
+            shouldUpdate = true;
         }
         return removedPower;
     }
@@ -57,6 +59,7 @@ public class TeslaContainerAdvanced implements ITeslaHolder, ITeslaProducer, ITe
     protected void setPower (long power)
     {
         this.storedPower = power;
+        shouldUpdate = true;
     }
 
 
@@ -67,7 +70,7 @@ public class TeslaContainerAdvanced implements ITeslaHolder, ITeslaProducer, ITe
 
         if (!b)
             this.storedPower += acceptedTesla;
-
+        shouldUpdate = true;
         return acceptedTesla;
     }
 
@@ -89,6 +92,16 @@ public class TeslaContainerAdvanced implements ITeslaHolder, ITeslaProducer, ITe
             return Integer.MAX_VALUE;
         }
         return (int) power;
+    }
+
+    public boolean shouldUpdate()
+    {
+        return shouldUpdate;
+    }
+
+    public void setShouldUpdate(boolean update)
+    {
+        this.shouldUpdate = update;
     }
 
     /*
