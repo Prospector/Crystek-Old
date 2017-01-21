@@ -163,7 +163,10 @@ public abstract class Machine extends TileEntity implements ITickable {
 	 * Tile
 	 */
 	@Override
-	public void update() {}
+	public void update()
+    {
+        VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+    }
 
 	public abstract long maxCapacity();
 
