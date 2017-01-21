@@ -4,7 +4,6 @@ import crystekteam.crystek.container.slots.SlotItemHandlerOutput;
 import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.guis.CrystekBuilder;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -53,7 +52,7 @@ public class MachineFurnace extends Machine {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiCrystek gui, int guiLeft, int guiTop, GuiCrystek.Layer layer) {
-		builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, CrystekBuilder.ProgressDirection.RIGHT, GuiCrystek.Layer.FOREGROUND);
+		builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, GuiCrystek.Layer.FOREGROUND);
 		builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX, mouseY, layer);
 	}
 
@@ -78,15 +77,14 @@ public class MachineFurnace extends Machine {
 	}
 
 	@Override
-	public void update()
-	{
-		if(getInv().getStackInSlot(0) != ItemStack.EMPTY) {
-            if(getProgress() != getMaxProgress()) {
-                progress++;
-            }else {
-                progress = 0;
-            }
-        }
-        sync();
+	public void update() {
+		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
+			if (getProgress() != getMaxProgress()) {
+				progress++;
+			} else {
+				progress = 0;
+			}
+		}
+		sync();
 	}
 }

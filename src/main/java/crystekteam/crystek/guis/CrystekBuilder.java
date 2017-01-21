@@ -68,7 +68,7 @@ public class CrystekBuilder extends GuiBuilder {
 		}
 	}
 
-	public void drawProgressBar(GuiCrystek gui, int progress, int maxProgress, int x, int y, int mouseX, int mouseY, ProgressDirection direction, GuiCrystek.Layer layer) {
+	public void drawProgressBar(GuiCrystek gui, int progress, int maxProgress, int x, int y, int mouseX, int mouseY, GuiCrystek.Layer layer) {
 		if (layer == GuiCrystek.Layer.BACKGROUND) {
 			x += gui.getGuiLeft();
 			y += gui.getGuiTop();
@@ -79,23 +79,14 @@ public class CrystekBuilder extends GuiBuilder {
 		}
 
 		gui.mc.getTextureManager().bindTexture(GUI_SHEET);
-		gui.drawTexturedModalRect(x, y, direction.x, direction.y, direction.width, direction.height);
+		gui.drawTexturedModalRect(x, y, 150, 112, 26, 5);
 
-		if (direction.equals(ProgressDirection.RIGHT)) {
-			int j = (int) ((double) progress / (double) maxProgress * 16);
-			if (j < 0)
-				j = 0;
-			gui.drawTexturedModalRect(x, y, direction.xActive, direction.yActive, j, 10);
-		}
+		int j = (int) ((double) progress / (double) maxProgress * 24);
+		if (j < 0)
+			j = 0;
+		gui.drawTexturedModalRect(x + 1, y + 1, 150, 117, j, 3);
 
-		if (direction.equals(ProgressDirection.LEFT)) {
-			int j = (int) ((double) progress / (double) maxProgress * 16);
-			if (j < 0)
-				j = 0;
-			gui.drawTexturedModalRect(x + 16 - j, y, direction.xActive + 16 - j, direction.yActive, j, 10);
-		}
-
-		if (isInRect(x, y, direction.width, direction.height, mouseX, mouseY)) {
+		if (isInRect(x, y, 26, 5, mouseX, mouseY)) {
 			int percentage = percentage(maxProgress, progress);
 			List<String> list = new ArrayList<>();
 			list.add(getPercentageColour(percentage) + "" + percentage + "%");
@@ -312,25 +303,6 @@ public class CrystekBuilder extends GuiBuilder {
 		if (CurrentValue == 0)
 			return 0;
 		return (int) ((CurrentValue * 100.0f) / MaxValue);
-	}
-
-	public enum ProgressDirection {
-		RIGHT(84, 151, 100, 151, 16, 10), LEFT(100, 161, 84, 161, 16, 10)/*, DOWN(104, 171, 114, 171, 10, 16), UP(84, 171, 94, 171, 10, 16)*/;
-		public int x;
-		public int y;
-		public int xActive;
-		public int yActive;
-		public int width;
-		public int height;
-
-		ProgressDirection(int x, int y, int xActive, int yActive, int width, int height) {
-			this.x = x;
-			this.y = y;
-			this.xActive = xActive;
-			this.yActive = yActive;
-			this.width = width;
-			this.height = height;
-		}
 	}
 
 	public enum SlotSprite {
