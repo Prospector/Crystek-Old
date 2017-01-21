@@ -2,7 +2,6 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.blocks.BlockCrystekMachine;
-import crystekteam.crystek.configs.ConfigRegistry;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.MachineCreativeTeslaCell;
 import crystekteam.crystek.machines.MachineFurnace;
