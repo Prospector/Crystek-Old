@@ -192,6 +192,9 @@ public abstract class Machine extends TileEntity implements ITickable {
 	@Override
 	public void update()
     {
+        if (world.isRemote) {
+            return;
+        }
         sync();
     }
 
