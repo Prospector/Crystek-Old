@@ -1,8 +1,7 @@
 package crystekteam.crystek.items.tesla;
 
 import crystekteam.crystek.items.ItemCrystek;
-import net.darkhax.tesla.api.implementation.*;
-import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.darkhax.tesla.api.implementation.InfiniteTeslaProducerProvider;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

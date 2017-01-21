@@ -74,7 +74,7 @@ public class MachineGenerator extends Machine {
 		return EnumTeslaType.GENERATOR;
 	}
 
-	@Override
+    @Override
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiCrystek gui, int guiLeft, int guiTop, GuiCrystek.Layer layer) {
 		builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, GuiCrystek.Layer.FOREGROUND);

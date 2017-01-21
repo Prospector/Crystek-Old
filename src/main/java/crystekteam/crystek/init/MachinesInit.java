@@ -2,12 +2,8 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.blocks.BlockCrystekMachine;
-import crystekteam.crystek.configs.ConfigRegistry;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.machines.MachineCreativeTeslaCell;
-import crystekteam.crystek.machines.MachineFurnace;
-import crystekteam.crystek.machines.MachineGenerator;
-import crystekteam.crystek.machines.MachineTank;
+import crystekteam.crystek.machines.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -29,6 +25,7 @@ public class MachinesInit {
 		registerMachine(new MachineFurnace());
 		registerMachine(new MachineTank());
 		registerMachine(new MachineCreativeTeslaCell());
+		registerMachine(new MachineGrinder());
 		for (Machine m : MACHINE_LIST) {
 			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());

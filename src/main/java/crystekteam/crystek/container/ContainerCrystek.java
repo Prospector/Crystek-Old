@@ -3,7 +3,6 @@ package crystekteam.crystek.container;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
-import net.minecraftforge.items.SlotItemHandler;
 import reborncore.common.container.RebornContainer;
 
 /**

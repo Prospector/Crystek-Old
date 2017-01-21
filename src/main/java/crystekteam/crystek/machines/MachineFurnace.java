@@ -76,7 +76,7 @@ public class MachineFurnace extends Machine {
 		return EnumTeslaType.CONSUMER;
 	}
 
-	@Override
+    @Override
 	public void update() {
 		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
 			if (getProgress() != getMaxProgress()) {

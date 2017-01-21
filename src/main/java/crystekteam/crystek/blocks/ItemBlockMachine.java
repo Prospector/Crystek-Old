@@ -1,10 +1,6 @@
 package crystekteam.crystek.blocks;
 
-import crystekteam.crystek.Crystek;
-import crystekteam.crystek.init.CrystekBlocks;
-import crystekteam.crystek.init.MachinesInit;
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import reborncore.common.itemblock.ItemBlockBase;
 
 /**

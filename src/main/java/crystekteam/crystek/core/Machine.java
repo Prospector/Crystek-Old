@@ -5,7 +5,6 @@ import crystekteam.crystek.blocks.BlockCrystekMachine;
 import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.guis.CrystekBuilder;
 import crystekteam.crystek.guis.GuiCrystek;
-import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
