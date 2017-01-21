@@ -98,6 +98,8 @@ public abstract class Machine extends TileEntity implements ITickable {
 		if (teslaType() != EnumTeslaType.NULL) {
             compound.setLong("StoredPower", this.teslaContainer.getStoredPower());
 		}
+        compound.setInteger("Progress", this.progress);
+        compound.setInteger("MaxProgress", this.maxProgress);
 		return compound;
 	}
 
@@ -113,6 +115,8 @@ public abstract class Machine extends TileEntity implements ITickable {
 		if (teslaType() != EnumTeslaType.NULL) {
             this.teslaContainer.setPower(compound.getLong("StoredPower"));
 		}
+        compound.setInteger("Progress", this.progress);
+        compound.setInteger("MaxProgress", this.maxProgress);
 	}
 
     @Override
@@ -165,6 +169,11 @@ public abstract class Machine extends TileEntity implements ITickable {
 	@Override
 	public void update()
     {
+        sync();
+    }
+
+    public void sync()
+    {
         VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
     }
 
@@ -215,4 +224,19 @@ public abstract class Machine extends TileEntity implements ITickable {
 		}
 		return super.getCapability(capability, facing);
 	}
+    /**
+     * Progress
+     */
+    public int progress = 0;
+    public int maxProgress = 100;
+
+    public int getProgress()
+    {
+        return progress;
+    }
+
+    public int getMaxProgress()
+    {
+        return maxProgress;
+    }
 }
