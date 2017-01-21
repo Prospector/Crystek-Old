@@ -21,10 +21,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import reborncore.common.blocks.BlockMachineBase;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Gigabit101 on 06/12/2016.
@@ -71,11 +74,18 @@ public class BlockCrystekMachine extends BlockMachineBase
         super.breakBlock(worldIn, pos, state);
     }
 
+    @Override
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        List<ItemStack> drops = new ArrayList<>();
+        drops.add(new ItemStack(this));
+        return drops;
+    }
+
     @Nullable
     @Override
     public TileEntity createNewTileEntity(World world, int meta)
     {
-        //TODO automate this
         if(machine instanceof MachineFurnace)
         {
             return new MachineFurnace();

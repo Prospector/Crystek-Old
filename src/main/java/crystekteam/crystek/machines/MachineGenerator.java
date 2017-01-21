@@ -1,7 +1,9 @@
 package crystekteam.crystek.machines;
 
+import crystekteam.crystek.configs.ConfigCrystek;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.guis.CrystekBuilder;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -52,17 +54,17 @@ public class MachineGenerator extends Machine {
 
 	@Override
 	public long maxCapacity() {
-		return 100000;
+		return ConfigCrystek.GENERATOR_MAX_CAPACITY;
 	}
 
 	@Override
 	public long maxInput() {
-		return 100;
+		return ConfigCrystek.GENERATOR_GENERATION;
 	}
 
 	@Override
 	public long maxOutput() {
-		return 100;
+		return ConfigCrystek.GENERATOR_MAX_OUTPUT;
 	}
 
 	@Override
@@ -73,14 +75,35 @@ public class MachineGenerator extends Machine {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiCrystek gui, int guiLeft, int guiTop, GuiCrystek.Layer layer) {
-		builder.drawProgressBar(gui, 0, 75, 35);
+        builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, CrystekBuilder.ProgressDirection.RIGHT, GuiCrystek.Layer.FOREGROUND);
 		builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX, mouseY, layer);
 	}
 
+    int burnTime = 0;
+    boolean isBurning = false;
+
 	@Override
 	public void update() {
-		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
-//			getTeslaContainer().givePower(maxInput(), false);
-		}
+        if (world.isRemote) {
+            return;
+        }
+        if(getTeslaContainer().getStoredPower() < maxCapacity()) {
+            if(burnTime > 0) {
+                burnTime--;
+                getTeslaContainer().givePower(maxOutput(), false);
+                isBurning = true;
+            }else {
+                isBurning = false;
+            }
+            if(burnTime == 0) {
+                this.updateState(false);
+                burnTime = getItemBurnTime(getInv().getStackInSlot(0));
+                if(burnTime > 0) {
+                    this.updateState(true);
+                    getInv().extractItem(0, 1, false);
+                }
+            }
+        }
+        sync();
 	}
 }

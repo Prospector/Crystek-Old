@@ -1,11 +1,13 @@
 package crystekteam.crystek.core;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.blocks.BlockCrystekMachine;
 import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.guis.CrystekBuilder;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,6 +16,8 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -137,6 +141,26 @@ public abstract class Machine extends TileEntity implements ITickable {
         super.onDataPacket(net, packet);
         this.readFromNBT(packet.getNbtCompound());
     }
+
+    @Override
+    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
+    {
+        if (oldState.getBlock() != newSate.getBlock())
+        {
+            return true;
+        }
+        return false;
+    }
+
+	public void updateState(boolean active)
+	{
+		IBlockState BlockStateContainer = world.getBlockState(pos);
+		if (BlockStateContainer.getBlock() instanceof BlockCrystekMachine)
+		{
+            BlockCrystekMachine blockBase = (BlockCrystekMachine) BlockStateContainer.getBlock();
+            blockBase.setActive(active, world, pos);
+		}
+	}
 
     @SideOnly(Side.CLIENT)
 	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiCrystek gui, GuiCrystek.Layer layer) {
