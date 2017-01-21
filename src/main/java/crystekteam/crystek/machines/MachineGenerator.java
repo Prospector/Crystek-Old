@@ -3,7 +3,6 @@ package crystekteam.crystek.machines;
 import crystekteam.crystek.configs.ConfigCrystek;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.guis.CrystekBuilder;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -20,6 +19,9 @@ import java.util.List;
  * Created by Gigabit101 on 14/01/2017.
  */
 public class MachineGenerator extends Machine {
+	int burnTime = 0;
+	boolean isBurning = false;
+
 	public static int getItemBurnTime(ItemStack stack) {
 		return TileEntityFurnace.getItemBurnTime(stack) / 4;
 	}
@@ -75,35 +77,32 @@ public class MachineGenerator extends Machine {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiCrystek gui, int guiLeft, int guiTop, GuiCrystek.Layer layer) {
-        builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, CrystekBuilder.ProgressDirection.RIGHT, GuiCrystek.Layer.FOREGROUND);
+		builder.drawProgressBar(gui, this.getProgress(), this.getMaxProgress(), 75, 35, mouseX, mouseY, GuiCrystek.Layer.FOREGROUND);
 		builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX, mouseY, layer);
 	}
 
-    int burnTime = 0;
-    boolean isBurning = false;
-
 	@Override
 	public void update() {
-        if (world.isRemote) {
-            return;
-        }
-        if(getTeslaContainer().getStoredPower() < maxCapacity()) {
-            if(burnTime > 0) {
-                burnTime--;
-                getTeslaContainer().givePower(maxOutput(), false);
-                isBurning = true;
-            }else {
-                isBurning = false;
-            }
-            if(burnTime == 0) {
-                this.updateState(false);
-                burnTime = getItemBurnTime(getInv().getStackInSlot(0));
-                if(burnTime > 0) {
-                    this.updateState(true);
-                    getInv().extractItem(0, 1, false);
-                }
-            }
-        }
-        sync();
+		if (world.isRemote) {
+			return;
+		}
+		if (getTeslaContainer().getStoredPower() < maxCapacity()) {
+			if (burnTime > 0) {
+				burnTime--;
+				getTeslaContainer().givePower(maxOutput(), false);
+				isBurning = true;
+			} else {
+				isBurning = false;
+			}
+			if (burnTime == 0) {
+				this.updateState(false);
+				burnTime = getItemBurnTime(getInv().getStackInSlot(0));
+				if (burnTime > 0) {
+					this.updateState(true);
+					getInv().extractItem(0, 1, false);
+				}
+			}
+		}
+		sync();
 	}
 }
