@@ -9,6 +9,8 @@ import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -44,7 +46,7 @@ public abstract class Machine extends TileEntity implements ITickable {
 	/**
 	 * Tesla
 	 */
-	public BaseTeslaContainer teslaContainer = new BaseTeslaContainer(maxCapacity(), maxInput(), maxOutput());
+	public TeslaContainerAdvanced teslaContainer = new TeslaContainerAdvanced(maxCapacity(), maxInput(), maxOutput());
 
 	public abstract int invSize();
 
@@ -88,17 +90,15 @@ public abstract class Machine extends TileEntity implements ITickable {
 		if (hasInv()) {
 			compound = super.writeToNBT(compound);
 			compound.merge(inv.serializeNBT());
-			return compound;
 		}
 		if (hasTank()) {
 			compound = super.writeToNBT(compound);
 			tank.writeToNBT(compound);
-			return compound;
 		}
 		if (teslaType() != EnumTeslaType.NULL) {
-			compound.setTag("TeslaContainer", teslaContainer.serializeNBT());
+            compound.setLong("StoredPower", this.teslaContainer.getStoredPower());
 		}
-		return super.writeToNBT(compound);
+		return compound;
 	}
 
 	@Override
@@ -111,12 +111,30 @@ public abstract class Machine extends TileEntity implements ITickable {
 			tank.readFromNBT(compound);
 		}
 		if (teslaType() != EnumTeslaType.NULL) {
-			//TODO fix this :(
-			teslaContainer = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
+            this.teslaContainer.setPower(compound.getLong("StoredPower"));
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket ()
+    {
+        return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag()
+    {
+        return this.writeToNBT(new NBTTagCompound());
+    }
+
+    @Override
+    public void onDataPacket (NetworkManager net, SPacketUpdateTileEntity packet)
+    {
+        super.onDataPacket(net, packet);
+        this.readFromNBT(packet.getNbtCompound());
+    }
+
+    @SideOnly(Side.CLIENT)
 	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiCrystek gui, GuiCrystek.Layer layer) {
 		builder.drawDefaultBackground(gui, guiLeft, guiTop, xSize, ySize);
 		builder.drawPlayerSlots(gui, guiLeft + xSize / 2, guiTop + 80, true);
@@ -155,7 +173,7 @@ public abstract class Machine extends TileEntity implements ITickable {
 
 	public abstract EnumTeslaType teslaType();
 
-	public BaseTeslaContainer getTeslaContainer() {
+	public TeslaContainerAdvanced getTeslaContainer() {
 		return teslaContainer;
 	}
 
@@ -163,9 +181,7 @@ public abstract class Machine extends TileEntity implements ITickable {
 	 * Capability
 	 */
 	@Override
-	public boolean hasCapability(Capability<?> capability,
-	                             @Nullable
-		                             EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
 		}
@@ -183,16 +199,14 @@ public abstract class Machine extends TileEntity implements ITickable {
 
 	@Nullable
 	@Override
-	public <T> T getCapability(Capability<T> capability,
-	                           @Nullable
-		                           EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
 		}
 		if (hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
 		}
-		if (teslaType() != EnumTeslaType.NULL)// && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER)
+		if (teslaType() != EnumTeslaType.NULL)
 		{
 			return (T) getTeslaContainer();
 		}

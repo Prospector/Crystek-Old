@@ -80,7 +80,7 @@ public class MachineGenerator extends Machine {
 	@Override
 	public void update() {
 		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
-			getTeslaContainer().givePower(maxInput(), false);
+//			getTeslaContainer().givePower(maxInput(), false);
 		}
 	}
 }
