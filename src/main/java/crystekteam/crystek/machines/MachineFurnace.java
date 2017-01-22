@@ -4,6 +4,7 @@ import crystekteam.crystek.container.slots.SlotItemHandlerOutput;
 import crystekteam.crystek.container.slots.SlotTeslaCharge;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.core.VanillaPacketDispatcher;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -77,7 +78,6 @@ public class MachineFurnace extends Machine {
 		return EnumTeslaType.CONSUMER;
 	}
 
-    int cost = 5;
     @Override
 	public void update() {
 		super.update();
@@ -142,6 +142,6 @@ public class MachineFurnace extends Machine {
 
     public boolean isBurning()
     {
-        return getTeslaContainer().getStoredPower() > cost;
+        return getTeslaContainer().getStoredPower() > 5;
     }
 }

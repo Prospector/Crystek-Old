@@ -202,9 +202,9 @@ public abstract class Machine extends TileEntity implements ITickable {
     {
         if(requireUpdate || getTeslaContainer().shouldUpdate())
         {
-            VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
             requireUpdate = false;
             getTeslaContainer().setShouldUpdate(false);
+            VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
         }
     }
 
