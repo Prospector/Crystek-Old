@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "orientable",
+    "textures": {
+      "particle": "crystek:blocks/machine/generator_side",
+      "top": "crystek:blocks/machine/solar_panel_top",
+      "down": "crystek:blocks/machine/machine_bottom",
+      "side": "crystek:blocks/machine/generator_side",
+      "front": "crystek:blocks/machine/generator_side"
+    }
+  },
+  "variants": {
+    "facing": {
+      "north": {},
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "active": {
+      "true": {
+        "textures": {
+          "top": "crystek:blocks/machine/solar_panel_top_on"
+        }
+      },
+      "false": {
+        "textures": {}
+      }
+    }
+  }
+}
