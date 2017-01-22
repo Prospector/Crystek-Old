@@ -7,6 +7,7 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.SlotItemHandler;
@@ -68,7 +69,7 @@ public class MachineFurnace extends Machine {
 
 	@Override
 	public long maxOutput() {
-		return 0;
+		return 100;
 	}
 
 	@Override
@@ -76,16 +77,71 @@ public class MachineFurnace extends Machine {
 		return EnumTeslaType.CONSUMER;
 	}
 
+    int cost = 5;
     @Override
 	public void update() {
 		super.update();
-		if (getInv().getStackInSlot(0) != ItemStack.EMPTY) {
-			if (getProgress() != getMaxProgress()) {
-				addProgress();
-			} else {
-				resetProgress();
-			}
-		}
-//		sync();
+        if(isBurning() && canSmelt())
+        {
+            addProgress();
+            updateState(true);
+            if(getProgress() % 10 == 0)
+            {
+                getTeslaContainer().takePower(5, false);
+            }
+            if(getProgress() >= getMaxProgress())
+            {
+                updateState(false);
+                cookItems();
+                resetProgress();
+            }
+        }
+        if(getInv().getStackInSlot(0) == ItemStack.EMPTY)
+        {
+            updateState(false);
+            resetProgress();
+        }
 	}
+
+    public void cookItems() {
+        if (!world.isRemote) {
+            if (this.canSmelt()) {
+                ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getInv().getStackInSlot(0));
+
+                if (getInv().getStackInSlot(1) == ItemStack.EMPTY)
+                {
+                    getInv().insertItem(1, itemstack.copy(), false);
+                } else if (getInv().getStackInSlot(1).isItemEqual(itemstack)) {
+                    getInv().getStackInSlot(1).setCount(getInv().getStackInSlot(1).getCount() + itemstack.getCount());
+                }
+                if (getInv().getStackInSlot(0).getCount() > 1)
+                {
+                    getInv().extractItem(0, 1, false);
+                } else {
+                    getInv().setStackInSlot(0, ItemStack.EMPTY);
+                }
+            }
+        }
+    }
+
+    public boolean canSmelt() {
+        if (getInv().getStackInSlot(0) == ItemStack.EMPTY) {
+            return false;
+        } else {
+            ItemStack itemstack = FurnaceRecipes.instance().getSmeltingResult(getInv().getStackInSlot(0));
+            if (itemstack == ItemStack.EMPTY)
+                return false;
+            if (getInv().getStackInSlot(1) == ItemStack.EMPTY)
+                return true;
+            if (!getInv().getStackInSlot(1).isItemEqual(itemstack))
+                return false;
+            int result = getInv().getStackInSlot(1).getCount() + itemstack.getCount();
+            return (result <= 64 && result <= itemstack.getMaxStackSize());
+        }
+    }
+
+    public boolean isBurning()
+    {
+        return getTeslaContainer().getStoredPower() > cost;
+    }
 }
