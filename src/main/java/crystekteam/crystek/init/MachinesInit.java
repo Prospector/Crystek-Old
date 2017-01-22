@@ -2,7 +2,6 @@ package crystekteam.crystek.init;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.blocks.BlockCrystekMachine;
-import crystekteam.crystek.blocks.ItemBlockMachine;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.*;
 import net.minecraft.block.Block;
@@ -27,7 +26,8 @@ public class MachinesInit {
 		registerMachine(new MachineTank());
 		registerMachine(new MachineCreativeTeslaCell());
 		registerMachine(new MachineGrinder());
-        registerMachine(new MachineSolar());
+		registerMachine(new MachineSolar());
+		registerMachine(new MachineCell());
 		for (Machine m : MACHINE_LIST) {
 			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());

@@ -8,7 +8,6 @@ import crystekteam.crystek.guis.GuiCrystek;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -34,8 +33,7 @@ import java.util.List;
 /**
  * Created by Gigabit101 on 17/01/2017.
  */
-public abstract class Machine extends TileEntity implements ITickable, IWrenchable
-{
+public abstract class Machine extends TileEntity implements ITickable, IWrenchable {
 	/**
 	 * Inv
 	 */
@@ -54,6 +52,12 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	 * Tesla
 	 */
 	public TeslaContainerAdvanced teslaContainer = new TeslaContainerAdvanced(maxCapacity(), maxInput(), maxOutput());
+	/**
+	 * Progress
+	 */
+	public int progress = 0;
+	public int maxProgress = 100;
+	boolean requireUpdate = false;
 
 	public abstract int invSize();
 
@@ -92,92 +96,83 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	/**
 	 * NBT
 	 */
-    public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound compound)
-    {
-        if (hasInv()) {
-            compound = super.writeToNBT(compound);
-            compound.merge(inv.serializeNBT());
-        }
-        if (hasTank()) {
-            compound = super.writeToNBT(compound);
-            tank.writeToNBT(compound);
-        }
-        if (teslaType() != EnumTeslaType.NULL) {
-            compound.setLong("StoredPower", this.teslaContainer.getStoredPower());
-        }
-        compound.setInteger("Progress", this.progress);
-        compound.setInteger("MaxProgress", this.maxProgress);
-        return compound;
-    }
+	public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound compound) {
+		if (hasInv()) {
+			compound = super.writeToNBT(compound);
+			compound.merge(inv.serializeNBT());
+		}
+		if (hasTank()) {
+			compound = super.writeToNBT(compound);
+			tank.writeToNBT(compound);
+		}
+		if (teslaType() != EnumTeslaType.NULL) {
+			compound.setLong("StoredPower", this.teslaContainer.getStoredPower());
+		}
+		compound.setInteger("Progress", this.progress);
+		compound.setInteger("MaxProgress", this.maxProgress);
+		return compound;
+	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-        super.writeToNBT(compound);
-        writeToNBTWithoutCoords(compound);
-        return compound;
+		super.writeToNBT(compound);
+		writeToNBTWithoutCoords(compound);
+		return compound;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-        readFromNBTWithoutCoords(compound);
+		readFromNBTWithoutCoords(compound);
 	}
 
-    public void readFromNBTWithoutCoords(NBTTagCompound compound)
-    {
-        if (hasInv()) {
-            inv.deserializeNBT(compound);
-        }
-        if (hasTank()) {
-            tank.readFromNBT(compound);
-        }
-        if (teslaType() != EnumTeslaType.NULL) {
-            this.teslaContainer.setPower(compound.getLong("StoredPower"));
-        }
-        compound.setInteger("Progress", this.progress);
-        compound.setInteger("MaxProgress", this.maxProgress);
-    }
+	public void readFromNBTWithoutCoords(NBTTagCompound compound) {
+		if (hasInv()) {
+			inv.deserializeNBT(compound);
+		}
+		if (hasTank()) {
+			tank.readFromNBT(compound);
+		}
+		if (teslaType() != EnumTeslaType.NULL) {
+			this.teslaContainer.setPower(compound.getLong("StoredPower"));
+		}
+		compound.setInteger("Progress", this.progress);
+		compound.setInteger("MaxProgress", this.maxProgress);
+	}
 
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket ()
-    {
-        return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
-    }
+	@Override
+	public SPacketUpdateTileEntity getUpdatePacket() {
+		return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
+	}
 
-    @Override
-    public NBTTagCompound getUpdateTag()
-    {
-        return this.writeToNBT(new NBTTagCompound());
-    }
+	@Override
+	public NBTTagCompound getUpdateTag() {
+		return this.writeToNBT(new NBTTagCompound());
+	}
 
-    @Override
-    public void onDataPacket (NetworkManager net, SPacketUpdateTileEntity packet)
-    {
-        super.onDataPacket(net, packet);
-        this.readFromNBT(packet.getNbtCompound());
-    }
+	@Override
+	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
+		super.onDataPacket(net, packet);
+		this.readFromNBT(packet.getNbtCompound());
+	}
 
-    @Override
-    public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate)
-    {
-        if (oldState.getBlock() != newSate.getBlock())
-        {
-            return true;
-        }
-        return false;
-    }
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+		if (oldState.getBlock() != newSate.getBlock()) {
+			return true;
+		}
+		return false;
+	}
 
-	public void updateState(boolean active)
-	{
+	public void updateState(boolean active) {
 		IBlockState BlockStateContainer = world.getBlockState(pos);
-		if (BlockStateContainer.getBlock() instanceof BlockCrystekMachine)
-		{
-            BlockCrystekMachine blockBase = (BlockCrystekMachine) BlockStateContainer.getBlock();
-            blockBase.setActive(active, world, pos);
+		if (BlockStateContainer.getBlock() instanceof BlockCrystekMachine) {
+			BlockCrystekMachine blockBase = (BlockCrystekMachine) BlockStateContainer.getBlock();
+			blockBase.setActive(active, world, pos);
 		}
 	}
 
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiCrystek gui, GuiCrystek.Layer layer) {
 		builder.drawDefaultBackground(gui, guiLeft, guiTop, xSize, ySize);
 		builder.drawPlayerSlots(gui, guiLeft + xSize / 2, guiTop + 80, true);
@@ -206,23 +201,20 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	 * Tile
 	 */
 	@Override
-	public void update()
-    {
-        if (world.isRemote) {
-            return;
-        }
-        sync();
-    }
+	public void update() {
+		if (world.isRemote) {
+			return;
+		}
+		sync();
+	}
 
-    public void sync()
-    {
-        if(requireUpdate || getTeslaContainer().shouldUpdate())
-        {
-            requireUpdate = false;
-            getTeslaContainer().setShouldUpdate(false);
-            VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
-        }
-    }
+	public void sync() {
+		if (requireUpdate || getTeslaContainer().shouldUpdate()) {
+			requireUpdate = false;
+			getTeslaContainer().setShouldUpdate(false);
+			VanillaPacketDispatcher.dispatchTEToNearbyPlayers(this);
+		}
+	}
 
 	public abstract long maxCapacity();
 
@@ -240,7 +232,9 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	 * Capability
 	 */
 	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability,
+	                             @Nullable
+		                             EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
 		}
@@ -253,96 +247,85 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		if (teslaType() == EnumTeslaType.CONSUMER && capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
 			return true;
 		}
+		if (teslaType() == EnumTeslaType.STORAGE && (capability == TeslaCapabilities.CAPABILITY_CONSUMER && capability == TeslaCapabilities.CAPABILITY_PRODUCER) || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
+			return true;
+		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Nullable
 	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability,
+	                           @Nullable
+		                           EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
 		}
 		if (hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
 		}
-		if (teslaType() != EnumTeslaType.NULL)
-		{
+		if (teslaType() != EnumTeslaType.NULL) {
 			return (T) getTeslaContainer();
 		}
 		return super.getCapability(capability, facing);
 	}
-    /**
-     * Progress
-     */
-    public int progress = 0;
-    public int maxProgress = 100;
 
-	public void addProgress()
-	{
+	public void addProgress() {
 		progress++;
-        requireUpdate = true;
-    }
-
-	public void resetProgress()
-	{
-		progress = 0;
-        requireUpdate = true;
+		requireUpdate = true;
 	}
 
-    public int getProgress()
-    {
-        return progress;
-    }
+	public void resetProgress() {
+		progress = 0;
+		requireUpdate = true;
+	}
 
-    public int getMaxProgress()
-    {
-        return maxProgress;
-    }
+	public int getProgress() {
+		return progress;
+	}
 
-    boolean requireUpdate = false;
-    /**
-     * IWrenchable
-     */
+	public int getMaxProgress() {
+		return maxProgress;
+	}
 
-    @Override
-    public boolean wrenchCanRemove(EntityPlayer entityPlayer)
-    {
-        return entityPlayer.isSneaking();
-    }
+	/**
+	 * IWrenchable
+	 */
 
-    @Override
-    public EnumFacing getFacing()
-    {
-        return null;
-    }
+	@Override
+	public boolean wrenchCanRemove(EntityPlayer entityPlayer) {
+		return entityPlayer.isSneaking();
+	}
 
-    @Override
-    public float getWrenchDropRate()
-    {
-        return 0F;
-    }
+	@Override
+	public EnumFacing getFacing() {
+		return null;
+	}
 
-    @Override
-    public ItemStack getWrenchDrop(EntityPlayer entityPlayer)
-    {
-        return getDropWithNBT();
-    }
+	@Override
+	public void setFacing(EnumFacing enumFacing) {}
 
-    @Override
-    public boolean wrenchCanSetFacing(EntityPlayer entityPlayer, EnumFacing enumFacing)
-    {
-        return false;
-    }
+	@Override
+	public float getWrenchDropRate() {
+		return 0F;
+	}
 
-    @Override
-    public void setFacing(EnumFacing enumFacing) {}
+	@Override
+	public ItemStack getWrenchDrop(EntityPlayer entityPlayer) {
+		return getDropWithNBT();
+	}
 
-    public ItemStack getDropWithNBT() {
-        NBTTagCompound tileEntity = new NBTTagCompound();
-        ItemStack dropStack = new ItemStack(this.getBlockType(), 1);
-        writeToNBTWithoutCoords(tileEntity);
-        dropStack.setTagCompound(new NBTTagCompound());
-        dropStack.getTagCompound().setTag("tileEntity", tileEntity);
-        return dropStack;
-    }
+	@Override
+	public boolean wrenchCanSetFacing(EntityPlayer entityPlayer, EnumFacing enumFacing) {
+		return false;
+	}
+
+	public ItemStack getDropWithNBT() {
+		NBTTagCompound tileEntity = new NBTTagCompound();
+		ItemStack dropStack = new ItemStack(this.getBlockType(), 1);
+		writeToNBTWithoutCoords(tileEntity);
+		dropStack.setTagCompound(new NBTTagCompound());
+		dropStack.getTagCompound().setTag("tileEntity", tileEntity);
+		return dropStack;
+	}
 }

@@ -1,0 +1,40 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "orientable",
+    "textures": {
+      "particle": "crystek:blocks/machine/cell_side",
+      "top": "crystek:blocks/machine/cell_top",
+      "down": "crystek:blocks/machine/machine_bottom",
+      "side": "crystek:blocks/machine/cell_side",
+      "front": "crystek:blocks/machine/cell_side",
+      "front-on": "crystek:blocks/machine/cell_side_on"
+    }
+  },
+  "variants": {
+    "facing": {
+      "north": {},
+      "east": {
+        "y": 90
+      },
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 270
+      }
+    },
+    "active": {
+      "true": {
+        "textures": {
+          "side": "#front-on",
+          "front": "#front-on"
+        }
+      },
+      "false": {
+        "textures": {}
+      }
+    }
+  }
+}
