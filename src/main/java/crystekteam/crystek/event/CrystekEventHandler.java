@@ -15,6 +15,6 @@ public class CrystekEventHandler {
 
 	@SubscribeEvent
 	public void onCraft(PlayerEvent.ItemCraftedEvent event){
-		
+
 	}
 }
