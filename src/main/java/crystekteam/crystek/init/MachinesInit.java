@@ -29,7 +29,7 @@ public class MachinesInit {
 		registerMachine(new MachineSolar());
 		registerMachine(new MachineCell());
 		for (Machine m : MACHINE_LIST) {
-			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.MOD_ID.toLowerCase() + "." + m.getName()), m.getName());
+			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.PREFIX + m.getName()), m.getName());
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());
 		}
 	}
