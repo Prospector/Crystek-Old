@@ -4,6 +4,7 @@ import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.*;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -70,6 +71,15 @@ public class BlockCrystekMachine extends BlockMachineBase
         List<ItemStack> drops = new ArrayList<>();
         drops.add(new ItemStack(this));
         return drops;
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase player, ItemStack stack)
+    {
+        if (stack != ItemStack.EMPTY && stack.hasTagCompound()) {
+            ((Machine) world.getTileEntity(pos)).readFromNBTWithoutCoords(stack.getTagCompound().getCompoundTag("tileEntity"));
+        }
+        super.onBlockPlacedBy(world, pos, state, player, stack);
     }
 
     @Nullable
