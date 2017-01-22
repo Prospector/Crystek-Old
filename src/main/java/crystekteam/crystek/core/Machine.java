@@ -8,7 +8,9 @@ import crystekteam.crystek.guis.GuiCrystek;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
@@ -23,6 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import reborncore.common.IWrenchable;
 import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
@@ -31,7 +34,8 @@ import java.util.List;
 /**
  * Created by Gigabit101 on 17/01/2017.
  */
-public abstract class Machine extends TileEntity implements ITickable {
+public abstract class Machine extends TileEntity implements ITickable, IWrenchable
+{
 	/**
 	 * Inv
 	 */
@@ -88,39 +92,51 @@ public abstract class Machine extends TileEntity implements ITickable {
 	/**
 	 * NBT
 	 */
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		if (hasInv()) {
-			compound = super.writeToNBT(compound);
-			compound.merge(inv.serializeNBT());
-		}
-		if (hasTank()) {
-			compound = super.writeToNBT(compound);
-			tank.writeToNBT(compound);
-		}
-		if (teslaType() != EnumTeslaType.NULL) {
+    public NBTTagCompound writeToNBTWithoutCoords(NBTTagCompound compound)
+    {
+        if (hasInv()) {
+            compound = super.writeToNBT(compound);
+            compound.merge(inv.serializeNBT());
+        }
+        if (hasTank()) {
+            compound = super.writeToNBT(compound);
+            tank.writeToNBT(compound);
+        }
+        if (teslaType() != EnumTeslaType.NULL) {
             compound.setLong("StoredPower", this.teslaContainer.getStoredPower());
-		}
+        }
         compound.setInteger("Progress", this.progress);
         compound.setInteger("MaxProgress", this.maxProgress);
-		return compound;
+        return compound;
+    }
+
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
+        writeToNBTWithoutCoords(compound);
+        return compound;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		if (hasInv()) {
-			inv.deserializeNBT(compound);
-		}
-		if (hasTank()) {
-			tank.readFromNBT(compound);
-		}
-		if (teslaType() != EnumTeslaType.NULL) {
+        readFromNBTWithoutCoords(compound);
+	}
+
+    public void readFromNBTWithoutCoords(NBTTagCompound compound)
+    {
+        if (hasInv()) {
+            inv.deserializeNBT(compound);
+        }
+        if (hasTank()) {
+            tank.readFromNBT(compound);
+        }
+        if (teslaType() != EnumTeslaType.NULL) {
             this.teslaContainer.setPower(compound.getLong("StoredPower"));
-		}
+        }
         compound.setInteger("Progress", this.progress);
         compound.setInteger("MaxProgress", this.maxProgress);
-	}
+    }
 
     @Override
     public SPacketUpdateTileEntity getUpdatePacket ()
@@ -284,4 +300,49 @@ public abstract class Machine extends TileEntity implements ITickable {
     }
 
     boolean requireUpdate = false;
+    /**
+     * IWrenchable
+     */
+
+    @Override
+    public boolean wrenchCanRemove(EntityPlayer entityPlayer)
+    {
+        return entityPlayer.isSneaking();
+    }
+
+    @Override
+    public EnumFacing getFacing()
+    {
+        return null;
+    }
+
+    @Override
+    public float getWrenchDropRate()
+    {
+        return 0F;
+    }
+
+    @Override
+    public ItemStack getWrenchDrop(EntityPlayer entityPlayer)
+    {
+        return getDropWithNBT();
+    }
+
+    @Override
+    public boolean wrenchCanSetFacing(EntityPlayer entityPlayer, EnumFacing enumFacing)
+    {
+        return false;
+    }
+
+    @Override
+    public void setFacing(EnumFacing enumFacing) {}
+
+    public ItemStack getDropWithNBT() {
+        NBTTagCompound tileEntity = new NBTTagCompound();
+        ItemStack dropStack = new ItemStack(this.getBlockType(), 1);
+        writeToNBTWithoutCoords(tileEntity);
+        dropStack.setTagCompound(new NBTTagCompound());
+        dropStack.getTagCompound().setTag("tileEntity", tileEntity);
+        return dropStack;
+    }
 }
