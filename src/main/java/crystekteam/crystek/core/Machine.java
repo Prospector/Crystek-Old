@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
@@ -326,4 +327,24 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		dropStack.getTagCompound().setTag("tileEntity", tileEntity);
 		return dropStack;
 	}
+
+    //Block
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
+
+    public boolean isFullCube(IBlockState state)
+    {
+        return true;
+    }
+
+    public boolean isFullBlock(IBlockState state)
+    {
+        return true;
+    }
+
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return true;
+    }
 }

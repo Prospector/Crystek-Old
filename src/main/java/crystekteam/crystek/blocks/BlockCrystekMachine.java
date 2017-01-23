@@ -104,6 +104,26 @@ public class BlockCrystekMachine extends BlockMachineBase {
 
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
+		return machine.getRenderType(state);
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state)
+	{
+		return machine.isFullCube(state);
+	}
+
+	@Override
+	public boolean isFullBlock(IBlockState state)
+	{
+		return machine.isFullBlock(state);
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state)
+	{
+        if(machine != null)
+		    return machine.isOpaqueCube(state);
+        return true;
 	}
 }
