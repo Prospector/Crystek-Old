@@ -6,9 +6,11 @@ import crystekteam.crystek.core.Machine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -65,6 +67,12 @@ public class MachineSolarArray extends Machine {
 	public EnumTeslaType teslaType() {
 		return EnumTeslaType.NULL;
 	}
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new MachineSolarArray();
+    }
 
 	@Override
 	public void update() {

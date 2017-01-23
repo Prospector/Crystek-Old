@@ -76,31 +76,11 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		if (machine instanceof MachineFurnace) {
-			return new MachineFurnace();
-		}
-		if (machine instanceof MachineGenerator) {
-			return new MachineGenerator();
-		}
-		if (machine instanceof MachineTank) {
-			return new MachineTank();
-		}
-		if (machine instanceof MachineCreativeTeslaCell) {
-			return new MachineCreativeTeslaCell();
-		}
-		if (machine instanceof MachineGrinder) {
-			return new MachineGrinder();
-		}
-		if (machine instanceof MachineSolarGenerator) {
-			return new MachineSolarGenerator();
-		}
-		if (machine instanceof MachineCell) {
-			return new MachineCell();
-		}
-		if (machine instanceof MachineSolarArray) {
-			return new MachineSolarArray();
-		}
-		return null;
+        if(machine != null)
+        {
+            return machine.createNewTileEntity(world, meta);
+        }
+        return null;
 	}
 
 	@Override

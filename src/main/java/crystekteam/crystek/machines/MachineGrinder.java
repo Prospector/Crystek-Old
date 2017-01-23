@@ -6,6 +6,8 @@ import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.SlotItemHandler;
@@ -41,6 +43,12 @@ public class MachineGrinder extends Machine
     public int getTankSize()
     {
         return 0;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new MachineGrinder();
     }
 
     @Nullable

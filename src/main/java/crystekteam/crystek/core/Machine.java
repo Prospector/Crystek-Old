@@ -331,8 +331,13 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	}
 
     //Block
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
+    public TileEntity createNewTileEntity(World world, int meta) {
+        return null;
+    }
+
+
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
 	}
 
     public boolean isFullCube(IBlockState state)

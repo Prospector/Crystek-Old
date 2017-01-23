@@ -6,7 +6,9 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.inventory.Slot;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -47,6 +49,12 @@ public class MachineCell extends Machine {
 		slots.add(new SlotTeslaCharge(getInv(), 1, 105, 35));
 		return slots;
 	}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new MachineCell();
+	}
+
 
 	@Override
 	public long maxCapacity() {

@@ -4,6 +4,8 @@ import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -40,6 +42,12 @@ public class MachineTank extends Machine {
 	@Override
 	public List<Slot> getSlots() {
 		return null;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new MachineTank();
 	}
 
 	@Override

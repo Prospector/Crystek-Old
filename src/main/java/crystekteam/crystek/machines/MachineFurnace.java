@@ -8,6 +8,8 @@ import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.SlotItemHandler;
@@ -75,6 +77,12 @@ public class MachineFurnace extends Machine {
 	@Override
 	public EnumTeslaType teslaType() {
 		return EnumTeslaType.CONSUMER;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new MachineFurnace();
 	}
 
 	@Override

@@ -6,7 +6,9 @@ import net.darkhax.tesla.api.implementation.InfiniteTeslaProducer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.inventory.Slot;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
@@ -70,6 +72,12 @@ public class MachineCreativeTeslaCell extends Machine
     public EnumTeslaType teslaType()
     {
         return null;
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int meta)
+    {
+        return new MachineCreativeTeslaCell();
     }
 
     @Override

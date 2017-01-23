@@ -5,6 +5,8 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -62,6 +64,12 @@ public class MachineSolarGenerator extends Machine {
 	@Override
 	public EnumTeslaType teslaType() {
 		return EnumTeslaType.GENERATOR;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta)
+	{
+		return new MachineSolarArray();
 	}
 
 	@Override
