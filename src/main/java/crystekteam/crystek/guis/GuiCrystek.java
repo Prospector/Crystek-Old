@@ -12,6 +12,8 @@ import net.minecraft.util.text.translation.I18n;
  */
 public class GuiCrystek extends GuiContainer {
 
+	public int xSize = 176;
+	public int ySize = 176;
 	public Machine machine;
 	public EntityPlayer player;
 
@@ -28,6 +30,7 @@ public class GuiCrystek extends GuiContainer {
 
 	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+		drawTitle();
 		machine.drawGuiContainerForegroundLayer(mouseX, mouseY, this, guiLeft, guiTop, Layer.FOREGROUND);
 	}
 
@@ -35,15 +38,15 @@ public class GuiCrystek extends GuiContainer {
 		drawCentredString(I18n.translateToLocal(machine.getBlockType().getUnlocalizedName() + ".name"), 6, 0xFFFFFF, Layer.FOREGROUND);
 	}
 
-	protected void drawCentredString(String string, int y, int colour, Layer layer) {
+	public void drawCentredString(String string, int y, int colour, Layer layer) {
 		drawString(string, (xSize / 2 - mc.fontRendererObj.getStringWidth(string) / 2), y, colour, layer);
 	}
 
-	protected void drawCentredString(String string, int y, int colour, int modifier, Layer layer) {
+	public void drawCentredString(String string, int y, int colour, int modifier, Layer layer) {
 		drawString(string, (xSize / 2 - (mc.fontRendererObj.getStringWidth(string)) / 2) + modifier, y, colour, layer);
 	}
 
-	protected void drawString(String string, int x, int y, int colour, Layer layer) {
+	public void drawString(String string, int x, int y, int colour, Layer layer) {
 		int factorX = 0;
 		int factorY = 0;
 		if (layer == Layer.BACKGROUND) {

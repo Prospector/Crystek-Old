@@ -45,8 +45,6 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	/**
 	 * GUI
 	 */
-	public int xSize = 176;
-	public int ySize = 176;
 	public CrystekBuilder builder = new CrystekBuilder();
 	/**
 	 * Tesla
@@ -136,8 +134,8 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		if (teslaType() != EnumTeslaType.NULL) {
 			this.teslaContainer.setPower(compound.getLong("StoredPower"));
 		}
-		compound.setInteger("Progress", this.progress);
-		compound.setInteger("MaxProgress", this.maxProgress);
+		progress = compound.getInteger("Progress");
+		maxProgress = compound.getInteger("MaxProgress");
 	}
 
 	@Override
@@ -175,7 +173,7 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY, int guiLeft, int guiTop, int xSize, int ySize, GuiCrystek gui, GuiCrystek.Layer layer) {
 		builder.drawDefaultBackground(gui, guiLeft, guiTop, xSize, ySize);
-		builder.drawPlayerSlots(gui, guiLeft + xSize / 2, guiTop + 80, true);
+		builder.drawPlayerSlots(gui, guiLeft + xSize / 2, guiTop + 93, true);
 		if (getSlots() != null) {
 			for (Slot s : getSlots()) {
 				if (s instanceof SlotTeslaCharge) {

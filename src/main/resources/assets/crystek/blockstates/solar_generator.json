@@ -4,12 +4,12 @@
     "transform": "forge:default-block",
     "model": "orientable",
     "textures": {
-      "particle": "crystek:blocks/machine/grinder_front",
+      "particle": "crystek:blocks/machine/generator_side",
       "top": "crystek:blocks/machine/machine_top",
       "down": "crystek:blocks/machine/machine_bottom",
-      "side": "crystek:blocks/machine/machine_side",
-      "front": "crystek:blocks/machine/grinder_front",
-      "front-on": "crystek:blocks/machine/grinder_front_on"
+      "side": "crystek:blocks/machine/generator_side",
+      "side-on": "crystek:blocks/machine/generator_side_on",
+      "front": "crystek:blocks/machine/generator_side"
     }
   },
   "variants": {
@@ -28,8 +28,9 @@
     "active": {
       "true": {
         "textures": {
-          "particle": "#front-on",
-          "front": "#front-on"
+          "particle": "#side-on",
+          "side": "#side-on",
+          "front": "#side-on"
         }
       },
       "false": {

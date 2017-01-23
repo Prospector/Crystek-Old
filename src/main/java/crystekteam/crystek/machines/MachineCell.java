@@ -91,6 +91,6 @@ public class MachineCell extends Machine {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY, GuiCrystek gui, int guiLeft, int guiTop, GuiCrystek.Layer layer) {
-		builder.drawTeslaEnergyBar(gui, 9, 6, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX, mouseY, layer);
+		builder.drawTeslaEnergyBar(gui, 9, 18, (int) getTeslaContainer().getStoredPower(), (int) getTeslaContainer().getCapacity(), mouseX, mouseY, layer);
 	}
 }

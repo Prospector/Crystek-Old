@@ -52,13 +52,6 @@ public class CrystekBuilder extends GuiBuilder {
 		gui.drawTexturedModalRect(x + 1, y + 49 - draw, 15, 48 + 151 - draw, 12, draw);
 		int percentage = percentage(maxEnergyStored, energyStored);
 		if (isInRect(x + 1, y + 1, 11, 48, mouseX, mouseY)) {
-			GlStateManager.disableLighting();
-			GlStateManager.disableDepth();
-			GlStateManager.colorMask(true, true, true, false);
-			GuiUtils.drawGradientRect(0, x + 1, y + 1, x + 13, y + 49, 0x80FFFFFF, 0x80FFFFFF);
-			GlStateManager.colorMask(true, true, true, true);
-			GlStateManager.enableDepth();
-
 			List<String> list = new ArrayList<>();
 			list.add(TextFormatting.GOLD + "" + energyStored + "/" + maxEnergyStored + " Tesla");
 			list.add(getPercentageColour(percentage) + "" + percentage + "%" + TextFormatting.GRAY + " Charged");
@@ -94,6 +87,14 @@ public class CrystekBuilder extends GuiBuilder {
 			GlStateManager.disableLighting();
 			GlStateManager.color(1, 1, 1, 1);
 		}
+	}
+
+	public void drawDefaultBackground(GuiScreen gui, int x, int y, int width, int height) {
+		Minecraft.getMinecraft().getTextureManager().bindTexture(GUI_SHEET);
+		gui.drawTexturedModalRect(x, y, 0, 0, width / 2, height / 2);
+		gui.drawTexturedModalRect(x + width / 2, y, 150 - width / 2, 0, width / 2, height / 2);
+		gui.drawTexturedModalRect(x, y + height / 2, 0, 150 - height / 2, width / 2, height / 2);
+		gui.drawTexturedModalRect(x + width / 2, y + height / 2, 150 - width / 2, 150 - height / 2, width / 2, height / 2);
 	}
 
 	public void drawTank(GuiCrystek gui, int x, int y, int mouseX, int mouseY, FluidStack fluid, int maxCapacity, boolean isTankEmpty, GuiCrystek.Layer layer) {

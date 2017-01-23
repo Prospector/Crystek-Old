@@ -30,7 +30,7 @@ public class CrystekItems extends RegistryCL {
 	public static ItemCL CRYSTALLINE_GRINDING_BLADE;
 	public static ItemCL OBSIDIAN_WRENCH;
 	public static ItemCL MACHINE_DEBUG;
-    public static ItemCL CREATIVE_BATTERY;
+	public static ItemCL CREATIVE_BATTERY;
 	private static HashMap<String, String> MATERIALS_DICT = new HashMap<>();
 
 	private static void addMaterial(String name, String... oreDictNames) {
@@ -52,8 +52,8 @@ public class CrystekItems extends RegistryCL {
 		DIAMOND_GRINDING_BLADE = new ItemGrindingBlade("diamond", 3, 1023, new ItemStack(Items.DIAMOND));
 		OBSIDIAN_GRINDING_BLADE = new ItemGrindingBlade("obsidian", 1, -1, ItemStack.EMPTY);
 		CRYSTALLINE_GRINDING_BLADE = new ItemGrindingBlade("crystalline", 3, -1, ItemStack.EMPTY);
-        MACHINE_DEBUG = new ItemMachineDebug();
-        CREATIVE_BATTERY = new ItemCreativeBattery();
+		MACHINE_DEBUG = new ItemMachineDebug();
+		CREATIVE_BATTERY = new ItemCreativeBattery();
 
 		addMaterial("crystal", "crystalTesla");
 		addMaterial("blue_crystal", "crystalTeslaBlue");
@@ -73,6 +73,7 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("diamond_dust", "dustDiamond");
 		addMaterial("emerald_dust", "dustEmerald");
 		addMaterial("obsidian_dust", "dustObsidian");
+		addMaterial("rubrium_dust", "dustRubrium");
 
 		addMaterial("crystalline_iron_ingot", "ingotCrystallineIron");
 		addMaterial("obsidian_ingot", "ingotObsidian");
@@ -86,8 +87,8 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(DIAMOND_GRINDING_BLADE);
 		addToRegistry(OBSIDIAN_GRINDING_BLADE);
 		addToRegistry(CRYSTALLINE_GRINDING_BLADE);
-        addToRegistry(MACHINE_DEBUG);
-        addToRegistry(CREATIVE_BATTERY);
+		addToRegistry(MACHINE_DEBUG);
+		addToRegistry(CREATIVE_BATTERY);
 
 		for (ItemCL item : registry.values()) {
 			register(item);

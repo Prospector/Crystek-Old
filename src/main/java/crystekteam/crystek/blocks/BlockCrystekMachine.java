@@ -90,11 +90,14 @@ public class BlockCrystekMachine extends BlockMachineBase {
 		if (machine instanceof MachineGrinder) {
 			return new MachineGrinder();
 		}
-		if (machine instanceof MachineSolar) {
-			return new MachineSolar();
+		if (machine instanceof MachineSolarGenerator) {
+			return new MachineSolarGenerator();
 		}
 		if (machine instanceof MachineCell) {
 			return new MachineCell();
+		}
+		if (machine instanceof MachineSolarArray) {
+			return new MachineSolarArray();
 		}
 		return null;
 	}

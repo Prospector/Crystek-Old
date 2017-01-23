@@ -28,6 +28,7 @@
     "active": {
       "true": {
         "textures": {
+          "particle": "#front-on",
           "side": "#front-on",
           "front": "#front-on"
         }

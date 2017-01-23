@@ -94,6 +94,11 @@
           "layer0": "crystek:items/dust/obsidian_dust"
         }
       },
+      "rubrium_dust": {
+        "textures": {
+          "layer0": "crystek:items/dust/rubrium_dust"
+        }
+      },
       "crystalline_iron_ingot": {
         "textures": {
           "layer0": "crystek:items/ingot/crystalline_iron_ingot"
