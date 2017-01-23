@@ -6,6 +6,7 @@ import crystekteam.crystek.init.CrystekItems;
 import crystekteam.crystek.init.CrystekOreDict;
 import crystekteam.crystek.init.CrystekRecipes;
 import crystekteam.crystek.init.MachinesInit;
+import crystekteam.crystek.network.Packets;
 import crystekteam.crystek.proxy.CrystekServer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -51,7 +52,8 @@ public class Crystek extends ModCL {
         config = ConfigCrystek.initialize(new File(path));
 
 		CrystekOreDict.init();
-	}
+        MinecraftForge.EVENT_BUS.register(Packets.class);
+    }
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {

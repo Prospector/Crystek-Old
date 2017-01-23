@@ -55,7 +55,6 @@ public class MachineCell extends Machine {
 		return new MachineCell();
 	}
 
-
 	@Override
 	public long maxCapacity() {
 		return 128000;

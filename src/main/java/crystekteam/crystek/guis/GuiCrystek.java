@@ -1,11 +1,18 @@
 package crystekteam.crystek.guis;
 
+import crystekteam.crystek.Crystek;
 import crystekteam.crystek.container.ContainerCrystek;
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.init.CrystekItems;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
+import reborncore.client.gui.GuiButtonItemTexture;
+
+import java.io.IOException;
 
 /**
  * Created by Gigabit101 on 14/01/2017.
@@ -16,11 +23,13 @@ public class GuiCrystek extends GuiContainer {
 	public int ySize = 176;
 	public Machine machine;
 	public EntityPlayer player;
+    int CONFIG_BUTTON_ID = 999;
 
 	public GuiCrystek(EntityPlayer player, Machine machine) {
 		super(new ContainerCrystek(player, machine));
 		this.machine = machine;
 		this.player = player;
+		buttonList.clear();
 	}
 
 	@Override
@@ -57,7 +66,24 @@ public class GuiCrystek extends GuiContainer {
 		GlStateManager.color(1, 1, 1, 1);
 	}
 
-	public enum Layer {
+    @Override
+    public void initGui()
+    {
+        super.initGui();
+        buttonList.add(new GuiButton(CONFIG_BUTTON_ID, guiLeft + 150, guiTop + 4, 20, 20, "C"));
+    }
+
+    public enum Layer {
 		BACKGROUND, FOREGROUND
 	}
+
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException
+    {
+        if(button.id == CONFIG_BUTTON_ID)
+        {
+            player.openGui(Crystek.MOD_CL, 999, machine.getWorld(), machine.getPos().getX(), machine.getPos().getY(), machine.getPos().getZ());
+        }
+        super.actionPerformed(button);
+    }
 }

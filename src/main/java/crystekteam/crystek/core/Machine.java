@@ -31,6 +31,7 @@ import reborncore.common.IWrenchable;
 import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -233,9 +234,7 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	 * Capability
 	 */
 	@Override
-	public boolean hasCapability(Capability<?> capability,
-	                             @Nullable
-		                             EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
 		}
@@ -249,25 +248,23 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 			return true;
 		}
 		if (teslaType() == EnumTeslaType.STORAGE && (capability == TeslaCapabilities.CAPABILITY_CONSUMER && capability == TeslaCapabilities.CAPABILITY_PRODUCER) || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
-			return true;
+            return true;
 		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Nullable
 	@Override
-	public <T> T getCapability(Capability<T> capability,
-	                           @Nullable
-		                           EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
 		}
 		if (hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
 		}
-		if (teslaType() != EnumTeslaType.NULL) {
-			return (T) getTeslaContainer();
-		}
+		if (teslaType() != EnumTeslaType.NULL && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER) {
+            return (T) getTeslaContainer();
+        }
 		return super.getCapability(capability, facing);
 	}
 
@@ -334,7 +331,6 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
     public TileEntity createNewTileEntity(World world, int meta) {
         return null;
     }
-
 
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;

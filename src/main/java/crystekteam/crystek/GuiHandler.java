@@ -1,7 +1,9 @@
 package crystekteam.crystek;
 
+import crystekteam.crystek.container.ContainerConfig;
 import crystekteam.crystek.container.ContainerCrystek;
 import crystekteam.crystek.core.Machine;
+import crystekteam.crystek.guis.GuiConfig;
 import crystekteam.crystek.guis.GuiCrystek;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -15,6 +17,7 @@ import javax.annotation.Nullable;
  */
 public class GuiHandler implements IGuiHandler
 {
+    int GUI_CONFIG = 999;
     @Nullable
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -25,6 +28,10 @@ public class GuiHandler implements IGuiHandler
             if(tileCrystek.guiID() == ID)
             {
                 return new ContainerCrystek(player, tileCrystek);
+            }
+            if(ID == GUI_CONFIG)
+            {
+                return new ContainerConfig(player, tileCrystek);
             }
         }
         return null;
@@ -41,6 +48,10 @@ public class GuiHandler implements IGuiHandler
             if(tileCrystek.guiID() == ID)
             {
                 return new GuiCrystek(player, tileCrystek);
+            }
+            if(ID == GUI_CONFIG)
+            {
+                return new GuiConfig(player, tileCrystek);
             }
         }
         return null;
