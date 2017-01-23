@@ -11,6 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -108,22 +109,26 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	}
 
 	@Override
-	public boolean isFullCube(IBlockState state)
-	{
+	public boolean isFullCube(IBlockState state) {
 		return machine.isFullCube(state);
 	}
 
 	@Override
-	public boolean isFullBlock(IBlockState state)
-	{
+	public boolean isFullBlock(IBlockState state) {
 		return machine.isFullBlock(state);
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state)
-	{
+	public boolean isOpaqueCube(IBlockState state) {
         if(machine != null)
 		    return machine.isOpaqueCube(state);
         return true;
 	}
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        if(machine != null)
+            return machine.getBoundingBox(state, source, pos);
+        return super.getBoundingBox(state, source, pos);
+    }
 }
