@@ -56,18 +56,19 @@ public class CrystekItems extends RegistryCL {
 		CREATIVE_BATTERY = new ItemCreativeBattery();
 
 		addMaterial("crystal", "crystalTesla");
-		addMaterial("blue_crystal", "crystalTeslaBlue");
-		addMaterial("purple_crystal", "crystalTeslaPurple");
-		addMaterial("red_crystal", "crystalTeslaRed");
-		addMaterial("yellow_crystal", "crystalTeslaYellow");
-		addMaterial("green_crystal", "crystalTeslaGreen");
+		addMaterial("blue_crystal", "crystalTesla", "crystalTeslaBlue");
+		addMaterial("purple_crystal", "crystalTesla", "crystalTeslaPurple");
+		addMaterial("red_crystal", "crystalTesla", "crystalTeslaRed");
+		addMaterial("yellow_crystal", "crystalTesla", "crystalTeslaYellow");
+		addMaterial("green_crystal", "crystalTesla", "crystalTeslaGreen");
+		addMaterial("experience_crystal", "crystalExperience");
 
 		addMaterial("crystal_dust", "dustCrystalTesla");
-		addMaterial("blue_crystal_dust", "dustCrystalTeslaBlue");
-		addMaterial("purple_crystal_dust", "dustCrystalTeslaPurple");
-		addMaterial("red_crystal_dust", "dustCrystalTeslaRed");
-		addMaterial("yellow_crystal_dust", "dustCrystalTeslaYellow");
-		addMaterial("green_crystal_dust", "dustCrystalTeslaGreen");
+		addMaterial("blue_crystal_dust", "dustCrystalTesla", "dustCrystalTeslaBlue");
+		addMaterial("purple_crystal_dust", "dustCrystalTesla", "dustCrystalTeslaPurple");
+		addMaterial("red_crystal_dust", "dustCrystalTesla", "dustCrystalTeslaRed");
+		addMaterial("yellow_crystal_dust", "dustCrystalTesla", "dustCrystalTeslaYellow");
+		addMaterial("green_crystal_dust", "dustCrystalTesla", "dustCrystalTeslaGreen");
 		addMaterial("iron_dust", "dustIron");
 		addMaterial("gold_dust", "dustGold");
 		addMaterial("diamond_dust", "dustDiamond");
@@ -78,6 +79,8 @@ public class CrystekItems extends RegistryCL {
 		addMaterial("crystalline_iron_ingot", "ingotCrystallineIron");
 		addMaterial("obsidian_ingot", "ingotObsidian");
 		addMaterial("rubrium_ingot", "ingotRubrium");
+
+		addMaterial("tesla_lens", "lensTesla");
 
 		addToRegistry(OBSIDIAN_WRENCH);
 		addToRegistry(MATERIALS);

@@ -6,18 +6,20 @@ import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.machines.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import reborncore.modcl.ModCL;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by Gigabit101 on 14/01/2017.
  */
 public class MachinesInit {
-	static List<Machine> MACHINE_LIST = new ArrayList<Machine>();
-
+	public static HashMap<String, BlockCrystekMachine> MACHINE_BLOCK_LIST = new HashMap<>();
+	static List<Machine> MACHINE_LIST = new ArrayList<>();
 	ModCL mod;
 
 	public static void init() {
@@ -29,8 +31,13 @@ public class MachinesInit {
 		registerMachine(new MachineSolarGenerator());
 		registerMachine(new MachineCell());
 		registerMachine(new MachineSolarArray());
+		registerMachine(new MachineResistantSolarArray());
 		for (Machine m : MACHINE_LIST) {
-			registerBlock(new BlockCrystekMachine(m).setUnlocalizedName(Crystek.PREFIX + m.getName()), m.getName());
+			BlockCrystekMachine block = new BlockCrystekMachine(m);
+			block.setUnlocalizedName(Crystek.PREFIX + m.getName());
+			registerBlock(block, m.getName());
+			block.stack = new ItemStack(block);
+			MACHINE_BLOCK_LIST.put(m.getName(), block);
 			GameRegistry.registerTileEntity(m.getClass(), m.getName());
 		}
 	}

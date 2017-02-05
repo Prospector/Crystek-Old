@@ -1,11 +1,14 @@
 package crystekteam.crystek.proxy;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.blocks.FluidBlockBase;
+import crystekteam.crystek.init.CrystekBlocks;
 import crystekteam.crystek.init.CrystekItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -78,6 +81,13 @@ public class CrystekClient extends CrystekServer {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(loc, "type=" + variantName));
 	}
 
+	private static void registerFluid(FluidBlockBase fluid) {
+		final ModelResourceLocation location = new ModelResourceLocation(Crystek.PREFIX + "fluids", fluid.getFluid().getName().toLowerCase());
+		ModelLoader.setCustomStateMapper(fluid, new StateMapperBase() {
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) { return location; }
+		});
+	}
+
 	@Override
 	public void registerRenders() {
 		for (Item item : Crystek.MOD_CL.itemModelsToRegister) {
@@ -94,6 +104,11 @@ public class CrystekClient extends CrystekServer {
 				registerBlockstate(item, i, item.types.get(i), Crystek.MOD_CL.customBlockStates.get(item));
 			}
 		}
+		registerFluid(CrystekBlocks.TESLARINE_BLOCK);
+		registerFluid(CrystekBlocks.BIOMASS_BLOCK);
+		registerFluid(CrystekBlocks.EXPERIENCE_BLOCK);
+		registerFluid(CrystekBlocks.COOLANT_BLOCK);
+		registerFluid(CrystekBlocks.VENOM_BLOCK);
 	}
 
 	@Override

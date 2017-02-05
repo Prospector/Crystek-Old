@@ -3,14 +3,11 @@ package crystekteam.crystek.guis;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.container.ContainerCrystek;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.init.CrystekItems;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
-import reborncore.client.gui.GuiButtonItemTexture;
 
 import java.io.IOException;
 
@@ -20,10 +17,10 @@ import java.io.IOException;
 public class GuiCrystek extends GuiContainer {
 
 	public int xSize = 176;
-	public int ySize = 176;
+	public int ySize = 181;
 	public Machine machine;
 	public EntityPlayer player;
-    int CONFIG_BUTTON_ID = 999;
+	int CONFIG_BUTTON_ID = 999;
 
 	public GuiCrystek(EntityPlayer player, Machine machine) {
 		super(new ContainerCrystek(player, machine));
@@ -66,24 +63,21 @@ public class GuiCrystek extends GuiContainer {
 		GlStateManager.color(1, 1, 1, 1);
 	}
 
-    @Override
-    public void initGui()
-    {
-        super.initGui();
-        buttonList.add(new GuiButton(CONFIG_BUTTON_ID, guiLeft + 150, guiTop + 4, 20, 20, "C"));
-    }
-
-    public enum Layer {
-		BACKGROUND, FOREGROUND
+	@Override
+	public void initGui() {
+		super.initGui();
+		buttonList.add(new GuiButton(CONFIG_BUTTON_ID, guiLeft + 150, guiTop + 4, 20, 20, "C"));
 	}
 
-    @Override
-    protected void actionPerformed(GuiButton button) throws IOException
-    {
-        if(button.id == CONFIG_BUTTON_ID)
-        {
-            player.openGui(Crystek.MOD_CL, 999, machine.getWorld(), machine.getPos().getX(), machine.getPos().getY(), machine.getPos().getZ());
-        }
-        super.actionPerformed(button);
-    }
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		if (button.id == CONFIG_BUTTON_ID) {
+			player.openGui(Crystek.MOD_CL, 999, machine.getWorld(), machine.getPos().getX(), machine.getPos().getY(), machine.getPos().getZ());
+		}
+		super.actionPerformed(button);
+	}
+
+	public enum Layer {
+		BACKGROUND, FOREGROUND
+	}
 }

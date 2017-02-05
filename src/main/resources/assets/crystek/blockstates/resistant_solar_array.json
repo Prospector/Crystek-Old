@@ -4,12 +4,12 @@
     "transform": "forge:default-block",
     "model": "crystek:solar_array",
     "textures": {
-      "particle": "crystek:blocks/machine/solar_array_top",
-      "top": "crystek:blocks/machine/solar_array_top",
+      "particle": "crystek:blocks/machine/resistant_solar_array_top",
+      "top": "crystek:blocks/machine/resistant_solar_array_top",
       "down": "crystek:blocks/machine/machine_bottom",
       "side": "crystek:blocks/machine/solar_array_side",
       "front": "crystek:blocks/machine/solar_array_side",
-      "top-on": "crystek:blocks/machine/solar_array_top_on"
+      "top-on": "crystek:blocks/machine/resistant_solar_array_top_on"
     }
   },
   "variants": {

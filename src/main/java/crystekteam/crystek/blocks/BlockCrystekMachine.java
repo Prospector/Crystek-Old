@@ -2,7 +2,10 @@ package crystekteam.crystek.blocks;
 
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.machines.*;
+import crystekteam.crystek.init.MachinesInit;
+import crystekteam.crystek.machines.MachineSolarArray;
+import crystekteam.crystek.machines.MachineSolarGenerator;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +28,7 @@ import java.util.List;
  * Created by Gigabit101 on 06/12/2016.
  */
 public class BlockCrystekMachine extends BlockMachineBase {
+	public ItemStack stack = ItemStack.EMPTY;
 	Machine machine;
 
 	public BlockCrystekMachine(Machine machine) {
@@ -37,16 +41,56 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	}
 
 	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		super.onBlockAdded(worldIn, pos, state);
+		onBlockAdded(worldIn, pos.getX(), pos.getY(), pos.getZ());
+		this.setDefaultFacing(worldIn, pos, state);
+	}
+
+	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
+		if (!worldIn.isRemote) {
+			IBlockState sate = worldIn.getBlockState(pos.north());
+			Block block = sate.getBlock();
+			IBlockState state1 = worldIn.getBlockState(pos.south());
+			Block block1 = state1.getBlock();
+			IBlockState state2 = worldIn.getBlockState(pos.west());
+			Block block2 = state2.getBlock();
+			IBlockState state3 = worldIn.getBlockState(pos.east());
+			Block block3 = state3.getBlock();
+			EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+
+			if (enumfacing == EnumFacing.NORTH && block.isFullBlock(state) && !block1.isFullBlock(state1)) {
+				enumfacing = EnumFacing.SOUTH;
+			} else if (enumfacing == EnumFacing.SOUTH && block1.isFullBlock(state1) && !block.isFullBlock(state)) {
+				enumfacing = EnumFacing.NORTH;
+			} else if (enumfacing == EnumFacing.WEST && block2.isFullBlock(state2) && !block3.isFullBlock(state2)) {
+				enumfacing = EnumFacing.EAST;
+			} else if (enumfacing == EnumFacing.EAST && block3.isFullBlock(state3) && !block2.isFullBlock(state2)) {
+				enumfacing = EnumFacing.WEST;
+			}
+
+			worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing.getOpposite()), 2);
+		}
+	}
+
+	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (worldIn.getTileEntity(pos) != null) {
 			Machine tileMachine = (Machine) worldIn.getTileEntity(pos);
-			if (!playerIn.isSneaking()) {
-				try {
-					tileMachine.openGui(playerIn, tileMachine);
-				} catch (Exception e) {
-					System.out.print(e);
+			if (tileMachine.openGuiOnRightClick()) {
+				if (tileMachine instanceof MachineSolarGenerator) {
+					for (BlockCrystekMachine m : MachinesInit.MACHINE_BLOCK_LIST.values())
+						if (m.machine instanceof MachineSolarArray && playerIn.getHeldItem(hand).isItemEqual(m.stack))
+							return false;
 				}
-				return true;
+				if (!playerIn.isSneaking()) {
+					try {
+						tileMachine.openGui(playerIn, tileMachine);
+					} catch (Exception e) {
+						System.out.print(e);
+					}
+					return true;
+				}
 			}
 		}
 		return false;
@@ -76,11 +120,10 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	@Nullable
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-        if(machine != null)
-        {
-            return machine.createNewTileEntity(world, meta);
-        }
-        return null;
+		if (machine != null) {
+			return machine.createNewTileEntity(world, meta);
+		}
+		return null;
 	}
 
 	@Override
@@ -99,16 +142,33 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	}
 
 	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-        if(machine != null)
-		    return machine.isOpaqueCube(state);
-        return true;
+	public boolean causesSuffocation(IBlockState state) {
+		return isFullBlock(state);
 	}
 
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        if(machine != null)
-            return machine.getBoundingBox(state, source, pos);
-        return super.getBoundingBox(state, source, pos);
-    }
+	@Override
+	public boolean isFullyOpaque(IBlockState state) {
+		return machine.isFullyOpaque(state);
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		if (machine != null)
+			return machine.isOpaqueCube(state);
+		return false;
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if (machine != null)
+			return machine.getBoundingBox(state, source, pos);
+		return super.getBoundingBox(state, source, pos);
+	}
+
+	@Override
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
+		if (machine != null)
+			return machine.canPlaceBlockOnSide(worldIn, pos, side);
+		return super.canPlaceBlockOnSide(worldIn, pos, side);
+	}
 }

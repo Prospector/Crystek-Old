@@ -7,6 +7,7 @@ item.crystek:material.purple_crystal.name=Purple Crystal
 item.crystek:material.red_crystal.name=Red Crystal
 item.crystek:material.yellow_crystal.name=Yellow Crystal
 item.crystek:material.green_crystal.name=Green Crystal
+item.crystek:material.experience_crystal.name=Experience Crystal
 item.crystek:material.crystal_dust.name=Crystal Dust
 item.crystek:material.blue_crystal_dust.name=Blue Crystal Dust
 item.crystek:material.purple_crystal_dust.name=Purple Crystal Dust
@@ -22,6 +23,7 @@ item.crystek:material.rubrium_dust.name=Rubrium Dust
 item.crystek:material.crystalline_iron_ingot.name=Crystalline Iron Ingot
 item.crystek:material.obsidian_ingot.name=Obsidian Ingot
 item.crystek:material.rubrium_ingot.name=Rubrium Ingot
+item.crystek:material.tesla_lens.name=Tesla Lens
 
 item.crystek:crystalline_bonemeal.name=Crystalline Bone Meal
 
@@ -42,5 +44,14 @@ tile.crystek:cell.name=Tesla Cell
 tile.crystek:furnace.name=Crystacor Furnace
 tile.crystek:grinder.name=Grinder
 tile.crystek:coalgenerator.name=Solid Fuel Generator
-tile.crystek:solar_panel.name=Solar Panel
+tile.crystek:solar_generator.name=Solar Generator
+tile.crystek:solar_array.name=Solar Array
+tile.crystek:resistant_solar_array.name=Resistant Solar Array
 tile.crystek:tank.name=Obsidian Tank
+
+//Fluids
+fluid.biomass=Biomass
+fluid.teslarine=Teslarine
+fluid.experience=Experience
+fluid.coolant=Coolant
+fluid.venom=Venom

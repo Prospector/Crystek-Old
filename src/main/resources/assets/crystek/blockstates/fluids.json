@@ -1,12 +1,44 @@
 {
-    "forge_marker": 1,
-    "defaults": {
-        "model": "forge:fluid",
-        "transform": "forge:default-item"
-    },
-    "variants": {
-        "fluidtesla": [{
-            "custom": { "fluid": "fluidtesla" }
-        }]
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:fluid",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "teslarine": [
+      {
+        "custom": {
+          "fluid": "teslarine"
+        }
+      }
+    ],
+    "biomass": [
+      {
+        "custom": {
+          "fluid": "biomass"
+        }
+      }
+    ],
+    "experience": [
+      {
+        "custom": {
+          "fluid": "experience"
+        }
+      }
+    ],
+    "coolant": [
+      {
+        "custom": {
+          "fluid": "coolant"
+        }
+      }
+    ],
+    "venom": [
+      {
+        "custom": {
+          "fluid": "venom"
+        }
+      }
+    ]
+  }
 }

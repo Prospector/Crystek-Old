@@ -1,6 +1,7 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.init.recipes.CraftingTableRecipes;
+import crystekteam.crystek.init.recipes.FluidizerRecipes;
 import crystekteam.crystek.init.recipes.GrinderRecipes;
 import crystekteam.crystek.init.recipes.SmeltingRecipes;
 
@@ -12,5 +13,6 @@ public class CrystekRecipes {
 		CraftingTableRecipes.init();
 		SmeltingRecipes.init();
 		GrinderRecipes.init();
+		FluidizerRecipes.init();
 	}
 }

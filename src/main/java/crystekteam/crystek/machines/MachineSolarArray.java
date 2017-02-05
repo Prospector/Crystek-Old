@@ -4,16 +4,20 @@ import crystekteam.crystek.blocks.BlockCrystekMachine;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Prospector
@@ -21,6 +25,17 @@ import java.util.List;
 public class MachineSolarArray extends Machine {
 	public int solarEnergy;
 	public int maxSolarEnergy = 1;
+	private boolean solarCapable = false;
+
+	@Override
+	public boolean openGuiOnRightClick() {
+		return false;
+	}
+
+	@Override
+	public boolean invertPlacing() {
+		return true;
+	}
 
 	@Override
 	public int invSize() {
@@ -68,32 +83,72 @@ public class MachineSolarArray extends Machine {
 		return EnumTeslaType.NULL;
 	}
 
-    @Override
-    public TileEntity createNewTileEntity(World world, int meta)
-    {
-        return new MachineSolarArray();
-    }
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new MachineSolarArray();
+	}
 
 	@Override
 	public void update() {
 		super.update();
-		if (this.hasWorld() && !this.world.provider.hasNoSky() && this.world.provider.isDaytime() && this.world.canBlockSeeSky(this.pos.offset(EnumFacing.UP)) && !this.world.isRaining() && this.world.getSkylightSubtracted() == 0) {
-			if (solarEnergy < maxSolarEnergy)
-				solarEnergy++;
-			updateState(true);
+		if (!world.isRemote) {
 			IBlockState BlockStateContainer = world.getBlockState(pos);
 			BlockCrystekMachine blockBase = (BlockCrystekMachine) BlockStateContainer.getBlock();
 			EnumFacing dir = blockBase.getFacing(BlockStateContainer).getOpposite();
 			BlockPos generatorPos = getPos().offset(dir);
 			if (world.getTileEntity(generatorPos) != null && world.getTileEntity(generatorPos) instanceof MachineSolarGenerator) {
-				if (solarEnergy >= 1) {
-					((MachineSolarGenerator) world.getTileEntity(generatorPos)).solarEnergy++;
-					solarEnergy--;
+				if (world.getTotalWorldTime() % 100 == 0) {
+					if (this.hasWorld() && !this.world.provider.hasNoSky() && this.world.isDaytime() && canBlockSeeSky(this.pos.up()) && !this.world.isRaining() && !world.isThundering() && this.world.getSkylightSubtracted() == 0) {
+						solarCapable = true;
+					} else {
+						solarCapable = false;
+					}
+					updateState(solarCapable);
 				}
+				if (solarCapable) {
+					if (solarEnergy < maxSolarEnergy)
+						solarEnergy++;
+					if (solarEnergy >= 1) {
+						((MachineSolarGenerator) world.getTileEntity(generatorPos)).solarEnergy++;
+						solarEnergy--;
+					}
+				}
+			} else {
+				updateState(false);
 			}
-		} else {
-			updateState(false);
 		}
+	}
+
+	public boolean canBlockSeeSky(BlockPos pos) {
+		//System.out.println("Hi");
+		if (pos.getY() >= world.getSeaLevel()) {
+			return world.canSeeSky(pos);
+		} else {
+			BlockPos blockpos = new BlockPos(pos.getX(), world.getSeaLevel(), pos.getZ());
+
+			if (!world.canSeeSky(blockpos)) {
+				return false;
+			} else {
+				for (blockpos = blockpos.down(); blockpos.getY() > pos.getY(); blockpos = blockpos.down()) {
+					IBlockState iblockstate = world.getBlockState(blockpos);
+					if (world.getTileEntity(blockpos) != null && world.getTileEntity(blockpos) instanceof MachineSolarArray) {
+						return false;
+					}
+					if (iblockstate.getBlock().getLightOpacity(iblockstate, world, blockpos) > 0 && !iblockstate.getMaterial().isLiquid()) {
+						return false;
+					}
+				}
+				return true;
+			}
+		}
+	}
+
+	@Override
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
+		if (side != EnumFacing.DOWN && side != EnumFacing.UP && worldIn.getTileEntity(pos.offset(side.getOpposite())) != null && worldIn.getTileEntity(pos.offset(side.getOpposite())) instanceof MachineSolarGenerator) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -109,15 +164,29 @@ public class MachineSolarArray extends Machine {
 		solarEnergy = compound.getInteger("SolarEnergy");
 	}
 
-    @Override
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
 
-    @Override
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return false;
-    }
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isFullyOpaque(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		AxisAlignedBB box = new AxisAlignedBB(0.0625, 0.375, 0.0625, 0.875 + 0.0625, 0.6875, 0.875 + 0.0625);
+		return box;
+	}
 }

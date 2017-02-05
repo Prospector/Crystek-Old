@@ -3,6 +3,7 @@ package crystekteam.crystek.machines;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.guis.GuiCrystek;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -67,9 +68,13 @@ public class MachineSolarGenerator extends Machine {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta)
-	{
-		return new MachineSolarArray();
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new MachineSolarGenerator();
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 
 	@Override

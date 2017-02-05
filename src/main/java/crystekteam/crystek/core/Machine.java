@@ -31,7 +31,6 @@ import reborncore.common.IWrenchable;
 import reborncore.common.util.Tank;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,6 +59,10 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	public int progress = 0;
 	public int maxProgress = 100;
 	boolean requireUpdate = false;
+
+	public boolean invertPlacing() {
+		return false;
+	}
 
 	public abstract int invSize();
 
@@ -166,6 +169,10 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		return false;
 	}
 
+	public boolean openGuiOnRightClick() {
+		return true;
+	}
+
 	public void updateState(boolean active) {
 		IBlockState BlockStateContainer = world.getBlockState(pos);
 		if (BlockStateContainer.getBlock() instanceof BlockCrystekMachine) {
@@ -234,7 +241,9 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	 * Capability
 	 */
 	@Override
-	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+	public boolean hasCapability(Capability<?> capability,
+	                             @Nullable
+		                             EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return true;
 		}
@@ -248,14 +257,16 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 			return true;
 		}
 		if (teslaType() == EnumTeslaType.STORAGE && (capability == TeslaCapabilities.CAPABILITY_CONSUMER && capability == TeslaCapabilities.CAPABILITY_PRODUCER) || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
-            return true;
+			return true;
 		}
 		return super.hasCapability(capability, facing);
 	}
 
 	@Nullable
 	@Override
-	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+	public <T> T getCapability(Capability<T> capability,
+	                           @Nullable
+		                           EnumFacing facing) {
 		if (hasInv() && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
 			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getInv());
 		}
@@ -263,8 +274,8 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(getTank());
 		}
 		if (teslaType() != EnumTeslaType.NULL && capability == TeslaCapabilities.CAPABILITY_HOLDER || capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER) {
-            return (T) getTeslaContainer();
-        }
+			return (T) getTeslaContainer();
+		}
 		return super.getCapability(capability, facing);
 	}
 
@@ -327,32 +338,36 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		return dropStack;
 	}
 
-    //Block
-    public TileEntity createNewTileEntity(World world, int meta) {
-        return null;
-    }
-
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
+	//Block
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return null;
 	}
 
-    public boolean isFullCube(IBlockState state)
-    {
-        return true;
-    }
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
 
-    public boolean isFullBlock(IBlockState state)
-    {
-        return true;
-    }
+	public boolean isFullCube(IBlockState state) {
+		return true;
+	}
 
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return true;
-    }
+	public boolean isFullBlock(IBlockState state) {
+		return true;
+	}
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
-        return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-    }
+	public boolean isFullyOpaque(IBlockState state) {
+		return true;
+	}
+
+	public boolean isOpaqueCube(IBlockState state) {
+		return true;
+	}
+
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
+	}
+
+	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
+		return true;
+	}
 }

@@ -2,14 +2,12 @@ package crystekteam.crystek;
 
 import crystekteam.crystek.configs.ConfigCrystek;
 import crystekteam.crystek.event.CrystekEventHandler;
-import crystekteam.crystek.init.CrystekItems;
-import crystekteam.crystek.init.CrystekOreDict;
-import crystekteam.crystek.init.CrystekRecipes;
-import crystekteam.crystek.init.MachinesInit;
+import crystekteam.crystek.init.*;
 import crystekteam.crystek.network.Packets;
 import crystekteam.crystek.proxy.CrystekServer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -43,17 +41,22 @@ public class Crystek extends ModCL {
 	public static CrystekServer PROXY;
 	public static ConfigCrystek config;
 
+	public Crystek() {
+		FluidRegistry.enableUniversalBucket();
+	}
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		getItemRegistry().init(MOD_CL);
+		CrystekBlocks.init();
 		MachinesInit.init();
 		PROXY.registerRenders();
-        String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(MOD_ID, "Crystek");
-        config = ConfigCrystek.initialize(new File(path));
+		String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(MOD_ID, "Crystek");
+		config = ConfigCrystek.initialize(new File(path));
 
 		CrystekOreDict.init();
-        MinecraftForge.EVENT_BUS.register(Packets.class);
-    }
+		MinecraftForge.EVENT_BUS.register(Packets.class);
+	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {

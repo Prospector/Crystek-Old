@@ -1,9 +1,9 @@
 {
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
   "textures": {
-    "side": "crystek:blocks/machine/machine_side",
-    "top": "crystek:blocks/machine/solar_panel_top_on",
-    "down": "crystek:blocks/machine/machine_down"
+    "side": "#side",
+    "top": "#top",
+    "down": "#down"
   },
   "elements": [
     {
@@ -11,12 +11,12 @@
       "from": [
         3.0,
         6.0,
-        0.0
+        2.0
       ],
       "to": [
         5.0,
         7.0,
-        14.0
+        16.0
       ],
       "faces": {
         "north": {
@@ -80,12 +80,12 @@
       "from": [
         11.0,
         6.0,
-        0.0
+        2.0
       ],
       "to": [
         13.0,
         7.0,
-        14.0
+        16.0
       ],
       "faces": {
         "north": {
