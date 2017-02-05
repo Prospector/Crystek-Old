@@ -155,7 +155,7 @@ public class BlockCrystekMachine extends BlockMachineBase {
 	public boolean isOpaqueCube(IBlockState state) {
 		if (machine != null)
 			return machine.isOpaqueCube(state);
-		return false;
+		return true;
 	}
 
 	@Override
