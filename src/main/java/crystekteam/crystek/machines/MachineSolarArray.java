@@ -4,8 +4,6 @@ import crystekteam.crystek.blocks.BlockCrystekMachine;
 import crystekteam.crystek.core.EnumTeslaType;
 import crystekteam.crystek.core.Machine;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -17,7 +15,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Prospector
@@ -100,9 +97,12 @@ public class MachineSolarArray extends Machine {
 				if (world.getTotalWorldTime() % 100 == 0) {
 					if (this.hasWorld() && !this.world.provider.hasNoSky() && this.world.isDaytime() && canBlockSeeSky(this.pos.up()) && !this.world.isRaining() && !world.isThundering() && this.world.getSkylightSubtracted() == 0) {
 						solarCapable = true;
-					} else {
+						for (int i = 1; i <= world.getHeight(); i++)
+							if (world.getTileEntity(pos.offset(EnumFacing.UP, i)) != null && world.getTileEntity(pos.offset(EnumFacing.UP, i)) instanceof MachineSolarArray)
+								solarCapable = false;
+
+					} else
 						solarCapable = false;
-					}
 					updateState(solarCapable);
 				}
 				if (solarCapable) {
@@ -113,30 +113,26 @@ public class MachineSolarArray extends Machine {
 						solarEnergy--;
 					}
 				}
-			} else {
+			} else
 				updateState(false);
-			}
 		}
 	}
 
 	public boolean canBlockSeeSky(BlockPos pos) {
-		//System.out.println("Hi");
-		if (pos.getY() >= world.getSeaLevel()) {
+		if (pos.getY() >= world.getSeaLevel())
 			return world.canSeeSky(pos);
-		} else {
+		else {
 			BlockPos blockpos = new BlockPos(pos.getX(), world.getSeaLevel(), pos.getZ());
 
-			if (!world.canSeeSky(blockpos)) {
+			if (!world.canSeeSky(blockpos))
 				return false;
-			} else {
+			else {
 				for (blockpos = blockpos.down(); blockpos.getY() > pos.getY(); blockpos = blockpos.down()) {
 					IBlockState iblockstate = world.getBlockState(blockpos);
-					if (world.getTileEntity(blockpos) != null && world.getTileEntity(blockpos) instanceof MachineSolarArray) {
+					if (world.getTileEntity(blockpos) != null && world.getTileEntity(blockpos) instanceof MachineSolarArray)
 						return false;
-					}
-					if (iblockstate.getBlock().getLightOpacity(iblockstate, world, blockpos) > 0 && !iblockstate.getMaterial().isLiquid()) {
+					if (iblockstate.getBlock().getLightOpacity(iblockstate, world, blockpos) > 0 && !iblockstate.getMaterial().isLiquid())
 						return false;
-					}
 				}
 				return true;
 			}
@@ -145,9 +141,8 @@ public class MachineSolarArray extends Machine {
 
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		if (side != EnumFacing.DOWN && side != EnumFacing.UP && worldIn.getTileEntity(pos.offset(side.getOpposite())) != null && worldIn.getTileEntity(pos.offset(side.getOpposite())) instanceof MachineSolarGenerator) {
+		if (side != EnumFacing.DOWN && side != EnumFacing.UP && worldIn.getTileEntity(pos.offset(side.getOpposite())) != null && worldIn.getTileEntity(pos.offset(side.getOpposite())) instanceof MachineSolarGenerator)
 			return true;
-		}
 		return false;
 	}
 
