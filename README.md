@@ -1,5 +1,5 @@
 #Crystek
-Crystek is a 1.10 tech mod using the TESLA Energy API. Crystallize TESLA into Tesla Crystals, which can be used to channel TESLA Energy into the machines this mod has to offer.
+Crystek is a 1.11.2 mystical tech mod, generally revolving around crystals. One of the main selling points is that we do no world gen at all. No ores. No trees. No biomes, etcxxx
 
 We have auto-builds here: http://modmuss50.me:8080/job/Crystek/
 
