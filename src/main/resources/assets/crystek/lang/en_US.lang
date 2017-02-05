@@ -33,12 +33,13 @@ item.crystek:diamond_grinding_blade.name=Diamond Grinding Blade
 item.crystek:obsidian_grinding_blade.name=Obsidian Grinding Blade
 item.crystek:crystalline_grinding_blade.name=Crystal Grinding Blade
 
+//Tools
 item.crystek:obsidian_wrench.name=Obsidian Wrench
 item.crystek:machine_debug.name=Machine Debug
 item.crystek:creative_battery.name=Creative Battery
 item.crystek:crystalline_battery.name=Crystalline Battery
 
-//Blocks
+//Machines
 tile.crystek:creative_cell.name=Creative Tesla Cell
 tile.crystek:cell.name=Tesla Cell
 tile.crystek:furnace.name=Crystacor Furnace
@@ -48,6 +49,25 @@ tile.crystek:solar_generator.name=Solar Generator
 tile.crystek:solar_array.name=Solar Array
 tile.crystek:resistant_solar_array.name=Resistant Solar Array
 tile.crystek:tank.name=Obsidian Tank
+
+//Grid Glass
+tile.crystek:grid_glass.name=Grid Glass
+tile.crystek:stained_grid_glass.white.name=White Stained Grid Glass
+tile.crystek:stained_grid_glass.orange.name=Orange Stained Grid Glass
+tile.crystek:stained_grid_glass.magenta.name=Magenta Stained Grid Glass
+tile.crystek:stained_grid_glass.lightBlue.name=Light Blue Stained Grid Glass
+tile.crystek:stained_grid_glass.yellow.name=Yellow Stained Grid Glass
+tile.crystek:stained_grid_glass.lime.name=Lime Stained Grid Glass
+tile.crystek:stained_grid_glass.pink.name=Pink Stained Grid Glass
+tile.crystek:stained_grid_glass.gray.name=Gray Stained Grid Glass
+tile.crystek:stained_grid_glass.silver.name=Light Gray Stained Grid Glass
+tile.crystek:stained_grid_glass.cyan.name=Cyan Stained Grid Glass
+tile.crystek:stained_grid_glass.purple.name=Purple Stained Grid Glass
+tile.crystek:stained_grid_glass.blue.name=Blue Stained Grid Glass
+tile.crystek:stained_grid_glass.brown.name=Brown Stained Grid Glass
+tile.crystek:stained_grid_glass.green.name=Green Stained Grid Glass
+tile.crystek:stained_grid_glass.red.name=Red Stained Grid Glass
+tile.crystek:stained_grid_glass.black.name=Black Stained Grid Glass
 
 //Fluids
 fluid.biomass=Biomass

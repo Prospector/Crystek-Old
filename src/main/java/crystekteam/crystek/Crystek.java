@@ -50,8 +50,9 @@ public class Crystek extends ModCL {
 		getItemRegistry().init(MOD_CL);
 		CrystekBlocks.init();
 		MachinesInit.init();
+
 		PROXY.registerRenders();
-		String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(MOD_ID, "Crystek");
+		String path = event.getSuggestedConfigurationFile().getAbsolutePath().replace(MOD_ID, "teamreborn/crystek");
 		config = ConfigCrystek.initialize(new File(path));
 
 		CrystekOreDict.init();

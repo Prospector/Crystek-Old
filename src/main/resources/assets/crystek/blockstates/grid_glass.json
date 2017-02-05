@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "cube_all",
+    "textures": {
+      "all": "crystek:blocks/grid_glass"
+    }
+  },
+  "variants": {
+    "inventory": {
+      "transform": "forge:default-block",
+      "textures": {
+      }
+    },
+    "inventory": {
+      "model": "cube_all",
+      "textures": {
+        "all": "crystek:blocks/grid_glass"
+      }
+    },
+    "normal": {
+      "model": "cube_all",
+      "textures": {
+        "all": "crystek:blocks/grid_glass"
+      }
+    }
+  }
+}

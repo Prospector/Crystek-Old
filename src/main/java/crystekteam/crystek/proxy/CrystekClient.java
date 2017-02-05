@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -30,8 +31,12 @@ public class CrystekClient extends CrystekServer {
 	}
 
 	static void registerItemModel(Item i, int meta, String variant) {
+		registerItemModel(i, meta, variant, "type");
+	}
+
+	static void registerItemModel(Item i, int meta, String variant, String property) {
 		ResourceLocation loc = i.getRegistryName();
-		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, "type=" + variant));
+		ModelLoader.setCustomModelResourceLocation(i, meta, new ModelResourceLocation(loc, property + "=" + variant));
 	}
 
 	private static void register(Item item, int meta, String name) {
@@ -44,7 +49,11 @@ public class CrystekClient extends CrystekServer {
 	}
 
 	static void registerItemModel(Block b, int meta, String variant) {
-		registerItemModel(Item.getItemFromBlock(b), meta, variant);
+		registerItemModel(b, meta, variant);
+	}
+
+	static void registerItemModel(Block b, int meta, String variant, String property) {
+		registerItemModel(Item.getItemFromBlock(b), meta, variant, property);
 	}
 
 	private static void register(Item item, String name) {
@@ -109,6 +118,10 @@ public class CrystekClient extends CrystekServer {
 		registerFluid(CrystekBlocks.EXPERIENCE_BLOCK);
 		registerFluid(CrystekBlocks.COOLANT_BLOCK);
 		registerFluid(CrystekBlocks.VENOM_BLOCK);
+		register(CrystekBlocks.GRID_GLASS, "grid_glass");
+		for (int i = 0; i <= 15; i++) {
+			registerItemModel(CrystekBlocks.STAINED_GRID_GLASS, 15 - i, EnumDyeColor.byDyeDamage(i).getName(), "color");
+		}
 	}
 
 	@Override

@@ -1,0 +1,137 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "cube_all",
+    "textures": {
+      "all": "crystek:blocks/grid_glass"
+    }
+  },
+  "variants": {
+    "inventory": {
+      "transform": "forge:default-block",
+      "textures": {
+      }
+    },
+    "inventory": {
+      "model": "cube_all",
+      "textures": {
+        "all": "crystek:blocks/grid_glass"
+      }
+    },
+    "color": {
+      "red": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_red"
+        }
+      },
+      "yellow": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_yellow"
+        }
+      },
+      "purple": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_purple"
+        }
+      },
+      "pink": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_pink"
+        }
+      },
+      "silver": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_silver"
+        }
+      },
+      "brown": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_brown"
+        }
+      },
+      "gray": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_gray"
+        }
+      },
+      "light_blue": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_light_blue"
+        }
+      },
+      "black": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_black"
+        }
+      },
+      "magenta": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_magenta"
+        }
+      },
+      "cyan": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_cyan"
+        }
+      },
+      "blue": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_blue"
+        }
+      },
+      "white": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_white"
+        }
+      },
+      "green": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_green"
+        }
+      },
+      "lime": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_lime"
+        }
+      },
+      "orange": {
+        "transform": "forge:default-block",
+        "model": "cube_all",
+        "textures": {
+          "all": "crystek:blocks/grid_glass/stained_grid_glass_orange"
+        }
+      }
+    }
+  }
+}

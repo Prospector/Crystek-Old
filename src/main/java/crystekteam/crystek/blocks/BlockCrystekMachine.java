@@ -57,7 +57,7 @@ public class BlockCrystekMachine extends BlockMachineBase {
 			Block block2 = state2.getBlock();
 			IBlockState state3 = worldIn.getBlockState(pos.east());
 			Block block3 = state3.getBlock();
-			EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+			EnumFacing enumfacing = state.getValue(FACING);
 
 			if (enumfacing == EnumFacing.NORTH && block.isFullBlock(state) && !block1.isFullBlock(state1)) {
 				enumfacing = EnumFacing.SOUTH;

@@ -1,10 +1,13 @@
 package crystekteam.crystek.init;
 
 import crystekteam.crystek.Crystek;
+import crystekteam.crystek.blocks.BlockGridGlass;
+import crystekteam.crystek.blocks.BlockStainedGridGlass;
 import crystekteam.crystek.blocks.FluidBlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemCloth;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -19,7 +22,8 @@ public class CrystekBlocks {
 	public static final Fluid EXPERIENCE_FLUID = new Fluid("experience", new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/experience_still"), new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/experience_flowing"));
 	public static final Fluid COOLANT_FLUID = new Fluid("coolant", new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/coolant_still"), new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/coolant_flowing"));
 	public static final Fluid VENOM_FLUID = new Fluid("venom", new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/venom_still"), new ResourceLocation(Crystek.MOD_ID, "blocks/fluids/venom_flowing"));
-
+	public static final BlockGridGlass GRID_GLASS = new BlockGridGlass();
+	public static final BlockStainedGridGlass STAINED_GRID_GLASS = new BlockStainedGridGlass();
 	public static FluidBlockBase BIOMASS_BLOCK;
 	public static FluidBlockBase TESLARINE_BLOCK;
 	public static FluidBlockBase EXPERIENCE_BLOCK;
@@ -51,10 +55,23 @@ public class CrystekBlocks {
 		VENOM_BLOCK = new FluidBlockBase(VENOM_FLUID, Material.WATER);
 		GameRegistry.register(VENOM_BLOCK);
 		FluidRegistry.addBucketForFluid(VENOM_FLUID);
+
+		registerBlock(GRID_GLASS);
+		registerColourfulBlock(STAINED_GRID_GLASS, STAINED_GRID_GLASS.getRegistryName().getResourcePath());
 	}
 
 	public static void registerBlock(Block block, String name) {
 		block.setRegistryName(name);
+		GameRegistry.register(block);
+		GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+	}
+
+	public static void registerColourfulBlock(Block block, String name) {
+		GameRegistry.register(block);
+		GameRegistry.register(new ItemCloth(block).setUnlocalizedName(Crystek.PREFIX + name), block.getRegistryName());
+	}
+
+	public static void registerBlock(Block block) {
 		GameRegistry.register(block);
 		GameRegistry.register(new ItemBlock(block), block.getRegistryName());
 	}
