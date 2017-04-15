@@ -39,10 +39,6 @@ public class CrystekItems extends RegistryCL {
 			MATERIALS_DICT.put(name, oreName);
 	}
 
-	private static void register(ItemCL item) {
-		GameRegistry.register(item);
-	}
-
 	public void init(ModCL mod) {
 		OBSIDIAN_WRENCH = new ItemObsidianWrench();
 		MATERIALS = new ItemMetadataCrystek("material");
@@ -93,7 +89,7 @@ public class CrystekItems extends RegistryCL {
 		addToRegistry(MACHINE_DEBUG);
 		addToRegistry(CREATIVE_BATTERY);
 
-		for (ItemCL item : registry.values()) {
+		for (ItemCL item : itemRegistry.values()) {
 			register(item);
 		}
 
@@ -107,7 +103,7 @@ public class CrystekItems extends RegistryCL {
 	}
 
 	private void addToRegistry(String name, ItemCL item) {
-		registry.put(name, item);
+		itemRegistry.put(name, item);
 	}
 
 	private void addToRegistry(ItemCL item, String... oreDictNames) {

@@ -47,7 +47,7 @@ public class Crystek extends ModCL {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		getItemRegistry().init(MOD_CL);
+		getRegistry().init(MOD_CL);
 		CrystekBlocks.init();
 		MachinesInit.init();
 
@@ -103,7 +103,7 @@ public class Crystek extends ModCL {
 	}
 
 	@Override
-	public RegistryCL getItemRegistry() {
+	public RegistryCL getRegistry() {
 		return ITEM_REGISTRY;
 	}
 

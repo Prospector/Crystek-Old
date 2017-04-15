@@ -3,9 +3,8 @@ package crystekteam.crystek.blocks;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.core.Machine;
 import crystekteam.crystek.init.MachinesInit;
-import crystekteam.crystek.machines.MachineSolarArray;
-import crystekteam.crystek.machines.MachineSolarGenerator;
-import net.minecraft.block.Block;
+import crystekteam.crystek.machines.old.MachineSolarArray;
+import crystekteam.crystek.machines.old.MachineSolarGenerator;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,39 +37,6 @@ public class BlockCrystekMachine extends BlockMachineBase {
 		setUnlocalizedName(machine.getName());
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(ACTIVE, false));
 		setHardness(2.0F);
-	}
-
-	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-		super.onBlockAdded(worldIn, pos, state);
-		onBlockAdded(worldIn, pos.getX(), pos.getY(), pos.getZ());
-		this.setDefaultFacing(worldIn, pos, state);
-	}
-
-	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
-		if (!worldIn.isRemote) {
-			IBlockState sate = worldIn.getBlockState(pos.north());
-			Block block = sate.getBlock();
-			IBlockState state1 = worldIn.getBlockState(pos.south());
-			Block block1 = state1.getBlock();
-			IBlockState state2 = worldIn.getBlockState(pos.west());
-			Block block2 = state2.getBlock();
-			IBlockState state3 = worldIn.getBlockState(pos.east());
-			Block block3 = state3.getBlock();
-			EnumFacing enumfacing = state.getValue(FACING);
-
-			if (enumfacing == EnumFacing.NORTH && block.isFullBlock(state) && !block1.isFullBlock(state1)) {
-				enumfacing = EnumFacing.SOUTH;
-			} else if (enumfacing == EnumFacing.SOUTH && block1.isFullBlock(state1) && !block.isFullBlock(state)) {
-				enumfacing = EnumFacing.NORTH;
-			} else if (enumfacing == EnumFacing.WEST && block2.isFullBlock(state2) && !block3.isFullBlock(state2)) {
-				enumfacing = EnumFacing.EAST;
-			} else if (enumfacing == EnumFacing.EAST && block3.isFullBlock(state3) && !block2.isFullBlock(state2)) {
-				enumfacing = EnumFacing.WEST;
-			}
-
-			worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing.getOpposite()), 2);
-		}
 	}
 
 	@Override

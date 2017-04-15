@@ -3,7 +3,7 @@ package crystekteam.crystek.init;
 import crystekteam.crystek.Crystek;
 import crystekteam.crystek.blocks.BlockCrystekMachine;
 import crystekteam.crystek.core.Machine;
-import crystekteam.crystek.machines.*;
+import crystekteam.crystek.machines.old.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

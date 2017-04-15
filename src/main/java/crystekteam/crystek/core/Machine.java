@@ -56,9 +56,11 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 	/**
 	 * Progress
 	 */
+	public int energyGain = 0;
 	public int progress = 0;
 	public int maxProgress = 100;
 	boolean requireUpdate = false;
+	private int lastPower = 0;
 
 	public boolean invertPlacing() {
 		return false;
@@ -115,6 +117,8 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		}
 		compound.setInteger("Progress", this.progress);
 		compound.setInteger("MaxProgress", this.maxProgress);
+		compound.setInteger("EnergyGain", this.energyGain);
+		compound.setInteger("LastPower", this.lastPower);
 		return compound;
 	}
 
@@ -143,6 +147,8 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		}
 		progress = compound.getInteger("Progress");
 		maxProgress = compound.getInteger("MaxProgress");
+		energyGain = compound.getInteger("EnergyGain");
+		lastPower = compound.getInteger("LastPower");
 	}
 
 	@Override
@@ -214,6 +220,9 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		if (world.isRemote) {
 			return;
 		}
+		energyGain = teslaContainer.getEnergyStored() - lastPower;
+		lastPower = teslaContainer.getEnergyStored();
+		System.out.println(energyGain);
 		sync();
 	}
 
@@ -250,13 +259,13 @@ public abstract class Machine extends TileEntity implements ITickable, IWrenchab
 		if (hasTank() && capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return true;
 		}
-		if (teslaType() == EnumTeslaType.GENERATOR && capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
+		if (teslaType() == EnumTeslaType.PRODUCER && capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
 			return true;
 		}
 		if (teslaType() == EnumTeslaType.CONSUMER && capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
 			return true;
 		}
-		if (teslaType() == EnumTeslaType.STORAGE && (capability == TeslaCapabilities.CAPABILITY_CONSUMER && capability == TeslaCapabilities.CAPABILITY_PRODUCER) || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
+		if (teslaType() == EnumTeslaType.STORER && (capability == TeslaCapabilities.CAPABILITY_CONSUMER && capability == TeslaCapabilities.CAPABILITY_PRODUCER) || capability == TeslaCapabilities.CAPABILITY_HOLDER) {
 			return true;
 		}
 		return super.hasCapability(capability, facing);

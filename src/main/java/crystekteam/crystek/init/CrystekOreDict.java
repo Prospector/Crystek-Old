@@ -10,8 +10,8 @@ import net.minecraftforge.oredict.OreDictionary;
 public class CrystekOreDict {
 
 	public static void init() {
-		for (ItemStack stack : Crystek.MOD_CL.getItemRegistry().oreEntries.keySet()) {
-			OreDictionary.registerOre(Crystek.MOD_CL.getItemRegistry().oreEntries.get(stack), stack);
+		for (ItemStack stack : Crystek.MOD_CL.getRegistry().oreEntries.keySet()) {
+			OreDictionary.registerOre(Crystek.MOD_CL.getRegistry().oreEntries.get(stack), stack);
 		}
 	}
 

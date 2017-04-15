@@ -32,7 +32,7 @@ public class CrystekBuilder extends GuiBuilder {
 		drawTank(gui, tank, x, y, zLevel, width, height, mouseX - guiLeft, mouseY - guiTop);
 	}
 
-	public void drawTeslaEnergyBar(GuiCrystek gui, int x, int y, int energyStored, int maxEnergyStored, int mouseX, int mouseY, GuiCrystek.Layer layer) {
+	public void drawTeslaEnergyBar(GuiCrystek gui, int x, int y, int energyStored, int maxEnergyStored, int energyGain, int mouseX, int mouseY, GuiCrystek.Layer layer) {
 		if (layer == GuiCrystek.Layer.BACKGROUND) {
 			x += gui.getGuiLeft();
 			y += gui.getGuiTop();
@@ -55,6 +55,12 @@ public class CrystekBuilder extends GuiBuilder {
 			List<String> list = new ArrayList<>();
 			list.add(TextFormatting.GOLD + "" + energyStored + "/" + maxEnergyStored + " Tesla");
 			list.add(getPercentageColour(percentage) + "" + percentage + "%" + TextFormatting.GRAY + " Charged");
+			if (energyGain != 0) {
+				if (energyGain < 0)
+					list.add(TextFormatting.RED + "" + energyGain + " Tesla/t");
+				else
+					list.add(TextFormatting.GREEN + "+" + energyGain + " Tesla/t");
+			}
 			GuiUtils.drawHoveringText(list, mouseX, mouseY, gui.width, gui.height, -1, gui.mc.fontRendererObj);
 			GlStateManager.disableLighting();
 			GlStateManager.color(1, 1, 1, 1);

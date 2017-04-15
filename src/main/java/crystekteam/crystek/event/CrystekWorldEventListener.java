@@ -82,7 +82,7 @@ public class CrystekWorldEventListener implements IWorldEventListener {
 				IBlockState anvilState = worldObj.getBlockState(blockPosIn);
 				ItemStack input = new ItemStack(state.getBlock());
 				if (isValidRecipe(input))
-					if (getOutputItem(input) != null) {
+					if (getOutputItem(input) != ItemStack.EMPTY) {
 						Random random = new Random();
 						int num = random.nextInt(1);
 						if (num == 0)
